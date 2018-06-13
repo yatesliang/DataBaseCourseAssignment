@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SceneView.Models.comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.mark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commentContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commentLike)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commentTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.scenicSpot.scenicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentLike)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.commentTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.scenicSpot.scenicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.commentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.commentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.commentID })
+        </td>
+    </tr>
+}
+
+</table>
