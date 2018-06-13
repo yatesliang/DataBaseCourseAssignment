@@ -1,0 +1,37 @@
+﻿@model SceneView.Models.admin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="form-group" style="height:40px;margin-top:50px">
+        <div class="row">
+            @Html.LabelFor(m => m.adminID, new { @class = "col-md-5 control-label", @style = "text-align:right", @for = "account" })
+            <div class=" col-md-7">
+                @Html.TextBoxFor(m => m.adminID, new { @class = "form-control", @placeholder = "请输入用户名", @style = "width:240px;", @id = "account" })
+                @Html.ValidationMessageFor(m => m.adminID)
+            </div>
+        </div>
+    </div>
+    <div class="form-group" style="height:40px;">
+        <div class="row">
+            @Html.LabelFor(m => m.password, new { @class = "col-md-5 control-label", @style = "text-align:right", @for = "pwd" })
+            <div class=" col-md-7">
+                @Html.PasswordFor(m => m.password, new { @class = "form-control", @placeholder = "请输入密码", @style = "width:240px;", @id = "pwd" })
+                @Html.ValidationMessageFor(m => m.password)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-5"></div>
+        <div class="col-md-2 col-xs-4">
+            <input type="submit" value=" 登录" class="btn btn-default" />
+        </div>
+        <div class="col-md-5 col-xs-8">
+            <input type="reset" value=" 重置" class="btn btn-default" />
+        </div>
+    </div>
+}
