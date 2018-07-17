@@ -219,7 +219,7 @@ create table "scenicSpot"
 (
    "scenicID"           NUMBER(5,0)          not null,
    "scenicName"         VARCHAR2(64)         not null,
-   "scenicIntroduction" CLOB                 not null,
+   "scenicIntroduction" VARCHAR2(64)         not null,
    constraint PK_SCENICSPOT primary key ("scenicID")
 )
 /
@@ -425,6 +425,8 @@ create table "userInfo"
    "headPortrait"       VARCHAR2(200),
    "introduction"       VARCHAR2(200),
    "phoneNumber"        NUMBER(11,0),
+   "secretQuestion"     VARCHAR2(64),
+   "sQAnswer"           VARCHAR2(64),
    constraint PK_USERINFO primary key ("userID"),
    constraint FK_USERINFO_REFERENCE_USER foreign key ("userID")
          references "user" ("userID")
