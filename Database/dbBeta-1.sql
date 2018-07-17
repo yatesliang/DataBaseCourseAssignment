@@ -219,7 +219,7 @@ create table "scenicSpot"
 (
    "scenicID"           NUMBER(5,0)          not null,
    "scenicName"         VARCHAR2(64)         not null,
-   "scenicIntroduction" VARCHAR2(64)         not null,
+   "scenicIntroduction" CLOB                 not null,
    constraint PK_SCENICSPOT primary key ("scenicID")
 )
 /
