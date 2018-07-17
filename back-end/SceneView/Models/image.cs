@@ -12,28 +12,21 @@ namespace SceneView.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class message
+    public partial class image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public message()
+        public image()
         {
-            this.commentLikeMes = new HashSet<commentLikeMes>();
-            this.commentReplyMes = new HashSet<commentReplyMes>();
-            this.noteLikeMes = new HashSet<noteLikeMes>();
+            this.scenicSpot = new HashSet<scenicSpot>();
+            this.strategy = new HashSet<strategy>();
         }
     
-        public long messageID { get; set; }
-        public string senderID { get; set; }
-        public string receiverID { get; set; }
-        public System.DateTime time { get; set; }
+        public int imageID { get; set; }
+        public string imageAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentLikeMes> commentLikeMes { get; set; }
+        public virtual ICollection<scenicSpot> scenicSpot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentReplyMes> commentReplyMes { get; set; }
-        public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<noteLikeMes> noteLikeMes { get; set; }
+        public virtual ICollection<strategy> strategy { get; set; }
     }
 }

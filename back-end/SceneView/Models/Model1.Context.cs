@@ -30,15 +30,14 @@ namespace SceneView.Models
         public virtual DbSet<comment> comment { get; set; }
         public virtual DbSet<commentLikeMes> commentLikeMes { get; set; }
         public virtual DbSet<commentReplyMes> commentReplyMes { get; set; }
+        public virtual DbSet<image> image { get; set; }
         public virtual DbSet<message> message { get; set; }
         public virtual DbSet<note> note { get; set; }
         public virtual DbSet<noteLikeMes> noteLikeMes { get; set; }
         public virtual DbSet<question> question { get; set; }
-        public virtual DbSet<scenicImage> scenicImage { get; set; }
         public virtual DbSet<scenicPos> scenicPos { get; set; }
         public virtual DbSet<scenicSpot> scenicSpot { get; set; }
         public virtual DbSet<strategy> strategy { get; set; }
-        public virtual DbSet<strategyImage> strategyImage { get; set; }
         public virtual DbSet<user> user { get; set; }
         public virtual DbSet<userInfo> userInfo { get; set; }
     }

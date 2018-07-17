@@ -1,0 +1,97 @@
+﻿@model SceneView.Controllers.LoginController.result
+
+@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Login/_LoginLayout.cshtml";
+}
+@{ 
+    // 验证session会话是否存在
+    if (Session["user"] != null)
+    {
+        HttpContext.Current.Response.Redirect("~/Home");
+    }
+}
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <!-- Start Sign In Form -->
+                @using (Html.BeginForm("Sign", "Login", FormMethod.Post, new { @class = "fh5co-form animate-box", @name = "signForm", @onsubmit = "return checkNewValid()"}))
+                {
+                    @Html.ValidationSummary(true)
+                        <h2>注 册</h2>
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Name</label>
+                            @Html.TextBoxFor(r => r.username, new { @placeholder = "用户名", @class = "form-control", @id = "name", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(r => r.username)
+                            @*<input type="text" class="form-control" id="name" placeholder="用户名" autocomplete="off">*@
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone" class="sr-only">Telephone</label>
+                            @Html.TextBoxFor(r => r.phone, new { @placeholder = "手机", @class = "form-control", @id = "telephone", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(r => r.phone)
+                            @*<input type="text" class="form-control" id="telephone" placeholder="手机" autocomplete="off">*@
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="sr-only">Password</label>
+                            @Html.TextBoxFor(r => r.password, new { @placeholder = "密码", @class = "form-control", @id = "password", @autocomplete = "off", @type="password" })
+                            @Html.ValidationMessageFor(r => r.password)
+                            @*<input type="password" class="form-control" id="password" placeholder="密码" autocomplete="off">*@
+                        </div>
+                        <div class="form-group">
+                            <label for="re-password" class="sr-only">Re-type Password</label>
+                            <input type="password" class="form-control" id="re-password" placeholder="确认密码" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="question" class="sr-only">Question</label>
+                            @Html.TextBoxFor(r=>r.answer, new { @placeholder = "请输入您最常居住的城市（用于找回密码）", @class = "form-control", @id = "question", @autocomplete="off" })
+                            @Html.ValidationMessageFor(r => r.answer)
+                            @*<input type="text" class="form-control" id="question" placeholder="请输入您最常居住的城市（用于找回密码）" autocomplete="off">*@
+                        </div>
+                        <div class="form-group">
+                            <p>已有账号? <a href="~/Login/index">登 录</a></p>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="注 册" class="btn btn-primary">
+                        </div>
+                        <script>
+                            function checkNewValid() {
+                                var name = document.forms["signForm"]["name"].value;
+                                if (name == null || name == "") {
+                                    alert("请输入用户名");  //to do
+                                    return false;
+                                } else if (name.length > 16) {
+                                    alert("用户名不应超过 16 位");
+                                    //to do
+                                    return false;
+                                }
+                                // var emailAdd = document.forms["signForm"]["email"].value;
+                                // var emailPatrn =  /^[\w-]+/;
+                                // if(emailPatrn.test(emailAdd || emailAdd == null || emailAdd == "")){
+                                // 	alert("邮箱地址无效");
+                                // 	return false;
+                                // }
+                                var tel = document.forms["signForm"]["telephone"].value;
+                                var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+                                if (!telPatrn.exec(tel)) {
+                                    alert("电话无效");
+                                    return false;
+                                }
+                                var pwd = document.forms["signForm"]["password"].value;
+                                var patrn = /^(\w){6,20}$/;
+                                if (!patrn.exec(pwd)) {
+                                    alert("密码非法");
+                                    return false;
+                                }
+                                var rePwd = document.forms["signForm"]["re-password"].value;
+                                if (rePwd != pwd) {
+                                    alert("两次密码不一致");
+                                    return false;
+                                }
+                                return true;
+                            }
+                        </script>
+                    <!-- END Sign In Form -->
+
+                }
+            </div>
+        </div>
+

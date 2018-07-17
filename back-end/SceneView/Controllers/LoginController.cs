@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,55 +10,160 @@ namespace SceneView.Controllers
 {
     public class LoginController : Controller
     {
-        public ActionResult Test()
-        {
-            return View();
-        }
-        public ActionResult Login()
-        {
-            bool valid = ModelState.IsValid;
-            if (valid)
-            {
-                var adminResult = admin.Login(admin);
-                if (adminResult != null)
-                {
-                    return RedirectToAction("Index", "admins");
-                }
-            }
-            return View("Error");
-        }
+        private Entities db = new Entities();
+
+        public const int Success = 0;
         // GET: Login
         public ActionResult Index()
         {
-//            using (var context = new Entities())
-//            {
-//                // - 不可行(找不到表名)
-////                var resultAdmin = context.admin.SqlQuery("select password from admin where adminID = 1").FirstOrDefault<admin>();
-//                // - 可行
-//                var resultAdmin = context.admin.Where(s => s.adminID == 1).FirstOrDefault<admin>();
-//                // - 可行
-////                var Query = from a in context.admin where a.adminID == 1 select a;
-////                var resultAdmin = Query.FirstOrDefault<admin>();
-//                string password = "tanrui105";
-//                MD5TransferAndVerify md5 = new MD5TransferAndVerify();
-//                string md5ps = md5.GetMD5Hash(password);
-//                Boolean md5verify = md5.Verify(resultAdmin.password, password);
-//            }
             return View();
         }
         [HttpPost]
-        public ActionResult Index(admin admin)
+        public ActionResult Index(result r)
         {
-            bool valid = ModelState.IsValid;
-            if (valid)
+            if (ModelState.IsValid)
             {
-                var adminResult = admin.Login(admin);
-                if (adminResult != null)
+                var md5 = new MD5TransferAndVerify();
+                // 获取数据库查询结果
+                var result = db.userInfo.Where(u => u.nickname == r.username).FirstOrDefault<userInfo>();
+                // 用户不存在
+                if (result == null)
                 {
-                    return RedirectToAction("Index", "admins");
+                    ViewBag.flag = -1;
+                    return View();
+                }
+                else
+                {   
+                    if (result.user.password == md5.GetMD5Hash(r.password))
+                        // 用户验证正确，则创建Session会话，跳转至主页
+                    {
+                        Session["user"] = result.user.userID;
+                        return Redirect("~/Home");
+                    }
+                    else
+                    {
+                        // 否则验证失败，密码错误
+                        ViewBag.flag = 0;
+                        return View();
+                    }
                 }
             }
-            return View("Error");
+            return Redirect("Error");
+        }
+        public ActionResult Sign()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Sign(result r)
+        {
+            if (ModelState.IsValid)
+            {
+                var md5 = new MD5TransferAndVerify();
+                // 获取数据库查询结果
+                var result = db.userInfo.Where(u => u.nickname == r.username).FirstOrDefault<userInfo>();
+                if (result == null)
+                {
+                    // 创建用户、用户信息实例
+                    var user = new user();
+                    var userInfo = new userInfo();
+                    // 为其赋值并添加到db中
+                    // userID为自增长属性，user为空时，第一个编号为1
+                    var users = db.user;
+                    user.userID = users.Count() == 0 ? "1" : (int.Parse(users.AsEnumerable().Last().userID) + 1).ToString();
+                    user.password = md5.GetMD5Hash(r.password);
+                    userInfo.userID = user.userID;
+                    userInfo.nickname = r.username;
+                    userInfo.phoneNumber = r.phone;
+                    userInfo.SQANSWER = r.answer;
+                    db.user.Add(user);
+                    db.userInfo.Add(userInfo);
+                    // 循环检测db是否被占用，防止并发冲突
+                    bool saveFailed;
+                    do
+                    {
+                        saveFailed = false;
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (DbUpdateConcurrencyException ex)
+                        {
+                            saveFailed = true;
+                            ex.Entries.Single().Reload();
+                        }
+                    } while (saveFailed);
+                    // 完成更新
+                }
+                else
+                {
+                    // 用户已存在
+                    ViewBag.flag = 1;
+                    return RedirectToAction("Index");
+                }
+                return Redirect("~/Home");
+            }
+            return Redirect("Error");
+        }
+        public ActionResult Forget()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Forget(result r)
+        {
+            if (ModelState.IsValid)
+            {
+                var md5 = new MD5TransferAndVerify();
+                // 获取数据库查询结果
+                var result = db.userInfo.Where(u => u.nickname == r.username).FirstOrDefault<userInfo>();
+                if(result == null)
+                    // 用户不存在
+                {
+                    ViewBag.fFlag = -1;
+                    return View();
+                }
+                else
+                {
+                    if (!result.SQANSWER.Equals(r.answer))
+                        // 验证问题错误
+                    {
+                        ViewBag.fFlage = 0;
+                        return View();
+                    }
+                    else
+                        // 验证正确，更换密码
+                    {
+                        result.user.password = md5.GetMD5Hash(r.password);
+                        // 循环检测db是否被占用，防止并发冲突
+                        bool saveFailed;
+                        do
+                        {
+                            saveFailed = false;
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (DbUpdateConcurrencyException ex)
+                            {
+                                saveFailed = true;
+                                ex.Entries.Single().Reload();
+                            }
+                        } while (saveFailed);
+                        // 完成更新
+                        return RedirectToAction("index");
+                    }
+                }
+            }
+            return Redirect("Error");
+        }
+        public class result
+        {
+            public string username { get; set; }
+            public string password { get; set; }
+            public long phone { get; set; }
+            public string answer { get; set; }
+
         }
 
     }

@@ -1,0 +1,89 @@
+﻿@model SceneView.Controllers.LoginController.result
+@{
+    ViewBag.Title = "忘记密码";
+    Layout = "~/Views/Login/_LoginLayout.cshtml";
+}
+@{ 
+    // 验证flag标识
+    if (ViewBag.fFlag == -1)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"用户不存在！\");</script>");
+    }
+    else if (ViewBag.fFlag == 0)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"验证问题错误，请重新输入！\");</script>");
+    }
+    // 验证session会话是否存在
+    if (Session["user"] != null)
+    {
+        HttpContext.Current.Response.Redirect("~/Home");
+    }
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+
+        @using (Html.BeginForm("Forget", "Login", FormMethod.Post, new { @name = "backForm", @class = "fh5co-form animate-box", @onsubmit = "return checkBack()" }))
+        {
+
+                <h2>忘记 密码 </h2>
+                <div class="form-group">
+                    <label for="username" class="sr-only"></label>
+                    @Html.TextBoxFor(r => r.username, new { @placeholder = "用户名", @class = "form-control", @id = "username", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(r => r.username)
+                    @*<input type="text" class="form-control" id="username" placeholder="请输入您的用户名" autocomplete="off">*@
+                </div>
+                <div class="form-group">
+                    <label for="answer" class="sr-only"></label>
+                    @Html.TextBoxFor(r => r.answer, new { @placeholder = "请输入您最常居住的城市", @class = "form-control", @id = "question", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(r => r.answer)
+                    @*<input type="text" class="form-control" id="answer" placeholder="请输入您最常居住的城市" autocomplete="off">*@
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only"></label>
+                    @Html.TextBoxFor(r => r.password, new { @placeholder = "密码", @class = "form-control", @id = "password", @autocomplete = "off", @type="password" })
+                    @Html.ValidationMessageFor(r => r.password)
+                    @*<input type="password" class="form-control" id="password" placeholder="请输入新密码" autocomplete="off">*@
+                </div>
+                <div class="form-group">
+                    <label for="re-password" class="sr-only"></label>
+                    <input type="password" class="form-control" id="re-password" placeholder="请再次输入新密码" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <p><a href="~/Login/index"> 登录 </a> or <a href="~/Login/Sign"> 注册 </a></p>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="重置密码" class="btn btn-primary">
+                </div>
+                <script>
+                    function checkBack() {
+                        var name = document.forms["backForm"]["username"].value;
+                        if (name == null || name == "") {
+                            alert("请输入用户名");  //to do
+                            return false;
+                        } else if (name.length > 16) {
+                            alert("用户名不应超过 16 位");
+                            //to do
+                            return false;
+                        }
+                        var pwd = document.forms["backForm"]["password"].value;
+                        var patrn = /^(\w){6,20}$/;
+                        if (!patrn.exec(pwd)) {
+                            alert("密码非法");
+                            return false;
+                        }
+                        var rePwd = document.form["backForm"]["re-password"].value;
+                        if (rePwd != pwd) {
+                            alert("两次密码不一致");
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+            <!-- END Sign In Form -->
+
+        }
+
+    </div>
+</div>

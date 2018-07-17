@@ -4,33 +4,33 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="adminID" />
           </Key>
-          <Property Name="adminID" Type="number" Precision="2" Scale="0" Nullable="false" />
-          <Property Name="password" Type="varchar2" MaxLength="40" />
+          <Property Name="adminID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar2" MaxLength="40" Nullable="false" />
         </EntityType>
         <EntityType Name="answer">
           <Key>
             <PropertyRef Name="answerID" />
           </Key>
           <Property Name="answerID" Type="number" Precision="8" Scale="0" Nullable="false" />
-          <Property Name="questionID" Type="number" Precision="8" Scale="0" />
-          <Property Name="answerContent" Type="varchar2" MaxLength="400" />
+          <Property Name="questionID" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="answerContent" Type="varchar2" MaxLength="400" Nullable="false" />
         </EntityType>
         <EntityType Name="comment">
           <Key>
             <PropertyRef Name="commentID" />
           </Key>
           <Property Name="commentID" Type="number" Precision="12" Scale="0" Nullable="false" />
-          <Property Name="userID" Type="number" Precision="10" Scale="0" />
-          <Property Name="scenicID" Type="number" Precision="5" Scale="0" />
-          <Property Name="mark" Type="float" Precision="126" Scale="0" />
-          <Property Name="commentContent" Type="varchar2" MaxLength="400" />
-          <Property Name="commentLike" Type="number" Precision="38" Scale="0" />
-          <Property Name="commentTime" Type="timestamp" Precision="6" />
+          <Property Name="userID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="mark" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="commentContent" Type="varchar2" MaxLength="400" Nullable="false" />
+          <Property Name="commentLike" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="commentTime" Type="timestamp" Precision="6" Nullable="false" />
         </EntityType>
         <EntityType Name="commentLikeMes">
           <Key>
@@ -56,26 +56,33 @@
           <Property Name="commentID" Type="number" Precision="12" Scale="0" Nullable="false" />
           <Property Name="messageID" Type="number" Precision="15" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="imageID" />
+          </Key>
+          <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="imageAddress" Type="varchar2" MaxLength="200" Nullable="false" />
+        </EntityType>
         <EntityType Name="message">
           <Key>
             <PropertyRef Name="messageID" />
           </Key>
           <Property Name="messageID" Type="number" Precision="15" Scale="0" Nullable="false" />
-          <Property Name="senderID" Type="number" Precision="10" Scale="0" />
-          <Property Name="receiverID" Type="number" Precision="10" Scale="0" />
-          <Property Name="time" Type="timestamp" Precision="6" />
+          <Property Name="senderID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="receiverID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="time" Type="timestamp" Precision="6" Nullable="false" />
         </EntityType>
         <EntityType Name="note">
           <Key>
             <PropertyRef Name="noteID" />
           </Key>
           <Property Name="noteID" Type="number" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="userID" Type="number" Precision="10" Scale="0" />
-          <Property Name="scenicID" Type="number" Precision="5" Scale="0" />
-          <Property Name="title" Type="varchar2" MaxLength="80" />
-          <Property Name="noteContent" Type="clob" />
-          <Property Name="noteLike" Type="number" Precision="38" Scale="0" />
-          <Property Name="noteTime" Type="timestamp" Precision="6" />
+          <Property Name="userID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="title" Type="varchar2" MaxLength="80" Nullable="false" />
+          <Property Name="noteContent" Type="clob" Nullable="false" />
+          <Property Name="noteLike" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="noteTime" Type="timestamp" Precision="6" Nullable="false" />
         </EntityType>
         <EntityType Name="noteLikeMes">
           <Key>
@@ -90,79 +97,81 @@
             <PropertyRef Name="questionID" />
           </Key>
           <Property Name="questionID" Type="number" Precision="8" Scale="0" Nullable="false" />
-          <Property Name="scenicID" Type="number" Precision="5" Scale="0" />
-          <Property Name="questionContent" Type="varchar2" MaxLength="400" />
+          <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="questionContent" Type="varchar2" MaxLength="400" Nullable="false" />
         </EntityType>
         <EntityType Name="scenicImage">
           <Key>
             <PropertyRef Name="scenicID" />
+            <PropertyRef Name="imageID" />
           </Key>
           <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
-          <Property Name="imageAddress" Type="varchar2" MaxLength="200" />
+          <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="scenicPos">
           <Key>
             <PropertyRef Name="scenicID" />
           </Key>
           <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
-          <Property Name="longitue" Type="float" Precision="126" Scale="0" />
-          <Property Name="latitude" Type="float" Precision="126" Scale="0" />
-          <Property Name="address" Type="varchar2" MaxLength="200" />
+          <Property Name="longitue" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="latitude" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="address" Type="varchar2" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="scenicSpot">
           <Key>
             <PropertyRef Name="scenicID" />
           </Key>
           <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
-          <Property Name="scenicName" Type="varchar2" MaxLength="64" />
-          <Property Name="scenicIntroduction" Type="varchar2" MaxLength="64" />
+          <Property Name="scenicName" Type="varchar2" MaxLength="64" Nullable="false" />
+          <Property Name="scenicIntroduction" Type="clob" />
         </EntityType>
         <EntityType Name="strategy">
           <Key>
             <PropertyRef Name="strategyID" />
           </Key>
           <Property Name="strategyID" Type="number" Precision="5" Scale="0" Nullable="false" />
-          <Property Name="scenicID" Type="number" Precision="5" Scale="0" />
-          <Property Name="title" Type="varchar2" MaxLength="80" />
-          <Property Name="content" Type="clob" />
+          <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="title" Type="varchar2" MaxLength="80" Nullable="false" />
+          <Property Name="content" Type="clob" Nullable="false" />
         </EntityType>
         <EntityType Name="strategyImage">
           <Key>
-            <PropertyRef Name="imageID" />
             <PropertyRef Name="strategyID" />
+            <PropertyRef Name="imageID" />
           </Key>
-          <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
           <Property Name="strategyID" Type="number" Precision="5" Scale="0" Nullable="false" />
-          <Property Name="imageAddress" Type="varchar2" MaxLength="200" />
+          <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userID" Type="number" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="password" Type="varchar2" MaxLength="40" />
+          <Property Name="userID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar2" MaxLength="40" Nullable="false" />
         </EntityType>
         <EntityType Name="userInfo">
           <Key>
             <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userID" Type="number" Precision="10" Scale="0" Nullable="false" />
-          <Property Name="nickname" Type="varchar2" MaxLength="40" />
+          <Property Name="userID" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="nickname" Type="varchar2" MaxLength="40" Nullable="false" />
           <Property Name="gender" Type="varchar2" MaxLength="6" />
           <Property Name="headPortrait" Type="varchar2" MaxLength="200" />
           <Property Name="introduction" Type="varchar2" MaxLength="200" />
           <Property Name="phoneNumber" Type="number" Precision="11" Scale="0" />
+          <Property Name="SECRETQUESTION" Type="varchar2" MaxLength="64" />
+          <Property Name="SQANSWER" Type="varchar2" MaxLength="64" />
         </EntityType>
         <EntityType Name="viewedScenicSpot">
           <Key>
             <PropertyRef Name="userID" />
             <PropertyRef Name="scenicID" />
           </Key>
-          <Property Name="userID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="userID" Type="varchar2" MaxLength="40" Nullable="false" />
           <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
         </EntityType>
         <Association Name="FK_ANSWER_REFERENCE_QUESTION">
-          <End Role="question" Type="Self.question" Multiplicity="0..1">
+          <End Role="question" Type="Self.question" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="answer" Type="Self.answer" Multiplicity="*" />
@@ -176,7 +185,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
@@ -190,7 +199,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_REFERENCE_USER">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
@@ -260,7 +269,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MESSAGE_REFERENCE_USER1">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="message" Type="Self.message" Multiplicity="*" />
@@ -274,7 +283,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MESSAGE_REFERENCE_USER2">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="message" Type="Self.message" Multiplicity="*" />
@@ -288,7 +297,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NOTE_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="note" Type="Self.note" Multiplicity="*" />
@@ -302,7 +311,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NOTE_REFERENCE_USER">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="note" Type="Self.note" Multiplicity="*" />
@@ -330,7 +339,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_QUESTION_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="question" Type="Self.question" Multiplicity="*" />
@@ -343,11 +352,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SCENICIM_REFERENCE_IMAGE">
+          <End Role="image" Type="Self.image" Multiplicity="1" />
+          <End Role="scenicImage" Type="Self.scenicImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="image">
+              <PropertyRef Name="imageID" />
+            </Principal>
+            <Dependent Role="scenicImage">
+              <PropertyRef Name="imageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SCENICIM_REFERENCE_SCENICSP">
           <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="scenicImage" Type="Self.scenicImage" Multiplicity="0..1" />
+          <End Role="scenicImage" Type="Self.scenicImage" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="scenicSpot">
               <PropertyRef Name="scenicID" />
@@ -371,8 +392,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_STRATEGY_REFERENCE_IMAGE">
+          <End Role="image" Type="Self.image" Multiplicity="1" />
+          <End Role="strategyImage" Type="Self.strategyImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="image">
+              <PropertyRef Name="imageID" />
+            </Principal>
+            <Dependent Role="strategyImage">
+              <PropertyRef Name="imageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_STRATEGY_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="strategy" Type="Self.strategy" Multiplicity="*" />
@@ -448,6 +481,7 @@
           <EntitySet Name="commentLikeMes" EntityType="Self.commentLikeMes" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="commentReply" EntityType="Self.commentReply" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="commentReplyMes" EntityType="Self.commentReplyMes" Schema="C##YATES" store:Type="Tables" />
+          <EntitySet Name="image" EntityType="Self.image" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="message" EntityType="Self.message" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="note" EntityType="Self.note" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="noteLikeMes" EntityType="Self.noteLikeMes" Schema="C##YATES" store:Type="Tables" />
@@ -512,6 +546,10 @@
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="question" EntitySet="question" />
           </AssociationSet>
+          <AssociationSet Name="FK_SCENICIM_REFERENCE_IMAGE" Association="Self.FK_SCENICIM_REFERENCE_IMAGE">
+            <End Role="image" EntitySet="image" />
+            <End Role="scenicImage" EntitySet="scenicImage" />
+          </AssociationSet>
           <AssociationSet Name="FK_SCENICIM_REFERENCE_SCENICSP" Association="Self.FK_SCENICIM_REFERENCE_SCENICSP">
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="scenicImage" EntitySet="scenicImage" />
@@ -519,6 +557,10 @@
           <AssociationSet Name="FK_SCENICPO_REFERENCE_SCENICSP" Association="Self.FK_SCENICPO_REFERENCE_SCENICSP">
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="scenicPos" EntitySet="scenicPos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STRATEGY_REFERENCE_IMAGE" Association="Self.FK_STRATEGY_REFERENCE_IMAGE">
+            <End Role="image" EntitySet="image" />
+            <End Role="strategyImage" EntitySet="strategyImage" />
           </AssociationSet>
           <AssociationSet Name="FK_STRATEGY_REFERENCE_SCENICSP" Association="Self.FK_STRATEGY_REFERENCE_SCENICSP">
             <End Role="scenicSpot" EntitySet="scenicSpot" />
@@ -541,7 +583,8 @@
             <End Role="viewedScenicSpot" EntitySet="viewedScenicSpot" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -549,16 +592,16 @@
           <Key>
             <PropertyRef Name="adminID" />
           </Key>
-          <Property Name="adminID" Type="Byte" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="adminID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="answer">
           <Key>
             <PropertyRef Name="answerID" />
           </Key>
           <Property Name="answerID" Type="Int32" Nullable="false" />
-          <Property Name="questionID" Type="Int32" />
-          <Property Name="answerContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="questionID" Type="Int32" Nullable="false" />
+          <Property Name="answerContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="question" Relationship="Self.FK_ANSWER_REFERENCE_QUESTION" FromRole="answer" ToRole="question" />
         </EntityType>
         <EntityType Name="comment">
@@ -566,12 +609,12 @@
             <PropertyRef Name="commentID" />
           </Key>
           <Property Name="commentID" Type="Int64" Nullable="false" />
-          <Property Name="userID" Type="Int32" />
-          <Property Name="scenicID" Type="Int16" />
-          <Property Name="mark" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="commentContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="commentLike" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="commentTime" Type="DateTime" Precision="6" />
+          <Property Name="userID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="scenicID" Type="Int16" Nullable="false" />
+          <Property Name="mark" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="commentContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="commentLike" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="commentTime" Type="DateTime" Precision="6" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_COMMENT_REFERENCE_SCENICSP" FromRole="comment" ToRole="scenicSpot" />
           <NavigationProperty Name="user" Relationship="Self.FK_COMMENT_REFERENCE_USER" FromRole="comment" ToRole="user" />
           <NavigationProperty Name="comment1" Relationship="Self.commentReply" FromRole="comment" ToRole="comment1" />
@@ -595,14 +638,23 @@
           <Property Name="messageID" Type="Int64" Nullable="false" />
           <NavigationProperty Name="message" Relationship="Self.FK_COMMENTR_REFERENCE_MESSAGE" FromRole="commentReplyMes" ToRole="message" />
         </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="imageID" />
+          </Key>
+          <Property Name="imageID" Type="Int32" Nullable="false" />
+          <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="scenicSpot" Relationship="Self.scenicImage" FromRole="image" ToRole="scenicSpot" />
+          <NavigationProperty Name="strategy" Relationship="Self.strategyImage" FromRole="image" ToRole="strategy" />
+        </EntityType>
         <EntityType Name="message">
           <Key>
             <PropertyRef Name="messageID" />
           </Key>
           <Property Name="messageID" Type="Int64" Nullable="false" />
-          <Property Name="senderID" Type="Int32" />
-          <Property Name="receiverID" Type="Int32" />
-          <Property Name="time" Type="DateTime" Precision="6" />
+          <Property Name="senderID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="receiverID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="DateTime" Precision="6" Nullable="false" />
           <NavigationProperty Name="commentLikeMes" Relationship="Self.FK_COMMENTL_REFERENCE_MESSAGE" FromRole="message" ToRole="commentLikeMes" />
           <NavigationProperty Name="commentReplyMes" Relationship="Self.FK_COMMENTR_REFERENCE_MESSAGE" FromRole="message" ToRole="commentReplyMes" />
           <NavigationProperty Name="user" Relationship="Self.FK_MESSAGE_REFERENCE_USER1" FromRole="message" ToRole="user" />
@@ -614,12 +666,12 @@
             <PropertyRef Name="noteID" />
           </Key>
           <Property Name="noteID" Type="Int32" Nullable="false" />
-          <Property Name="userID" Type="Int32" />
-          <Property Name="scenicID" Type="Int16" />
-          <Property Name="title" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="noteContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="noteLike" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="noteTime" Type="DateTime" Precision="6" />
+          <Property Name="userID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="scenicID" Type="Int16" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noteContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="noteLike" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="noteTime" Type="DateTime" Precision="6" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="note" ToRole="scenicSpot" />
           <NavigationProperty Name="user" Relationship="Self.FK_NOTE_REFERENCE_USER" FromRole="note" ToRole="user" />
         </EntityType>
@@ -637,27 +689,19 @@
             <PropertyRef Name="questionID" />
           </Key>
           <Property Name="questionID" Type="Int32" Nullable="false" />
-          <Property Name="scenicID" Type="Int16" />
-          <Property Name="questionContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="scenicID" Type="Int16" Nullable="false" />
+          <Property Name="questionContent" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="answer" Relationship="Self.FK_ANSWER_REFERENCE_QUESTION" FromRole="question" ToRole="answer" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_QUESTION_REFERENCE_SCENICSP" FromRole="question" ToRole="scenicSpot" />
-        </EntityType>
-        <EntityType Name="scenicImage">
-          <Key>
-            <PropertyRef Name="scenicID" />
-          </Key>
-          <Property Name="scenicID" Type="Int16" Nullable="false" />
-          <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="scenicSpot" Relationship="Self.FK_SCENICIM_REFERENCE_SCENICSP" FromRole="scenicImage" ToRole="scenicSpot" />
         </EntityType>
         <EntityType Name="scenicPos">
           <Key>
             <PropertyRef Name="scenicID" />
           </Key>
           <Property Name="scenicID" Type="Int16" Nullable="false" />
-          <Property Name="longitue" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="latitude" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="longitue" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="latitude" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_SCENICPO_REFERENCE_SCENICSP" FromRole="scenicPos" ToRole="scenicSpot" />
         </EntityType>
         <EntityType Name="scenicSpot">
@@ -665,14 +709,14 @@
             <PropertyRef Name="scenicID" />
           </Key>
           <Property Name="scenicID" Type="Int16" Nullable="false" />
-          <Property Name="scenicName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="scenicIntroduction" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="scenicName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="scenicIntroduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="comment" Relationship="Self.FK_COMMENT_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="comment" />
           <NavigationProperty Name="note" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="note" />
           <NavigationProperty Name="question" Relationship="Self.FK_QUESTION_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="question" />
-          <NavigationProperty Name="scenicImage" Relationship="Self.FK_SCENICIM_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="scenicImage" />
           <NavigationProperty Name="scenicPos" Relationship="Self.FK_SCENICPO_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="scenicPos" />
           <NavigationProperty Name="strategy" Relationship="Self.FK_STRATEGY_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="strategy" />
+          <NavigationProperty Name="image" Relationship="Self.scenicImage" FromRole="scenicSpot" ToRole="image" />
           <NavigationProperty Name="user" Relationship="Self.viewedScenicSpot" FromRole="scenicSpot" ToRole="user" />
         </EntityType>
         <EntityType Name="strategy">
@@ -680,28 +724,18 @@
             <PropertyRef Name="strategyID" />
           </Key>
           <Property Name="strategyID" Type="Int16" Nullable="false" />
-          <Property Name="scenicID" Type="Int16" />
-          <Property Name="title" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="scenicID" Type="Int16" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_STRATEGY_REFERENCE_SCENICSP" FromRole="strategy" ToRole="scenicSpot" />
-          <NavigationProperty Name="strategyImage" Relationship="Self.FK_STRATEGY_REFERENCE_STRATEGY" FromRole="strategy" ToRole="strategyImage" />
-        </EntityType>
-        <EntityType Name="strategyImage">
-          <Key>
-            <PropertyRef Name="imageID" />
-            <PropertyRef Name="strategyID" />
-          </Key>
-          <Property Name="imageID" Type="Int32" Nullable="false" />
-          <Property Name="strategyID" Type="Int16" Nullable="false" />
-          <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="strategy" Relationship="Self.FK_STRATEGY_REFERENCE_STRATEGY" FromRole="strategyImage" ToRole="strategy" />
+          <NavigationProperty Name="image" Relationship="Self.strategyImage" FromRole="strategy" ToRole="image" />
         </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="comment" Relationship="Self.FK_COMMENT_REFERENCE_USER" FromRole="user" ToRole="comment" />
           <NavigationProperty Name="message" Relationship="Self.FK_MESSAGE_REFERENCE_USER1" FromRole="user" ToRole="message" />
           <NavigationProperty Name="message1" Relationship="Self.FK_MESSAGE_REFERENCE_USER2" FromRole="user" ToRole="message" />
@@ -713,16 +747,18 @@
           <Key>
             <PropertyRef Name="userID" />
           </Key>
-          <Property Name="userID" Type="Int32" Nullable="false" />
-          <Property Name="nickname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nickname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="headPortrait" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="introduction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="phoneNumber" Type="Int64" />
+          <Property Name="SECRETQUESTION" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="SQANSWER" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="user" Relationship="Self.FK_USERINFO_REFERENCE_USER" FromRole="userInfo" ToRole="user" />
         </EntityType>
         <Association Name="FK_ANSWER_REFERENCE_QUESTION">
-          <End Role="question" Type="Self.question" Multiplicity="0..1">
+          <End Role="question" Type="Self.question" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="answer" Type="Self.answer" Multiplicity="*" />
@@ -736,7 +772,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
@@ -750,7 +786,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_COMMENT_REFERENCE_USER">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
@@ -792,7 +828,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MESSAGE_REFERENCE_USER1">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="message" Type="Self.message" Multiplicity="*" />
@@ -806,7 +842,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MESSAGE_REFERENCE_USER2">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="message" Type="Self.message" Multiplicity="*" />
@@ -834,7 +870,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NOTE_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="note" Type="Self.note" Multiplicity="*" />
@@ -848,7 +884,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NOTE_REFERENCE_USER">
-          <End Role="user" Type="Self.user" Multiplicity="0..1">
+          <End Role="user" Type="Self.user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="note" Type="Self.note" Multiplicity="*" />
@@ -862,7 +898,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_QUESTION_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="question" Type="Self.question" Multiplicity="*" />
@@ -871,20 +907,6 @@
               <PropertyRef Name="scenicID" />
             </Principal>
             <Dependent Role="question">
-              <PropertyRef Name="scenicID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SCENICIM_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="scenicImage" Type="Self.scenicImage" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="scenicSpot">
-              <PropertyRef Name="scenicID" />
-            </Principal>
-            <Dependent Role="scenicImage">
               <PropertyRef Name="scenicID" />
             </Dependent>
           </ReferentialConstraint>
@@ -904,7 +926,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_STRATEGY_REFERENCE_SCENICSP">
-          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="0..1">
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="strategy" Type="Self.strategy" Multiplicity="*" />
@@ -914,20 +936,6 @@
             </Principal>
             <Dependent Role="strategy">
               <PropertyRef Name="scenicID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_STRATEGY_REFERENCE_STRATEGY">
-          <End Role="strategy" Type="Self.strategy" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="strategyImage" Type="Self.strategyImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="strategy">
-              <PropertyRef Name="strategyID" />
-            </Principal>
-            <Dependent Role="strategyImage">
-              <PropertyRef Name="strategyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -949,6 +957,14 @@
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
           <End Role="comment1" Type="Self.comment" Multiplicity="*" />
         </Association>
+        <Association Name="scenicImage">
+          <End Role="image" Type="Self.image" Multiplicity="*" />
+          <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="*" />
+        </Association>
+        <Association Name="strategyImage">
+          <End Role="image" Type="Self.image" Multiplicity="*" />
+          <End Role="strategy" Type="Self.strategy" Multiplicity="*" />
+        </Association>
         <Association Name="viewedScenicSpot">
           <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="*" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
@@ -959,15 +975,14 @@
           <EntitySet Name="comment" EntityType="Self.comment" />
           <EntitySet Name="commentLikeMes" EntityType="Self.commentLikeMes" />
           <EntitySet Name="commentReplyMes" EntityType="Self.commentReplyMes" />
+          <EntitySet Name="image" EntityType="Self.image" />
           <EntitySet Name="message" EntityType="Self.message" />
           <EntitySet Name="note" EntityType="Self.note" />
           <EntitySet Name="noteLikeMes" EntityType="Self.noteLikeMes" />
           <EntitySet Name="question" EntityType="Self.question" />
-          <EntitySet Name="scenicImage" EntityType="Self.scenicImage" />
           <EntitySet Name="scenicPos" EntityType="Self.scenicPos" />
           <EntitySet Name="scenicSpot" EntityType="Self.scenicSpot" />
           <EntitySet Name="strategy" EntityType="Self.strategy" />
-          <EntitySet Name="strategyImage" EntityType="Self.strategyImage" />
           <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="userInfo" EntityType="Self.userInfo" />
           <AssociationSet Name="FK_ANSWER_REFERENCE_QUESTION" Association="Self.FK_ANSWER_REFERENCE_QUESTION">
@@ -1014,10 +1029,6 @@
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="question" EntitySet="question" />
           </AssociationSet>
-          <AssociationSet Name="FK_SCENICIM_REFERENCE_SCENICSP" Association="Self.FK_SCENICIM_REFERENCE_SCENICSP">
-            <End Role="scenicSpot" EntitySet="scenicSpot" />
-            <End Role="scenicImage" EntitySet="scenicImage" />
-          </AssociationSet>
           <AssociationSet Name="FK_SCENICPO_REFERENCE_SCENICSP" Association="Self.FK_SCENICPO_REFERENCE_SCENICSP">
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="scenicPos" EntitySet="scenicPos" />
@@ -1026,10 +1037,6 @@
             <End Role="scenicSpot" EntitySet="scenicSpot" />
             <End Role="strategy" EntitySet="strategy" />
           </AssociationSet>
-          <AssociationSet Name="FK_STRATEGY_REFERENCE_STRATEGY" Association="Self.FK_STRATEGY_REFERENCE_STRATEGY">
-            <End Role="strategy" EntitySet="strategy" />
-            <End Role="strategyImage" EntitySet="strategyImage" />
-          </AssociationSet>
           <AssociationSet Name="FK_USERINFO_REFERENCE_USER" Association="Self.FK_USERINFO_REFERENCE_USER">
             <End Role="user" EntitySet="user" />
             <End Role="userInfo" EntitySet="userInfo" />
@@ -1037,6 +1044,14 @@
           <AssociationSet Name="commentReply" Association="Self.commentReply">
             <End Role="comment" EntitySet="comment" />
             <End Role="comment1" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="scenicImage" Association="Self.scenicImage">
+            <End Role="image" EntitySet="image" />
+            <End Role="scenicSpot" EntitySet="scenicSpot" />
+          </AssociationSet>
+          <AssociationSet Name="strategyImage" Association="Self.strategyImage">
+            <End Role="image" EntitySet="image" />
+            <End Role="strategy" EntitySet="strategy" />
           </AssociationSet>
           <AssociationSet Name="viewedScenicSpot" Association="Self.viewedScenicSpot">
             <End Role="scenicSpot" EntitySet="scenicSpot" />
@@ -1095,6 +1110,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="image">
+            <EntityTypeMapping TypeName="Model.image">
+              <MappingFragment StoreEntitySet="image">
+                <ScalarProperty Name="imageID" ColumnName="imageID" />
+                <ScalarProperty Name="imageAddress" ColumnName="imageAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="message">
             <EntityTypeMapping TypeName="Model.message">
               <MappingFragment StoreEntitySet="message">
@@ -1135,14 +1158,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="scenicImage">
-            <EntityTypeMapping TypeName="Model.scenicImage">
-              <MappingFragment StoreEntitySet="scenicImage">
-                <ScalarProperty Name="scenicID" ColumnName="scenicID" />
-                <ScalarProperty Name="imageAddress" ColumnName="imageAddress" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="scenicPos">
             <EntityTypeMapping TypeName="Model.scenicPos">
               <MappingFragment StoreEntitySet="scenicPos">
@@ -1172,15 +1187,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="strategyImage">
-            <EntityTypeMapping TypeName="Model.strategyImage">
-              <MappingFragment StoreEntitySet="strategyImage">
-                <ScalarProperty Name="imageID" ColumnName="imageID" />
-                <ScalarProperty Name="strategyID" ColumnName="strategyID" />
-                <ScalarProperty Name="imageAddress" ColumnName="imageAddress" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="user">
             <EntityTypeMapping TypeName="Model.user">
               <MappingFragment StoreEntitySet="user">
@@ -1198,6 +1204,8 @@
                 <ScalarProperty Name="headPortrait" ColumnName="headPortrait" />
                 <ScalarProperty Name="introduction" ColumnName="introduction" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="SECRETQUESTION" ColumnName="SECRETQUESTION" />
+                <ScalarProperty Name="SQANSWER" ColumnName="SQANSWER" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1207,6 +1215,22 @@
             </EndProperty>
             <EndProperty Name="comment1">
               <ScalarProperty Name="commentID" ColumnName="replyToID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="scenicImage" TypeName="Model.scenicImage" StoreEntitySet="scenicImage">
+            <EndProperty Name="image">
+              <ScalarProperty Name="imageID" ColumnName="imageID" />
+            </EndProperty>
+            <EndProperty Name="scenicSpot">
+              <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="strategyImage" TypeName="Model.strategyImage" StoreEntitySet="strategyImage">
+            <EndProperty Name="image">
+              <ScalarProperty Name="imageID" ColumnName="imageID" />
+            </EndProperty>
+            <EndProperty Name="strategy">
+              <ScalarProperty Name="strategyID" ColumnName="strategyID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="viewedScenicSpot" TypeName="Model.viewedScenicSpot" StoreEntitySet="viewedScenicSpot">
