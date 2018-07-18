@@ -3572,13 +3572,13 @@ tbody.collapse.in {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
+  min-width: 90px;
+  padding:0px;
+  margin: 0px 0 0;
+  font-size: 15px;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  /* background-color: #fff; */
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #ccc;
@@ -3586,6 +3586,9 @@ tbody.collapse.in {
   border-radius: 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
           box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+   line-height:0px;      
+   
+     
 }
 .dropdown-menu.pull-right {
   right: 0;
@@ -3593,24 +3596,25 @@ tbody.collapse.in {
 }
 .dropdown-menu .divider {
   height: 1px;
-  margin: 9px 0;
+  margin: px 0;
   overflow: hidden;
   background-color: #e5e5e5;
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 3px 20px9;
   clear: both;
   font-weight: normal;
-  line-height: 1.42857143;
-  color: #333;
+   line-height: 1.42857143; 
+ 
+  color: #fff;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  color: #8cc269;
   text-decoration: none;
-  background-color: #f5f5f5;
+  
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
