@@ -21,6 +21,7 @@ namespace SceneView.Models
             this.note = new HashSet<note>();
             this.question = new HashSet<question>();
             this.strategy = new HashSet<strategy>();
+            this.image = new HashSet<image>();
             this.user = new HashSet<user>();
         }
     
@@ -34,10 +35,11 @@ namespace SceneView.Models
         public virtual ICollection<note> note { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<question> question { get; set; }
-        public virtual scenicImage scenicImage { get; set; }
         public virtual scenicPos scenicPos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<strategy> strategy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<image> image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user> user { get; set; }
     }
