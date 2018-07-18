@@ -3,3 +3,53 @@
 if(sd>settings.min)
 $(containerIDhash).fadeIn(settings.inDelay);else
 $(containerIDhash).fadeOut(settings.Outdelay);});};})(jQuery);
+(window),$(function(){
+    function getNotes() {
+        $(".loadMoreNote").hide(), $(".comment .loading").show(), $.ajax({
+            url: "/home/getMoreNotes",
+            type: "GET",
+            dataType: "json",
+            data: {
+                offset: notesOffset
+            }
+        }).done(function(data) {
+            $(".loadMoreNote").show(), $(".comment .loading").hide(), notesOffset += 20;
+            var elems = [];
+            data.items.forEach(function(note) {
+                var prefix = note.pc[0],
+                    imgArr = eval(prefix.images),
+                    imageIndex = prefix.image_index;
+                if (imgArr.length == 0)
+                    return;
+                var item = $('<a class="yinxiang" href="' + prefix.url + '" title="" target="_blanket">' + '<div class="img-cnt">' + '<img src="//img.chufaba.me/' + imgArr[imageIndex] + '" alt="">' + '<p class="photo-num">' + imgArr.length + "P</p>" + "</div>" + '<div class="txt-cnt">' + '<p class="txt">' + prefix.desc + "</p>" + "</div>" + '<div class="note-bottom">' + '<span class="fl"><i class="icon-location"></i>' + prefix.poi_name + "</span>" + '<span class="fr">' + prefix.username + "</span>" + "</div>" + "</a>");
+                notesOffset !== 20 ? (elems.push(item), $("#JS-yinxiang-cont").append(item).imagesLoaded(function() {
+                    $("#JS-yinxiang-cont").masonry("appended", item)
+                })) : $("#JS-yinxiang-cont").append(item)
+            });
+            if (notesOffset == 20) {
+                var $container = $("#JS-yinxiang-cont");
+                $container.imagesLoaded(function() {
+                    $container.masonry({
+                        itemSelector: ".yinxiang",
+                        isAnimated: !0
+                    })
+                })
+            }
+        }).fail(function() {
+            console.log("error")
+            alert("fail")
+        }).always(function() {
+            console.log("complete")
+            alert("complete")
+        })
+    }
+})
+var notesOffset = 0;
+$(".loadMoreNote span").click(function(e){
+    getNotes()
+}),getNotes();
+function loadMoreComment(){
+    alert("comment button clicked");
+    getNotes();
+    alert("comment show successfully");
+}

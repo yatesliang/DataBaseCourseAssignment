@@ -327,6 +327,176 @@ body a:hover {
 	box-sizing: border-box;
 	border: 2px solid rgba(255, 255, 255, 0.1)
 }
+/* comment */
+.comment {
+    position: relative;
+    width: 100%;
+    min-height: 800px;
+    min-width: 980px;
+    background-color: #f0f3f5;
+    padding-bottom: 320px
+}
+
+.comment .content {
+    position: relative;
+    width: 1220px;
+    min-height: 800px;
+    margin: 0 auto
+}
+
+.comment .content .title {
+    font-size: 40px;
+    color: #2d3a40;
+    text-align: center;
+    height: 120px;
+    line-height: 120px
+}
+
+.comment .content #JS-yinxiang-cont {
+    margin-top: -20px
+}
+
+.comment .content .yinxiang {
+    float: left;
+    width: 280px;
+    margin-top: 20px;
+    margin-left: 20px;
+    overflow: hidden;
+    padding: 4px;
+    background-color: white;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    text-decoration: none
+}
+
+.comment .content .yinxiang:hover {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+}
+
+.comment .content .yinxiang .img-cnt {
+    width: 100%
+}
+
+.comment .content .yinxiang .img-cnt img {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.comment .content .yinxiang .img-cnt .photo-num {
+    position: relative;
+    z-index: 4;
+    width: 270px;
+    padding: 3px 14px 3px 0;
+    margin-top: -24px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 12px;
+    text-align: right;
+    text-indent: 10px;
+    color: white;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.1)
+}
+
+.comment .content .yinxiang .txt-cnt {
+    position: relative;
+    padding: 16px;
+    background-color: white;
+    padding-bottom: 0
+}
+
+.comment .content .yinxiang .txt-cnt .name {
+    max-width: 185px;
+    padding-top: 3px;
+    overflow: hidden;
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333
+}
+
+.comment .content .yinxiang .txt-cnt .txt {
+    font-size: 14px;
+    color: #333;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical
+}
+
+.comment .content .yinxiang .note-bottom {
+    color: #ccc;
+    font-size: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 48px;
+    line-height: 48px
+}
+
+.comment .content .yinxiang .note-bottom .icon-location {
+    background: url(http://cfbassets.b0.upaiyun.com/assets/journals/icon_journal@2x-774d0501e4fb2a0af4ac5945729f11cd.png) no-repeat center;
+    width: 20px;
+    height: 24px;
+    background-position: -192px 0;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7)
+}
+
+.comment .content .yinxiang .note-bottom .fl {
+    float: left;
+    width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+.comment .content .yinxiang .note-bottom .fr {
+    float: right;
+    width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right
+}
+
+.comment .content .loadMoreNote {
+    text-align: center;
+    font-size: 16px;
+    color: #8fa9b2;
+    margin-top: 40px;
+}
+
+.comment .content .loadMoreNote span {
+    cursor: pointer;
+    text-decoration: underline
+}
+
+.comment .content .loading {
+    margin-top: 40px;
+    text-align: center;
+    display: none
+}
+
+.comment .content .loading i {
+    width: 24px;
+    height: 24px;
+    background: url(http://cfbassets.b0.upaiyun.com/assets/v2/loading-f804739674501a5141730f30411000fe.gif);
+    display: inline-block
+}
+
 
 /*-- banner --*/
 
