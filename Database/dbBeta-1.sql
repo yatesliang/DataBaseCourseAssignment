@@ -118,6 +118,12 @@ alter table "scenicImage"
    drop constraint FK_SCENICIM_REFERENCE_SCENICSP
 /
 
+
+alter table "scenicImage"
+   drop constraint FK_SCENICIM_REFERENCE_IMAGE
+/
+
+
 alter table "scenicPos"
    drop constraint FK_SCENICPO_REFERENCE_SCENICSP
 /
@@ -128,6 +134,11 @@ alter table "strategy"
 
 alter table "strategyImage"
    drop constraint FK_STRATEGY_REFERENCE_STRATEGY
+/
+
+
+alter table "strategyImage"
+   drop constraint FK_STRATEGY_REFERENCE_IMAGE
 /
 
 alter table "userInfo"
@@ -158,6 +169,9 @@ drop table "commentReply" cascade constraints
 /
 
 drop table "commentReplyMes" cascade constraints
+/
+
+drop table "image" cascade constraints
 /
 
 drop table "message" cascade constraints
@@ -198,8 +212,10 @@ drop table "viewedScenicSpot" cascade constraints
 
 create table "admin" 
 (
-   "adminID"            NUMBER(2,0)          not null,
-   "password"           VARCHAR2(40),
+
+   "adminID"            VARCHAR2(40)         not null,
+   "password"           VARCHAR2(40)         not null,
+
    constraint PK_ADMIN primary key ("adminID")
 )
 /
@@ -207,8 +223,10 @@ create table "admin"
 create table "scenicSpot" 
 (
    "scenicID"           NUMBER(5,0)          not null,
-   "scenicName"         VARCHAR2(64),
-   "scenicIntroduction" VARCHAR2(64),
+
+   "scenicName"         VARCHAR2(64)         not null,
+   "scenicIntroduction" VARCHAR2(64)         not null,
+
    constraint PK_SCENICSPOT primary key ("scenicID")
 )
 /
@@ -216,8 +234,10 @@ create table "scenicSpot"
 create table "question" 
 (
    "questionID"         NUMBER(8,0)          not null,
-   "scenicID"           NUMBER(5,0),
-   "questionContent"    VARCHAR2(400),
+
+   "scenicID"           NUMBER(5,0)          not null,
+   "questionContent"    VARCHAR2(400)        not null,
+
    constraint PK_QUESTION primary key ("questionID"),
    constraint FK_QUESTION_REFERENCE_SCENICSP foreign key ("scenicID")
          references "scenicSpot" ("scenicID")
@@ -228,8 +248,9 @@ create table "question"
 create table "answer" 
 (
    "answerID"           NUMBER(8,0)          not null,
-   "questionID"         NUMBER(8,0),
-   "answerContent"      VARCHAR2(400),
+
+   "questionID"         NUMBER(8,0)          not null,
+   "answerContent"      VARCHAR2(400)        not null,
    constraint PK_ANSWER primary key ("answerID"),
    constraint FK_ANSWER_REFERENCE_QUESTION foreign key ("questionID")
          references "question" ("questionID")
@@ -238,9 +259,10 @@ create table "answer"
 /
 
 create table "user" 
-(
-   "userID"             NUMBER(10,0)         not null,
-   "password"           VARCHAR2(40),
+
+   "userID"             VARCHAR2(40)         not null,
+   "password"           VARCHAR2(40)         not null,
+
    constraint PK_USER primary key ("userID")
 )
 /
@@ -248,12 +270,14 @@ create table "user"
 create table "comment" 
 (
    "commentID"          NUMBER(12,0)         not null,
-   "userID"             NUMBER(10,0),
-   "scenicID"           NUMBER(5,0),
-   "mark"               FLOAT,
-   "commentContent"     VARCHAR2(400),
-   "commentLike"        INTEGER,
-   "commentTime"        TIMESTAMP,
+
+   "userID"             VARCHAR2(40)         not null,
+   "scenicID"           NUMBER(5,0)          not null,
+   "mark"               FLOAT                not null,
+   "commentContent"     VARCHAR2(400)        not null,
+   "commentLike"        INTEGER              default 0 not null,
+   "commentTime"        TIMESTAMP            not null,
+
    constraint PK_COMMENT primary key ("commentID"),
    constraint FK_COMMENT_REFERENCE_USER foreign key ("userID")
          references "user" ("userID")
@@ -267,9 +291,11 @@ create table "comment"
 create table "message" 
 (
    "messageID"          NUMBER(15,0)         not null,
-   "senderID"           NUMBER(10,0),
-   "receiverID"         NUMBER(10,0),
-   "time"               TIMESTAMP,
+
+   "senderID"           VARCHAR2(40)         not null,
+   "receiverID"         VARCHAR2(40)         not null,
+   "time"               TIMESTAMP            not null,
+
    constraint PK_MESSAGE primary key ("messageID"),
    constraint FK_MESSAGE_REFERENCE_USER2 foreign key ("senderID")
          references "user" ("userID")
@@ -316,15 +342,24 @@ create table "commentReplyMes"
 )
 /
 
+
+create table "image" 
+(
+   "imageID"            NUMBER(6,0)          not null,
+   "imageAddress"       VARCHAR2(200)        not null,
+   constraint PK_IMAGE primary key ("imageID")
+)
+/
+
 create table "note" 
 (
    "noteID"             NUMBER(10,0)         not null,
-   "userID"             NUMBER(10,0),
-   "scenicID"           NUMBER(5,0),
-   "title"              VARCHAR2(80),
-   "noteContent"        CLOB,
-   "noteLike"           INTEGER,
-   "noteTime"           TIMESTAMP,
+   "userID"             VARCHAR2(40)         not null,
+   "scenicID"           NUMBER(5,0)          not null,
+   "title"              VARCHAR2(80)         not null,
+   "noteContent"        CLOB                 not null,
+   "noteLike"           INTEGER              default 0 not null,
+   "noteTime"           TIMESTAMP            not null,
    constraint PK_NOTE primary key ("noteID"),
    constraint FK_NOTE_REFERENCE_USER foreign key ("userID")
          references "user" ("userID")
@@ -349,20 +384,26 @@ create table "noteLikeMes"
 create table "scenicImage" 
 (
    "scenicID"           NUMBER(5,0)          not null,
-   "imageAddress"       VARCHAR2(200),
-   constraint PK_SCENICIMAGE primary key ("scenicID"),
+
+
+   "imageID"            NUMBER(6,0)          not null,
+   constraint PK_SCENICIMAGE primary key ("scenicID", "imageID"),
    constraint FK_SCENICIM_REFERENCE_SCENICSP foreign key ("scenicID")
          references "scenicSpot" ("scenicID")
-         on delete cascade
+         on delete cascade,
+   constraint FK_SCENICIM_REFERENCE_IMAGE foreign key ("imageID")
+         references "image" ("imageID")
+
 )
 /
 
 create table "scenicPos" 
 (
    "scenicID"           NUMBER(5,0)          not null,
-   "longitue"           FLOAT,
-   "latitude"           FLOAT,
-   "address"            VARCHAR2(200),
+
+   "longitue"           FLOAT                not null,
+   "latitude"           FLOAT                not null,
+   "address"            VARCHAR2(200)        not null,
    constraint PK_SCENICPOS primary key ("scenicID"),
    constraint FK_SCENICPO_REFERENCE_SCENICSP foreign key ("scenicID")
          references "scenicSpot" ("scenicID")
@@ -373,9 +414,11 @@ create table "scenicPos"
 create table "strategy" 
 (
    "strategyID"         NUMBER(5,0)          not null,
-   "scenicID"           NUMBER(5,0),
-   "title"              VARCHAR2(80),
-   "content"            CLOB,
+
+   "scenicID"           NUMBER(5,0)          not null,
+   "title"              VARCHAR2(80)         not null,
+   "content"            CLOB                 not null,
+
    constraint PK_STRATEGY primary key ("strategyID"),
    constraint FK_STRATEGY_REFERENCE_SCENICSP foreign key ("scenicID")
          references "scenicSpot" ("scenicID")
@@ -385,6 +428,7 @@ create table "strategy"
 
 create table "strategyImage" 
 (
+
    "imageID"            NUMBER(6,0)          not null,
    "strategyID"         NUMBER(5,0)          not null,
    "imageAddress"       VARCHAR2(200),
@@ -392,17 +436,22 @@ create table "strategyImage"
    constraint FK_STRATEGY_REFERENCE_STRATEGY foreign key ("strategyID")
          references "strategy" ("strategyID")
          on delete cascade
+
 )
 /
 
 create table "userInfo" 
 (
-   "userID"             NUMBER(10,0)         not null,
-   "nickname"           VARCHAR2(40),
+
+   "userID"             VARCHAR2(40)         not null,
+   "nickname"           VARCHAR2(40)         not null,
+
    "gender"             VARCHAR2(6),
    "headPortrait"       VARCHAR2(200),
    "introduction"       VARCHAR2(200),
    "phoneNumber"        NUMBER(11,0),
+
+
    constraint PK_USERINFO primary key ("userID"),
    constraint FK_USERINFO_REFERENCE_USER foreign key ("userID")
          references "user" ("userID")
@@ -412,7 +461,9 @@ create table "userInfo"
 
 create table "viewedScenicSpot" 
 (
+
    "userID"             NUMBER(10,0)         not null,
+
    "scenicID"           NUMBER(5,0)          not null,
    constraint PK_VIEWEDSCENICSPOT primary key ("userID", "scenicID"),
    constraint FK_VIEWEDSC_REFERENCE_USER foreign key ("userID")
