@@ -46,7 +46,7 @@
                 </div>
                 <div class="banner_top_right">
                     <form>
-                        <input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
                         <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
                     </form>
                 </div>
@@ -74,9 +74,17 @@
                                         景点 <b class = "caret"></b>
                                     </a>
                                     <ul class = "dropdown-menu" >
-                                        <li><a href="#" style="padding-top:10px;">123</a></li>											
-                                        <li><a href="#" style="padding-top:10px;">456</a></li>
-                                        <li><a href="#" style="padding-top:10px;">789</a></li>
+
+                                        <li><a href="about.html" style="padding-top:10px;">黄浦区</a></li>											
+                                        <li><a href="about.html" style="padding-top:10px;">静安区</a></li>
+                                        <li><a href="about.html" style="padding-top:10px;">徐汇区</a></li>
+                                       
+                                        
+                                       
+                                       
+                                        <li><a href="about.html" style="padding-top:10px;">查看更多</a></li>
+                                       
+
                                     </ul>
                                 </li>
                             
@@ -370,6 +378,51 @@
                                 </div>
                   </ul>
           </div>
+
+          <!-- //获取客户端ip（地理位置） -->
+          <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript" ></script>
+          <script>
+              var x = document.getElementById("demo");
+              function getLocation(){
+                  if(navigator.geolocation){
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                  }else{
+                      x.innerHTML="geolocation is not supported by this browser";
+                  }
+                  function showPosition(position){
+                      x.innerHTML="latitude: "+ position.coords.latitude + "<br>longitude:" + position.coords.longitude;
+                  }
+              }
+          </script>
+        
+        	<!-- footer -->
+		
+            </div>
+        </div>
+        
+        
+       <!-- here stars scrolling icon -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+//                    var defaults = {
+//                    containerID: 'toTop', // fading element id
+//                    containerHoverID: 'toTopHover', // fading element hover id
+//                    scrollSpeed: 1200,
+//                    easingType: 'linear' 
+//                    };
+                
+                                    
+                $().UItoTop({ easingType: 'easeOutQuart' });
+                                    
+                });
+        </script>
+    <!-- //here ends scrolling icon -->
+    <!-- for bootstrap working -->
+        <script src="js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+
+
           <div class='loading'>
             <i></i>
           </div>
@@ -377,6 +430,7 @@
       </div>
     </div>
   
+
 </body>
 
 </html>
