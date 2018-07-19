@@ -497,6 +497,7 @@ body a:hover {
     display: inline-block
 }
 /* the following are made by may in 7.19.2018 */
+/*     *********** sceneshow ********* */
 .sceneShow{
     position: relative;
     width: 100%;
@@ -558,7 +559,8 @@ body a:hover {
     font-weight: bold;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #333
+    color: #333;
+    line-height: 150%;
 }
 .sceneShow .content .cell .txt .score{
     width: 50%;
@@ -577,7 +579,7 @@ body a:hover {
 }
 .sceneShow .content .cell .txt .score .score-num{
     text-overflow: ellipsis;
-    font-size: 10px;
+    font-size: 12px;
     color: #333;
     text-align: left;
     white-space: nowrap;
@@ -590,6 +592,39 @@ body a:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden
+}
+
+/* *********** pagelink ************ */
+.pageList {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 120px;
+}
+.pageList a {
+    height: 24px;
+    line-height: 26px;
+    padding: 0 8px;
+    /* border: 1px solid #ddd; */
+    border: 10 px solid #000;
+    border-color: #03a9f4;
+    color: #000;
+    display: inline-block;
+    /* display: inline;
+    zoom: 1; */
+    margin-left: 3px;
+    background-color: #fff
+}
+.pageList a .pageLink{
+    color: #000;
+}
+
+.pageList a:hover {
+    background: #eaeaea
+}
+
+.pageList .cur {
+    background: #eaeaea;
 }
 /* the following are made by may in 7.19.2018 */
 
