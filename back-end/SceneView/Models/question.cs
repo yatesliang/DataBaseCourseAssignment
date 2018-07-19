@@ -21,7 +21,7 @@ namespace SceneView.Models
         }
     
         public int questionID { get; set; }
-        public short scenicID { get; set; }
+        public Nullable<short> scenicID { get; set; }
         public string questionContent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

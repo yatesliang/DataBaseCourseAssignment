@@ -14,7 +14,7 @@ namespace SceneView.Models
     
     public partial class admin
     {
-        public string adminID { get; set; }
+        public byte adminID { get; set; }
         public string password { get; set; }
     }
 }

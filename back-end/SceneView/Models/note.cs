@@ -15,12 +15,12 @@ namespace SceneView.Models
     public partial class note
     {
         public int noteID { get; set; }
-        public string userID { get; set; }
-        public short scenicID { get; set; }
+        public Nullable<int> userID { get; set; }
+        public Nullable<short> scenicID { get; set; }
         public string title { get; set; }
         public string noteContent { get; set; }
-        public decimal noteLike { get; set; }
-        public System.DateTime noteTime { get; set; }
+        public Nullable<decimal> noteLike { get; set; }
+        public Nullable<System.DateTime> noteTime { get; set; }
     
         public virtual scenicSpot scenicSpot { get; set; }
         public virtual user user { get; set; }

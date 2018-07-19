@@ -15,8 +15,8 @@ namespace SceneView.Models
     public partial class scenicPos
     {
         public short scenicID { get; set; }
-        public decimal longitue { get; set; }
-        public decimal latitude { get; set; }
+        public Nullable<decimal> longitue { get; set; }
+        public Nullable<decimal> latitude { get; set; }
         public string address { get; set; }
     
         public virtual scenicSpot scenicSpot { get; set; }

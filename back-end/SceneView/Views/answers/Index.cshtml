@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SceneView.Models.answer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.answerContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.question.questionContent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.answerContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.question.questionContent)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.answerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.answerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.answerID })
+        </td>
+    </tr>
+}
+
+</table>

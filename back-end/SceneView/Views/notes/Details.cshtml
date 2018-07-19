@@ -1,0 +1,66 @@
+﻿@model SceneView.Models.note
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>note</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noteContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noteContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noteLike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noteLike)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noteTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noteTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scenicSpot.scenicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scenicSpot.scenicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.noteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
