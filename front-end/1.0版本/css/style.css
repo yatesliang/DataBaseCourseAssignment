@@ -558,6 +558,7 @@ body a:hover {
     height: 100%;
 }
 .sceneShow .content .cell .txt{
+    text-align: left;
     position: relative;
     padding: 16px;
     background-color: white;
@@ -592,9 +593,11 @@ body a:hover {
 .sceneShow .content .cell .txt .score .score-num{
     text-overflow: ellipsis;
     font-size: 12px;
+    justify-content: flex-end;
     color: #333;
     text-align: left;
     white-space: nowrap;
+
 }
 
 .sceneShow .content .cell .txt .address{
