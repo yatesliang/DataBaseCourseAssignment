@@ -23,9 +23,9 @@ namespace SceneView.Models
         }
     
         public long messageID { get; set; }
-        public Nullable<int> senderID { get; set; }
-        public Nullable<int> receiverID { get; set; }
-        public Nullable<System.DateTime> time { get; set; }
+        public string senderID { get; set; }
+        public string receiverID { get; set; }
+        public System.DateTime time { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commentLikeMes> commentLikeMes { get; set; }

@@ -10,21 +10,20 @@ namespace SceneView.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("/Login");
+            }
         }
 
-        public ActionResult About()
+        public ActionResult Cacel()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            Session.Clear();
+            return Redirect("/Login");
         }
     }
 }

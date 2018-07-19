@@ -14,12 +14,14 @@ namespace SceneView.Models
     
     public partial class userInfo
     {
-        public int userID { get; set; }
+        public string userID { get; set; }
         public string nickname { get; set; }
         public string gender { get; set; }
         public string headPortrait { get; set; }
         public string introduction { get; set; }
         public Nullable<long> phoneNumber { get; set; }
+        public string SECRETQUESTION { get; set; }
+        public string SQANSWER { get; set; }
     
         public virtual user user { get; set; }
     }

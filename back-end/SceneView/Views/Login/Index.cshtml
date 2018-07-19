@@ -1,7 +1,78 @@
-﻿
+﻿@model SceneView.Controllers.LoginController.result
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Login/_LoginLayout.cshtml";
 }
 
-<h2>Index</h2>
+@{ 
+    // 验证flag标识
+    if (ViewBag.flag == -1)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"用户不存在！\");</script>");
+    }else if(ViewBag.flag == 0)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"密码错误！\");</script>");
+    }else if(ViewBag.flag == 1)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"用户已存在，请登录！\");</script>");
+    }
+    // 验证session会话是否存在
+    if (Session["user"] != null)
+    {
+        HttpContext.Current.Response.Redirect("~/Home");
+    }
+}
 
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+        <!-- Start Sign In Form -->
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "fh5co-form animate-box", @name = "loginForm", onsubmit = "return checkValid()" }))
+        {
+            @Html.ValidationSummary(true)
+            <h2>登 录</h2>
+            <div class="form-group">
+                <label for="username" class="sr-only">用户名</label>
+                @Html.TextBoxFor(r => r.username, new { @placeholder = "用户名", @class = "form-control", @id = "username", @autocomplete = "off" })
+                @Html.ValidationMessageFor(r => r.username)
+                @*<input type="text" class="form-control" id="username" placeholder="用户名" autocomplete="off">*@
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">密码</label>
+                @Html.TextBoxFor(r => r.password, new { @placeholder = "密码", @class = "form-control", @id = "password", @autocomplete = "off", @type = "password" })
+                @Html.ValidationMessageFor(r => r.password)
+                @*<input type="password" class="form-control" id="password" placeholder="密码" autocomplete="off">*@
+            </div>
+            <div class="form-group">
+                <p>未注册? <a href="~/Login/sign"> 注册 </a> | <a href="~/Login/forget">忘记密码?</a></p>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="登 录" class="btn btn-primary">
+                <!-- <button onclick="checkValid()" class="btn btn-primary">登录</button> -->
+            </div>
+            @*</form>*@
+        }
+        <!-- END Sign In Form -->
+        <script>
+            function checkValid() {
+                var name = document.forms["loginForm"]["username"].value;
+                if (name == null || name == "") {
+                    alert("请输入用户名");  //to do
+                    return false;
+                } else if (name.length > 16) {
+                    alert("用户名不应超过 16 位");
+                    //to do
+                    return false;
+                }
+                var pwd = document.forms["loginForm"]["password"].value;
+                var patrn = /^(\w){6,20}$/;
+                if (!patrn.exec(pwd)) {
+                    alert("密码非法");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </div>
+</div>
