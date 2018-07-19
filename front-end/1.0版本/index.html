@@ -29,9 +29,11 @@
                 }, 1000);
             });
         });
+        // $(document).ready(function(){
+        //     $.get("todoPostURL",function(data,status){})
+        // })
     </script>
     <!-- start-smoth-scrolling -->
-
 </head>
 
 <body>
@@ -72,6 +74,7 @@
                                         景点 <b class = "caret"></b>
                                     </a>
                                     <ul class = "dropdown-menu" >
+
                                         <li><a href="about.html" style="padding-top:10px;">黄浦区</a></li>											
                                         <li><a href="about.html" style="padding-top:10px;">静安区</a></li>
                                         <li><a href="about.html" style="padding-top:10px;">徐汇区</a></li>
@@ -81,12 +84,13 @@
                                        
                                         <li><a href="about.html" style="padding-top:10px;">查看更多</a></li>
                                        
+
                                     </ul>
                                 </li>
                             
-                            <li><a href="#comment"class="scroll">印象</a></li>
-                            <li><a href="#contact" class="scroll">故事</a></li>
-                            <li><a href="#" class="scroll">注册/登录</a></li>
+                            <li><a href="#comment" class="scroll">印象</a></li>
+                            <li><a href="#story" class="scroll">故事</a></li>
+                            <li><a href="about.html">注册/登录</a></li>
                            
                         </a></li> 
                     
@@ -106,26 +110,82 @@
   
         </div>
     </div>
+    <!-- <div class="sceneIntro">
+            <div class="content">
+                <div class='title'>此处风景</div>
+                <div class ='lunbo-wrapper'>
+                    <ul class="inner">
+                        <a href='' target="_blank">
+                            <li data-id='1'>
+                                <img src='images/31.jpg' width="100%">
+                                <div class="detail">
+                                    <p>体验简述</p>
+                                </div>
+                            </li>
+                        </a>
+                        <a href='' target="_blank">
+                            <li data-id="2">
+                                <img src="images/32.jpg" width="100%">
+                                <div class="detail">
+                                    <p>体验简述</p>
+                                </div>
+                            </li>
+                        </a>
+                        <a href='' target="_blank">
+                            <li data-id="3">
+                                <img src="images/33.jpg" width="100%">
+                                <div class="detail">
+                                    <p>体验简述</p>
+                                </div>
+                            </li>
+                        </a>
+                        <a href='' target="_blank">
+                            <li data-id="4">
+                                <img src="images/17.jpg" width="100%" height="100%">
+                                <div class="detail">
+                                    <p>体验简述</p>
+                                </div>
+                                /li>
+                        </a>
+                        <a href='' target="_blank">
+                            <li data-id="5">
+                                <img src="images/17.jpg" width="100%" height="100%"> 
+                                <div class="detail">
+                                    <p>体验简述</p>
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                <ul class = 'page'>
+                    <li class = 'active'>
+                        <div class='tag'></div>					
+                    </li>
+                    <li>
+                        <div class="tag"></div>
+                    </li>
+                    <li>
+                        <div class="tag"></div>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
     
-   
-    <div>
-         <style>
-             {
-                 color:#47484c;
-             }
-           </style>
-        <h1>景点推荐</h1>
-
-    </div>
         <style type="text/css">
             *{margin: 0;padding: 0;}
-            #div1{position: relative;border:0px solid #0ff;width:1100px;height:580px;margin:50px auto 0;overflow: hidden;}
+            /* #div1{position: relative;border:0px solid #0ff;width: 80%;; height: 580px;margin:50px auto 0;overflow: hidden;}
             #div1 ul{position: absolute;left: 0;}
-            #div1 ul li{list-style: none;width:300px;float: left;padding: 10px;height:80%}
-            #div1 ul li img{width:100%;}
+            #div1 ul li{list-style: none;width:330px;float: left;padding: 10px;height: 176px;}
+            #div1 ul li img{ background-size: contain; width:100%;height: auto;} */     
+            #div1{position: relative;border:0px solid #0ff;width: 1100px;; height: 580px ;margin:50px auto 0;overflow: hidden;}
+            #div1 ul{position: absolute;left: 0;}
+            #div1 ul li{list-style: none;width:300px;float: left;padding: 10px;height: 160px;}
+            #div1 ul li img{ background-size: contain; width:100%;height: auto;}
             </style>
             <script type="text/javascript">
             window.onload=function(){
+                // document.getElementById('div1').attributes.width = document.body.clientWidth*0.3;
+                // document.getElementById('div1').style.width = document.body.clientWidth*0.3;
             var oDiv=document.getElementById('div1');
             var oUl=oDiv.getElementsByTagName('ul')[0];
             var aLi=oUl.getElementsByTagName('li');
@@ -171,7 +231,7 @@
             </script>
             <div id="div1">
             <ul>
-            <li><img src="images/31.jpg"></li>
+            <li><img src="images/31.jpg"><div class="detail"><p>water</p></div></li>
             <li><img src="images/32.jpg"></li>
             <li><img src="images/33.jpg"></li>
             <li><img src="images/34.jpg"></li>
@@ -181,14 +241,14 @@
             </div>
         <!-- //scene introduction -->
         <!-- //story  -->
-        <div class="story" id="contact">
+        <div class="story" id="story">
             <div class="wrapper">
                 <div class="storyBg"></div>
                 <div class="content">
                     <div class="title">
                         <h2>故事</h2>
                         <div class = "right">
-                            <a href="notes">
+                            <a href="notes.html">
                                 <span>更多故事</span>
                             </a>
                         </div>					
@@ -214,118 +274,111 @@
                 </div>
             </div>
         </div>
-        <!-- //印象（评论 -->   
+
+    </div>
+<!-- //印象（评论 -->   
     <div class="comment" id ="comment">
-            <div class="content">
-                <div class='title'>印象</div>
-                <div id="JS-yinxiang-cont" class="cont cfb-clearfix">
-                      <!-- <ul> -->
-                              <div>
-                                      <!-- <a class="yinxiang" href="' + prefix.url + '" title="" target="_blanket">' + '<div class="img-cnt">' + 
-                                          '<img src="//img.chufaba.me/' + imgArr[imageIndex] + '" alt="">' + '<p class="photo-num">' + imgArr.length + "P</p>" + "</div>" +
-                                           '<div class="txt-cnt">' + '<p class="txt">' + prefix.desc + "</p>" + "</div>" + '<div class="note-bottom">' + '<span class="fl">
-                                               <i class="icon-location"></i>' + prefix.poi_name + "</span>" + '<span class="fr">' + prefix.username + "</span>" + "</div>" + "</a>"); -->
-                                      <a class="yinxiang" title="">
-                                          <div class="img-cnt">
-                                              <img src="images/32.jpg">
-                                              <p class="photo-num">233image1</p>
-                                          </div>
-                                          <div class="txt-cnt">
-                                              <p class="txt">desc</p>
-                                          </div>
-                                          <div class="note-bottom">
-                                              <span class="fl">
-                                                  <i class="icon-location"></i>
-                                                  shanghai
-                                              </span>
-                                              <span class="fr">xiaoluomei</span>
-                                          </div>
-                                      </a>
-                                  </div>
-                                  <div>
-                                          <a class="yinxiang" title="">
-                                              <div class="img-cnt">
-                                                  <img src="images/31.jpg">
-                                                  <p class="photo-num">233image1</p>
-                                              </div>
-                                              <div class="txt-cnt">
-                                                  <p class="txt">desc</p>
-                                              </div>
-                                              <div class="note-bottom">
-                                                  <span class="fl">
-                                                      <i class="icon-location"></i>
-                                                      shanghai
-                                                  </span>
-                                                  <span class="fr">xiaoluomei</span>
-                                              </div>
-                                          </a>
-                                  </div>
-                                  <div>
-                                          <a class="yinxiang" title="">
-                                              <div class="img-cnt">
-                                                  <img src="images/31.jpg">
-                                                  <p class="photo-num">233image1</p>
-                                              </div>
-                                              <div class="txt-cnt">
-                                                  <p class="txt">desc</p>
-                                              </div>
-                                              <div class="note-bottom">
-                                                  <span class="fl">
-                                                      <i class="icon-location"></i>
-                                                      shanghai
-                                                  </span>
-                                                  <span class="fr">xiaoluomei</span>
-                                              </div>
-                                          </a>
-                                      </div>
-                                      <div>
-                                           <a class="yinxiang" title="">
-                                                  <div class="img-cnt">
-                                                      <img src="images/31.jpg">
-                                                      <p class="photo-num">233image1</p>
-                                                  </div>
-                                                  <div class="txt-cnt">
-                                                      <p class="txt">desc</p>
-                                                  </div>
-                                                  <div class="note-bottom">
-                                                      <span class="fl">
-                                                          <i class="icon-location"></i>
-                                                          shanghai
-                                                      </span>
-                                                      <span class="fr">xiaoluomei</span>
-                                                  </div>
-                                              </a>
-                                      </div>
-                                      <div>
-                                              <a class="yinxiang" title="">
-                                                     <div class="img-cnt">
-                                                         <img src="images/31.jpg">
-                                                         <p class="photo-num">233image1</p>
-                                                     </div>
-                                                     <div class="txt-cnt">
-                                                         <p class="txt">this is a comment</p>
-                                                     </div>
-                                                     <div class="note-bottom">
-                                                         <span class="fl">
-                                                             <i class="icon-location"></i>
-                                                             shanghai
-                                                         </span>
-                                                         <span class="fr">xiaoluomei</span>
-                                                     </div>
-                                                 </a>
-                                         </div>
-                                      
-           
-                        <!-- </ul> -->
-                </div>
-                <div class='loading'>
-                  <i></i>
-                </div>
-                <div class="clear"></div>
-                <br>
-                <div class='loadMoreNote' ><span onclick="loadMoreComment()">查看更多印象</span></div>
-            </div>
+      <div class="content">
+          <div class='title'>印象</div>
+          <div id="JS-yinxiang-cont" class="cont cfb-clearfix">
+                <ul>
+                        <div>
+                                <!-- <a class="yinxiang" href="' + prefix.url + '" title="" target="_blanket">' + '<div class="img-cnt">' + 
+                                    '<img src="//img.chufaba.me/' + imgArr[imageIndex] + '" alt="">' + '<p class="photo-num">' + imgArr.length + "P</p>" + "</div>" +
+                                     '<div class="txt-cnt">' + '<p class="txt">' + prefix.desc + "</p>" + "</div>" + '<div class="note-bottom">' + '<span class="fl">
+                                         <i class="icon-location"></i>' + prefix.poi_name + "</span>" + '<span class="fr">' + prefix.username + "</span>" + "</div>" + "</a>"); -->
+                                <a class="yinxiang" title="">
+                                    <div class="img-cnt">
+                                        <img src="images/31.jpg">
+                                        <p class="photo-num">233image1</p>
+                                    </div>
+                                    <div class="txt-cnt">
+                                        <p class="txt">desc</p>
+                                    </div>
+                                    <div class="note-bottom">
+                                        <span class="fl">
+                                            <i class="icon-location"></i>
+                                            shanghai
+                                        </span>
+                                        <span class="fr">xiaoluomei</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                    <a class="yinxiang" title="">
+                                        <div class="img-cnt">
+                                            <img src="images/31.jpg">
+                                            <p class="photo-num">233image1</p>
+                                        </div>
+                                        <div class="txt-cnt">
+                                            <p class="txt">desc</p>
+                                        </div>
+                                        <div class="note-bottom">
+                                            <span class="fl">
+                                                <i class="icon-location"></i>
+                                                shanghai
+                                            </span>
+                                            <span class="fr">xiaoluomei</span>
+                                        </div>
+                                    </a>
+                            </div>
+                            <div>
+                                    <a class="yinxiang" title="">
+                                        <div class="img-cnt">
+                                            <img src="images/31.jpg">
+                                            <p class="photo-num">233image1</p>
+                                        </div>
+                                        <div class="txt-cnt">
+                                            <p class="txt">desc</p>
+                                        </div>
+                                        <div class="note-bottom">
+                                            <span class="fl">
+                                                <i class="icon-location"></i>
+                                                shanghai
+                                            </span>
+                                            <span class="fr">xiaoluomei</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div>
+                                     <a class="yinxiang" title="">
+                                            <div class="img-cnt">
+                                                <img src="images/31.jpg">
+                                                <p class="photo-num">233image1</p>
+                                            </div>
+                                            <div class="txt-cnt">
+                                                <p class="txt">desc</p>
+                                            </div>
+                                            <div class="note-bottom">
+                                                <span class="fl">
+                                                    <i class="icon-location"></i>
+                                                    shanghai
+                                                </span>
+                                                <span class="fr">xiaoluomei</span>
+                                            </div>
+                                        </a>
+                                </div>
+                                <div>
+                                        <a class="yinxiang" title="">
+                                            <div class="img-cnt">
+                                                <img src="images/31.jpg">
+                                                <p class="photo-num">233image1</p>
+                                            </div>
+                                            <div class="txt-cnt">
+                                                <p class="txt">desc</p>
+                                            </div>
+                                            <div class="note-bottom">
+                                                <span class="fl">
+                                                    <i class="icon-location"></i>
+                                                    shanghai
+                                                </span>
+                                                <span class="fr">xiaoluomei</span>
+                                            </div>
+                                        </a>
+                                </div>
+                  </ul>
           </div>
+
           <!-- //获取客户端ip（地理位置） -->
           <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript" ></script>
           <script>
@@ -368,6 +421,16 @@
     <!-- for bootstrap working -->
         <script src="js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
+
+
+          <div class='loading'>
+            <i></i>
+          </div>
+          <div class='loadMoreNote' ><span onclick="loadMoreComment()">查看更多印象</span></div>
+      </div>
+    </div>
+  
+
 </body>
 
 </html>
