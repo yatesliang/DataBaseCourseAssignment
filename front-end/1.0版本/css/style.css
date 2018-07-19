@@ -723,7 +723,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
-    min-height: 400px;
+    min-height: 500px;
 }
 /*-- nav --*/
 /* --district-- */
@@ -1219,21 +1219,21 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 
 .journal-select .cont .selected {
     color: white;
-    border-color: #3c9;
-    background-color: #3c9
+    border-color: #619ac3;
+    background-color: #619ac3;
 }
 
 .journal-select .cont .selected:hover {
     color: white;
-    border-color: #3c9;
-    background-color: #3c9
+    border-color: #619ac3;
+    background-color: #619ac3;
 }
 
 
 
 
 .cfb-clearfix {
-    * zoom: 1
+    *zoom: 1
 }
 
 .cfbclearfix:before, .cfb-clearfix:after {
