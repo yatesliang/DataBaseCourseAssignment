@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="admin">
+      <EntityTypeMapping TypeName="Model.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="adminID" ColumnName="adminID" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="answer">
+      <EntityTypeMapping TypeName="Model.answer">
+        <MappingFragment StoreEntitySet="answer">
+          <ScalarProperty Name="answerID" ColumnName="answerID" />
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="answerContent" ColumnName="answerContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comment">
+      <EntityTypeMapping TypeName="Model.comment">
+        <MappingFragment StoreEntitySet="comment">
+          <ScalarProperty Name="commentID" ColumnName="commentID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="commentContent" ColumnName="commentContent" />
+          <ScalarProperty Name="commentLike" ColumnName="commentLike" />
+          <ScalarProperty Name="commentTime" ColumnName="commentTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentLikeMes">
+      <EntityTypeMapping TypeName="Model.commentLikeMes">
+        <MappingFragment StoreEntitySet="commentLikeMes">
+          <ScalarProperty Name="commentID" ColumnName="commentID" />
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentReplyMes">
+      <EntityTypeMapping TypeName="Model.commentReplyMes">
+        <MappingFragment StoreEntitySet="commentReplyMes">
+          <ScalarProperty Name="commentID" ColumnName="commentID" />
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="image">
+      <EntityTypeMapping TypeName="Model.image">
+        <MappingFragment StoreEntitySet="image">
+          <ScalarProperty Name="imageID" ColumnName="imageID" />
+          <ScalarProperty Name="imageAddress" ColumnName="imageAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message">
+      <EntityTypeMapping TypeName="Model.message">
+        <MappingFragment StoreEntitySet="message">
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="senderID" ColumnName="senderID" />
+          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="note">
+      <EntityTypeMapping TypeName="Model.note">
+        <MappingFragment StoreEntitySet="note">
+          <ScalarProperty Name="noteID" ColumnName="noteID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="noteContent" ColumnName="noteContent" />
+          <ScalarProperty Name="noteLike" ColumnName="noteLike" />
+          <ScalarProperty Name="noteTime" ColumnName="noteTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="noteLikeMes">
+      <EntityTypeMapping TypeName="Model.noteLikeMes">
+        <MappingFragment StoreEntitySet="noteLikeMes">
+          <ScalarProperty Name="noteID" ColumnName="noteID" />
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question">
+      <EntityTypeMapping TypeName="Model.question">
+        <MappingFragment StoreEntitySet="question">
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scenicPos">
+      <EntityTypeMapping TypeName="Model.scenicPos">
+        <MappingFragment StoreEntitySet="scenicPos">
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="longitue" ColumnName="longitue" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scenicSpot">
+      <EntityTypeMapping TypeName="Model.scenicSpot">
+        <MappingFragment StoreEntitySet="scenicSpot">
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="scenicName" ColumnName="scenicName" />
+          <ScalarProperty Name="scenicIntroduction" ColumnName="scenicIntroduction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="strategy">
+      <EntityTypeMapping TypeName="Model.strategy">
+        <MappingFragment StoreEntitySet="strategy">
+          <ScalarProperty Name="strategyID" ColumnName="strategyID" />
+          <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="content" ColumnName="content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="Model.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userInfo">
+      <EntityTypeMapping TypeName="Model.userInfo">
+        <MappingFragment StoreEntitySet="userInfo">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="headPortrait" ColumnName="headPortrait" />
+          <ScalarProperty Name="introduction" ColumnName="introduction" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="SECRETQUESTION" ColumnName="SECRETQUESTION" />
+          <ScalarProperty Name="SQANSWER" ColumnName="SQANSWER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="commentReply" TypeName="Model.commentReply" StoreEntitySet="commentReply">
+      <EndProperty Name="comment">
+        <ScalarProperty Name="commentID" ColumnName="commentID" />
+      </EndProperty>
+      <EndProperty Name="comment1">
+        <ScalarProperty Name="commentID" ColumnName="replyToID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="scenicImage" TypeName="Model.scenicImage" StoreEntitySet="scenicImage">
+      <EndProperty Name="image">
+        <ScalarProperty Name="imageID" ColumnName="imageID" />
+      </EndProperty>
+      <EndProperty Name="scenicSpot">
+        <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="strategyImage" TypeName="Model.strategyImage" StoreEntitySet="strategyImage">
+      <EndProperty Name="image">
+        <ScalarProperty Name="imageID" ColumnName="imageID" />
+      </EndProperty>
+      <EndProperty Name="strategy">
+        <ScalarProperty Name="strategyID" ColumnName="strategyID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="viewedScenicSpot" TypeName="Model.viewedScenicSpot" StoreEntitySet="viewedScenicSpot">
+      <EndProperty Name="scenicSpot">
+        <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+      </EndProperty>
+      <EndProperty Name="user">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

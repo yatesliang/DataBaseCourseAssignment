@@ -128,7 +128,7 @@ namespace SceneView.Controllers
                     if (!result.SQANSWER.Equals(r.answer))
                         // 验证问题错误
                     {
-                        ViewBag.fFlage = 0;
+                        ViewBag.fFlag = 0;
                         return View();
                     }
                     else
