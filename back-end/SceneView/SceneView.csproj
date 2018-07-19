@@ -240,20 +240,86 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\animate.css" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\home\bootstrap.css" />
+    <Content Include="Content\login\animate.css" />
+    <Content Include="Content\home\chocolat.css" />
+    <Content Include="Content\home\style.css" />
+    <Content Include="Content\image\home\1.jpg" />
+    <Content Include="Content\image\home\1.png" />
+    <Content Include="Content\image\home\10.jpg" />
+    <Content Include="Content\image\home\11.jpg" />
+    <Content Include="Content\image\home\110.jpg" />
+    <Content Include="Content\image\home\111.jpg" />
+    <Content Include="Content\image\home\11111.jpg" />
+    <Content Include="Content\image\home\12.jpg" />
+    <Content Include="Content\image\home\1212.jpg" />
+    <Content Include="Content\image\home\122.jpg" />
+    <Content Include="Content\image\home\13.jpg" />
+    <Content Include="Content\image\home\133.jpg" />
+    <Content Include="Content\image\home\14.jpg" />
+    <Content Include="Content\image\home\15.jpg" />
+    <Content Include="Content\image\home\16.jpg" />
+    <Content Include="Content\image\home\17.jpg" />
+    <Content Include="Content\image\home\18.jpg" />
+    <Content Include="Content\image\home\19.jpg" />
+    <Content Include="Content\image\home\2.jpg" />
+    <Content Include="Content\image\home\2.png" />
+    <Content Include="Content\image\home\20.jpg" />
+    <Content Include="Content\image\home\21.jpg" />
+    <Content Include="Content\image\home\22.jpg" />
+    <Content Include="Content\image\home\222.jpg" />
+    <Content Include="Content\image\home\3.jpg" />
+    <Content Include="Content\image\home\3.png" />
+    <Content Include="Content\image\home\31.jpg" />
+    <Content Include="Content\image\home\32.jpg" />
+    <Content Include="Content\image\home\33.jpg" />
+    <Content Include="Content\image\home\34.jpg" />
+    <Content Include="Content\image\home\35.jpg" />
+    <Content Include="Content\image\home\4.jpg" />
+    <Content Include="Content\image\home\4.png" />
+    <Content Include="Content\image\home\44.jpg" />
+    <Content Include="Content\image\home\4444.jpg" />
+    <Content Include="Content\image\home\5.jpg" />
+    <Content Include="Content\image\home\6.jpg" />
+    <Content Include="Content\image\home\666.jpg" />
+    <Content Include="Content\image\home\7.jpg" />
+    <Content Include="Content\image\home\77.jpg" />
+    <Content Include="Content\image\home\777.jpg" />
+    <Content Include="Content\image\home\7777.jpg" />
+    <Content Include="Content\image\home\8.jpg" />
+    <Content Include="Content\image\home\888.jpg" />
+    <Content Include="Content\image\home\9.jpg" />
+    <Content Include="Content\image\home\999.jpg" />
+    <Content Include="Content\image\home\banner.jpg" />
+    <Content Include="Content\image\home\banner1.jpg" />
+    <Content Include="Content\image\home\close1.png" />
+    <Content Include="Content\image\home\co.png" />
+    <Content Include="Content\image\home\img-sp.png" />
+    <Content Include="Content\image\home\left.png" />
+    <Content Include="Content\image\home\night.jpg" />
+    <Content Include="Content\image\home\night1.jpg" />
+    <Content Include="Content\image\home\right.png" />
+    <Content Include="Content\image\home\search.png" />
+    <Content Include="Content\image\home\shanghai.jpg" />
+    <Content Include="Content\image\home\shanghai1.jpg" />
+    <Content Include="Content\image\home\shanghai11.jpg" />
+    <Content Include="Content\image\home\shanghai12.JPG" />
+    <Content Include="Content\image\home\shanghai2.jpg" />
+    <Content Include="Content\image\home\timg.jpg" />
+    <Content Include="Content\image\home\timg1.jpg" />
+    <Content Include="Content\image\home\timg2.jpg" />
+    <Content Include="Content\image\home\timg3.jpg" />
+    <Content Include="Content\image\home\top_move.png" />
+    <Content Include="Content\image\home\V.jpg" />
+    <Content Include="Content\image\home\waitan.jpg" />
     <Content Include="Content\image\login\background.jpg" />
     <Content Include="Content\image\login\i1.png" />
     <Content Include="Content\image\login\i2.png" />
     <Content Include="Content\image\login\i3.png" />
     <Content Include="Content\image\login\tick.png" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\login\bootstrap.css" />
+    <Content Include="Content\login\Site.css" />
+    <Content Include="Content\login\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -269,28 +335,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -298,16 +342,14 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\home\bootstrap.js" />
+    <Content Include="Scripts\home\easing.js" />
+    <Content Include="Scripts\home\easyResponsiveTabs.js" />
+    <Content Include="Scripts\home\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\home\jquery.chocolat.js" />
+    <Content Include="Scripts\home\jquery.flexisel.js" />
+    <Content Include="Scripts\home\jquery.wmuSlider.js" />
+    <Content Include="Scripts\home\move-top.js" />
     <Content Include="Scripts\login\bootstrap.min.js" />
     <Content Include="Scripts\login\jquery.min.js" />
     <Content Include="Scripts\login\jquery.placeholder.min.js" />
@@ -315,18 +357,6 @@
     <Content Include="Scripts\login\main.js" />
     <Content Include="Scripts\login\modernizr-2.6.2.min.js" />
     <Content Include="Scripts\login\respond.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\scripts.js" />
-    <Content Include="Scripts\supersized-init.js" />
-    <Content Include="Scripts\supersized.3.2.7.min.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Sources\登录界面\css\login.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -336,19 +366,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Study\EntityFramework.md" />
     <Content Include="Study\VS2017开发使用EF连接Oracle数据库的Asp.net项目.md" />
     <Content Include="Views\Login\Forget.cshtml" />
@@ -359,14 +377,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Sources\主页\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
