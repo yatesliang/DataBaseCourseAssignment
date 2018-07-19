@@ -61,7 +61,7 @@ namespace SceneView.Controllers
             {
                 var md5 = new MD5TransferAndVerify();
                 // 获取数据库查询结果
-                var result = db.userInfo.Where(u => u.nickname == r.username).FirstOrDefault<userInfo>();
+               var result = db.userInfo.Where(u => u.nickname == r.username).FirstOrDefault<userInfo>();
                 if (result == null)
                 {
                     // 创建用户、用户信息实例
@@ -70,7 +70,7 @@ namespace SceneView.Controllers
                     // 为其赋值并添加到db中
                     // userID为自增长属性，user为空时，第一个编号为1
                     var users = db.user;
-                    user.userID = users.Count() == 0 ? "1" : (int.Parse(users.AsEnumerable().Last().userID) + 1).ToString();
+                    user.userID = users.Count() == 0 ? "1" : (int.Parse(users.Select(u => u.userID).Max()) + 1).ToString();
                     user.password = md5.GetMD5Hash(r.password);
                     userInfo.userID = user.userID;
                     userInfo.nickname = r.username;
