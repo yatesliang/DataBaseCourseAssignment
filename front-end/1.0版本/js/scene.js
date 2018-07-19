@@ -12,9 +12,9 @@ function updateDistrict(district){
     }
     xmlhttp.onreadystatechange = function(){
         if(xmlhttp.readyState==4 && xmlhttp.status==200){
-            document.getElementById("scene-show-cells").innerHTML = xmlhttp.responseText;
+            document.getElementById("sceneShow").innerHTML = xmlhttp.responseText;
             //to do 
-            //生成规则范例
+            //生成规则范例,单个cell，sceneshow有多个cell
             // <a class="cell" href="index.html">
 			// 				<div class="img-show">
 			// 					<img src="images/32.jpg">
