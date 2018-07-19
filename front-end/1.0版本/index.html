@@ -29,6 +29,9 @@
                 }, 1000);
             });
         });
+        // $(document).ready(function(){
+        //     $.get("todoPostURL",function(data,status){})
+        // })
     </script>
     <!-- start-smoth-scrolling -->
 
@@ -84,9 +87,11 @@
                                     </ul>
                                 </li>
                             
-                            <li><a href="#comment"class="scroll">印象</a></li>
-                            <li><a href="#contact" class="scroll">故事</a></li>
-                            <li><a href="#" class="scroll">注册/登录</a></li>
+
+                            <li><a href="#comment" class="scroll">印象</a></li>
+                            <li><a href="#story" class="scroll">故事</a></li>
+                            <li><a href="about.html">注册/登录</a></li>
+
                            
                         </a></li> 
                     
@@ -106,7 +111,7 @@
   
         </div>
     </div>
-    
+
    
     <div>
          <style>
@@ -119,13 +124,17 @@
     </div>
         <style type="text/css">
             *{margin: 0;padding: 0;}
+
             #div1{position: relative;border:0px solid #0ff;width:1100px;height:580px;margin:50px auto 0;overflow: hidden;}
             #div1 ul{position: absolute;left: 0;}
             #div1 ul li{list-style: none;width:300px;float: left;padding: 10px;height:80%}
             #div1 ul li img{width:100%;}
+
             </style>
             <script type="text/javascript">
             window.onload=function(){
+                // document.getElementById('div1').attributes.width = document.body.clientWidth*0.3;
+                // document.getElementById('div1').style.width = document.body.clientWidth*0.3;
             var oDiv=document.getElementById('div1');
             var oUl=oDiv.getElementsByTagName('ul')[0];
             var aLi=oUl.getElementsByTagName('li');
@@ -171,7 +180,7 @@
             </script>
             <div id="div1">
             <ul>
-            <li><img src="images/31.jpg"></li>
+            <li><img src="images/31.jpg"><div class="detail"><p>water</p></div></li>
             <li><img src="images/32.jpg"></li>
             <li><img src="images/33.jpg"></li>
             <li><img src="images/34.jpg"></li>
@@ -181,14 +190,16 @@
             </div>
         <!-- //scene introduction -->
         <!-- //story  -->
-        <div class="story" id="contact">
+
+        <div class="story" id="story">
+
             <div class="wrapper">
                 <div class="storyBg"></div>
                 <div class="content">
                     <div class="title">
                         <h2>故事</h2>
                         <div class = "right">
-                            <a href="notes">
+                            <a href="notes.html">
                                 <span>更多故事</span>
                             </a>
                         </div>					
@@ -214,6 +225,7 @@
                 </div>
             </div>
         </div>
+
         <!-- //印象（评论 -->   
     <div class="comment" id ="comment">
             <div class="content">
@@ -378,6 +390,7 @@
     <!-- for bootstrap working -->
         <script src="js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
+
 </body>
 
 </html>
