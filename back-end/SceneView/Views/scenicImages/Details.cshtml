@@ -1,0 +1,34 @@
+﻿@model SceneView.Models.scenicImage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>scenicImage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imageAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.scenicSpot.scenicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.scenicSpot.scenicName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.scenicID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
