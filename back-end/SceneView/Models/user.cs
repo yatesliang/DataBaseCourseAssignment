@@ -24,7 +24,7 @@ namespace SceneView.Models
             this.scenicSpot = new HashSet<scenicSpot>();
         }
     
-        public int userID { get; set; }
+        public string userID { get; set; }
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
