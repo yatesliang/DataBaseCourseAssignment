@@ -27,7 +27,7 @@
         @using (Html.BeginForm("Forget", "Login", FormMethod.Post, new { @name = "backForm", @class = "fh5co-form animate-box", @onsubmit = "return checkBack()" }))
         {
 
-                <h2>忘记 密码 </h2>
+                <h2>忘记密码</h2>
                 <div class="form-group">
                     <label for="username" class="sr-only"></label>
                     @Html.TextBoxFor(r => r.username, new { @placeholder = "用户名", @class = "form-control", @id = "username", @autocomplete = "off" })
