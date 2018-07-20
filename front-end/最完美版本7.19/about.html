@@ -75,7 +75,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 			</div>
 			<div class="dummy_text">
-
 				
 			</div>
 			
@@ -95,8 +94,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				<div id="JS-cont">
 					<div class="cont cfb-clearfix">
-							<a href="">黄浦区</a>
-							<a href="">徐汇区</a>
+							<a href="#sceneShow" class="scroll">黄浦区</a>
+							<a >徐汇区</a>
 							<a href="">长宁区</a>
 							<a href="">静安区</a>
 							<a href="">虹口区</a>
@@ -111,9 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="">松江区</a>
 							<a href="">奉贤区</a>
 							<a href="">浦东新区</a>
-							
-
-							
+														
 					</div>
 				</div>
 			</div>
@@ -152,17 +149,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 </div>
 </div>
-
-
-
-
-
-<!-- //banner -->
-
 <!-- the following are made by may -->
   <!-- scene show cells -->
-<div class="sceneShow" id="sceneShow">
-		<div class="content">
+  <div class="sceneShow district" id="sceneShow">
+		<div class="container content">
 			<div id="scene-show-cells" class="cont cfb-clearfix">
 				<ul>
 					<div>
@@ -236,33 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<a href="#" page-num="2" class="next" title="nextPage">下一页</a>
 	</div>
 <!-- the following are made by may -->
-<!-- contact -->
-	<div class="contact" id="contact">
-		<div class="container">
-			<h3>Contact Us</h3>
-			<div class="col-md-4 contact-grid">
-				<i class="glyphicon glyphicon-home" aria-hidden="true"></i>
-				<h4>Address</h4>
-				<p>JI.Paulnadwam 2nd D.No:23-50-903.<span>United States</span></p>
-			</div>
-			<div class="col-md-4 contact-grid">
-				<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-				<h4>Mail</h4>
-				<a href="mailto:info@example.com">info@example.com</a>
-			</div>
-			<div class="col-md-4 contact-grid">
-				<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
-				<h4>Phone</h4>
-				<p>+020 456 9696</p>
-			</div>
-			<div class="clearfix"> </div>
-			<!-- footer -->
-			<div class="footer-copy">
-				<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			</div>
-		</div>
-	</div>
-<!-- //contact -->
+
 
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
@@ -280,6 +244,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 			});
 	</script>
+	<!-- made by may -->
+	<script type ="text/javascript">
+	$(function(){
+  $("#JS-cont .cont a").click(function(){
+	var f = this;
+	$("#JS-cont .cont a").removeClass("selected");
+	$(this).addClass("selected");
+  })
+})
+	</script>
+	<!-- made by may -->
 <!-- //here ends scrolling icon -->
 <!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>

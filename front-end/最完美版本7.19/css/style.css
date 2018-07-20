@@ -507,6 +507,166 @@ body a:hover {
     clear: both;
 }
 
+/* the following are made by may in 7.19.2018 */
+/*     *********** sceneshow ********* */
+.sceneShow{
+    position: relative;
+    width: 100%;
+    min-height: 800px;
+    min-width: 980px;
+    background-color: #f0f3f5;
+    padding-bottom: 320px;
+}
+.sceneShow .content{
+    position: relative;
+    width: 1220px;
+    min-height: 800px;
+    margin: 0 auto;
+}
+.sceneShow .content #scene-show-cells{
+    margin-top: -20px;
+}
+.sceneShow .content .cell{
+    float: left;
+    width: 22%;
+    height: 360px;
+    margin-top: 20px;
+    margin-left: 20px;
+    overflow: hidden;
+    padding: 4px;
+    background-color: white;
+    border-radius: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    text-decoration: none;
+}
+.sceneShow .content .cell:hover {
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+}
+.sceneShow .content .cell .img-show{
+    width: 100%;
+    height: 70%;
+}
+.sceneShow .content .cell .img-show img{
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+.sceneShow .content .cell .txt{
+    text-align: left;
+    position: relative;
+    padding: 6px;
+    background-color: white;
+    padding-bottom: 2px;
+    height: 30%
+}
+.sceneShow .content .cell .txt .name{
+    max-width: 185px;
+    padding-top: 3px;
+    overflow: hidden;
+    font-size: 20px;
+    /* font-weight: bold; */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333;
+    /* line-height: 150%; */
+}
+.sceneShow .content .cell .txt .score{
+    width: 80%;
+    height: 28px;
+    background-position: -192px 0;
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    margin-bottom: 0
+    /* to do : show the score iamge according to the score */
+}
+.sceneShow .content .cell .txt .score img{
+    display: block;
+    width: 25px;
+    margin-right: 0;
+    float: left;
+}
+.sceneShow .content .cell .txt .score .score-img{
+    vertical-align: middle;
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
+}
+.sceneShow .content .cell .txt .score .score-num{
+    text-overflow: ellipsis;
+    font-size: 12px;
+    justify-content: flex-end;
+    color: #333;
+    text-align: left;
+    white-space: nowrap;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    
+}
+
+.sceneShow .content .cell .txt .address{
+    float: left;
+    width: 100%;
+    color: #333;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+/* *********** pagelink ************ */
+.pageList {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 120px;
+}
+.pageList a {
+    height: 24px;
+    line-height: 26px;
+    padding: 0 8px;
+    /* border: 1px solid #ddd; */
+    border: 10 px solid #000;
+    border-color: #03a9f4;
+    color: #000;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1; 
+    margin-left: 3px;
+    font-size: 16px;
+    background-color: #fff
+}
+.pageList a .pageLink{
+    color: #000;
+}
+
+.pageList a:hover {
+    /* background: #eaeaea */
+    background: rgba(128,127,128)
+}
+
+.pageList .cur {
+    background: #eaeaea;
+}
+/* the following are made by may in 7.19.2018 */
+
+
+/* the following are made by may in 7.20.2018 */
+/* 这里是索引项 */
+/* 这里是索引项 */
+/* the following are made by may in 7.20.2018 */
+
+
 /*-- banner --*/
 
 .banner {
@@ -601,7 +761,10 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
   float:left;
   font-size:20px;
   color:#333;
-  margin-left:100px;
+  /* made by may 2018/7/20 */
+  /* margin-left:100px; */
+  margin-left: 10px;
+  /* made by may 2018/7/20 */
 }
 .lefttop h5 
 {
@@ -1017,7 +1180,10 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     float: left;
     width: 100%;
     background: #fff;
-    margin-left:100px;
+    /* made  by may 2018/7/20 */
+    /* margin-left:100px; */
+    margin-left: 10px;
+    /* made by may 2018/7/20 */
 }
 
 .journal-select .tabs {
@@ -1090,6 +1256,39 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     border-color: #3c9;
     background-color: #3c9
 }
+/* made by may 2018/7/20 */
+
+.journal-select .cont .selected {
+    color: white;
+    border-color: #619ac3;
+    background-color: #619ac3
+}
+
+.journal-select .cont .selected:hover {
+    color: white;
+    border-color: #619ac3;
+    background-color: #619ac3
+}
+.journal-select .cont a .selected:hover{
+    color: #000;
+    border-color: #001
+}
+.journal-select .cont a .blue:after{
+    color: #619ac3;
+    border-color: #619ac3
+}
+#JS-cont .cont a .selected{
+    color: #619ac3;
+    border-color: #619ac3;
+    background-color:#619ac3
+}
+#JS-cont .cont a .selected:hover{
+    color: #619ac3;
+    border-color: #619ac3;
+    background-color:#619ac3
+}
+/* made by may 2018/7/20 */
+
 
 
 
