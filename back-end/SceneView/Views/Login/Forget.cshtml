@@ -27,7 +27,7 @@
         @using (Html.BeginForm("Forget", "Login", FormMethod.Post, new { @name = "backForm", @class = "fh5co-form animate-box", @onsubmit = "return checkBack()" }))
         {
 
-                <h2>忘记 密码 </h2>
+                <h2>忘记密码</h2>
                 <div class="form-group">
                     <label for="username" class="sr-only"></label>
                     @Html.TextBoxFor(r => r.username, new { @placeholder = "用户名", @class = "form-control", @id = "username", @autocomplete = "off" })
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password" class="sr-only"></label>
-                    @Html.TextBoxFor(r => r.password, new { @placeholder = "密码", @class = "form-control", @id = "password", @autocomplete = "off", @type="password" })
+                    @Html.TextBoxFor(r => r.password, new { @placeholder = "新密码", @class = "form-control", @id = "password", @autocomplete = "off", @type="password" })
                     @Html.ValidationMessageFor(r => r.password)
                     @*<input type="password" class="form-control" id="password" placeholder="请输入新密码" autocomplete="off">*@
                 </div>
@@ -57,6 +57,7 @@
                     <input type="submit" value="重置密码" class="btn btn-primary">
                 </div>
                 <script>
+
                     function checkBack() {
                         var name = document.forms["backForm"]["username"].value;
                         if (name == null || name == "") {
@@ -66,6 +67,10 @@
                             alert("用户名不应超过 16 位");
                             //to do
                             return false;
+                        }
+                        var answer = document.forms["backForm"]["question"].value;
+                        if (answer == null || answer == "") {
+                            alert("请输入验证问题答案");
                         }
                         var pwd = document.forms["backForm"]["password"].value;
                         var patrn = /^(\w){6,20}$/;
@@ -78,6 +83,7 @@
                             alert("两次密码不一致");
                             return false;
                         }
+                       
                         return true;
                     }
                 </script>

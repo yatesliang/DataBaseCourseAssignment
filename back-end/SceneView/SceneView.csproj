@@ -171,157 +171,203 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\adminsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RegistController.cs" />
-    <Compile Include="Controllers\usersController.cs" />
+    <Compile Include="Controllers\userInfoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\admin.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\answer.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\comment.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\commentLikeMes.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\commentReplyMes.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataModel.edmx</DependentUpon>
+    <Compile Include="Models\image.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MD5TransferAndVerify.cs" />
     <Compile Include="Models\message.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\note.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\noteLikeMes.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\question.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\scenicImage.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scenicPos.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\scenicSpot.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\strategy.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\strategyImage.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\userInfo.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\reset.css" />
-    <Content Include="Content\style.css" />
-    <Content Include="Content\supersized.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="Global.asax" />
+    <Content Include="Content\home\bootstrap.css" />
+    <Content Include="Content\login\animate.css" />
+    <Content Include="Content\home\chocolat.css" />
+    <Content Include="Content\home\style.css" />
+    <Content Include="Content\image\home\1.jpg" />
+    <Content Include="Content\image\home\1.png" />
+    <Content Include="Content\image\home\10.jpg" />
+    <Content Include="Content\image\home\11.jpg" />
+    <Content Include="Content\image\home\110.jpg" />
+    <Content Include="Content\image\home\111.jpg" />
+    <Content Include="Content\image\home\11111.jpg" />
+    <Content Include="Content\image\home\12.jpg" />
+    <Content Include="Content\image\home\1212.jpg" />
+    <Content Include="Content\image\home\122.jpg" />
+    <Content Include="Content\image\home\13.jpg" />
+    <Content Include="Content\image\home\133.jpg" />
+    <Content Include="Content\image\home\14.jpg" />
+    <Content Include="Content\image\home\15.jpg" />
+    <Content Include="Content\image\home\16.jpg" />
+    <Content Include="Content\image\home\17.jpg" />
+    <Content Include="Content\image\home\18.jpg" />
+    <Content Include="Content\image\home\19.jpg" />
+    <Content Include="Content\image\home\2.jpg" />
+    <Content Include="Content\image\home\2.png" />
+    <Content Include="Content\image\home\20.jpg" />
+    <Content Include="Content\image\home\21.jpg" />
+    <Content Include="Content\image\home\22.jpg" />
+    <Content Include="Content\image\home\222.jpg" />
+    <Content Include="Content\image\home\3.jpg" />
+    <Content Include="Content\image\home\3.png" />
+    <Content Include="Content\image\home\31.jpg" />
+    <Content Include="Content\image\home\32.jpg" />
+    <Content Include="Content\image\home\33.jpg" />
+    <Content Include="Content\image\home\34.jpg" />
+    <Content Include="Content\image\home\35.jpg" />
+    <Content Include="Content\image\home\4.jpg" />
+    <Content Include="Content\image\home\4.png" />
+    <Content Include="Content\image\home\44.jpg" />
+    <Content Include="Content\image\home\4444.jpg" />
+    <Content Include="Content\image\home\5.jpg" />
+    <Content Include="Content\image\home\6.jpg" />
+    <Content Include="Content\image\home\666.jpg" />
+    <Content Include="Content\image\home\7.jpg" />
+    <Content Include="Content\image\home\77.jpg" />
+    <Content Include="Content\image\home\777.jpg" />
+    <Content Include="Content\image\home\7777.jpg" />
+    <Content Include="Content\image\home\8.jpg" />
+    <Content Include="Content\image\home\888.jpg" />
+    <Content Include="Content\image\home\9.jpg" />
+    <Content Include="Content\image\home\999.jpg" />
+    <Content Include="Content\image\home\banner.jpg" />
+    <Content Include="Content\image\home\banner1.jpg" />
+    <Content Include="Content\image\home\close1.png" />
+    <Content Include="Content\image\home\co.png" />
+    <Content Include="Content\image\home\img-sp.png" />
+    <Content Include="Content\image\home\left.png" />
+    <Content Include="Content\image\home\night.jpg" />
+    <Content Include="Content\image\home\night1.jpg" />
+    <Content Include="Content\image\home\right.png" />
+    <Content Include="Content\image\home\search.png" />
+    <Content Include="Content\image\home\shanghai.jpg" />
+    <Content Include="Content\image\home\shanghai1.jpg" />
+    <Content Include="Content\image\home\shanghai11.jpg" />
+    <Content Include="Content\image\home\shanghai12.JPG" />
+    <Content Include="Content\image\home\shanghai2.jpg" />
+    <Content Include="Content\image\home\timg.jpg" />
+    <Content Include="Content\image\home\timg1.jpg" />
+    <Content Include="Content\image\home\timg2.jpg" />
+    <Content Include="Content\image\home\timg3.jpg" />
+    <Content Include="Content\image\home\top_move.png" />
+    <Content Include="Content\image\home\V.jpg" />
+    <Content Include="Content\image\home\waitan.jpg" />
+    <Content Include="Content\image\login\background.jpg" />
+    <Content Include="Content\image\login\i1.png" />
+    <Content Include="Content\image\login\i2.png" />
+    <Content Include="Content\image\login\i3.png" />
+    <Content Include="Content\image\login\tick.png" />
+    <Content Include="Content\login\bootstrap.css" />
+    <Content Include="Content\login\Site.css" />
+    <Content Include="Content\login\style.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Models\DataModel.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DataModel.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <LastGenOutput>DataModel.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\DataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DataModel.edmx.diagram">
-      <DependentUpon>DataModel.edmx</DependentUpon>
-    </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\scripts.js" />
-    <Content Include="Scripts\supersized-init.js" />
-    <Content Include="Scripts\supersized.3.2.7.min.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\home\bootstrap.js" />
+    <Content Include="Scripts\home\easing.js" />
+    <Content Include="Scripts\home\easyResponsiveTabs.js" />
+    <Content Include="Scripts\home\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\home\jquery.chocolat.js" />
+    <Content Include="Scripts\home\jquery.flexisel.js" />
+    <Content Include="Scripts\home\jquery.wmuSlider.js" />
+    <Content Include="Scripts\home\move-top.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\login\bootstrap.min.js" />
+    <Content Include="Scripts\login\jquery.min.js" />
+    <Content Include="Scripts\login\jquery.placeholder.min.js" />
+    <Content Include="Scripts\login\jquery.waypoints.min.js" />
+    <Content Include="Scripts\login\main.js" />
+    <Content Include="Scripts\login\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\login\respond.min.js" />
+    <Content Include="Sources\登录界面\css\login.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -330,47 +376,32 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\admins\Create.cshtml" />
-    <Content Include="Views\admins\Delete.cshtml" />
-    <Content Include="Views\admins\Details.cshtml" />
-    <Content Include="Views\admins\Edit.cshtml" />
-    <Content Include="Views\admins\Index.cshtml" />
-    <Content Include="Views\users\Create.cshtml" />
-    <Content Include="Views\users\Delete.cshtml" />
-    <Content Include="Views\users\Details.cshtml" />
-    <Content Include="Views\users\Edit.cshtml" />
-    <Content Include="Views\users\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Study\EntityFramework.md" />
     <Content Include="Study\VS2017开发使用EF连接Oracle数据库的Asp.net项目.md" />
-    <Content Include="Views\Login\Test.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Forget.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Sign.cshtml" />
+    <Content Include="Views\Login\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\cacel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Sources\主页\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\userInfoes\Create.cshtml" />
+    <Content Include="Views\userInfoes\Delete.cshtml" />
+    <Content Include="Views\userInfoes\Details.cshtml" />
+    <Content Include="Views\userInfoes\Edit.cshtml" />
+    <Content Include="Views\userInfoes\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
