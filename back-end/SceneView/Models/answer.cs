@@ -15,7 +15,7 @@ namespace SceneView.Models
     public partial class answer
     {
         public int answerID { get; set; }
-        public Nullable<int> questionID { get; set; }
+        public int questionID { get; set; }
         public string answerContent { get; set; }
     
         public virtual question question { get; set; }

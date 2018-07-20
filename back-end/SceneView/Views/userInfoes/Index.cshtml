@@ -27,6 +27,12 @@
             @Html.DisplayNameFor(model => model.phoneNumber)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.SECRETQUESTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SQANSWER)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.user.password)
         </th>
         <th></th>
@@ -48,6 +54,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SECRETQUESTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SQANSWER)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.user.password)

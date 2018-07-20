@@ -22,12 +22,12 @@ namespace SceneView.Models
         }
     
         public long commentID { get; set; }
-        public Nullable<int> userID { get; set; }
-        public Nullable<short> scenicID { get; set; }
-        public Nullable<decimal> mark { get; set; }
+        public string userID { get; set; }
+        public short scenicID { get; set; }
+        public decimal mark { get; set; }
         public string commentContent { get; set; }
-        public Nullable<decimal> commentLike { get; set; }
-        public Nullable<System.DateTime> commentTime { get; set; }
+        public decimal commentLike { get; set; }
+        public System.DateTime commentTime { get; set; }
     
         public virtual scenicSpot scenicSpot { get; set; }
         public virtual user user { get; set; }

@@ -17,12 +17,20 @@ namespace SceneView.Controllers
         // GET: userInfoes
         public ActionResult Index()
         {
-            var userInfo = db.userInfo.Include(u => u.user);
-            return View(userInfo.ToList());
+           if(ModelState.IsValid)
+            {
+                var result = db.userInfo.ToArray();
+                foreach(var item in result)
+                {
+                    Console.WriteLine(item.nickname + " " + item.phoneNumber);
+                }
+                return View();
+            }
+            return View();
         }
 
         // GET: userInfoes/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -48,7 +56,7 @@ namespace SceneView.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,nickname,gender,headPortrait,introduction,phoneNumber")] userInfo userInfo)
+        public ActionResult Create([Bind(Include = "userID,nickname,gender,headPortrait,introduction,phoneNumber,SECRETQUESTION,SQANSWER")] userInfo userInfo)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +70,7 @@ namespace SceneView.Controllers
         }
 
         // GET: userInfoes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -82,7 +90,7 @@ namespace SceneView.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,nickname,gender,headPortrait,introduction,phoneNumber")] userInfo userInfo)
+        public ActionResult Edit([Bind(Include = "userID,nickname,gender,headPortrait,introduction,phoneNumber,SECRETQUESTION,SQANSWER")] userInfo userInfo)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +103,7 @@ namespace SceneView.Controllers
         }
 
         // GET: userInfoes/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -112,7 +120,7 @@ namespace SceneView.Controllers
         // POST: userInfoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             userInfo userInfo = db.userInfo.Find(id);
             db.userInfo.Remove(userInfo);

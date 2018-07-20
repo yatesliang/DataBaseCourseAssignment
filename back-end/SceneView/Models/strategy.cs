@@ -17,16 +17,16 @@ namespace SceneView.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public strategy()
         {
-            this.strategyImage = new HashSet<strategyImage>();
+            this.image = new HashSet<image>();
         }
     
         public short strategyID { get; set; }
-        public Nullable<short> scenicID { get; set; }
+        public short scenicID { get; set; }
         public string title { get; set; }
         public string content { get; set; }
     
         public virtual scenicSpot scenicSpot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<strategyImage> strategyImage { get; set; }
+        public virtual ICollection<image> image { get; set; }
     }
 }
