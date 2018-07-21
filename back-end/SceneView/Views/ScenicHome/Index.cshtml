@@ -24,7 +24,7 @@
                                     <a href="#sceneShow">黄浦区</a>
                                     <a href="index?dn=徐汇区">徐汇区</a>
                                     <a href="index?dn=长宁区">长宁区</a>
-                                    <a href="~/ScenicHome/index?dn=静安区">静安区</a>
+                                    <a href="~index?dn=静安区">静安区</a>
                                     <a href="index?dn=虹口区">虹口区</a>
                                     <a href="index?dn=普陀区">普陀区</a>
                                     <a href="index?dn=闸北区">闸北区</a>
@@ -75,26 +75,36 @@
     </div>
 </div>
 
-@foreach (var item in ViewBag.Data)
-{
-    <a class="cell" href="~/Views/ScenicHome/Index.cshtml">
-        <div class="img-show">
-            <img src="@item.imageAddress">
-        </div>
-        <div class="txt">
-            <p class="name">@item.scenicName</p>
-            <p class="address">@item.address</p>
-            <div class="score">
-                @for (var i = 0; i < 5; i++)
-                {
-                    <img src="~/Content/image/home/star.png">
-                }
-                <span class="score-num">num</span>
-            </div>
+<div class="sceneShow district" id="sceneShow">
+    <div class="container content">
+        <div id="scene-show-cells" class="cont cfb-clearfix">
+            <ul>
+                <div>
+                    @foreach (var item in ViewBag.Data)
+                    {
+                        <a class="cell" href="~/Scene/Index?sn=@item.scenicName">
+                            <div class="img-show">
+                                <img src="@item.imageAddress">
+                            </div>
+                            <div class="txt">
+                                <p class="name">@item.scenicName</p>
+                                <p class="address">@item.address</p>
+                                <div class="score">
+                                    @for (var i = 0; i < item.rate; i++)
+                                    {
+                                        <img src="~/Content/image/home/star.png">
+                                    }
+                                    <span class="score-num">@item.rate</span>
+                                </div>
 
+                            </div>
+                        </a>
+                    }
+                </div>
+            </ul>
         </div>
-    </a>
-}
+    </div>
+</div>
 
 <!-- 页面跳转 -->
 <div class="pageList">

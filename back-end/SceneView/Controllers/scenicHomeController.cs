@@ -45,6 +45,7 @@ namespace SceneView.Controllers
                 temp.districtName = item.district;
                 temp.scenicName = item.scenicSpot.scenicName;
                 temp.imageAddress = image.imageAddress;
+                temp.rate = 5;
                 scenicInfos.Add(temp);
                 
             }
