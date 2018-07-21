@@ -173,6 +173,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\userInfoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -240,6 +241,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\home\bootstrap.css" />
     <Content Include="Content\login\animate.css" />
     <Content Include="Content\home\chocolat.css" />
@@ -320,7 +323,9 @@
     <Content Include="Content\login\bootstrap.css" />
     <Content Include="Content\login\Site.css" />
     <Content Include="Content\login\style.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -342,6 +347,8 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\home\bootstrap.js" />
     <Content Include="Scripts\home\easing.js" />
     <Content Include="Scripts\home\easyResponsiveTabs.js" />
@@ -350,6 +357,9 @@
     <Content Include="Scripts\home\jquery.flexisel.js" />
     <Content Include="Scripts\home\jquery.wmuSlider.js" />
     <Content Include="Scripts\home\move-top.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\login\bootstrap.min.js" />
     <Content Include="Scripts\login\jquery.min.js" />
     <Content Include="Scripts\login\jquery.placeholder.min.js" />
@@ -380,7 +390,18 @@
     <Folder Include="Sources\主页\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\userInfoes\Create.cshtml" />
+    <Content Include="Views\userInfoes\Delete.cshtml" />
+    <Content Include="Views\userInfoes\Details.cshtml" />
+    <Content Include="Views\userInfoes\Edit.cshtml" />
+    <Content Include="Views\userInfoes\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
