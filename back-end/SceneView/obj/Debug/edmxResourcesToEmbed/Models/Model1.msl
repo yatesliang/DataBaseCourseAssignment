@@ -98,8 +98,10 @@
     <EntitySetMapping Name="scenicPos">
       <EntityTypeMapping TypeName="Model.scenicPos">
         <MappingFragment StoreEntitySet="scenicPos">
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
           <ScalarProperty Name="scenicID" ColumnName="scenicID" />
-          <ScalarProperty Name="longitue" ColumnName="longitue" />
           <ScalarProperty Name="latitude" ColumnName="latitude" />
           <ScalarProperty Name="address" ColumnName="address" />
         </MappingFragment>
@@ -135,14 +137,14 @@
     <EntitySetMapping Name="userInfo">
       <EntityTypeMapping TypeName="Model.userInfo">
         <MappingFragment StoreEntitySet="userInfo">
+          <ScalarProperty Name="SQAnswer" ColumnName="SQAnswer" />
+          <ScalarProperty Name="secretQuestion" ColumnName="secretQuestion" />
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="nickname" ColumnName="nickname" />
           <ScalarProperty Name="gender" ColumnName="gender" />
           <ScalarProperty Name="headPortrait" ColumnName="headPortrait" />
           <ScalarProperty Name="introduction" ColumnName="introduction" />
           <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-          <ScalarProperty Name="SECRETQUESTION" ColumnName="SECRETQUESTION" />
-          <ScalarProperty Name="SQANSWER" ColumnName="SQANSWER" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

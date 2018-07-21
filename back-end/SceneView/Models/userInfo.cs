@@ -20,8 +20,8 @@ namespace SceneView.Models
         public string headPortrait { get; set; }
         public string introduction { get; set; }
         public Nullable<long> phoneNumber { get; set; }
-        public string SECRETQUESTION { get; set; }
-        public string SQANSWER { get; set; }
+        public string secretQuestion { get; set; }
+        public string SQAnswer { get; set; }
     
         public virtual user user { get; set; }
     }

@@ -108,8 +108,10 @@
       <PropertyRef Name="scenicID" />
     </Key>
     <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
-    <Property Name="longitue" Type="float" Precision="126" Scale="0" Nullable="false" />
     <Property Name="latitude" Type="float" Precision="126" Scale="0" Nullable="false" />
+    <Property Name="longitude" Type="float" Precision="126" Scale="0" Nullable="false" />
+    <Property Name="city" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="district" Type="varchar2" MaxLength="20" Nullable="false" />
     <Property Name="address" Type="varchar2" MaxLength="200" Nullable="false" />
   </EntityType>
   <EntityType Name="scenicSpot">
@@ -154,8 +156,8 @@
     <Property Name="headPortrait" Type="varchar2" MaxLength="200" />
     <Property Name="introduction" Type="varchar2" MaxLength="200" />
     <Property Name="phoneNumber" Type="number" Precision="11" Scale="0" />
-    <Property Name="SECRETQUESTION" Type="varchar2" MaxLength="64" />
-    <Property Name="SQANSWER" Type="varchar2" MaxLength="64" />
+    <Property Name="secretQuestion" Type="varchar2" MaxLength="64" />
+    <Property Name="SQAnswer" Type="varchar2" MaxLength="64" />
   </EntityType>
   <EntityType Name="viewedScenicSpot">
     <Key>

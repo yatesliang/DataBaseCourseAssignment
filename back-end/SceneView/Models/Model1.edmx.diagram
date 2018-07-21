@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="Model.scenicSpot" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.strategy" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.userInfo" Width="1.5" PointX="7.5" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userInfo" Width="1.5" PointX="7.75" PointY="29.5" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_ANSWER_REFERENCE_QUESTION" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_USER" ManuallyRouted="false" />

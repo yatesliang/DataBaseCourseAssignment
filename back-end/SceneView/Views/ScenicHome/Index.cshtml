@@ -1,0 +1,28 @@
+﻿@model System.Collections.Generic.List<SceneView.Controllers.scenicHomeController.ScenicInfo>
+
+
+@{
+    ViewBag.Title = "景点主页";
+    Layout = "~/Views/ScenicHome/_ScenicHomeLayout.cshtml";
+}
+
+@foreach (var item in ViewBag.Data)
+{
+    <a class="cell" href="index.html">
+        <div class="img-show">
+            <img src="@item.imageAddress">
+        </div>
+        <div class="txt">
+            <p class="name">@item.scenicName</p>
+            <p class="address">@item.address</p>
+            <div class="score">
+                @for (var i = 0; i < 5; i++)
+                {
+                    <img src="~/content/images/star.png">
+                }
+                <span class="score-num">num</span>
+            </div>
+
+        </div>
+    </a>
+}
