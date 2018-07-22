@@ -507,193 +507,6 @@ body a:hover {
     clear: both;
 }
 
-/* the following are made by may in 7.19.2018 */
-/*     *********** sceneshow ********* */
-.sceneShow{
-    position: relative;
-    width: 100%;
-    min-height: 800px;
-    min-width: 980px;
-    background-color: #f0f3f5;
-    padding-bottom: 320px;
-}
-.sceneShow .content{
-    position: relative;
-    width: 1220px;
-    min-height: 800px;
-    margin: 0 auto;
-}
-.sceneShow .content #scene-show-cells{
-    margin-top: -20px;
-}
-.sceneShow .content .cell{
-    float: left;
-    width: 22%;
-    height: 360px;
-    margin-top: 20px;
-    margin-left: 20px;
-    overflow: hidden;
-    padding: 4px;
-    background-color: white;
-    border-radius: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-    text-decoration: none;
-}
-.sceneShow .content .cell:hover {
-    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
-}
-.sceneShow .content .cell .img-show{
-    width: 100%;
-    height: 70%;
-}
-.sceneShow .content .cell .img-show img{
-    display: block;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-}
-.sceneShow .content .cell .txt{
-    text-align: left;
-    position: relative;
-    padding: 6px;
-    background-color: white;
-    padding-bottom: 2px;
-    height: 30%
-}
-.sceneShow .content .cell .txt .name{
-    max-width: 185px;
-    padding-top: 3px;
-    overflow: hidden;
-    font-size: 20px;
-    /* font-weight: bold; */
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #333;
-    /* line-height: 150%; */
-}
-.sceneShow .content .cell .txt .score{
-    width: 80%;
-    height: 28px;
-    background-position: -192px 0;
-    position: relative;
-    display: inline-block;
-    font-size: 12px;
-    margin-bottom: 0
-    /* to do : show the score iamge according to the score */
-}
-.sceneShow .content .cell .txt .score img{
-    display: block;
-    width: 25px;
-    margin-right: 0;
-    float: left;
-}
-.sceneShow .content .cell .txt .score .score-img{
-    vertical-align: middle;
-    -webkit-transform: scale(0.7);
-    -moz-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    -o-transform: scale(0.7);
-    transform: scale(0.7);
-}
-.sceneShow .content .cell .txt .score .score-num{
-    text-overflow: ellipsis;
-    font-size: 12px;
-    justify-content: flex-end;
-    color: #333;
-    text-align: left;
-    white-space: nowrap;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    
-}
-
-.sceneShow .content .cell .txt .address{
-    float: left;
-    width: 100%;
-    color: #333;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden
-}
-
-/* *********** pagelink ************ */
-.pageList {
-    text-align: right;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 120px;
-}
-.pageList a {
-    height: 24px;
-    line-height: 26px;
-    padding: 0 8px;
-    /* border: 1px solid #ddd; */
-    border: 10 px solid #000;
-    border-color: #03a9f4;
-    color: #000;
-    display: inline-block;
-    *display: inline;
-    *zoom: 1; 
-    margin-left: 3px;
-    font-size: 16px;
-    background-color: #fff
-}
-.pageList a .pageLink{
-    color: #000;
-}
-
-.pageList a:hover {
-    /* background: #eaeaea */
-    background: rgba(128,127,128)
-}
-
-.pageList .cur {
-    background: #eaeaea;
-}
-/* the following are made by may in 7.19.2018 */
-
-
-/* the following are made by may in 7.20.2018 */
-.clear{
-    clear: both;
-    height: 30px;
-}
-/* 这里是索引项 */
-.mainIndex {
-    height:20px;
-    font-size: 14px;
-}
-.mainIndex,.mainIndex a {
-    line-height: 18px;
-    font-size: 14px;
-}
-.mainIndex a {
-    color: #666;
-}
-.mainIndex a:hover{
-    text-decoration: underline
-}
-.mainIndex strong {
-    color: #f80;
-    font-weight: normal;
-}
-/* 这里是索引项 */
-/* 这里是文章 */
-.note{
-
-}
-/* 这里是文章 */
-/* the following are made by may in 7.20.2018 */
-
-
 /*-- banner --*/
 
 .banner {
@@ -726,17 +539,18 @@ body a:hover {
 .banner_top_left p:before {
     background: url(../images/1.png) no-repeat 0px 0px;
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 500px;
+    height: 500px;
     content: '';
     position: absolute;
     top: 0%;
     left: 1%;
+    float: left;
 }
 
 .banner_top_left p span {
-    color: #D2D0C6;
-    font-size: 1.5em;
+    color: #fff;
+    font-size: 1.0em;
 }
 
 .banner_top_right {
@@ -770,7 +584,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover;
-    min-height: 400px;
+    min-height: 500px;
 }
 /*-- nav --*/
 /* --district-- */
@@ -788,10 +602,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
   float:left;
   font-size:20px;
   color:#333;
-  /* made by may 2018/7/20 */
-  /* margin-left:100px; */
-  margin-left: 10px;
-  /* made by may 2018/7/20 */
+  margin-left:100px;
 }
 .lefttop h5 
 {
@@ -885,8 +696,48 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 
 
 /*-- //Effect 14 --*/
+/* personInfo */
+.personInfo{
+    
+    display:inline;
+}
+.personright{
+    float:right;
+    margin-right: 200px;
+   position: relative;
+    
+
+}
+.personleft{
+    float: left;
+    
+    border:0px solid #619ac3;
+    position: relative;
+   
 
 
+}
+.personleft span {
+      float: auto;
+      font-size: 20px;
+      color:#999;
+      margin-left:230px;
+
+}
+.checkbox1{
+    float:auto;
+    margin-left:10px;
+    background-color: #fff;
+    width:1100px;
+    height:50px;
+}
+.checkbox2
+{
+    float: auto;
+    font-size: 20px;
+    color:#999;
+    margin-left:450px;
+}
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
     border: none;
@@ -921,7 +772,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 }
 
 .navbar-default .navbar-nav>li>a {
-    font-size: 1.3em;
+    font-size: 1.7em;
     color: #fff !important;
     letter-spacing: 2px;
     padding: 20px 25px 0;
@@ -1077,7 +928,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 
 /*-- banner-bottom-position --*/
 
-
+.
 
 
 /*-- slider --*/
@@ -1207,10 +1058,7 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     float: left;
     width: 100%;
     background: #fff;
-    /* made  by may 2018/7/20 */
-    /* margin-left:100px; */
-    margin-left: 10px;
-    /* made by may 2018/7/20 */
+    margin-left:100px;
 }
 
 .journal-select .tabs {
@@ -1274,54 +1122,21 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 
 .journal-select .cont .selected {
     color: white;
-    border-color: #3c9;
-    background-color: #3c9
-}
-
-.journal-select .cont .selected:hover {
-    color: white;
-    border-color: #3c9;
-    background-color: #3c9
-}
-/* made by may 2018/7/20 */
-
-.journal-select .cont .selected {
-    color: white;
     border-color: #619ac3;
-    background-color: #619ac3
+    background-color: #619ac3;
 }
 
 .journal-select .cont .selected:hover {
     color: white;
     border-color: #619ac3;
-    background-color: #619ac3
+    background-color: #619ac3;
 }
-.journal-select .cont a .selected:hover{
-    color: #000;
-    border-color: #001
-}
-.journal-select .cont a .blue:after{
-    color: #619ac3;
-    border-color: #619ac3
-}
-#JS-cont .cont a .selected{
-    color: #619ac3;
-    border-color: #619ac3;
-    background-color:#619ac3
-}
-#JS-cont .cont a .selected:hover{
-    color: #619ac3;
-    border-color: #619ac3;
-    background-color:#619ac3
-}
-/* made by may 2018/7/20 */
-
 
 
 
 
 .cfb-clearfix {
-    * zoom: 1
+    *zoom: 1
 }
 
 .cfbclearfix:before, .cfb-clearfix:after {
@@ -1958,812 +1773,6 @@ h2.resp-accordion {
 /*-- //blog --*/
 
 
-/* made by may 2018/7/20 */
-.clearfix{
-    *zoom: 1;
-}
-.artical .artical-content{
-    width: 725px;
-}
-.artical .ad{
-    width: 20%;
-    float: right;
-}
-
-.artical .topic-box {
-    position: relative;
-    top: 25px;
-    left: 0;
-    width: 725px;
-    height: 525px;
-    margin: 0;
-    padding:0;
-}
-
-.artical .topic-box .topic-image {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden
-}
-
-.artical .topic-box .topic-image img {
-    display: block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    min-height: 400px
-}
-
-.artical .topic-box .topic-image .topic-mask {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    padding-top: 100px;
-    background: linear-gradient(-180deg, transparent, rgba(0, 0, 0, .8))
-}
-
-.artical .topic-box .topic-image .detail-title {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 685px;
-    max-height: 72px;
-    overflow: hidden
-}
-
-.artical .topic-box .topic-image .detail-title h1 {
-    width: 100%;
-    line-height: 36px;
-    font-size: 26px;
-    color: #fff;
-    font-weight: 700
-}
-
-.artical .topic-box .topic-image .detail-title h1 .icon-tag {
-    display: inline-block;
-    width: 36px;
-    height: 20px;
-    margin-left: 10px;
-    background-image: url(/apps/2018070901/web/community/images/detail-icon.png);
-    /* background-image: url(../images/7777.jpg); */
-    background-repeat: no-repeat;
-    background-size: 170px
-}
-
-.artical .topic-box .topic-image .detail-title h1 .tag-1 {
-    background-position: 0 -30px
-}
-
-.artical .topic-box .topic-image .detail-title h1 .tag-3 {
-    background-position: -40px -30px
-}
-
-.artical .topic-box .topic-image .detail-title h1 .tag-4 {
-    background-position: -80px -30px
-}
-
-.artical .topic-box .topic-image .detail-title h1 .tag-5 {
-    background-position: -120px -30px
-}
-
-.artical .topic-box .topic-image .detail-title h1 .tag-6 {
-    background-position: 0 -55px
-}
-
-.artical .topic-box .topic-info {
-    position: relative;
-    margin-top: 30px;
-    width: 100%;
-    height: 90px;
-    border-bottom: 1px solid #ececec
-}
-
-.artical .topic-box .topic-info .user-pic {
-    display: block;
-    float: left;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    overflow: hidden
-}
-
-.artical .topic-box .topic-info .user-pic img {
-    width: 100%
-}
-
-.artical .topic-box .topic-info .user-info {
-    float: left;
-    margin-left: 25px;
-    width: 300px;
-    padding-top: 15px
-}
-
-.artical .topic-box .topic-info .user-info .user-name {
-    width: 100%;
-    height: 16px;
-    line-height: 16px;
-    font-size: 14px;
-    color: #619ac3;
-    white-space: nowrap
-}
-.artical .topic-box .topic-info .user-info .user-name:hover{
-    text-decoration: underline;
-}
-
-.artical .topic-box .topic-info .user-info .user-name .icon-level {
-    display: inline-block;
-    vertical-align: text-top;
-    margin-left: 9px;
-    width: 55px;
-    height: 24px;
-    background: url(/apps/2018070901/web/community/images/detail-icon.png) -40px -55px no-repeat;
-    background-size: 170px
-}
-
-.artical .topic-box .topic-info .user-info .user-detail {
-    margin-top: 10px;
-    width: 100%;
-    height: 14px;
-    line-height: 14px;
-    font-size: 14px;
-    color: #999;
-    white-space: nowrap
-}
-
-.artical .topic-box .topic-info .follow-button {
-    display: block;
-    float: left;
-    margin-top: 22px;
-    width: 68px;
-    height: 34px;
-    border: 1px solid hsla(0, 0%, 87%, .8);
-    border-radius: 3px;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    line-height: 34px
-}
-
-.artical .topic-box .topic-info .tour-relation {
-    float: right;
-    /* margin-top: 10px; */
-}
-
-.artical .topic-box .topic-info .tour-relation li {
-    float: left;
-    width: 80px;
-    text-align: center;
-    height: 65px;
-    cursor: pointer;
-    list-style-type: none
-}
-
-.artical .topic-box .topic-info .tour-relation li:before {
-    content: "";
-    float: left;
-    margin-top: 17px;
-    width: 0;
-    height: 21px;
-    border-left: 1px solid #ececec
-}
-
-.artical .topic-box .topic-info .tour-relation li a {
-    display: block;
-    float: left;
-    width: 79px;
-    padding-top: 10px;
-    font-size: 14px;
-    color: #666
-}
-
-.artical .topic-box .topic-info .tour-relation li i {
-    display: block;
-    vertical-align: top;
-    width: 26px;
-    height: 26px;
-    margin: 0 auto;
-    background-image: url(../images/detail-icon.png);
-    background-repeat: no-repeat;
-    background-size: 170px;
-    list-style-type: none;
-}
-
-.artical .topic-box .topic-info .tour-relation li i.tour-like {
-    background-position: 0 -80px
-}
-
-.artical .topic-box .topic-info .tour-relation li i.liked {
-    background-position: -40px -80px
-}
-
-.artical .topic-box .topic-info .tour-relation li i.tour-collect {
-    background-position: -80px 0
-}
-
-.artical .topic-box .topic-info .tour-relation li i.tour-comment {
-    background-position: -40px 0
-}
-
-.artical .topic-box .topic-info .tour-relation li i.tout-share {
-    background-position: 0 0
-}
-
-.artical .topic-box .topic-info .tour-relation .detail-share:hover .share-show {
-    display: block
-}
-
-.artical .topic-box .topic-info .tour-relation .share-show {
-    display: none;
-    position: absolute;
-    top: 64px;
-    right: 14px;
-    width: 24px;
-    z-index: 9999;
-    background-color: #fff;
-    padding: 5px 10px;
-    border: 1px solid #22c233
-}
-
-.artical .topic-box .topic-info .tour-relation .share-show a {
-    margin: 10px auto;
-    padding-top: 0
-}
-.artical {
-    position: relative;
-    margin: 0;
-    width: 1000px;
-    height: auto;
-    font-family: Microsoft YaHei;
-    padding-bottom: 100px;
-    overflow: hidden
-}
-
-.artical .col-main {
-    float: left;
-    width: 725px;
-    padding-top: 579px
-}
-
-.artical .col-sidebar {
-    float: right;
-    width: 225px
-}
-.artical .art-trips-container {
-    background-color: #fff;
-    width: 723px;
-    margin: 0; }
-.art-trips-container .art-trips-text {
-    padding-bottom: 20px; }
-.art-trips-container .art-trips-text.art-border-bottom {
-    border-bottom: #dcdcdc solid thin;
-    padding-bottom: 20px; }
-.art-trips-container .art-trips-text .art-trips-text-title {
-    text-align: center;
-    padding: 25px 0px; }
-.art-trips-container .art-trips-text .art-trips-text-title h3 {
-    font-size: 20px;
-    color: #333333;
-    line-height: 24px;
-    text-align: left;
-    font-weight: bold; }
-.art-trips-container .art-trips-text .art-trips-text-title .art-trips-icon {
-    content: url(data:image/png;base64,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);
-          -webkit-transform: scale(0.5);
-             -moz-transform: scale(0.5);
-              -ms-transform: scale(0.5);
-               -o-transform: scale(0.5);
-                  transform: scale(0.5); }
-      .art-trips-container .art-trips-text .art-trips-text-content {
-        word-break: break-all;
-        font-size: 14px;
-        color: #333333;
-        line-height: 24px;
-        text-align: left; }
-    .art-trips-container .art-trips-image {
-      padding-bottom: 40px; }
-      .art-trips-container .art-trips-image .art-trips-product-image {
-        overflow: hidden;
-        position: relative; }
-        .art-trips-container .art-trips-image .art-trips-product-image .product-img {
-          display: block;
-          width: 100%; }
-        .art-trips-container .art-trips-image .art-trips-product-image .product-img-poi {
-          position: absolute;
-          bottom: 10px;
-          left: 10px;
-          min-width: 46px;
-          height: 20px;
-          padding: 0 8px;
-          border-radius: 11px;
-          background: rgba(0, 0, 0, 0.5);
-          font-size: 12px;
-          color: #fff;
-          line-height: 18px;
-          text-align: left;
-          margin-top: 10px;
-          white-space: nowrap; }
-          .art-trips-container .art-trips-image .art-trips-product-image .product-img-poi::before {
-            content: '';
-            display: inline-block;
-            margin: 0;
-            margin-right: 3px;
-            width: 13px;
-            height: 14px;
-            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAwdJREFUSA2tVktoFEEQfZXdGOPJDx6CF0P8HARBBEXQQ3IR8SB4CKIoAUGjoviJiR9QwQ8mYoIQ0SDiQQQRFDEnQXFvomICioooag4STcSoByGuSfu6Z3t2dmZ6d2J2YKaqq17X666prhlBgkt1YS6yWAeFNbxrIajhtArqg9QHqN+nvCuteFcqnBQDqA7UMehpYhopi2JzcXopD8shvHLFdQYh2S6SdPGudE122Me5tGPSZhYagUQIld5JOy4SuSOCnohBcBPLsFnq8Tc4rSI4MHoHjlNOjkwHUtiAp8xQ6CrYoTqLtdxfb8L3FQrlGAq2ML3XrdcnVI+QxhPzshdYZ5nkIGZgnmzHbx0vn9JnaOK43GSaowY/sFsr+soTjmOTZyr5HGba7/C+RuTrkmgNUPnYJqWqEzN5sIfoSBUNILiBauyUPfhlcaodW6lf4tzix6cKdbIPH7wdjmFxArI+lnlTkEyTsiCucren7AKcMosl2ucRKtOqnFjjULgcPlP+hDS6fd2l5Dgs4SwXzren8dbXQ4rsx3fucihkDg8Nhy2akbA3Mh7D/IgtZ2Bzn051tstv7MJa5WV3OFAU7Dm3qVuOohpFM2vAP9OxsZT5quQIp+A54dlYoDUqlsxH9KgeTLMmLdmdNnLuiaAtVq/CY233V8Xyvs1Vro8FFxo/c1aGpp/EL6dcWuiOHWX4yarXnrTvTuEC+3oSwjkkStokvPCSb+L+DrWH6emjMOfFQ5bl+R5tWCiCcR3NVqkXOYVWpkuVhcYGERywZNpUQCgH8YC2ToudtBR0sxPdC8YpIDSOWhyh7A+C/lPvZ99tCc+NEEoj/mAq/84Eb8LgCYxf8vCsZt8dDc+JEGqA7MVXEjbwdrazcCB/LHjB2m8g2bBvCyixhNrPf8wv7CsrSfowgC+u6u9kNVZJC765gAXHIg5k2tknnGFR6/cRv0AxqTvKAjkfFyNoK0loweocVpD0Cg/NImvLyQyz0EyyROlPTKiDs49WYsT8++jzqrv/yXDZ5xbhFP8A8+CoYDmhkTgAAAAASUVORK5CYII=") no-repeat;
-            background-size: 100%;
-            vertical-align: sub; }
-        .art-trips-container .art-trips-image .art-trips-product-image .default-img {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 70px;
-          height: 74px;
-          margin-left: -35px;
-          -webkit-transform: translateY(-50%);
-             -moz-transform: translateY(-50%);
-              -ms-transform: translateY(-50%);
-               -o-transform: translateY(-50%);
-                  transform: translateY(-50%); }
-      .art-trips-container .art-trips-image .art-trips-image-desc {
-        margin-top: 10px;
-        width: 100%;
-        font-size: 12px;
-        line-height: 22px;
-        color: #666; }
-    .art-trips-container .art-trips-product {
-      padding-bottom: 20px; }
-      .art-trips-container .art-trips-product .art-trips-product-info {
-        position: relative;
-        clear: both;
-        width: 100%;
-        height: 130px;
-        background-color: #fff;
-        border: 1px solid #d4d4d4;
-        -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
-        padding-top: 20px;
-        padding-left: 20px; }
-        .art-trips-container .art-trips-product .art-trips-product-info .product-image {
-          float: left;
-          display: block;
-          position: relative;
-          width: 160px;
-          height: 90px;
-          background-color: #d8d8d8;
-          overflow: hidden; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-image .product-img {
-            display: block;
-            height: 100%; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 30px;
-            height: 15px;
-            padding: 0 3px;
-            text-align: center;
-            font-size: 12px;
-            color: #fff;
-            line-height: 15px; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag1 {
-              background-color: #2dbb55; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag2 {
-              background-color: #13bcc4; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag3 {
-              background-color: #3aaeff; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag4 {
-              background-color: #9b6ed1; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag5 {
-              background-color: #fc9153; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-image .prod-tag.tag6 {
-              background-color: #ff5858; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-image .default-img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 70px;
-            height: 74px;
-            margin-left: -35px;
-            -webkit-transform: translateY(-50%);
-               -moz-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                 -o-transform: translateY(-50%);
-                    transform: translateY(-50%); }
-        .art-trips-container .art-trips-product .art-trips-product-info .product-main {
-          float: left;
-          margin-left: 9px;
-          width: 347px;
-          height: 90px; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-main .product-name {
-            margin: 0;
-            width: 100%;
-            height: 66px;
-            overflow: hidden;
-            line-height: 22px;
-            font-size: 16px;
-            color: #059911;
-            display: -webkit-box;
-            box-orient: vertical;
-            -webkit-box-orient: vertical;
-            line-clamp: 3;
-            -webkit-line-clamp: 3;
-            text-overflow: ellipsis;
-            overflow: hidden; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-main .product-name span {
-              color: #0054aa; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-main .product-city {
-            width: 100%;
-            height: 24px;
-            margin: 0;
-            line-height: 24px;
-            font-size: 12px;
-            color: #666; }
-        .art-trips-container .art-trips-product .art-trips-product-info .product-right {
-          float: left;
-          width: 164px;
-          height: 90px; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-price {
-            width: 100%;
-            height: 44px;
-            margin: 0;
-            line-height: 44px;
-            text-align: right;
-            font-size: 12px;
-            color: #666; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-price .small {
-              color: #f60;
-              font-weight: 700; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-price .big {
-              color: #f60;
-              font-size: 24px;
-              font-weight: 700; }
-          .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-info {
-            width: 100%;
-            height: 42px;
-            background-color: #f6f6f6;
-            border: 1px solid #eee;
-            border-radius: 2px; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-info .product-satis {
-              display: inline-block;
-              vertical-align: top;
-              width: 58px;
-              height: 42px;
-              line-height: 21px;
-              overflow: hidden;
-              border-right: 1px dashed #ddd;
-              font-size: 12px;
-              color: #999;
-              text-align: center; }
-              .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-info .product-satis .spec {
-                font-size: 16px;
-                color: #666; }
-            .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-info .product-num {
-              display: inline-block;
-              vertical-align: top;
-              width: 100px;
-              height: 42px;
-              overflow: hidden;
-              white-space: nowrap;
-              line-height: 42px;
-              font-size: 12px;
-              color: #999;
-              text-align: center; }
-              .art-trips-container .art-trips-product .art-trips-product-info .product-right .product-info .product-num .block {
-                color: #666; }
-      .art-trips-container .art-trips-product .art-trips-product-title {
-        height: 50px;
-        line-height: 50px;
-        font-size: 16px;
-        color: #222;
-        border-left: #e4e4e4 solid thin;
-        border-right: #e4e4e4 solid thin;
-        border-bottom: #e4e4e4 solid thin;
-        border-top: #fff solid thin;
-        padding: 0px 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap; }
-        .art-trips-container .art-trips-product .art-trips-product-title .art-trips-product-default-title {
-          background: #f1f3f8;
-          margin: 10px 0px;
-          height: 30px; }
-    .art-trips-container .art-trips-video {
-      margin-bottom: 20px;
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      overflow: hidden; }
-      .art-trips-container .art-trips-video video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%; }
-    .art-trips-container .art-trips-textlink {
-      margin-bottom: 30px; }
-      .art-trips-container .art-trips-textlink a {
-        color: #ff7733;
-        font-size: 14px;
-        text-decoration: underline; }
-    .art-trips-container .art-trips-content {
-      margin-bottom: 20px; }
-      .art-trips-container .art-trips-content .art-trips-content-info {
-        position: relative;
-        clear: both;
-        width: 100%;
-        background-color: #fff;
-        border: 1px solid #d4d4d4;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        padding: 20px; }
-        .art-trips-container .art-trips-content .art-trips-content-info .content-title {
-          position: relative; }
-          .art-trips-container .art-trips-content .art-trips-content-info .content-title p {
-            color: #333333;
-            line-height: 18px;
-            text-align: left;
-            font-size: 16px; }
-          .art-trips-container .art-trips-content .art-trips-content-info .content-title span {
-            position: absolute;
-            border-radius: 1px;
-            height: 17px;
-            top: 0;
-            right: 0;
-            padding: 0 7px; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-title span.tag-yellow {
-              border: 1px solid #ffad0b;
-              color: #ffad0b; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-title span.tag-orange {
-              border: 1px solid #ff4f4c;
-              color: #ff4f4c; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-title span.tag-green {
-              border: 1px solid #059911;
-              color: #059911; }
-        .art-trips-container .art-trips-content .art-trips-content-info .content-main {
-          margin-top: 10px; }
-          .art-trips-container .art-trips-content .art-trips-content-info .content-main::after {
-            content: '';
-            display: block;
-            clear: both; }
-          .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-img {
-            float: left;
-            position: relative;
-            width: 160px;
-            height: 90px;
-            background-color: #d8d8d8;
-            overflow: hidden; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-img img {
-              width: 100%;
-              height: 100%; }
-          .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right {
-            margin-left: 170px; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right .content-intro {
-              font-size: 16px;
-              color: #666666;
-              line-height: 24px;
-              text-align: justify;
-              height: 75px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              display: -webkit-box;
-              box-orient: vertical;
-              -webkit-box-orient: vertical;
-              line-clamp: 3;
-              -webkit-line-clamp: 3; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right .content-footer img {
-              width: 25px;
-              height: 25px;
-              border-radius: 100%;
-              vertical-align: middle; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right .content-footer span {
-              vertical-align: middle;
-              margin-left: 5px; }
-            .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right .content-footer div {
-              float: right; }
-              .art-trips-container .art-trips-content .art-trips-content-info .content-main .content-main-right .content-footer div span + span::before {
-                content: '';
-                display: inline-block;
-                width: 1px;
-                height: 11px;
-                background: #ccc;
-                vertical-align: text-bottom;
-                margin: 0 14px 0 10px; }
-  
-.fix-sider {
-    position: relative;
-    width: 225px
-}
-
-.side-floor[data0] {
-    margin-top: 25px;
-    width: 100%
-}
-
-.side-floor .side-topic[data0] {
-    width: 100%;
-    height: 16px;
-    line-height: 16px
-}
-
-.side-floor .side-topic h3[data0] {
-    float: left;
-    width: 100px;
-    padding-left: 6px;
-    border-left: 3px solid #2dbb55;
-    font-size: 14px;
-    color: #333;
-    font-weight: 700
-}
-
-.side-floor .side-topic .side-link[data0] {
-    float: right;
-    font-size: 12px;
-    color: #999
-}
-
-.side-floor .side-main[data0] {
-    position: relative;
-    margin-top: 15px;
-    width: 100%
-}
-
-.side-floor .side-main .poi-card[data0] {
-    display: block;
-    position: relative;
-    width: 100%;
-    background-color: #fff
-}
-
-.side-floor .side-main .poi-image[data0] {
-    width: 100%;
-    height: 150px;
-    overflow: hidden
-}
-
-.side-floor .side-main .poi-image img[data0] {
-    width: 100%
-}
-
-.side-floor .side-main .poi-title[data0] {
-    position: relative;
-    width: 100%;
-    height: 36px;
-    box-sizing: border-box;
-    padding-left: 8px;
-    border: 1px solid #d4d4d4;
-    border-top: none;
-    line-height: 36px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    color: #333
-}
-
-.side-floor[data1] {
-    margin-top: 30px;
-    width: 100%
-}
-
-.side-floor .side-topic[data1] {
-    width: 100%;
-    height: 16px;
-    line-height: 16px
-}
-
-.side-floor .side-topic h3[data1] {
-    float: left;
-    width: 100px;
-    padding-left: 6px;
-    border-left: 3px solid #2dbb55;
-    font-size: 14px;
-    color: #333;
-    font-weight: 700
-}
-
-.side-floor .side-topic .side-link[data1] {
-    float: right;
-    font-size: 12px;
-    color: #999
-}
-
-.side-floor .side-main[data1] {
-    position: relative;
-    margin-top: 15px;
-    width: 100%
-}
-
-.side-floor .side-main .relv-content-list[data1] {
-    position: relative;
-    width: 100%;
-    height: 204px;
-    overflow: hidden
-}
-
-.side-floor .side-main .relv-content-list li[data1] {
-    position: absolute;
-    list-style: none;
-    z-index: 50;
-    opacity: 0;
-    transition: all .5s ease-in-out
-}
-
-.side-floor .side-main .relv-content-list .on-top[data1] {
-    z-index: 80 !important;
-    opacity: 1 !important
-}
-
-.side-floor .side-main .relv-content-card[data1] {
-    display: block;
-    position: relative;
-    width: 225px;
-    background-color: #fff;
-    cursor: pointer
-}
-
-.side-floor .side-main .relv-content-card .cont-image[data1] {
-    width: 100%;
-    height: 150px;
-    overflow: hidden
-}
-
-.side-floor .side-main .relv-content-card .cont-image img[data1] {
-    width: 100%
-}
-
-.side-floor .side-main .relv-content-card .cont-title[data1] {
-    margin: 0 auto;
-    margin-top: 13px;
-    width: 209px;
-    height: 40px;
-    overflow: hidden;
-    line-height: 20px;
-    font-size: 14px;
-    color: #333
-}
-
-.side-floor .side-main .relv-content-card .cont-title .cont-tag[data1] {
-    display: inline-block;
-    margin-right: 5px;
-    width: 32px;
-    height: 16px;
-    background-color: #619ac3;
-    border-radius: 100px 59px 59px 100px;
-    font-size: 11px;
-    color: #fff;
-    text-align: center;
-    line-height: 14px
-}
-
-.side-floor .side-main .cont-navi[data1] {
-    position: absolute;
-    top: 12px;
-    right: 4px;
-    z-index: 100
-}
-
-.side-floor .side-main .cont-navi .navi-item[data1] {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 3px;
-    width: 16px;
-    height: 3px;
-    background: hsla(0, 0%, 85%, .5)
-}
-
-.side-floor .side-main .cont-navi .active[data1] {
-    background: #2dbb55
-}
-
-
-/* made by may 2018/7/20 */
 /*-- single --*/
 
 .single h3,
@@ -2800,9 +1809,6 @@ h2.resp-accordion {
     color: #999;
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
-    /* made by may 2018/7/20 */
-    font-size: inherit;
-    /* made by may 2018/7/20 */
 }
 
 .artical-links ul li a:hover {
@@ -2816,6 +1822,8 @@ h2.resp-accordion {
     line-height: 1.8em;
     margin: 2em 0;
 }
+
+
 /*---comment-box----*/
 
 .table-form {
