@@ -1,0 +1,212 @@
+<!-- made by may 2018/7/21 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<title>写游记</title>
+	<meta charset="UTF-8">
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	
+	<!-- //for-mobile-apps -->
+	<!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> -->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- js -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<!-- <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'> -->
+	<!-- <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'> -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+		<!-- summernote editor -->
+
+		<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
+		<link href="/Users/luomei/Desktop/editorTest2/editor-bootstrap.css" rel="stylesheet">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+	<!-- start-smoth-scrolling -->
+</head>
+
+<body onload="showTime()">
+	<!-- banner -->
+	<div class="banner1">
+		<div class="container">
+			<div class="banner_top">
+				<div class="banner_top_left">
+
+				</div>
+				<div class="banner_top_right">
+					<form>
+						<input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
+						 required="">
+						<i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+					</form>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav cl-effect-14">
+						<li>
+							<a href="index.html">首页</a>
+						</li>
+						<li>
+							<a href="about.html">景点</a>
+						</li>
+
+
+						<li>
+							<a href="blog.html">故事</a>
+						</li>
+						<li>
+							<a href="#contact" class="scroll">注册/登录</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+
+			</nav>
+			<div class="logo">
+
+			</div>
+			<div class="dummy_text">
+
+			</div>
+
+		</div>
+	</div>
+    <!-- //banner -->
+    <!-- content -->
+    <div class="container">
+			<div style="clear: both">clear fix </div>
+			<div id="show-time"></div>
+
+        
+        <textarea class="note-editor-title" placeholder="标题"></textarea>  
+        
+        <div class="note-editor-body">
+            <HR class="clearfix">
+            <div class="toolbar">
+                <span class="image"></span>
+            </div>
+            <div class="test_box" contenteditable="true" placeholder="content...">
+                   input content <br />
+				 <textarea id="txt-content" autoHeight="true" placeholder="content..."></textarea>
+				</div>  
+				<div id="summernote"><p>Hello Summernote</p></div>
+				<script>
+				  $(document).ready(function() {
+				// 	  $('#summernote').summernote({
+				// 		  height: 300,                 // set editor height
+				// minHeight: null,             // set minimum height of editor
+				// maxHeight: null,             // set maximum height of editor
+				// focus: true                  // set focus to editable area after initializing summernote
+				
+				// 	  });
+					  $('#summernote').summernote({
+  toolbar: [
+    // [groupName, [list of button]]
+	['insert',['picture','hr']],
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']],
+	
+  ],
+  lang:'zh-CN',
+placeholder:"write here...",
+fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+  height:300,
+  focus:true,
+  maxHeight:null
+});
+				  });
+				</script>      
+           
+        </div>       
+          
+    </div>
+    <!-- content -->
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+    </script>
+    <script type="text/javascript">
+    //显示修改保存时间
+    function showTime(){
+        var x = document.getElementById("show-time");
+        var now = new Date();
+        x.innerHTML="saved: "+now;
+        setTimeout(showTime,5000);
+    }
+    </script>
+    <script type="text/javascript">
+//     $(function(){
+//         $.fn.autoHeight = function(){    
+//         function autoHeight(elem){
+//             elem.style.height = 'auto';
+//             elem.scrollTop = 0; //防抖动
+//             elem.style.height = elem.scrollHeight + 'px';
+//         }
+//         this.each(function(){
+//             autoHeight(this);
+//             $(this).on('keyup', function(){
+//                 autoHeight(this);
+//             });
+//         });     
+//     }                
+//     $('textarea[autoHeight]').autoHeight();    
+// })
+document.getElementById("txt-content").addEventListener("input", ResizeTextarea, false)
+    </script>
+	<!-- //here ends scrolling icon -->
+	<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+	<!-- //for bootstrap working -->
+</body>
+
+</html>
+<!-- made by may 2018/7/21 -->
