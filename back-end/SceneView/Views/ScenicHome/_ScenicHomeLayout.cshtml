@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿
+
+@model System.Collections.Generic.List<SceneView.Controllers.scenicHomeController.ScenicInfo>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -23,12 +26,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="~/Scripts/home/move-top.js"></script>
     <script type="text/javascript" src="~/Scripts/home/easing.js"></script>
     <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
     </script>
     <!-- start-smoth-scrolling -->
 </head>
@@ -41,10 +44,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 </div>
                 <div class="banner_top_right">
-                    <form>
-                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                    @*<form>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where you want to go';}" required="">
                         <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-                    </form>
+                    </form>*@
+                    @using (@Html.BeginForm("Search", "ScenicHome", new { }))
+                    {
+                        @Html.TextBoxFor(info => info[0].searchContent, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
+                        <input type="submit" class="hidden" />
+                    }
+
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -62,8 +71,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav cl-effect-14">
-                        <li><a href="index.html">首页</a></li>
-                        <li><a href="about.html" class="active">景点</a></li>
+                        <li><a href="~/Views/Home/Index.cshtml">首页</a></li>
+                        <li><a href="~/Views/ScenicHome/Index.cshtml" class="active">景点</a></li>
 
 
                         <li><a href="blog.html">故事</a></li>
@@ -86,9 +95,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!-- //banner -->
-    
-                        @RenderBody()
 
-    
+    @RenderBody()
+
+
 </body>
 </html>

@@ -393,6 +393,7 @@
     <Content Include="Views\ScenicHome\Details.cshtml" />
     <Content Include="Views\ScenicHome\Edit.cshtml" />
     <Content Include="Views\ScenicHome\Index.cshtml" />
+    <Content Include="Views\ScenicHome\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
