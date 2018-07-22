@@ -157,7 +157,16 @@ namespace SceneView.Controllers
             }
             return Redirect("Error");
         }
-        
+
+        [HttpGet]
+        public ActionResult view(String name)
+        {
+            return View(name);
+        }
+        public void getData(String username, int age)
+        {
+            
+        }
         public class result
         {
             public string username { get; set; }

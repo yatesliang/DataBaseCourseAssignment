@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div>
+        @Model
+    </div>
+    <button id="button">Button</button>
+        <script>
+            //var n = $.session.get("user");
+            var n = '<%=Session["user"]%>';
+            $(function () {
+                $('#button').click(function () {
+                    $.ajax({
+                        'type': 'post', 'url': '/login/getdata',
+                        'data': { username: n, age: 10 },
+                        error: function (message) {
+                            alert('error!');
+                        }
+                    })
+                })
+            })
+        </script>
+</body>
+
+</html>
