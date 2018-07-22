@@ -38,7 +38,7 @@ namespace SceneView.Controllers
                         // 用户验证正确，则创建Session会话，跳转至主页
                     {
                         Session["user"] = result.user.userID;
-                        return Redirect("~/Home");
+                        return Redirect("~/ScenicHome");
                     }
                     else
                     {
@@ -157,6 +157,7 @@ namespace SceneView.Controllers
             }
             return Redirect("Error");
         }
+        
         public class result
         {
             public string username { get; set; }

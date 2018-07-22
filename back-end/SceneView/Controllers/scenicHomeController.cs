@@ -26,6 +26,10 @@ namespace SceneView.Controllers
         // GET: scenicSpots
         public ActionResult Index(ScenicInfo info)
         {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/Login");
+            }
             info.districtName = "松江区";
             var scenic = db.scenicPos.Where(u => u.district == info.districtName);
             var scenicArr = scenic.ToArray();
@@ -40,7 +44,6 @@ namespace SceneView.Controllers
                 temp.scenicName = item.scenicSpot.scenicName;
                 temp.imageAddress = image.imageAddress;
                 scenicInfos.Add(temp);
-                
             }
             ViewBag.Data = scenicInfos;
             return View(scenicInfos);
