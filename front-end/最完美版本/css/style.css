@@ -885,6 +885,49 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
 
 
 /*-- //Effect 14 --*/
+/* personInfo */
+.personInfo{
+    
+    display:inline;
+}
+.personright{
+    float:right;
+    margin-right: 200px;
+   position: relative;
+    
+
+}
+.personleft{
+    float: left;
+    
+    border:0px solid #619ac3;
+    position: relative;
+   
+
+
+}
+.personleft span {
+      float: auto;
+      font-size: 20px;
+      color:#999;
+      margin-left:230px;
+
+}
+.checkbox1{
+    float:auto;
+    margin-left:10px;
+    background-color: #fff;
+    width:1100px;
+    height:50px;
+}
+.checkbox2
+{
+    float: auto;
+    font-size: 20px;
+    color:#999;
+    margin-left:450px;
+}
+/*chunge*/
 
 
 .navbar-default .navbar-collapse,
@@ -968,12 +1011,11 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     line-height: 1.8em;
 }
 
-.
 
 /*-- //banner --*/
 
 
-/
+
 /*-- more --*/
 
 
@@ -1315,6 +1357,92 @@ background: url(../images/T.jpg) no-repeat 0px 0px;
     background-color:#619ac3
 }
 /* made by may 2018/7/20 */
+/* made by may 2018/7/21 front*/
+#show-time{
+    font-size: 14px;
+    color: rgb(196,203,207);
+}
+.note-editor-title{
+    width: 100%;
+    border: 0px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    font-size: 30px;
+    height: 40px;
+}
+.note-editor-body{
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.note-editor-body .clearfix{
+    zoom: 1;
+    clear: both;
+    size: 1;
+    color: #333;
+}
+.note-editor-body .toolbar{
+    height: 30px;
+    margin: 5px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    vertical-align: middle
+}
+.note-editor-body .toolbar .image{
+    width: 24px;
+    height: 20px;
+    /* display: block; */
+    background-image: url(../images/svg_img.svg);
+    background-size: contain;
+    overflow: hidden;
+    float: left;
+}
+.note-editor-body .toolbar .image:hover{
+    background-image: url(../images/svg_img_hover.svg);
+    background-size: contain
+}
+.note-editor-body textarea{
+    /* line-height: 50%; */
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    min-height: 100px;
+    /* height: 500px; */
+    border: 0px;
+}
+.note-editor-body input{
+    /* line-height: 50%; */
+    outline: none;
+    resize: vertical;
+    width: 100%;
+    height: auto;
+    border: 0px;
+}
+.test_box {
+    width: 100%;
+    min-height: 20px;
+    /*设置最小高度*/
+    /* max-height: 1000px; */
+    /*设置最大高度超过300px时出现滚动条*/
+    _height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 13px;
+    outline: none;
+    border: 0px solid #a0b3d6;
+    font-size: 16px;
+    line-height: 24px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* border-color: rgba(82, 168, 236, 0.8); */
+    /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6); */
+}
+
+
+/* made by may 2018/7/21 end*/
 
 
 

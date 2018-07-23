@@ -110,7 +110,7 @@ select,
 textarea {
   margin: 0;
   font: inherit;
-  color: inherit;
+  color: #777;
 }
 button {
   overflow: visible;
@@ -1088,8 +1088,9 @@ button,
 select,
 textarea {
   font-family: inherit;
-  font-size: inherit;
+  font-size: 20px;
   line-height: inherit;
+  float:auto;
 }
 a {
   color: #337ab7;
@@ -2519,7 +2520,7 @@ input[type="checkbox"] {
   line-height: normal;
 }
 input[type="file"] {
-  display: block;
+  display: none;
 }
 input[type="range"] {
   display: block;
@@ -2545,16 +2546,18 @@ output {
 }
 .form-control {
   display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
+  width: 40%;
+  height: 50px;
+  padding: 8px 12px;
+  font-size: 18px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
+  float: auto;
+  margin-left: 20%;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -2562,7 +2565,7 @@ output {
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control:focus {
-  border-color: #66afe9;
+  border-color: #619ac3;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
           box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
@@ -2997,7 +3000,7 @@ select[multiple].input-lg {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 25px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;

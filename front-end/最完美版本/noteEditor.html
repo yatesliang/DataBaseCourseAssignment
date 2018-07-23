@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Summernote</title>
+    <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
+    <link href="css/editor-bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet"> -->
+    <script src="summernote-master/dist/lang/summernote-zh-CN.js"></script>
+    <link href="summernote-master/dist/summernote.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script src="summernote-master/dist/font"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+</head>
+
+<body onload="showTime()">
+    <!-- banner -->
+    <div class="banner1">
+        <div class="container">
+            <div class="banner_top">
+                <div class="banner_top_left">
+
+                </div>
+                <!-- <div class="banner_top_right">
+                            <form>
+                                <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
+                                 required="">
+                                <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                            </form>
+                        </div> -->
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li>
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li>
+                            <a href="about.html">景点</a>
+                        </li>
+
+
+                        <li>
+                            <a href="blog.html">故事</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="scroll">注册/登录</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </nav>
+            <div class="logo">
+
+            </div>
+            <div class="dummy_text">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- //banner -->
+    <div class="container">
+        <div style="clear: both"></div>
+        <div id="show-time"></div>
+        <textarea class="note-editor-title" placeholder="标题" id="note-title"></textarea>
+        <div class="note-editor-body">
+            <HR class="clearfix">
+
+            <div id="summernote">
+                <p>Hello Summernote</p>
+            </div>
+            <div class="edit-done" id="edit-done">
+                <a onclick="editDone()">done</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                lang: "zh-CN",
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['insert', ['picture', 'hr']],
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['fontname'], ['fontfamily']
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+
+                ],
+                minHeight:600,
+                maxHeight:null,
+                focus:true,
+                // callbacks: {
+                //     onImageUpload: function (files, editor, $editable) {
+                //         sendFile(files);
+                //     }
+                // }
+            });
+
+            function sendFile(files, editor, $editable) {
+                var data = new FormData();
+                data.append("ajaxTaskFile", files[0]);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: "$", //图片上传出来的url，返回的是图片上传后的路径，http格式
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function (data) {//data是返回的hash,key之类的值，key是定义的文件名
+                        $('#summernote').summernote('insertImage', data.data);
+                    },
+                    error: function () {
+                        alert("上传失败");
+                    }
+                });
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        //显示修改保存时间
+        function showTime() {
+            var x = document.getElementById("show-time");
+            var now = new Date();
+            x.innerHTML = "saved: " + now;
+            setTimeout(showTime, 5000);
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#edit-done").click(function () {
+                var f = this;
+                var noteTitle = $('#note-title').innerHTML;
+                if(noteTitle==null){
+                    alert("请输入标题");
+                    return;
+                }
+                var markupStr = $('#summernote').summernote('code');
+                var code = '<title>' + noteTitle + '</title>' + markupStr;
+                alert(code);
+                console.log(code);
+                //此处发送请求存储文本
+            })
+        })
+    </script>
+</body>
+
+</html>
