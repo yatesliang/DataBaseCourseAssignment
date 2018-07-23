@@ -1700,7 +1700,7 @@ pre code {
 }
 .banner1
 {
-background: url(/Users/luomei/Desktop/最完美版本/images/T.jpg) no-repeat 0px 0px;
+background: url(../images/T.jpg) no-repeat 0px 0px;
     opacity:1;
     background-size: cover;
     -webkit-background-size: cover;
