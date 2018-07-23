@@ -75,7 +75,7 @@ namespace SceneView.Controllers
                     userInfo.userID = user.userID;
                     userInfo.nickname = r.username;
                     userInfo.phoneNumber = r.phone;
-                    userInfo.SQANSWER = r.answer;
+                    userInfo.SQAnswer = r.answer;
                     db.user.Add(user);
                     db.userInfo.Add(userInfo);
                     // 循环检测db是否被占用，防止并发冲突
@@ -125,7 +125,7 @@ namespace SceneView.Controllers
                 }
                 else
                 {
-                    if (!result.SQANSWER.Equals(r.answer))
+                    if (!result.SQAnswer.Equals(r.answer))
                         // 验证问题错误
                     {
                         ViewBag.fFlag = 0;

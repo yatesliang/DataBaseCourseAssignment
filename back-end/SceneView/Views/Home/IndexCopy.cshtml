@@ -1,0 +1,353 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Your Trip on Shanghai is gotta be fun!">
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar() { window.scrollTo(0, 1); }
+    </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/Content/home/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/home/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/Scripts/home/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Scripts/home/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/home/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="banner">
+        <div class="container">
+            <div class="banner_top">首页
+                <div class="banner_top_left">
+
+                </div>
+                <div class="banner_top_right">
+                    <form>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+
+                        <li><a href="index.html" class="active">首页</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                景点 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="about.html" style="padding-top:10px;">黄浦区</a></li>
+                                <li><a href="about.html" style="padding-top:10px;">静安区</a></li>
+                                <li><a href="about.html" style="padding-top:10px;">徐汇区</a></li>
+
+
+
+
+                                <li><a href="about.html" style="padding-top:10px;">查看更多</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li><a href="#comment" class="scroll">印象</a></li>
+                        <li><a href="#contact" class="scroll">故事</a></li>
+                        <li><a href="#" class="scroll">注册/登录</a></li>
+
+                        </a></li>
+
+
+
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </nav>
+            <div class="logo">
+                <a href="index.html"></a>
+            </div>
+            <div class="dummy_text">
+            </div>
+
+        </div>
+    </div>
+
+
+    <div>
+        <style>
+            {
+                color: #47484c;
+            }
+        </style>
+        <h1>景点推荐</h1>
+
+    </div>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            position: relative;
+            border: 0px solid #0ff;
+            width: 1100px;
+            height: 580px;
+            margin: 50px auto 0;
+            overflow: hidden;
+        }
+
+            #div1 ul {
+                position: absolute;
+                left: 0;
+            }
+
+                #div1 ul li {
+                    list-style: none;
+                    width: 300px;
+                    float: left;
+                    padding: 10px;
+                    height: 80%
+                }
+
+                    #div1 ul li img {
+                        width: 100%;
+                    }
+    </style>
+    <script type="text/javascript">
+            window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            var oUl=oDiv.getElementsByTagName('ul')[0];
+            var aLi=oUl.getElementsByTagName('li');
+            // var aA=document.getElementsByTagName('a');//获取向右向左的箭头
+            var timer=null;
+            var iSpeed=5;
+            oUl.innerHTML+=oUl.innerHTML;//定义图片可以循环播放
+            oUl.style.width=aLi.length*aLi[0].offsetWidth+'px';//定义外层ul的宽度，根据图片的个数和每个图片的宽度计算，保证总宽度是可调整的
+            function fnMove(){
+            if(oUl.offsetLeft<-oUl.offsetWidth/2){
+            oUl.style.left=0;
+            }else if(oUl.offsetLeft>0){
+            oUl.style.left=-oUl.offsetWidth/2+'px';
+            }//定义到边界的时候，实现无缝衔接
+
+            oUl.style.left=oUl.offsetLeft+iSpeed+'px';
+
+            //定义图片的右边距随着速度不断不断增加，或减小，实现运动的效果
+            }
+            timer=setInterval(fnMove,30);
+            // aA[0].onclick=function(){
+            // iSpeed=-40;
+
+            // //按下左箭头，定义向左运动
+
+            // }
+            // aA[1].onclick=function(){
+            // iSpeed=40;
+
+            // //按下右箭头，定义向右运动
+            // }
+            oDiv.onmouseover=function(){
+            clearInterval(timer);
+
+            //鼠标移动到图片上，清除定时器，停止运动
+            }
+            oDiv.onmouseout=function(){
+            timer=setInterval(fnMove,30);
+
+            //鼠标移出，重新开启定时器，重新运动
+            }
+            };
+    </script>
+    <div id="div1">
+        <ul>
+            @{
+                var i = 0;
+                foreach (var imgSrc in ViewBag.recommendedSrc)
+                {
+                    i++;
+                    if (i > 6)
+                    {
+                        break;
+                    }
+                    <li><img src="@imgSrc"></li>
+                }
+            }
+            <div style="clear: none;"></div>
+        </ul>
+    </div>
+    <!-- //scene introduction -->
+    <!-- //story  -->
+    <div class="story" id="contact">
+        <div class="wrapper">
+            <div class="storyBg"></div>
+            <div class="content">
+                <div class="title">
+                    <h2>故事</h2>
+                    <div class="right">
+                        <a href="notes">
+                            <span>更多故事</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="inner-cell">
+
+                    @{
+                        var j = 0;
+                        foreach (var note in ViewBag.noteViews)
+                        {
+                            j++;
+                            if (i > 9)
+                            {
+                                break;
+                            }
+                            <a href="index.html" target='_blanket'>
+                                <div class="item">
+                                    <img src="images/1.jpg" />
+                                    <div class="wrap">
+                                        <div class="inner">
+                                            <span class='type'>行程</span>
+                                            <h2>@note.noteTitle</h2>
+                                            <p>@note.city</p>
+                                            <div class="avatar">
+                                                <img src="images/1.jpg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //印象（评论 -->
+    <div class="comment" id="comment">
+        <div class="content">
+            <div class='title'>印象</div>
+            <div id="JS-yinxiang-cont" class="cont cfb-clearfix">
+                <!-- <ul> -->
+                @{
+                    var z = 0;
+                    foreach (var comment in ViewBag.commentViews)
+                    {
+                        if (z > 8)
+                        {
+                            break;
+                        }
+                        <div>
+                            <a class="yinxiang" title="">
+                                <div class="img-cnt">
+                                    <img src="images/31.jpg">
+                                    <p class="photo-num">233image1</p>
+                                </div>
+                                <div class="txt-cnt">
+                                    <p class="txt">@comment.commentContent</p>
+                                </div>
+                                <div class="note-bottom">
+                                    <span class="fl">
+                                        <i class="icon-location"></i>
+                                        @comment.city
+                                    </span>
+                                    <span class="fr">@comment.userName</span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+
+                <!-- </ul> -->
+            </div>
+            <div class='loading'>
+                <i></i>
+            </div>
+            <div class="clear"></div>
+            <br>
+            <div class='loadMoreNote'><span onclick="loadMoreComment()">查看更多印象</span></div>
+        </div>
+    </div>
+    <!-- //获取客户端ip（地理位置） -->
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+    <script>
+              var x = document.getElementById("demo");
+              function getLocation(){
+                  if(navigator.geolocation){
+                      navigator.geolocation.getCurrentPosition(showPosition);
+                  }else{
+                      x.innerHTML="geolocation is not supported by this browser";
+                  }
+                  function showPosition(position){
+                      x.innerHTML="latitude: "+ position.coords.latitude + "<br>longitude:" + position.coords.longitude;
+                  }
+              }
+    </script>
+
+    <!-- footer -->
+    </div>
+    </div>
+
+
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+            $(document).ready(function() {
+
+//                    var defaults = {
+//                    containerID: 'toTop', // fading element id
+//                    containerHoverID: 'toTopHover', // fading element hover id
+//                    scrollSpeed: 1200,
+//                    easingType: 'linear'
+//                    };
+
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+                });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- for bootstrap working -->
+    <script src="~/Scripts/home/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+</body>
+
+</html>

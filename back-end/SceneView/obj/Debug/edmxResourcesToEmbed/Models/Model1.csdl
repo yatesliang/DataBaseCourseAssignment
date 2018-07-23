@@ -111,8 +111,10 @@
       <PropertyRef Name="scenicID" />
     </Key>
     <Property Name="scenicID" Type="Int16" Nullable="false" />
-    <Property Name="longitue" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="latitude" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="longitude" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="district" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="scenicSpot" Relationship="Self.FK_SCENICPO_REFERENCE_SCENICSP" FromRole="scenicPos" ToRole="scenicSpot" />
   </EntityType>
@@ -165,8 +167,8 @@
     <Property Name="headPortrait" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="introduction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="phoneNumber" Type="Int64" />
-    <Property Name="SECRETQUESTION" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="SQANSWER" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="secretQuestion" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="SQAnswer" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="user" Relationship="Self.FK_USERINFO_REFERENCE_USER" FromRole="userInfo" ToRole="user" />
   </EntityType>
   <Association Name="FK_ANSWER_REFERENCE_QUESTION">
