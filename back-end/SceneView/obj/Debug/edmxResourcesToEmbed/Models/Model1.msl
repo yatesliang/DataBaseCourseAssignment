@@ -34,16 +34,22 @@
     <EntitySetMapping Name="commentLikeMes">
       <EntityTypeMapping TypeName="Model.commentLikeMes">
         <MappingFragment StoreEntitySet="commentLikeMes">
-          <ScalarProperty Name="commentID" ColumnName="commentID" />
           <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="commentID" ColumnName="commentID" />
+          <ScalarProperty Name="senderID" ColumnName="senderID" />
+          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
+          <ScalarProperty Name="time" ColumnName="time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="commentReplyMes">
       <EntityTypeMapping TypeName="Model.commentReplyMes">
         <MappingFragment StoreEntitySet="commentReplyMes">
-          <ScalarProperty Name="commentID" ColumnName="commentID" />
           <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="commentID" ColumnName="commentID" />
+          <ScalarProperty Name="senderID" ColumnName="senderID" />
+          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
+          <ScalarProperty Name="time" ColumnName="time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -52,16 +58,6 @@
         <MappingFragment StoreEntitySet="image">
           <ScalarProperty Name="imageID" ColumnName="imageID" />
           <ScalarProperty Name="imageAddress" ColumnName="imageAddress" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="message">
-      <EntityTypeMapping TypeName="Model.message">
-        <MappingFragment StoreEntitySet="message">
-          <ScalarProperty Name="messageID" ColumnName="messageID" />
-          <ScalarProperty Name="senderID" ColumnName="senderID" />
-          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
-          <ScalarProperty Name="time" ColumnName="time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -81,8 +77,11 @@
     <EntitySetMapping Name="noteLikeMes">
       <EntityTypeMapping TypeName="Model.noteLikeMes">
         <MappingFragment StoreEntitySet="noteLikeMes">
-          <ScalarProperty Name="noteID" ColumnName="noteID" />
           <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="noteID" ColumnName="noteID" />
+          <ScalarProperty Name="senderID" ColumnName="senderID" />
+          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
+          <ScalarProperty Name="time" ColumnName="time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
