@@ -153,8 +153,8 @@
         $(function () {
             $("#edit-done").click(function () {
                 var f = this;
-                var noteTitle = $('#note-title').innerHTML;
-                if(noteTitle==null){
+                var noteTitle = $('#note-title').val();
+                if(noteTitle==null||noteTitle==""){
                     alert("请输入标题");
                     return;
                 }
