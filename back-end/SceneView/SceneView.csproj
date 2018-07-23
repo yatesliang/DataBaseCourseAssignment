@@ -557,6 +557,7 @@
     <Content Include="Content\profile\lightbox.css" />
     <Content Include="Content\profile\media-player.css" />
     <Content Include="Content\profile\style.css" />
+    <Content Include="Content\profile\track-css\history.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -657,6 +658,14 @@
     <Content Include="Scripts\profile\sparkline.min.js" />
     <Content Include="Scripts\profile\spinner.min.js" />
     <Content Include="Scripts\profile\toggler.min.js" />
+    <Content Include="Scripts\profile\track-js\DrawSVGPlugin.js" />
+    <Content Include="Scripts\profile\track-js\global_functions.js" />
+    <Content Include="Scripts\profile\track-js\history.js" />
+    <Content Include="Scripts\profile\track-js\jquery.min.js" />
+    <Content Include="Scripts\profile\track-js\lodash.js" />
+    <Content Include="Scripts\profile\track-js\namespaces.js" />
+    <Content Include="Scripts\profile\track-js\page_about.js" />
+    <Content Include="Scripts\profile\track-js\TweenMax.min.js" />
     <Content Include="Scripts\profile\validation\validate.min.js" />
     <Content Include="Scripts\profile\validation\validationEngine.min.js" />
     <Content Include="Scripts\profile\weather.min.js" />

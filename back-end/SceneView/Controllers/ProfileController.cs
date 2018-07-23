@@ -11,6 +11,12 @@ namespace SceneView.Controllers
     public class ProfileController : Controller
     {
         private Entities db = new Entities();
+        [HttpGet]
+        public ActionResult Cancel()
+        {
+            Session.Clear();
+            return Redirect("/Login");
+        }
         // GET: Profile
         // 个人主页
         [HttpGet]
@@ -180,6 +186,7 @@ namespace SceneView.Controllers
                 }
             }
         }
+        // 个人资料
         [HttpGet]
         public ActionResult Setting()
         {
@@ -244,6 +251,31 @@ namespace SceneView.Controllers
                         }
                     } while (saveFailed);
                     return View(ProfileData.getProfileData(db, userSession));
+                }
+            }
+        }
+        // 时间线
+        [HttpGet]
+        public ActionResult TimeLine()
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/login");
+            }
+            else
+            {
+                // 获取用户信息
+                var userID = Session["user"].ToString();
+                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+                if (userSession == null)
+                {
+                    return Redirect("~/Error");
+                }
+                else
+                {
+                    ProfileData profileData = ProfileData.getProfileData(db, userSession);
+                    ViewBag.timeline = true;
+                    return View(profileData);
                 }
             }
         }

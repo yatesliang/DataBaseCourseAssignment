@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="listview narrow">
-                                @foreach (var c in Model.commentsData)
+                                @foreach (var c in Model.userData.comment)
                                 {
                                     <div class="media p-l-5">
                                         <div class="media-body">
@@ -58,9 +58,19 @@
                                         </div>
                                     </div>
                                 }
+                                @foreach (var c in Model.userData.commentReply)
+                                {
+                                    <div class="media p-l-5">
+                                        <div class="media-body">
+                                            <small class="text-muted">@c.commentTime</small><br />
+                                            <a class="t-overflow" href="">@c.commentContent</a>
+                                            <p>回复@@ @c.comment.user.userInfo.nickname -- @c.comment.commentContent </p>
+                                        </div>
+                                    </div>
+                                }
 
                                 <div class="media p-5 text-center l-100">
-                                    <a href="~/profile/comments"><small>查看全部</small></a>
+                                    <a href="~/profile/message"><small>查看全部</small></a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +125,8 @@
                                     </div>
                                 }
                             </div>
-
+                        </div>
+                        <div class="tile">
                             <h2 class="tile-title">我去过的地方</h2>
 
                             <div class="listview todo-list sortable">
@@ -154,7 +165,7 @@
 
                         <div class="media">
                             <div class="pull-right">
-                                <div class="counts">@Model.userData.scenicSpot.Count()</div>
+                                <div class="counts">@Model.userData.scenicSpot1.Count()</div>
                             </div>
                             <div class="media-body">
                                 <h6>我去过的地方</h6>

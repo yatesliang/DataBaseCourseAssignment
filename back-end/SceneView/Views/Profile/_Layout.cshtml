@@ -16,6 +16,43 @@
 
     <title>@Model.userData.userInfo.nickname</title>
 
+    @if (ViewBag.timeline != null)
+    {
+        <link rel='stylesheet' href='~/Content/profile/track-css/history.css' type='text/css' media='all' />
+        <script type='text/javascript' src="~/Scripts/profile/track-js/jquery.min.js"></script>
+        <script type='text/javascript' src='~/Scripts/profile/track-js/lodash.js'></script>
+        <script type='text/javascript' src='~/Scripts/profile/track-js/TweenMax.min.js'></script>
+        <script type='text/javascript' src='~/Scripts/profile/track-js/DrawSVGPlugin.js'></script>
+        <script type='text/javascript' src='~/Scripts/profile/track-js/namespaces.js'></script>
+        <script type='text/javascript' src='~/Scripts/profile/track-js/history.js'></script>
+        <script type="text/javascript">
+            function preload_images(images, functions) {
+                if (typeof functions === 'undefined') functions = {};
+                var loaded = 0;
+                for (var i = 0; i < images.length; i++) {
+                    ////console.log('preload '+images[i]);
+                    var img = new Image();
+                    img.onload = img.onerror = function () {
+                        ////console.log(img.src + ' loaded');
+                        var onImgParams = {
+                            //img : img,
+                            //index : i,
+                            loadedPct: (loaded / images.length)
+                        };
+                        if (_.isFunction(functions.onImgLoad)) functions.onImgLoad(onImgParams);
+
+                        loaded++;
+                        if (loaded >= images.length && _.isFunction(functions.onAllImgsLoaded)) {
+                            ////console.log('all imgs loaded');
+                            functions.onAllImgsLoaded()
+                        }
+                    };
+                    img.src = images[i];
+                }// endfor
+            }// preload_images()
+        </script>
+    }
+
     <!-- CSS -->
     <link href="~/Content/profile/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/profile/animate.min.css" rel="stylesheet">
@@ -26,6 +63,7 @@
     <link href="~/Content/profile/media-player.css" rel="stylesheet">
     <link href="~/Content/profile/icons.css" rel="stylesheet">
     <link href="~/Content/profile/generics.css" rel="stylesheet">
+
 </head>
 <body id="skin-blur-ocean">
 
@@ -246,7 +284,7 @@
     <script src="~/Scripts/profile/charts/jquery.flot.js"></script> <!-- Flot Main -->
     <script src="~/Scripts/profile/charts/jquery.flot.time.js"></script> <!-- Flot sub -->
     <script src="~/Scripts/profile/charts/jquery.flot.animator.min.js"></script> <!-- Flot sub -->
-    <script src="~/Scripts/profilecharts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
+    <script src="~/Scripts/profile/charts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
 
     <script src="~/Scripts/profile/sparkline.min.js"></script> <!-- Sparkline - Tiny charts -->
     <script src="~/Scripts/profile/easypiechart.js"></script> <!-- EasyPieChart - Animated Pie Charts -->
