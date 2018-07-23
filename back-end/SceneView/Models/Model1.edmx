@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="admin">
           <Key>
             <PropertyRef Name="adminID" />
@@ -83,6 +83,14 @@
           <Property Name="noteContent" Type="clob" Nullable="false" />
           <Property Name="noteLike" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="noteTime" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="noteImage">
+          <Key>
+            <PropertyRef Name="noteID" />
+            <PropertyRef Name="imageID" />
+          </Key>
+          <Property Name="noteID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="noteLikeMes">
           <Key>
@@ -326,6 +334,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NOTEIMAG_REFERENCE_IMAGE">
+          <End Role="image" Type="Self.image" Multiplicity="1" />
+          <End Role="noteImage" Type="Self.noteImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="image">
+              <PropertyRef Name="imageID" />
+            </Principal>
+            <Dependent Role="noteImage">
+              <PropertyRef Name="imageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTEIMAG_REFERENCE_NOTE">
+          <End Role="note" Type="Self.note" Multiplicity="1" />
+          <End Role="noteImage" Type="Self.noteImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="note">
+              <PropertyRef Name="noteID" />
+            </Principal>
+            <Dependent Role="noteImage">
+              <PropertyRef Name="noteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NOTELIKE_REFERENCE_MESSAGE">
           <End Role="message" Type="Self.message" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -486,6 +518,7 @@
           <EntitySet Name="image" EntityType="Self.image" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="message" EntityType="Self.message" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="note" EntityType="Self.note" Schema="C##YATES" store:Type="Tables" />
+          <EntitySet Name="noteImage" EntityType="Self.noteImage" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="noteLikeMes" EntityType="Self.noteLikeMes" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="question" EntityType="Self.question" Schema="C##YATES" store:Type="Tables" />
           <EntitySet Name="scenicImage" EntityType="Self.scenicImage" Schema="C##YATES" store:Type="Tables" />
@@ -540,6 +573,14 @@
             <End Role="user" EntitySet="user" />
             <End Role="note" EntitySet="note" />
           </AssociationSet>
+          <AssociationSet Name="FK_NOTEIMAG_REFERENCE_IMAGE" Association="Self.FK_NOTEIMAG_REFERENCE_IMAGE">
+            <End Role="image" EntitySet="image" />
+            <End Role="noteImage" EntitySet="noteImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTEIMAG_REFERENCE_NOTE" Association="Self.FK_NOTEIMAG_REFERENCE_NOTE">
+            <End Role="note" EntitySet="note" />
+            <End Role="noteImage" EntitySet="noteImage" />
+          </AssociationSet>
           <AssociationSet Name="FK_NOTELIKE_REFERENCE_MESSAGE" Association="Self.FK_NOTELIKE_REFERENCE_MESSAGE">
             <End Role="message" EntitySet="message" />
             <End Role="noteLikeMes" EntitySet="noteLikeMes" />
@@ -585,7 +626,8 @@
             <End Role="viewedScenicSpot" EntitySet="viewedScenicSpot" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -645,6 +687,7 @@
           </Key>
           <Property Name="imageID" Type="Int32" Nullable="false" />
           <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="note" Relationship="Self.noteImage" FromRole="image" ToRole="note" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.scenicImage" FromRole="image" ToRole="scenicSpot" />
           <NavigationProperty Name="strategy" Relationship="Self.strategyImage" FromRole="image" ToRole="strategy" />
         </EntityType>
@@ -675,6 +718,7 @@
           <Property Name="noteTime" Type="DateTime" Precision="6" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="note" ToRole="scenicSpot" />
           <NavigationProperty Name="user" Relationship="Self.FK_NOTE_REFERENCE_USER" FromRole="note" ToRole="user" />
+          <NavigationProperty Name="image" Relationship="Self.noteImage" FromRole="note" ToRole="image" />
         </EntityType>
         <EntityType Name="noteLikeMes">
           <Key>
@@ -701,11 +745,11 @@
           </Key>
           <Property Name="scenicID" Type="Int16" Nullable="false" />
           <Property Name="latitude" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="longitude" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="district" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="scenicSpot" Relationship="Self.FK_SCENICPO_REFERENCE_SCENICSP" FromRole="scenicPos" ToRole="scenicSpot" />
-          <Property Name="longitude" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
-          <Property Name="city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="district" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="scenicSpot">
           <Key>
@@ -756,9 +800,9 @@
           <Property Name="headPortrait" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="introduction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="phoneNumber" Type="Int64" />
-          <NavigationProperty Name="user" Relationship="Self.FK_USERINFO_REFERENCE_USER" FromRole="userInfo" ToRole="user" />
           <Property Name="secretQuestion" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="SQAnswer" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_USERINFO_REFERENCE_USER" FromRole="userInfo" ToRole="user" />
         </EntityType>
         <Association Name="FK_ANSWER_REFERENCE_QUESTION">
           <End Role="question" Type="Self.question" Multiplicity="1">
@@ -960,6 +1004,10 @@
           <End Role="comment" Type="Self.comment" Multiplicity="*" />
           <End Role="comment1" Type="Self.comment" Multiplicity="*" />
         </Association>
+        <Association Name="noteImage">
+          <End Role="image" Type="Self.image" Multiplicity="*" />
+          <End Role="note" Type="Self.note" Multiplicity="*" />
+        </Association>
         <Association Name="scenicImage">
           <End Role="image" Type="Self.image" Multiplicity="*" />
           <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="*" />
@@ -1047,6 +1095,10 @@
           <AssociationSet Name="commentReply" Association="Self.commentReply">
             <End Role="comment" EntitySet="comment" />
             <End Role="comment1" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="noteImage" Association="Self.noteImage">
+            <End Role="image" EntitySet="image" />
+            <End Role="note" EntitySet="note" />
           </AssociationSet>
           <AssociationSet Name="scenicImage" Association="Self.scenicImage">
             <End Role="image" EntitySet="image" />
@@ -1164,11 +1216,11 @@
           <EntitySetMapping Name="scenicPos">
             <EntityTypeMapping TypeName="Model.scenicPos">
               <MappingFragment StoreEntitySet="scenicPos">
-                <ScalarProperty Name="district" ColumnName="district" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="scenicID" ColumnName="scenicID" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="district" ColumnName="district" />
                 <ScalarProperty Name="address" ColumnName="address" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1203,15 +1255,15 @@
           <EntitySetMapping Name="userInfo">
             <EntityTypeMapping TypeName="Model.userInfo">
               <MappingFragment StoreEntitySet="userInfo">
-                <ScalarProperty Name="SQAnswer" ColumnName="SQAnswer" />
-                <ScalarProperty Name="secretQuestion" ColumnName="secretQuestion" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="nickname" ColumnName="nickname" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="headPortrait" ColumnName="headPortrait" />
                 <ScalarProperty Name="introduction" ColumnName="introduction" />
                 <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-                </MappingFragment>
+                <ScalarProperty Name="secretQuestion" ColumnName="secretQuestion" />
+                <ScalarProperty Name="SQAnswer" ColumnName="SQAnswer" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="commentReply" TypeName="Model.commentReply" StoreEntitySet="commentReply">
@@ -1220,6 +1272,14 @@
             </EndProperty>
             <EndProperty Name="comment1">
               <ScalarProperty Name="commentID" ColumnName="replyToID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="noteImage" TypeName="Model.noteImage" StoreEntitySet="noteImage">
+            <EndProperty Name="image">
+              <ScalarProperty Name="imageID" ColumnName="imageID" />
+            </EndProperty>
+            <EndProperty Name="note">
+              <ScalarProperty Name="noteID" ColumnName="noteID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="scenicImage" TypeName="Model.scenicImage" StoreEntitySet="scenicImage">

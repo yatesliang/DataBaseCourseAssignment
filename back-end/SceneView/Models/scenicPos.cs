@@ -20,9 +20,6 @@ namespace SceneView.Models
         public string city { get; set; }
         public string district { get; set; }
         public string address { get; set; }
-        public decimal longitude { get; set; }
-        public string city { get; set; }
-        public string district { get; set; }
     
         public virtual scenicSpot scenicSpot { get; set; }
     }

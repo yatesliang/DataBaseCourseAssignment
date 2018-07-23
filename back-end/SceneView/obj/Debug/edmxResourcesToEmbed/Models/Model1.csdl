@@ -56,6 +56,7 @@
     </Key>
     <Property Name="imageID" Type="Int32" Nullable="false" />
     <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="note" Relationship="Self.noteImage" FromRole="image" ToRole="note" />
     <NavigationProperty Name="scenicSpot" Relationship="Self.scenicImage" FromRole="image" ToRole="scenicSpot" />
     <NavigationProperty Name="strategy" Relationship="Self.strategyImage" FromRole="image" ToRole="strategy" />
   </EntityType>
@@ -86,6 +87,7 @@
     <Property Name="noteTime" Type="DateTime" Precision="6" Nullable="false" />
     <NavigationProperty Name="scenicSpot" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="note" ToRole="scenicSpot" />
     <NavigationProperty Name="user" Relationship="Self.FK_NOTE_REFERENCE_USER" FromRole="note" ToRole="user" />
+    <NavigationProperty Name="image" Relationship="Self.noteImage" FromRole="note" ToRole="image" />
   </EntityType>
   <EntityType Name="noteLikeMes">
     <Key>
@@ -117,9 +119,6 @@
     <Property Name="district" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="scenicSpot" Relationship="Self.FK_SCENICPO_REFERENCE_SCENICSP" FromRole="scenicPos" ToRole="scenicSpot" />
-    <Property Name="longitude" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
-    <Property Name="city" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="district" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="scenicSpot">
     <Key>
@@ -170,14 +169,9 @@
     <Property Name="headPortrait" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="introduction" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="phoneNumber" Type="Int64" />
-<<<<<<< HEAD
-=======
     <Property Name="secretQuestion" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="SQAnswer" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
->>>>>>> origin/SherlockHpc
     <NavigationProperty Name="user" Relationship="Self.FK_USERINFO_REFERENCE_USER" FromRole="userInfo" ToRole="user" />
-    <Property Name="secretQuestion" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-    <Property Name="SQAnswer" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_ANSWER_REFERENCE_QUESTION">
     <End Role="question" Type="Self.question" Multiplicity="1">
@@ -379,6 +373,10 @@
     <End Role="comment" Type="Self.comment" Multiplicity="*" />
     <End Role="comment1" Type="Self.comment" Multiplicity="*" />
   </Association>
+  <Association Name="noteImage">
+    <End Role="image" Type="Self.image" Multiplicity="*" />
+    <End Role="note" Type="Self.note" Multiplicity="*" />
+  </Association>
   <Association Name="scenicImage">
     <End Role="image" Type="Self.image" Multiplicity="*" />
     <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="*" />
@@ -466,6 +464,10 @@
     <AssociationSet Name="commentReply" Association="Self.commentReply">
       <End Role="comment" EntitySet="comment" />
       <End Role="comment1" EntitySet="comment" />
+    </AssociationSet>
+    <AssociationSet Name="noteImage" Association="Self.noteImage">
+      <End Role="image" EntitySet="image" />
+      <End Role="note" EntitySet="note" />
     </AssociationSet>
     <AssociationSet Name="scenicImage" Association="Self.scenicImage">
       <End Role="image" EntitySet="image" />

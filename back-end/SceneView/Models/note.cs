@@ -14,6 +14,12 @@ namespace SceneView.Models
     
     public partial class note
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public note()
+        {
+            this.image = new HashSet<image>();
+        }
+    
         public int noteID { get; set; }
         public string userID { get; set; }
         public short scenicID { get; set; }
@@ -24,5 +30,7 @@ namespace SceneView.Models
     
         public virtual scenicSpot scenicSpot { get; set; }
         public virtual user user { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<image> image { get; set; }
     }
 }
