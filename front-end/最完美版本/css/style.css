@@ -337,17 +337,17 @@ body a:hover {
 .comment {
     position: relative;
     width: 100%;
-    min-height: 800px;
-    min-width: 980px;
+    min-height: 150px;
+    min-width: 800px;
     background-color: #f0f3f5;
-    padding-bottom: 320px
+    padding-bottom: 20px
 }
 
 .comment .content {
     position: relative;
-    width: 1220px;
-    min-height: 800px;
-    margin: 0 auto
+    width: 1200px;
+    min-height: 150px;
+    margin: auto
 }
 
 .comment .content .title {

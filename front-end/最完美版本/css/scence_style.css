@@ -70,9 +70,9 @@
 }
 
 .scenicIntroduction {
-	font-size: 18px;
+	font-size: 13px;
 	text-align: center;
-	padding: 30px 100px;
+	padding: 0px 5px;
 	margin: 20px 100px;
 	line-height: 30px;
 	color: #000000;
@@ -96,7 +96,7 @@
 
 
 .strategy-brief {
-	margin-top:110px;
+	margin-top:3%;
 	background:rgba(256,256,256,0.5);
 	height:360px;
 }
@@ -163,7 +163,9 @@ h3 {
 }
 
 body{
-	background:rgba(73,92,105,0.2);
+/*	background:rgba(73,92,105,0.2);*/
+/*	background:rgba(247,244,237,0);*/
+	background-color:#f7f4ed;
 }
 
 .note-content {
@@ -194,7 +196,7 @@ h4 {
 }
 
 .strategy h1 {
-	padding:40px 0px 0px 0px;
+	padding:20px 0px 0px 0px;
 }
 
 #weather-photo {
@@ -221,7 +223,7 @@ input {
 /*初始化样式*/
 .star_evaluate {
     position: relative;
-    left: 800px;
+    margin-left: 60%;
     width: 100px;
     height: 20px;
     background: url("1.png") repeat-x;
@@ -317,4 +319,7 @@ input {
 
 .score_5:checked + .star_5 {
     width: 100px;
+}
+.strategies {
+	margin:0px;
 }
