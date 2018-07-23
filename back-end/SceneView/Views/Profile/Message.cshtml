@@ -3,18 +3,20 @@
     Layout = "~/Views/Profile/_Layout.cshtml";
 }
 
-    <ol class="breadcrumb hidden-xs">
-        <li><a href="/profile">Home</a></li>
-        <li><a href="/profile/note?m=@ViewBag.message">Message</a></li>
-    </ol>
+<ol class="breadcrumb hidden-xs">
+    <li><a href="/profile">Home</a></li>
+    <li><a href="/profile/note?m=@ViewBag.message">Message</a></li>
+</ol>
 
-    <h4 class="page-title b-0">我的评论</h4>
+@if (ViewBag.message == 1)
+{
+    <h4 class="page-title b-0">我发出的消息</h4>
 
     <div class="tab-container tile">
         <ul class="nav tab nav-tabs">
             <li class="active"><a href="#home">我的评论</a></li>
             <li><a href="#profile">我点赞的评论</a></li>
-            <li><a href="#messages">我点赞的游记</a></li>
+            <li><a href="#messages23">我点赞的游记</a></li>
         </ul>
 
         <div class="tab-content">
@@ -40,9 +42,8 @@
                             <input type="checkbox" class="pull-left list-check" value="">
                             <div class="media-body">
                                 <a href="" class="t-overflow"><p>@n.commentContent</p></a>
-                                <br>
-                                <p>回复@@@n.comment.user.userInfo.nickname --" @n.comment.commentContent "</p>
                                 <div class="clearfix"></div>
+                                <p>回复@@@n.comment.user.userInfo.nickname --" @n.comment.commentContent "</p>
                                 <div class="attrs">回复时间: @n.commentTime</div>
                             </div>
                         </div>
@@ -63,22 +64,81 @@
                     </div>
                 }
             </div>
-            <div class="tab-pane" id="messages">
+            <div class="tab-pane" id="messages23">
                 @foreach (var n in Model.userData.noteLikeMes)
                 {
                     <div class="media">
                         <input type="checkbox" class="pull-left list-check" value="">
                         <div class="media-body">
-                            <a href="" class="t-overflow"><p>你点赞了 @n.</p></a>
+                            <a href="" class="t-overflow"><p>你点赞了 @n.note.user.userInfo.nickname 的游记："@n.note.title"</p></a>
                             <div class="clearfix"></div>
-                            <div class="attrs">点赞时间: @</div>
+                            <div class="attrs">点赞时间: @n.time</div>
                         </div>
                     </div>
                 }
             </div>
         </div>
     </div>
+}
+else
+{
+    <h4 class="page-title b-0">我收到的消息</h4>
 
-    
+    <div class="tab-container tile">
+        <ul class="nav tab nav-tabs">
+            <li class="active"><a href="#home">回复我的评论</a></li>
+            <li><a href="#profile">点赞我的评论</a></li>
+            <li><a href="#messages23">点赞我的游记</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="listview list-container">
+
+                    @foreach (var n in Model.commentReplyMesData)
+                    {
+                        <div class="media">
+                            <input type="checkbox" class="pull-left list-check" value="">
+                            <div class="media-body">
+                                <a href="" class="t-overflow"><p>@n.commentReply.user.userInfo.nickname 回复了你的评论： @n.comment.commentContent</p></a>
+                                <div class="clearfix"></div>
+                                <p>@n.commentReply.commentContent</p>
+                                <div class="attrs">回复时间: @n.commentReply.commentTime</div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="tab-pane" id="profile">
+                @foreach (var n in Model.commentLikeMesData)
+                {
+                    <div class="media">
+                        <input type="checkbox" class="pull-left list-check" value="">
+                        <div class="media-body">
+                            <a href="" class="t-overflow"><p>@n.user.userInfo.nickname 点赞了你的评论：" @n.comment.commentContent "</p></a>
+                            <div class="clearfix"></div>
+                            <div class="attrs">点赞时间: @n.time</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="tab-pane" id="messages23">
+                @foreach (var n in Model.noteLikeMesData)
+                {
+                    <div class="media">
+                        <input type="checkbox" class="pull-left list-check" value="">
+                        <div class="media-body">
+                            <a href="" class="t-overflow"><p>@n.user.userInfo.nickname 点赞了你的游记："@n.note.title"</p></a>
+                            <div class="clearfix"></div>
+                            <div class="attrs">点赞时间: @n.time</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
 
 

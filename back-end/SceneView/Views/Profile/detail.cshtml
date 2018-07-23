@@ -18,7 +18,7 @@
         <h3 class="block-title">景点: @ViewBag.note.scenicSpot.scenicName</h3>
         <h3 class="block-title">被点赞次数: @ViewBag.note.noteLike</h3>
         <button class="btn btn-sm btn-alt m-r-5" onclick="edit()">编辑游记</button>
-        <p style="font-family:Arial;font-size:14px">@ViewBag.note.noteContent</p>
+        <p style="font-family:Arial;font-size:14px">@Html.Raw(@ViewBag.note.noteContent)</p>
         <br />
     </article>
 

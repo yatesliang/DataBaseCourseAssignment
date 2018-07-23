@@ -1,6 +1,7 @@
 ﻿using SceneView.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -179,6 +180,77 @@ namespace SceneView.Controllers
                 }
             }
         }
+        [HttpGet]
+        public ActionResult Setting()
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/login");
+            }
+            else
+            {
+                // 获取用户信息
+                var userID = Session["user"].ToString();
+                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+                if (userSession == null)
+                {
+                    return Redirect("~/Error");
+                }
+                else
+                {
+                    ProfileData profileData = ProfileData.getProfileData(db, userSession);
+                    return View(profileData);
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult Setting(ProfileData profileData)
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/login");
+            }
+            else
+            {
+                // 获取用户信息
+                var userID = Session["user"].ToString();
+                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+                if (userSession == null)
+                {
+                    return Redirect("~/Error");
+                }
+                else
+                {
+                    // 更新用户信息
+                    var userInfo = db.userInfo.Where(u => u.userID == userID).FirstOrDefault<userInfo>();
+                    userInfo.nickname = profileData.userData.userInfo.nickname;
+                    userInfo.phoneNumber = profileData.userData.userInfo.phoneNumber;
+                    userInfo.gender = profileData.userData.userInfo.gender;
+                    userInfo.SQAnswer = profileData.userData.userInfo.SQAnswer;
+                    userInfo.introduction = profileData.userData.userInfo.introduction;
+                    // 防止并发冲突
+                    bool saveFailed;
+                    do
+                    {
+                        saveFailed = false;
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (DbUpdateConcurrencyException ex)
+                        {
+                            saveFailed = true;
+                            ex.Entries.Single().Reload();
+                        }
+                    } while (saveFailed);
+                    return View(ProfileData.getProfileData(db, userSession));
+                }
+            }
+        }
+        public enum Gender
+        {
+            Male, Female
+        }
         public class ProfileData
         {
             public user userData { get; set; }
@@ -206,7 +278,7 @@ namespace SceneView.Controllers
                         profileData.commentReplyMesData.Add(cr);
                     }
                 }
-                profileData.noteLikeMesData = userSession.noteLikeMes.ToList();
+                profileData.noteLikeMesData = db.noteLikeMes.Where(n => n.note.userID == userSession.userID).ToList();
                 profileData.commentsData = db.comment.Where(c => c.userID == userSession.userID).ToList();
                 if (profileData.commentsData == null)
                 {

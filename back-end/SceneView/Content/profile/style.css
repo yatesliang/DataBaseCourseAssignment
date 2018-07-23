@@ -366,7 +366,7 @@ blockquote small {
     width: 95%;
     font-size: 16px;
     background-color: transparent;
-    background-image: url(../image/profile/icon/search.png);
+    background-image: url(/Content/image/profile/icon/search.png);
     background-repeat: no-repeat;
     background-position: 0 4px;
     padding-left: 32px;
@@ -640,7 +640,7 @@ hr {
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../image/profile/icon/tile-actions.png);
+    background-image: url(/Content/image/profile/icon/tile-actions.png);
 }
 
 .tile-config > a:hover {
@@ -1773,11 +1773,11 @@ a.list-group-item.active > .badge,
     Templates Skins for Desktop
 -----------------------------------------------------------*/
 #skin-cloth {
-    background: url(../image/profile/body/cloth.png);
+    background: url(/Content/image/profile/body/cloth.png);
 }
 
 #skin-tectile {
-    background: url(../image/profile/body/tectile.png);
+    background: url(/Content/image/profile/body/tectile.png);
 }
 
 @media (min-width: 1200px) {
@@ -1790,7 +1790,7 @@ a.list-group-item.active > .badge,
     /* List views */
     .sortable.todo-list .media {
         padding-left: 20px;
-        background: url(../image/profile/sort.png) no-repeat 8px 11px;
+        background: url(/Content/image/profile/sort.png) no-repeat 8px 11px;
     }
 }
 
@@ -1865,51 +1865,51 @@ a.list-group-item.active > .badge,
     }
 
     #skin-blur-violate {
-        background-image: url(../image/profile/body/violate.jpg);
+        background-image: url(/Content/image/profile/body/violate.jpg);
     }
 
     #skin-blur-lights {
-        background-image: url(../image/profile/body/lights.jpg);
+        background-image: url(/Content/image/profile/body/lights.jpg);
     }
 
     #skin-blur-city {
-        background-image: url(../image/profile/body/city.jpg);
+        background-image: url(/Content/image/profile/body/city.jpg);
     }
 
     #skin-blur-greenish {
-        background-image: url(../image/profile/body/greenish.jpg);
+        background-image: url(/Content/image/profile/body/greenish.jpg);
     }
 
     #skin-blur-night {
-        background-image: url(../image/profile/body/night.jpg);
+        background-image: url(/Content/image/profile/body/night.jpg);
     }
     
     #skin-blur-sunny {
-        background-image: url(../image/profile/body/sunny.jpg);
+        background-image: url(/Content/image/profile/body/sunny.jpg);
     }
     
     #skin-blur-blue {
-        background-image: url(../image/profile/body/blue.jpg);
+        background-image: url(/Content/image/profile/body/blue.jpg);
     }
     
     #skin-blur-chrome {
-        background-image: url(../image/profile/body/chrome.jpg);
+        background-image: url(/Content/image/profile/body/chrome.jpg);
     }
     
     #skin-blur-ocean {
-        background-image: url(../image/profile/body/ocean.jpg);
+        background-image: url(/Content/image/profile/body/ocean.jpg);
     }
     
     #skin-blur-sunset {
-        background-image: url(../image/profile/body/sunset.jpg);
+        background-image: url(/Content/image/profile/body/sunset.jpg);
     }
     
     #skin-blur-yellow {
-        background-image: url(../image/profile/body/yellow.jpg);
+        background-image: url(/Content/image/profile/body/yellow.jpg);
     }
 
     #skin-blur-kiwi {
-        background-image: url(../image/profile/body/kiwi.jpg);
+        background-image: url(/Content/image/profile/body/kiwi.jpg);
     }
     
     /* Sidebar */
@@ -2233,7 +2233,7 @@ a.list-group-item.active > .badge,
         border: 0;
         font-size: 0px;
         background-color: transparent;
-        background-image: url(../image/profile/icon/search.png);
+        background-image: url(/Content/image/profile/icon/search.png);
         background-repeat: no-repeat;
         background-position: center;
     }
@@ -2246,7 +2246,7 @@ a.list-group-item.active > .badge,
         background-color: #000;
         margin-top: -10px;
         height: 50px;
-        background: #000 url(../image/profile/icon/search.png) no-repeat 10px;
+        background: #000 url(/Content/image/profile/icon/search.png) no-repeat 10px;
         padding-left: 43px;
         font-size: 14px;
     }
