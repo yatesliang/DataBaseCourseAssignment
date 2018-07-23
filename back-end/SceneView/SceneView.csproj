@@ -191,6 +191,9 @@
     <Compile Include="Models\commentLikeMes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\commentReply.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\commentReplyMes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -687,6 +690,9 @@
     <Content Include="Views\Profile\Note.cshtml" />
     <Content Include="Views\Profile\Message.cshtml" />
     <Content Include="Views\Profile\TimeLine.cshtml" />
+    <Content Include="Views\Profile\_Layout.cshtml" />
+    <Content Include="Views\Profile\detail.cshtml" />
+    <Content Include="Views\Profile\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

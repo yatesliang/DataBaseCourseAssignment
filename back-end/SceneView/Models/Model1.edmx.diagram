@@ -4,39 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="15273899a1c14fef8a66f44b3d7c75ca" Name="Diagram1">
+      <Diagram DiagramId="9ac127e2ebf54e9781ebf25aa58b60e0" Name="Diagram1">
         <EntityTypeShape EntityType="Model.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.answer" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.comment" Width="1.5" PointX="10.5" PointY="23" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.commentLikeMes" Width="1.5" PointX="7.5" PointY="23.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.commentReplyMes" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.image" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.note" Width="1.5" PointX="7.5" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.noteLikeMes" Width="1.5" PointX="7.5" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.question" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.scenicPos" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.scenicSpot" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.strategy" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="5.25" PointY="27.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.userInfo" Width="1.5" PointX="7.5" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.answer" Width="1.5" PointX="7.5" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.comment" Width="1.5" PointX="10.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.commentLikeMes" Width="1.5" PointX="12.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.commentReply" Width="1.5" PointX="15.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.commentReplyMes" Width="1.5" PointX="18" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.image" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.note" Width="1.5" PointX="7.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.noteLikeMes" Width="1.5" PointX="9.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.question" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.scenicPos" Width="1.5" PointX="5.25" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.scenicSpot" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.strategy" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userInfo" Width="1.5" PointX="7.5" PointY="26.125" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_ANSWER_REFERENCE_QUESTION" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTL_REFERENCE_COMMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_CO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_COMMENT" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_COMMENTL_REFERENCE_USER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_COMMENTL_REFERENCE_USER2" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_USER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_USER2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_COMME" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_USER3" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_NOTE_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_NOTE_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NOTELIKE_REFERENCE_NOTE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_NOTELIKE_REFERENCE_USER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_NOTELIKE_REFERENCE_USER2" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_QUESTION_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SCENICPO_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_STRATEGY_REFERENCE_SCENICSP" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_USERINFO_REFERENCE_USER" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.commentReply" ManuallyRouted="false" />
         <AssociationConnector Association="Model.noteImage" ManuallyRouted="false" />
         <AssociationConnector Association="Model.scenicImage" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.scenicSpotToGo" ManuallyRouted="false" />
         <AssociationConnector Association="Model.strategyImage" ManuallyRouted="false" />
         <AssociationConnector Association="Model.viewedScenicSpot" ManuallyRouted="false" />
       </Diagram>

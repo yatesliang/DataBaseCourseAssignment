@@ -19,13 +19,11 @@ namespace SceneView.Models
         {
             this.comment = new HashSet<comment>();
             this.commentLikeMes = new HashSet<commentLikeMes>();
-            this.commentLikeMes1 = new HashSet<commentLikeMes>();
-            this.commentReplyMes = new HashSet<commentReplyMes>();
-            this.commentReplyMes1 = new HashSet<commentReplyMes>();
+            this.commentReply = new HashSet<commentReply>();
             this.note = new HashSet<note>();
             this.noteLikeMes = new HashSet<noteLikeMes>();
-            this.noteLikeMes1 = new HashSet<noteLikeMes>();
             this.scenicSpot = new HashSet<scenicSpot>();
+            this.scenicSpot1 = new HashSet<scenicSpot>();
         }
     
         public string userID { get; set; }
@@ -36,19 +34,15 @@ namespace SceneView.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commentLikeMes> commentLikeMes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentLikeMes> commentLikeMes1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentReplyMes> commentReplyMes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentReplyMes> commentReplyMes1 { get; set; }
+        public virtual ICollection<commentReply> commentReply { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<note> note { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<noteLikeMes> noteLikeMes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<noteLikeMes> noteLikeMes1 { get; set; }
         public virtual userInfo userInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scenicSpot> scenicSpot { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<scenicSpot> scenicSpot1 { get; set; }
     }
 }

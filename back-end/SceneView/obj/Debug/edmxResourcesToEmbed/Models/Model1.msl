@@ -37,8 +37,18 @@
           <ScalarProperty Name="messageID" ColumnName="messageID" />
           <ScalarProperty Name="commentID" ColumnName="commentID" />
           <ScalarProperty Name="senderID" ColumnName="senderID" />
-          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
           <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="commentReply">
+      <EntityTypeMapping TypeName="Model.commentReply">
+        <MappingFragment StoreEntitySet="commentReply">
+          <ScalarProperty Name="commentReplyID" ColumnName="commentReplyID" />
+          <ScalarProperty Name="replyToCommentID" ColumnName="replyToCommentID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="commentContent" ColumnName="commentContent" />
+          <ScalarProperty Name="commentTime" ColumnName="commentTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,9 +57,7 @@
         <MappingFragment StoreEntitySet="commentReplyMes">
           <ScalarProperty Name="messageID" ColumnName="messageID" />
           <ScalarProperty Name="commentID" ColumnName="commentID" />
-          <ScalarProperty Name="senderID" ColumnName="senderID" />
-          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
-          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="commentReplyID" ColumnName="commentReplyID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,7 +88,6 @@
           <ScalarProperty Name="messageID" ColumnName="messageID" />
           <ScalarProperty Name="noteID" ColumnName="noteID" />
           <ScalarProperty Name="senderID" ColumnName="senderID" />
-          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
           <ScalarProperty Name="time" ColumnName="time" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -147,14 +154,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="commentReply" TypeName="Model.commentReply" StoreEntitySet="commentReply">
-      <EndProperty Name="comment">
-        <ScalarProperty Name="commentID" ColumnName="commentID" />
-      </EndProperty>
-      <EndProperty Name="comment1">
-        <ScalarProperty Name="commentID" ColumnName="replyToID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="noteImage" TypeName="Model.noteImage" StoreEntitySet="noteImage">
       <EndProperty Name="image">
         <ScalarProperty Name="imageID" ColumnName="imageID" />
@@ -169,6 +168,14 @@
       </EndProperty>
       <EndProperty Name="scenicSpot">
         <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="scenicSpotToGo" TypeName="Model.scenicSpotToGo" StoreEntitySet="scenicSpotToGo">
+      <EndProperty Name="scenicSpot">
+        <ScalarProperty Name="scenicID" ColumnName="scenicID" />
+      </EndProperty>
+      <EndProperty Name="user">
+        <ScalarProperty Name="userID" ColumnName="userID" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="strategyImage" TypeName="Model.strategyImage" StoreEntitySet="strategyImage">

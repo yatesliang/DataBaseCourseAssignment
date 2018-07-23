@@ -17,10 +17,9 @@ namespace SceneView.Models
         public long messageID { get; set; }
         public long commentID { get; set; }
         public string senderID { get; set; }
-        public string receiverID { get; set; }
         public System.DateTime time { get; set; }
     
+        public virtual comment comment { get; set; }
         public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
     }
 }

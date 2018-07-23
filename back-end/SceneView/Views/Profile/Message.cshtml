@@ -1,17 +1,84 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Profile/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+    <ol class="breadcrumb hidden-xs">
+        <li><a href="/profile">Home</a></li>
+        <li><a href="/profile/note?m=@ViewBag.message">Message</a></li>
+    </ol>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Message</title>
-</head>
-<body>
-    <div> 
+    <h4 class="page-title b-0">我的评论</h4>
+
+    <div class="tab-container tile">
+        <ul class="nav tab nav-tabs">
+            <li class="active"><a href="#home">我的评论</a></li>
+            <li><a href="#profile">我点赞的评论</a></li>
+            <li><a href="#messages">我点赞的游记</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="listview list-container">
+
+                    @foreach (var n in Model.userData.comment)
+                    {
+                        <div class="media">
+                            <input type="checkbox" class="pull-left list-check" value="">
+                            <div class="media-body">
+                                <a href="" class="t-overflow"><p>@n.commentContent</p></a>
+                                <div class="clearfix"></div>
+                                <div class="attrs">评论时间: @n.commentTime</div>
+                                <div class="block attrs">点赞: @n.commentLike</div>
+                                <div class="block attrs">景点: @n.scenicSpot.scenicName</div>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var n in Model.userData.commentReply)
+                    {
+                        <div class="media">
+                            <input type="checkbox" class="pull-left list-check" value="">
+                            <div class="media-body">
+                                <a href="" class="t-overflow"><p>@n.commentContent</p></a>
+                                <br>
+                                <p>回复@@@n.comment.user.userInfo.nickname --" @n.comment.commentContent "</p>
+                                <div class="clearfix"></div>
+                                <div class="attrs">回复时间: @n.commentTime</div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="tab-pane" id="profile">
+                @foreach (var n in Model.userData.commentLikeMes)
+                {
+                    <div class="media">
+                        <input type="checkbox" class="pull-left list-check" value="">
+                        <div class="media-body">
+                            <a href="" class="t-overflow"><p>你点赞了 @n.user.userInfo.nickname 的评论：" @n.comment.commentContent "</p></a>
+                            <div class="clearfix"></div>
+                            <div class="attrs">点赞时间: @n.time</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="tab-pane" id="messages">
+                @foreach (var n in Model.userData.noteLikeMes)
+                {
+                    <div class="media">
+                        <input type="checkbox" class="pull-left list-check" value="">
+                        <div class="media-body">
+                            <a href="" class="t-overflow"><p>你点赞了 @n.</p></a>
+                            <div class="clearfix"></div>
+                            <div class="attrs">点赞时间: @</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+    
+
+
