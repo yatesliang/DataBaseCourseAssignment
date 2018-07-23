@@ -75,5 +75,20 @@
                 return true;
             }
         </script>
+
+        <!-- submit by He Pengcheng -->
+        <!-- get location -->
+        <script src="http://api.map.baidu.com/api?v=2.0&amp;ak=dvEybATSKmf8SlY2Whgwm6gRN8uyqN8H" type="text/javascript"></script>
+        <script>
+            baiduMap.init(function (o) {
+
+                $(".js-city").val(o.cityId3);
+                $(".js-map-input").val(o.address);
+                $(".js-longitude").val(o.longitude);
+                $(".js-latitude").val(o.latitude);
+
+            });
+        </script>
+
     </div>
 </div>
