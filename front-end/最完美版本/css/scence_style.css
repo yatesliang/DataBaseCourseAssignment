@@ -92,8 +92,19 @@
 	cursor: pointer;
 	text-align: center;
 }
-.cs{color:#f00;}
+.cs{color:#c04851;}
 
+/*
+.write{
+	max-width:50px;
+	max-height:50px;
+	background-color:#CCCCCC;
+	cursor: pointer;
+	text-align: center;
+}
+
+.write_cs{background-color:#f00;}
+*/
 
 .strategy-brief {
 	margin-top:3%;
@@ -322,4 +333,40 @@ input {
 }
 .strategies {
 	margin:0px;
+}
+
+
+.display {
+	margin-left:10px;
+}
+
+
+h5 {
+	margin-top:10px;
+	font-size:15px;
+}
+
+.write {
+	max-width:30px;
+	max-height:30px;
+}
+
+.scenicImage1 img{
+	max-height: 1000px;
+	max-width: 1700px;
+}
+
+.scenicImage2 img{
+	max-height: 640px;
+	max-width: 420px;
+}
+
+.more {
+	margin-right: 20px;
+	font-size:20px;
+}
+
+h6 {
+	margin-top: 0px;
+	font-size: 15px;
 }

@@ -112,14 +112,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h4 class="counter">5654</h4>
 				<h5>当前游客</h5>
 			</div>
-			<div class="scenicIntroduction">
+			<div class="scenicIntroduction" >
 				<p>景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介景点简介</p>
 				<br>
-				<p class="like">&#10084;</p>
-			</div>
-			<div>
 				
+				<div class="display col-md-12"style="display: inline-block text-align: middle">
+					<div class="col-md-4" style="float:left">
+						<p class="like">&#10084;</p>
+						<h5>想去</h5>
+					</div>
+					<div class="col-md-4" style="float: left">
+						<p class="like">&#9872;</p>
+						<h5>去过</h5>
+					</div>
+					<div class="col-md-4" style="float: left">
+					<a href="noteEditor.html">
+						<img class="write" style="transform:rotate(-90deg)" src="images2/edit.png">
+					</a>
+						<h6>故事</h6>
+					</div>
+				</div>
 			</div>
+
+		
+				
+			
 			<div class="clearfix"></div>
 		</div>
 		<div class="col-md-7 header-left">
@@ -128,19 +145,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- Slider -->
 					<div class="slider scenicImage">
 						<ul class="rslides scenicImage" id="slider1">
-							<li class="scenicImage">
+							<li class="scenicImage1">
 								<img src="images2/slide-1.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage1">
 								<img src="images2/slide-2.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage1">
 								<img src="images2/slide-3.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage1">
 								<img src="images2/slide-4.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage1">
 								<img src="images2/slide-5.jpg" alt="scenicImage">
 							</li>
 						</ul>
@@ -151,19 +168,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- Slider -->
 					<div class="slider scenicImage">
 						<ul class="rslides scenicImage" id="slider2">
-							<li class="scenicImage">
+							<li class="scenicImage2">
 								<img src="images2/slide-6.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage2">
 								<img src="images2/slide-7.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage2">
 								<img src="images2/slide-8.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage2">
 								<img src="images2/slide-9.jpg" alt="scenicImage">
 							</li>
-							<li class="scenicImage">
+							<li class="scenicImage2">
 								<img src="images2/slide-10.jpg" alt="scenicImage">
 							</li>
 						</ul>
@@ -182,6 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="strategy-display">
 			<div class="col-md-6 strategy-slider" id="strategy-slider">
 				<!-- Slider -->
+				<a href="#">
 				<div class="slider strategy">
 					<ul class="rslides strategy" id="slider3">
 						<li class="strategies">
@@ -204,14 +222,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 					</ul>
 				</div>
+				</a>
 				<!-- //Slider -->
 			</div>
+			
 
 			<div class="col-md-6 strategy-brief strategy-content">
 				<h3>攻略标题</h3>
 				<p>官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略官方攻略</p>
+		
 			</div>
-		</div>
+		</div>	
 <!--		<div class="clearfix"></div>-->
 	</div>
 </div>
@@ -219,8 +240,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="note" id="note">
 <!--	<div class="container">-->
+	
+	<div style="float:right">
+		<a class="more" href="blog.html">
+			<p>更多</p>
+		</a>
+	</div>
 	<h1>故事</h1>
-
 	<div class="notes" id="notes1">
 		<div class="col-md-6 col-sm-6 note-content">
 			<h3>游记标题</h3>
@@ -489,6 +515,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	})
 </script>
 		
+<!--
+<script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	$(function () {            
+		$(".write").click(function () {
+			$(this).toggleClass('write_cs');                 
+		})
+	})
+</script>
+-->
 
 <!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
