@@ -7,3 +7,5 @@ back-end/.vs/SceneView/v15/.suo
 *.ide-shm
 *.dll
 *.txt
+back-end/.vs/SceneView/v15/Server/sqlite3/storage.ide-wal
+*.ide-shm
