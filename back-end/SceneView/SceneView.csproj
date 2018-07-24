@@ -254,7 +254,10 @@
     <Content Include="Content\font\opan-sans\OpenSans-Semibold-webfont.svg" />
     <Content Include="Content\home\bootstrap.css" />
     <Content Include="Content\home\editor-bootstrap.css" />
+    <Content Include="Content\image\home\detail-icon.png" />
     <Content Include="Content\image\home\star.png" />
+    <Content Include="Content\image\home\svg_img.svg" />
+    <Content Include="Content\image\home\svg_img_hover.svg" />
     <Content Include="Content\image\home\T.jpg" />
     <Content Include="Content\image\profile\body\blue.jpg" />
     <Content Include="Content\image\profile\body\chrome.jpg" />
@@ -529,7 +532,7 @@
     <Content Include="Content\image\home\shanghai.jpg" />
     <Content Include="Content\image\home\shanghai1.jpg" />
     <Content Include="Content\image\home\shanghai11.jpg" />
-    <Content Include="Content\image\home\shanghai12.JPG" />
+    <Content Include="Content\image\home\shanghai12.jpg" />
     <Content Include="Content\image\home\shanghai2.jpg" />
     <Content Include="Content\image\home\timg.jpg" />
     <Content Include="Content\image\home\timg1.jpg" />
@@ -578,6 +581,8 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\easing.js" />
+    <Content Include="Scripts\easyResponsiveTabs.js" />
     <Content Include="Scripts\home\bootstrap.js" />
     <Content Include="Scripts\home\easing.js" />
     <Content Include="Scripts\home\easyResponsiveTabs.js" />
@@ -613,6 +618,10 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery.chocolat.js" />
+    <Content Include="Scripts\jquery.flexisel.js" />
+    <Content Include="Scripts\jquery.wmuSlider.js" />
     <Content Include="Scripts\login\bootstrap.min.js" />
     <Content Include="Scripts\login\jquery.min.js" />
     <Content Include="Scripts\login\jquery.placeholder.min.js" />
@@ -620,6 +629,7 @@
     <Content Include="Scripts\login\main.js" />
     <Content Include="Scripts\login\modernizr-2.6.2.min.js" />
     <Content Include="Scripts\login\respond.min.js" />
+    <Content Include="Scripts\move-top.js" />
     <Content Include="Scripts\profile\autosize.min.js" />
     <Content Include="Scripts\profile\bootstrap.min.js" />
     <Content Include="Scripts\profile\calendar.min.js" />
@@ -670,6 +680,41 @@
     <Content Include="Scripts\profile\validation\validate.min.js" />
     <Content Include="Scripts\profile\validation\validationEngine.min.js" />
     <Content Include="Scripts\profile\weather.min.js" />
+    <Content Include="Scripts\scene\counterup.min.js" />
+    <Content Include="Scripts\scene\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\scene\jquery.min.js" />
+    <Content Include="Scripts\scene\main.js" />
+    <Content Include="Scripts\scene\move-top.js" />
+    <Content Include="Scripts\scene\responsiveslides.min.js" />
+    <Content Include="Scripts\scene\sinaFaceAndEffec.js" />
+    <Content Include="Scripts\scene\waypoints.min.js" />
+    <Content Include="Sources\Scene\image\1.jpg" />
+    <Content Include="Sources\Scene\image\1.png" />
+    <Content Include="Sources\Scene\image\2.png" />
+    <Content Include="Sources\Scene\image\about-1.jpg" />
+    <Content Include="Sources\Scene\image\about-2.jpg" />
+    <Content Include="Sources\Scene\image\about-3.jpg" />
+    <Content Include="Sources\Scene\image\qintian.png" />
+    <Content Include="Sources\Scene\image\slide-1.jpg" />
+    <Content Include="Sources\Scene\image\slide-10.jpg" />
+    <Content Include="Sources\Scene\image\slide-2.jpg" />
+    <Content Include="Sources\Scene\image\slide-3.jpg" />
+    <Content Include="Sources\Scene\image\slide-4.jpg" />
+    <Content Include="Sources\Scene\image\slide-5.jpg" />
+    <Content Include="Sources\Scene\image\slide-6.jpg" />
+    <Content Include="Sources\Scene\image\slide-7.jpg" />
+    <Content Include="Sources\Scene\image\slide-8.jpg" />
+    <Content Include="Sources\Scene\image\slide-9.jpg" />
+    <Content Include="Sources\Scene\image\T.jpg" />
+    <Content Include="Sources\Scene\image\team-1.jpg" />
+    <Content Include="Sources\Scene\image\team-2.jpg" />
+    <Content Include="Sources\Scene\image\team-3.jpg" />
+    <Content Include="Sources\Scene\image\team-4.jpg" />
+    <Content Include="Sources\Scene\image\team-5.jpg" />
+    <Content Include="Sources\Scene\image\team-6.jpg" />
+    <Content Include="Sources\Scene\image\xuetian.png" />
+    <Content Include="Sources\Scene\image\yintian.png" />
+    <Content Include="Sources\Scene\image\yutian.png" />
     <Content Include="Sources\登录界面\css\login.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -711,7 +756,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\scene\" />
     <Folder Include="Scripts\share\" />
     <Folder Include="Sources\主页\" />
     <Folder Include="Views\Admin\" />
