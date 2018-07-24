@@ -1,0 +1,22 @@
+﻿@model IList<SceneView.Controllers.SceneController.Comment>
+
+@{
+    Layout = null;
+}
+<ul>
+    @foreach (var comment in Model)
+    {
+        <li>
+            <div class="head-face">
+                <img src="~/images2/1.jpg" />
+            </div>
+            <div class="reply-cont">
+                <p class="username">@comment.username</p>
+                <p class=" comment-body">@comment.commentContent</p>
+                <p class="comment-footer">@comment.commentTime  点赞 @comment.commentLike</p>
+            </div>
+        </li>
+
+    }
+</ul>
+

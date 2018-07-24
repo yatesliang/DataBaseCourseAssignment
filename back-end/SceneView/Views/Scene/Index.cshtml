@@ -1,0 +1,631 @@
+﻿@model SceneView.Controllers.SceneController.Spot
+
+
+@{
+    Layout = null;
+    List<SceneView.Models.image> imageslist = Model.spot.image.ToList();
+    List<SceneView.Models.note> notelist = Model.spot.note.ToList();
+    List<SceneView.Models.comment> commentList = Model.spot.comment.ToList();
+    var latitude = Model.spot.scenicPos.latitude;
+    var longitude = Model.spot.scenicPos.longitude;
+    var strategy = Model.spot.strategy.ToList(); ;
+    List<SceneView.Models.scenicSpot> viewedscenicList = Model.user.scenicSpot.ToList();
+    List<SceneView.Models.scenicSpot> wantscenicList = Model.user.scenicSpot1.ToList();
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/css1/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css1/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/js1/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/js1/move-top.js"></script>
+    <script type="text/javascript" src="~/js1/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+    <meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+    <title>百度地图API自定义地图</title>
+    <!--引用百度地图API-->
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .iw_poi_title {
+            color: #CC5522;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            padding-right: 13px;
+            white-space: nowrap
+        }
+
+        .iw_poi_content {
+            font: 12px arial,sans-serif;
+            overflow: visible;
+            padding-top: 4px;
+            white-space: -moz-pre-wrap;
+            word-wrap: break-word
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="banner1">
+        <div class="container">
+
+            <div class="banner_top">
+                <div class="banner_top_left">
+
+                </div>
+                <div class="banner_top_right">
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#introduction" class="scroll">简介</a></li>
+                        <li><a href="#strategy" class="scroll">攻略</a></li>
+                        <li><a href="#note" class="scroll">故事</a></li>
+                        <li><a href="#map" class="scroll">地图</a></li>
+                        <li><a href="#comment" class="scroll">印象</a></li>
+                        <li><a href="#contact" class="scroll">注册/登录</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+
+
+            </nav>
+            <div class="logo">
+
+            </div>
+            <div class="dummy_text">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- //banner -->
+
+
+    <div class="introduction" id="introduction">
+        <div class="container-fluid">
+            <h1>@Model.spot.scenicName</h1>
+            <div class="col-md-5 header-right">
+
+                <div class="weather">
+                    <iframe width="214" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=42"></iframe>
+                </div>
+                <div class="numOfVisit">
+                    <h4 class="counter">5654</h4>
+                    <h5>当前游客</h5>
+                </div>
+                <div class="scenicIntroduction">
+                    <p>@Model.spot.scenicIntroduction</p>
+                    <br>
+
+                    @{
+                        var flag = 0;
+                        foreach (var v in viewedscenicList)
+                        {
+                            if (v.scenicID == Model.spot.scenicID)
+                            {
+                                <p class="cs">&#10084;</p>
+                                flag = 1;
+                            }
+
+                        }
+                        if (flag == 0)
+                        {
+                            <p class="like">&#10084;</p>
+                        }
+                    }
+
+
+
+
+                </div>
+                <div>
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-7 header-left">
+                <div class="scenicImage">
+                    <div class="slider-1 scenicImage">
+                        <!-- Slider -->
+                        <div class="slider scenicImage">
+                            <ul class="rslides scenicImage" id="slider1">
+                                @if (imageslist.Count > 0)
+                                {
+                                    <li class="scenicImage">
+                                        <img src="@imageslist[0].imageAddress" alt="scenicImage">
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="scenicImage">
+                                        <img src="~/images2/slide-1.jpg" alt="scenicImage">
+                                    </li>
+                                }
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-2.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-3.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-4.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-5.jpg" alt="scenicImage">
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //Slider -->
+                    </div>
+                    <div class="slider-2 scenicImage">
+                        <!-- Slider -->
+                        <div class="slider scenicImage">
+                            <ul class="rslides scenicImage" id="slider2">
+
+                                @if (imageslist.Count > 1)
+                                {
+                                    <li class="scenicImage">
+                                        <img src="@imageslist[1].imageAddress" alt="scenicImage">
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="scenicImage">
+                                        <img src="~/images2/slide-6.jpg" alt="scenicImage">
+                                    </li>
+                                }
+
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-7.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-8.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-9.jpg" alt="scenicImage">
+                                </li>
+                                <li class="scenicImage">
+                                    <img src="~/images2/slide-10.jpg" alt="scenicImage">
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //Slider -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (strategy.Count > 0)
+    {
+        <div class="strategy" id="strategy">
+            <div class="container">
+                <h1>攻略</h1>
+
+                <div class="col-md-6 strategy strategy-slider" id="strategy-slider">
+                    <!-- Slider -->
+                    <div class="slider strategy">
+                        <ul class="rslides strategy" id="slider3">
+                            @if (imageslist.Count > 2)
+                            {
+                                <li class="strategy">
+                                    <img src="@imageslist[2].imageAddress" alt="strategy" href="#">
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="strategy">
+                                    <img src="~/images2/team-1.jpg" alt="strategy" href="#">
+                                </li>
+                            }
+                            <li class="strategy">
+                                <img src="~/images2/team-2.jpg" alt="strategy" href="#">
+                            </li>
+                            <li class="strategy">
+                                <img src="~/images2/team-3.jpg" alt="strategy" href="#">
+                            </li>
+                            <li class="strategy">
+                                <img src="~/images2/team-4.jpg" alt="strategy" href="#">
+                            </li>
+                            <li class="strategy">
+                                <img src="~/images2/team-5.jpg" alt="strategy" href="#">
+                            </li>
+                            <li class="strategy">
+                                <img src="~/images2/team-6.jpg" alt="strategy" href="#">
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //Slider -->
+                </div>
+
+                <div class="col-md-6 strategy-brief strategy-content">
+                    <p class="limit">@strategy[0].content</p>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    }
+    @if (notelist.Count > 0)
+    {
+        <div class="note" id="note">
+            <!--	<div class="container">-->
+            <h1>故事</h1>
+            @if (notelist.Count >= 1)
+            {
+            <div class="notes" id="notes1">
+                <div class="col-md-6 col-sm-6 note-content">
+                    <a href="/Scene/SingleNote?nn=@notelist[0].noteID">
+                        <h3>@notelist[0].title</h3>
+                    </a>
+                        <p class="limit">@notelist[0].noteContent</p>
+                    
+                </div>
+                <div class="col-md-6 col-sm-6 note-photo">
+                    <img src="@imageslist[3].imageAddress" alt="note-photo">
+                </div>
+                <div class="clearfix"></div>
+            </div>}
+
+            @if (notelist.Count >= 2)
+            { <div class="notes" id="notes2">
+                <div class="col-md-6 col-sm-6 note-photo">
+                    <img src="@imageslist[4].imageAddress" alt="note-photo">
+                </div>
+                <div class="col-md-6 col-sm-6 note-content">
+                    <a href="/Scene/SingleNote?nn=@notelist[0].noteID">
+                        <h3>@notelist[1].title</h3>
+                    </a>
+                        <p class="limit" href="/Scene/SingleNote?nn=@notelist[1].noteID ">@notelist[1].noteContent</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            }
+
+            @if (notelist.Count >= 3)
+
+            {<div class="notes" id="notes3">
+                 <div class="col-md-6 col-sm-6 note-content">
+                     <a href="/Scene/SingleNote?nn=@notelist[0].noteID">
+                         <h3>@notelist[2].title</h3>
+                     </a>
+                         <p class="limit" href="/Scene/SingleNote?nn=@notelist[2].noteID ">@notelist[2].noteContent</p>
+                 </div>
+                <div class="col-md-6 col-sm-6 note-photo">
+                    <img src="~/images2/about-3.jpg" alt="note-photo">
+                </div>
+            </div>
+            }
+
+            <div class="clearfix"></div>
+
+            
+        </div>
+    }
+        <div class="map" id="map">
+            <div class="container">
+                <h1>地图</h1>
+                <!-- Team -->
+                <div class="col-md-6 ">
+                    <div style="width:550px;height:354.38px;border:#ccc solid 1px;" id="dituContent">
+                    </div>
+
+                    <script type="text/javascript">
+                    //创建和初始化地图函数：
+                    function initMap() {
+                        createMap();//创建地图
+                        setMapEvent();//设置地图事件
+                        addMapControl();//向地图添加控件
+                    }
+
+                    //创建地图函数：
+                    function createMap() {
+                        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+                        var point = new BMap.Point(@longitude, @latitude);//定义一个中心点坐标
+                        map.centerAndZoom(point, 16);//设定地图的中心点和坐标并将地图显示在地图容器中
+                        window.map = map;//将map变量存储在全局
+                    }
+
+                    //地图事件设置函数：
+                    function setMapEvent() {
+                        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+                        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+                        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+                        map.enableKeyboard();//启用键盘上下左右键移动地图
+                    }
+
+                    //地图控件添加函数：
+                    function addMapControl() {
+                        //向地图中添加缩放控件
+                        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+                        map.addControl(ctrl_nav);
+                        //向地图中添加缩略图控件
+                        var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1 });
+                        map.addControl(ctrl_ove);
+                        //向地图中添加比例尺控件
+                        var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+                        map.addControl(ctrl_sca);
+                    }
+                    function searchComplete() {
+                        var html = [];
+
+                    }
+
+                    initMap();//创建和初始化地图
+                    </script>
+                </div>
+
+                <!-- Clients -->
+                <div class="col-md-6 ">
+
+                    <!-- <h3>Client <span>Feedback</span></h3> -->
+                    <!-- Slider -->
+                    <div class="traffic">
+                        <h4>附近交通</h4>
+                        <p class="content">
+                            公交12345<br>
+                            地铁12345
+                        </p>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+        </div>
+
+
+
+        <p>&nbsp;</p>
+        <p>
+            <br>
+        </p>
+        <div class="comment" id="comment">
+
+            <div class="box" style="border:#ccc solid 3px;">
+                <div class="container-fluid">
+                    <h3>评论</h3>
+                </div>
+
+                <div class="景点评分" id="scenic score" style=" position: relative;left: 800px;width: 150px; font: size 15; height: 30px;font-family: '微软雅黑';color:#000000;font-weight:900;">景点评分：</div>
+                <form id="score_form">
+                    <div class="star_evaluate">
+                        <input type="radio" id="scoreId_1" class="score score_1" name="score" value="1" />
+                        <label for="scoreId_1" class="star star_1"></label>
+                        <input type="radio" id="scoreId_2" class="score score_2" name="score" value="2" />
+                        <label for="scoreId_2" class="star star_2"></label>
+                        <input type="radio" id="scoreId_3" class="score score_3" name="score" value="3" />
+                        <label for="scoreId_3" class="star star_3"></label>
+                        <input type="radio" id="scoreId_4" class="score score_4" name="score" value="4" />
+                        <label for="scoreId_4" class="star star_4"></label>
+                        <input type="radio" id="scoreId_5" class="score score_5" name="score" value="5" />
+                        <label for="scoreId_5" class="star star_5"></label>
+                    </div>
+                </form>
+
+                <link rel="stylesheet" href="~/css1/main.css" />
+                <link rel="stylesheet" type="text/css" href="~/css1/sinaFaceAndEffec.css" />
+                <script type="text/javascript" src="~/js1/jquery-1.8.3.min.js"></script>
+                <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+                <div id="content" style="width:700px; height:auto; margin-left:260px; margin-top:20px">
+                    <div class="comment">
+                        <div class="head-face">
+                            <img src="~/images2/1.jpg" / >
+                            <p>@Model.usern</p>
+                        </div>
+                      @*  @using (Ajax.BeginForm("UpdateComment", "Scene", new AjaxOptions()
+                        {
+
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "info-show",
+
+
+                        }))*@
+                        @using (Ajax.BeginForm(new AjaxOptions()
+                        {
+                           
+                            HttpMethod = "POST",
+                            Url=Url.Action("UpdateComment", "Scene"),
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "info-show",
+
+
+                        }))
+
+                        {
+                            <div class="content">
+                                <div class="cont-box">
+                                    @Html.TextAreaFor(s => s.commentContent, new { @class = "text", @placeholder = "请输入..." })
+                                </div>
+                                <div class="tools-box">
+                                    <!-- <div class="operator-box-btn"><span class="face-icon"  >☺</span><span class="img-icon">▧</span></div> -->
+
+                                    <input type="submit" value="提交评论" class="btn btn-primary" id="btTest" />
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div id="info-show">
+                        <script>
+                        $('#info-show').load('@Url.Action("UpdateComment","Scene")')
+                        </script>
+                    </div>
+                </div>
+
+                <script type="text/javascript" src="~/js1/main.js"></script>
+                <script type="text/javascript" src="~/js1/sinaFaceAndEffec.js"></script>
+
+                <script type="text/javascript">
+                // 绑定表情
+               $('.face-icon').SinaEmotion($('.text'));
+                // 测试本地解析
+                function out() {
+                    var inputText = $('.text').val();
+                    $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+                }
+
+                var html;
+                function reply(content) {
+                    html = '<li>';
+                    html += '<div class="head-face">';
+                    html += '<img src="images2/1.jpg" / >';
+                    html += '</div>';
+                    html += '<div class="reply-cont">';
+                    html += '<p class="username">@Model.usern</p>';
+                    html += '<p class="comment-body">' + content + '</p>';
+                    html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
+                    html += '</div>';
+                    html += '</li>';
+                    return html;
+                }
+                </script>
+            </div>
+        </div>
+
+
+
+
+        <!--限制字数-->
+        <script>
+            $(".limit").each(function () {
+                var len = $(this).text().length;
+                if (len > 100) {
+                    var str = "";
+                    str = $(this).text().substring(0, 100) + "......";
+                    $(this).html(str);
+                }
+            });
+        </script>
+
+        <!-- Stats-Number-Scroller-Animation-JavaScript -->
+        <script src="~/js1/waypoints.min.js"></script>
+        <script src="~/js1/counterup.min.js"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+                $('.counter').counterUp({
+                    delay: 10,
+                    time: 1000
+                });
+            });
+        </script>
+        <!-- //Stats-Number-Scroller-Animation-JavaScript -->
+        <!-- Default-JavaScript-File -->
+        <script type="text/javascript" src="~/js1/jquery.min.js"></script>
+        <!-- Bootstrap-JavaScript-File -->
+        <script type="text/javascript" src="~/js1/bootstrap.min.js"></script>
+
+        <!-- Banner-Slider-JavaScript -->
+        <script src="~/js1/responsiveslides.min.js"></script>
+        <script>
+            $(function () {
+                $("#slider1, #slider2, #slider3, #slider4").responsiveSlides({
+                    auto: true,
+                    nav: false,
+                    speed: 800,
+                    namespace: "callbacks",
+                    pager: false,
+                });
+            });
+        </script>
+        <!-- //Banner-Slider-JavaScript -->
+        <!-- here stars scrolling icon -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+        </script>
+        <!-- //here ends scrolling icon -->
+        <!-- Smooth-Scrolling-JavaScript -->
+        <!--
+            <script type="text/javascript" src="~/Scripts/scene/move-top.js"></script>
+            <script type="text/javascript" src="~/Scripts/scene/easing.js"></script>
+            <script type="text/javascript">
+                    jQuery(document).ready(function($) {
+                        $(".scroll, .navbar li a, .footer li a").click(function(event){
+                            $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+                        });
+                    });
+            </script>
+        -->
+        <!-- //Smooth-Scrolling-JavaScript -->
+
+
+        <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $(".like").click(function () {
+                    $(this).toggleClass('cs');
+
+                })
+            })
+        </script>
+
+
+        <!-- for bootstrap working -->
+        <script src="~/js1/bootstrap.js"></script>
+        <!-- //for bootstrap working -->
+    </body>
+</html>

@@ -1,0 +1,577 @@
+﻿@model SceneView.Controllers.SceneController.noteList
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>游记（最终展示</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/Scripts/scene/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Scripts/scene/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/scene/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+</head>
+
+<body>
+    <!-- 这段是原来的banner -->
+    <!-- banner -->
+    <!-- <div class="banner">
+        <div class="container">
+            <div class="banner_top">
+                <div class="banner_top_left">
+                    <p>I am travelling to <span>Alaska Mountains.</span></p>
+                </div>
+                <div class="banner_top_right">
+                    <form>
+                        <input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                Brand and toggle get grouped for better mobile display
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+
+                Collect the nav links, forms, and other content for toggling
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="codes.html">Pages</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#contact" class="scroll">Contact Us</a></li>
+                    </ul>
+                </div>/.navbar-collapse
+
+            </nav>
+            <div class="logo">
+                <a href="index.html">Your Trip<span>Alaska Mountains</span></a>
+            </div>
+            <div class="dummy_text">
+                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                    adipisci velit, sed quia non numquam eius modi.</p>
+            </div>
+            <div class="social_icons">
+                <ul>
+                    <li><a href="#" class="p"></a></li>
+                    <li><a href="#" class="facebook"></a></li>
+                    <li><a href="#" class="g"></a></li>
+                    <li><a href="#" class="instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+    <!-- //banner -->
+    <!-- 这段是原来的banner -->
+    <!-- made by may 2018/7/20 -->
+    <!-- 这里是banner -->
+    <div class="banner1">
+        <div class="container">
+            <div class="banner_top">
+                <div class="banner_top_left">
+
+                </div>
+                <div class="banner_top_right">
+                    <form>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
+                               required="">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li>
+                            <a href="index.html">首页</a>
+                        </li>
+                        <!-- <li>
+                            <a href="about.html" class="active">景点</a>
+                        </li> -->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                景点 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="about.html" style="padding-top:10px;">黄浦区</a></li>
+                                <li><a href="about.html" style="padding-top:10px;">静安区</a></li>
+                                <li><a href="about.html" style="padding-top:10px;">徐汇区</a></li>
+                                <li><a href="about.html" style="padding-top:10px;">查看更多</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="/Scene/Blog">故事</a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="scroll">注册/登录</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </nav>
+            <div class="logo">
+
+            </div>
+            <div class="dummy_text">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 这里是banner -->
+    <!-- 这里是索引项 -->
+    <div class="container mainIndex">
+        <a href="index.html" title="首页">首页</a>>
+        <a href="about.html" title="景点">景点</a>>
+        <a href="" title="海欣专栏">@Model.singlenote.user.userInfo.nickname 专栏</a>>
+      <strong>@Model.singlenote.title</strong>
+    </div>
+    <!-- 这里是索引项 -->
+    <!-- 这里是aritcle主体 -->
+    <!-- <div class="article">
+        <div class="container">
+            <div class="title">
+                <h1 class="name">江北的流浪诗</h1>
+                <div class="info">
+                    <div class="author">
+                        By
+                        <a href="">海欣</a>
+                        <span>2018-7-20</span>
+                        <div class="more">more test</div>
+                    </div>
+                    <div class="more">
+                        <span>
+                            <a href="">海欣专栏</a>出品 |
+                        </span>
+                        <span>阅读量
+                            <strong>233</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="main1">
+        <h1>江北的流浪诗</h1>
+        <div class="ac-view">
+            <div class="art-writen">by
+                <a href="">cathy</a>
+                <span>8021-7-20</span>
+            </div>
+        </div>
+        <div class="art-declare">
+            <span><a href="">小u出品</a>|</span>
+            <span>reader: <strong>233</strong></span>
+        </div>
+        <br>
+        <div class="clear"></div>
+    </div> -->
+    <!-- 这里是article主体 -->
+    <!-- made by may 2018/7/20 -->
+    <!-- single -->
+    <div class="single">
+        <div class="container">
+            <div class="artical">
+                <div class="col-sidebar">
+                    <div data0="" class="side-floor">
+                        <div data0="" class="side-topic">
+                            <h3 data0="">相关目的地</h3>
+                        </div>
+                        <div data0="" class="side-main">
+                            <a data0="" href="~/ScenicHome/index?dn=@Model.singlenote.scenicSpot.scenicPos.district" m="点击_游记详情页_右侧_相关目的地_目的地_上海_2802"
+                               class="poi-card">
+                                <div data0="" class="poi-image">
+                                    <img data0="" src="@Model.singlenote.image.FirstOrDefault().imageAddress">
+                                </div>
+                                <div data0="" class="poi-title">@Model.singlenote.scenicSpot.scenicPos.district</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div data1="" class="side-floor">
+                        <div data1="" class="side-topic">
+                            <h3 data1="">相关游记</h3>
+                            <a data1="" href="" m="点击_游记详情页_右侧_相关游记_更多游记_查看全部相关游记"
+                               class="side-link">更多</a>
+                        </div>
+                        <div data1="" class="side-main" id="side-rotation" onload="sideImage(0)">
+                            <ul data1="" class="relv-content-list">
+                                <li data1="" class="on-top">
+                                    @if (Model.noteL.Count > 0)
+                                    {
+                                        <a data1="" href="/Scene/SingleNote?nn=@Model.noteL[0].noteID" m="点击_游记详情页_右侧_相关游记_目的地游记推荐_【首发】关于上海的一些记忆碎片_30082488"
+                                           class="relv-content-card">
+                                            <div data1="" class="cont-image">
+                                                <img data1="" src="~/images/shanghai12.jpg">
+                                            </div>
+                                            <div data1="" class="cont-title">
+                                                <span data1="" class="cont-tag">精华</span>
+                                                <!---->
+                                                <!---->@Model.noteL[0].title
+                                            </div>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a data1="" href="" m="点击_游记详情页_右侧_相关游记_目的地游记推荐_【首发】关于上海的一些记忆碎片_30082488"
+                                           class="relv-content-card">
+                                            <div data1="" class="cont-image">
+                                                <img data1="" src="~/images/shanghai12.jpg">
+                                            </div>
+                                            <div data1="" class="cont-title">
+                                                <span data1="" class="cont-tag">精华</span>
+                                                <!---->
+                                                <!---->【首发】关于上海的一些记忆碎片
+                                            </div>
+                                        </a>
+                                    }
+                                </li>
+                                <li data1="" class="">
+                                    @if(Model.noteL.Count > 1)
+                                    {
+                                    <a data1 = "" href = "/Scene/SingleNote?nn=@Model.noteL[1].noteID" m = "点击_游记详情页_右侧_相关游记_目的地游记推荐_上海比你想象的还要温柔！【上海旅游网红景点打卡】_30079571"
+                                       class="relv-content-card">
+                                        <div data1 = "" class="cont-image">
+                                            <img data1 = "" src="~/images/shanghai12.jpg">
+                                        </div>
+                                        <div data1="" class="cont-title">
+                                            <span data1="" class="cont-tag">精华</span>
+                                            <!---->
+                                            <!---->@Model.noteL[1].title
+                                        </div>
+                                    </a>
+                                    }
+                                    else{
+                                        <a data1 = "" href = "" m = "点击_游记详情页_右侧_相关游记_目的地游记推荐_上海比你想象的还要温柔！【上海旅游网红景点打卡】_30079571"
+                                       class="relv-content-card">
+                                        <div data1 = "" class="cont-image">
+                                            <img data1 = "" src="~/images/shanghai12.jpg">
+                                        </div>
+                                        <div data1 = "" class="cont-title">
+                                            <span data1 = "" class="cont-tag">精华</span>
+                                            <!---->
+                                            <!---->上海比你想象的还要小资！【上海旅游网红景点打卡】
+                                        </div>
+                                    </a>}
+                                    }
+                                </li>
+                                <li data1="" class="">
+                                    @if (Model.noteL.Count > 2)
+                                    {
+                                        <a data1="" href="/Scene/SingleNote?nn=@Model.noteL[2].noteID" m="点击_游记详情页_右侧_相关游记_目的地游记推荐_#猎艳行动# 【途牛首发】川藏之旅，难忘的旅行（下）_30080067"
+                                           class="relv-content-card">
+                                            <div data1="" class="cont-image">
+                                                <img data1="" src="~/images/33.jpg">
+                                            </div>
+                                            <div data1="" class="cont-title">
+                                                <span data1="" class="cont-tag">精华</span>
+                                                <!---->
+                                                <!---->@Model.noteL[2].title
+                                            </div>
+                                        </a>}
+                                    else
+                                    {
+                                        <a data1="" href="" m="点击_游记详情页_右侧_相关游记_目的地游记推荐_#猎艳行动# 【途牛首发】川藏之旅，难忘的旅行（下）_30080067"
+                                           class="relv-content-card">
+                                            <div data1="" class="cont-image">
+                                                <img data1="" src="~/images/33.jpg">
+                                            </div>
+                                            <div data1="" class="cont-title">
+                                                <span data1="" class="cont-tag">精华</span>
+                                                <!---->
+                                                <!---->#猎艳行动# 【途牛首发】川藏之旅，难忘的旅行（下）
+                                            </div>
+                                        </a>}
+                                    }
+                                </li>
+                            </ul>
+                            <div data1="" class="cont-navi">
+                                <span data1="" class="navi-item active"></span>
+                                <span data1="" class="navi-item"></span>
+                                <span data1="" class="navi-item"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <!-- <div class="fix-sider" style="position: relative; top: 0px;">
+                        <a href="http://dynamic.m.tuniu.com/livechat?groupId=2&amp;contentId=30167490&amp;contentType=1008&amp;title=要想感受上海的慢生活，来宽窄巷子！&amp;entranceUrl=http://www.tuniu.com/trips/30167490"
+                            class="online-customer-link"></a>
+
+                    </div> -->
+                </div>
+                <div class="topic-box">
+                    <div class="topic-image">
+                        <img src="~/images/shanghai12.jpg">
+                        <div class="topic-mask"></div>
+                        <div class="detail-title clearfix">
+                            <h1>要想感受上海的慢生活，来黄渡理工草场大学！</h1>
+                        </div>
+                    </div>
+                    <div class="topic-info clearfix">
+                        <a href="" class="user-pic" m="点击_游记详情页_顶部_作者头像_75798343_查看个人主页">
+                            <img src="~/images/33.jpg">
+                        </a>
+                        <div class="user-info">
+                            <a href="" class="user-name">@Model.singlenote.user.userInfo.nickname</a>
+                            <p class="user-detail">@Model.singlenote.noteTime</p>
+                        </div>
+                        <!-- <a href="javascript:;" class="follow-button">+ 关注</a> -->
+                        <ul class="tour-relation" id="tripOptions">
+                            <li class="detail-like">
+                                <a href="#tour-like" class="scroll" data-status="false" id="likeButton" m="点击_游记详情页_顶部_点赞__点赞">
+                                    <i class="tour-like"onclick="likeNote(this)" id="tour-like"></i>
+                                    <span id="tour-like-num">@Model.singlenote.noteLike</span>
+                                </a>
+                            </li>
+                            <li class="detail-collect">
+                                <a href="" data-status="false" id="collectButton" m="点击_游记详情页_顶部_收藏按钮__收藏">
+                                    <i class="tour-collect" id="tour-collect"></i>
+                                    <span>收藏</span>
+                                </a>
+                            </li>
+                            <li class="detail-comment">
+                                <a href="">
+                                    <!-- <a href="" m="点击_游记详情页_顶部_评论按钮__评论"> -->
+                                    <i class="tour-comment"></i>评论
+                                </a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="art-trips-container">
+
+                    <div class="art-trips-text ">
+
+                        <div class="art-trips-text-content">
+                            @Html.Raw( @Model.singlenote.noteContent)
+
+                        </div>
+                    </div>
+                    @*
+        <div class="art-trips-text ">
+
+            <div class="art-trips-text-content">
+                上海美食美景众多，是个来了就不想走的城市。今天的内容就是介绍上海的宽窄巷子，来感受哈上海随着时代发展，有着不变的慢生活以及正在进行的新生活方式。文字只是片面，能亲身体验是最好的接触方式。
+            </div>
+        </div>
+
+
+
+        <div class="art-trips-image">
+            <div class="art-trips-product-image J_sdk_img" data-img="images/shanghai12.jpg">
+
+                <img class="product-img" data-src="~/images/shanghai12.jpg" src="~/images/shanghai12.jpg" />
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="art-trips-text ">
+
+            <div class="art-trips-text-content">
+                宽窄巷子是一张有着悠久历史的上海名片，在这里你能触摸到历史留下的痕迹，也能体味到上海最原滋原味的休闲生活方式。走进宽窄巷子，就走进了最上海、最古老、最时尚的老上海名片、新都市会客厅。
+            </div>
+        </div>
+
+
+
+        <div class="art-trips-image">
+            <div class="art-trips-product-image J_sdk_img" data-img="images/7777.jpg">
+
+                <img class="product-img" data-src="~/images/7777.jpg" src="~/images/7777.jpg" />
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="art-trips-text ">
+
+            <div class="art-trips-text-content">
+                宽窄巷子由宽巷子、窄巷子和井巷子三条老式街道及它们之间的四合院群落组成，是北方的胡同文化和建筑风格在南方的唯一见证。与大慈寺、文殊院一起并称为上海三大历史文化名城保护街区。<br />
+            </div>
+        </div>*@
+
+
+                </div>
+
+
+                        <!-- single -->
+                        <!-- here stars scrolling icon -->
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                /*
+                                    var defaults = {
+                                    containerID: 'toTop', // fading element id
+                                    containerHoverID: 'toTopHover', // fading element hover id
+                                    scrollSpeed: 1200,
+                                    easingType: 'linear'
+                                    };
+                                */
+
+                                $().UItoTop({ easingType: 'easeOutQuart' });
+
+                            });
+                        </script>
+                        <script type="text/javascript">
+                            $(function () {
+                                $("#tour-like").click(function () {
+                            var f = this;
+                            if ($("#tour-like").hasClass("tour-like")) {
+                                $("#tour-like").removeClass("tour-like");
+                                $(this).addClass("liked");
+                                 x = $("#tour-like-num").text();
+                                 x = parseInt(x);
+                                 x = x + 1;
+                                 $("#tour-like-num").text(x);
+
+                            } else {
+                                $("#tour-like").removeClass("liked");
+                                $(this).addClass("tour-like");
+                                x = $("#tour-like-num").text();
+                                 x = parseInt(x);
+                                 x = x - 1;
+                                 $("#tour-like-num").text(x);
+                            }
+                                    $.ajax({
+                                        type: "post",
+                                        url: '/Scene/UpdateLike',
+                                        data: { ln: $("#tour-like-num").text(), ni:@Model.singlenote.noteID
+                                        },
+                                        error: function (message) {
+                                            alert('error!');
+                                        }
+                                    })
+
+                                //此处状态更改向数据库发送消息，更改游记like数目
+
+                        })
+                            })
+                            $(function () {
+                                $("#tour-collect").click(function () {
+                                    var f = this;
+                                    if ($("#tour-collect").hasClass("tour-collect")) {
+                                        $("#tour-collect").removeClass("tour-collect");
+                                        $(this).addClass("collected");
+                                    } else {
+                                        $("#tour-collect").removeClass("collected");
+                                        $(this).addClass("tour-collect");
+                                    }
+
+                                })
+                            })
+                        </script>
+
+                        <script type="text/javascript">
+
+                            var curIndex = 0,  //当前index
+                                imgLen = $(".relv-content-list li").length;  //图片总数
+                            // 定时器自动变换2.5秒每次
+                            var autoChange = setInterval(function () {
+                                if (curIndex < imgLen - 1) {
+                                    curIndex++;
+                                } else {
+                                    curIndex = 0;
+                                }
+                                //调用变换处理函数
+                                changeTo(curIndex);
+                            }, 2500);
+
+
+                            //对左上角按钮index进行事件绑定处理等
+                            $(".cont-navi").find("span").each(function (item) {
+                                $(this).hover(function () {
+                                    clearInterval(autoChange);
+                                    changeTo(item);
+                                    curIndex = item;
+                                }, function () {
+                                    autoChangeAgain();
+                                });
+                            });
+
+                            //清除定时器时候的重置定时器--封装
+                            function autoChangeAgain() {
+                                autoChange = setInterval(function () {
+                                    if (curIndex < imgLen - 1) {
+                                        curIndex++;
+                                    } else {
+                                        curIndex = 0;
+                                    }
+                                    //调用变换处理函数
+                                    changeTo(curIndex);
+                                }, 2500);
+                            }
+
+                            function changeTo(num) {
+                                var goLeft = num * 400;
+                                $(".relv-content-list").find("li").removeClass("on-top").eq(num).addClass("on-top");
+                                $(".cont-navi").find("span").removeClass("active").eq(num).addClass("active");
+                            }
+                        </script>
+
+                        <!-- //here ends scrolling icon -->
+                        <!-- for bootstrap working -->
+                        <script src="~/Scripts/scene/bootstrap.js"></script>
+                        <!-- //for bootstrap working -->
+</body>
+
+</html>
