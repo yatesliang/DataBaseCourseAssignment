@@ -127,7 +127,8 @@
                         
                     </div>}
                 @if (Model.Count > 1)
-                {<div class="col-md-6 blog-grid">
+                {
+                    <div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
                             <a href="single.html"><img src="@Model[1].image.First().imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
@@ -159,7 +160,8 @@
                 </div>
                 <div class="clearfix"> </div>
               
-            </div>}
+            </div>
+                }
                 <div class="col-md-6 blog-grid">
                     <div class="col-xs-4 blog-grid-left">
                         <a href="single.html"><img src="~/Content/image/home/19.jpg" alt=" " class="img-responsive" /></a>

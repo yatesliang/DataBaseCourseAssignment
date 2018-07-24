@@ -562,6 +562,10 @@
     <Content Include="Content\profile\media-player.css" />
     <Content Include="Content\profile\style.css" />
     <Content Include="Content\profile\track-css\history.css" />
+    <Content Include="Content\scene\chocolat.css" />
+    <Content Include="Content\scene\main.css" />
+    <Content Include="Content\scene\scence_style.css" />
+    <Content Include="Content\scene\sinaFaceAndEffec.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

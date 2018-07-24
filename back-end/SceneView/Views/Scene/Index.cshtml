@@ -21,19 +21,18 @@
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript">
         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
                function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
-    <link href="~/css1/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/css1/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/home/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/home/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- js -->
     <script src="~/Scripts/jquery-1.11.1.min.js"></script>
     <!-- //js -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/Content/scene/scence_style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="~/Scripts/move-top.js"></script>
     <script type="text/javascript" src="~/Scripts/easing.js"></script>
@@ -454,8 +453,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </form>
 
-                <link rel="stylesheet" href="~/css1/main.css" />
-                <link rel="stylesheet" type="text/css" href="~/css1/sinaFaceAndEffec.css" />
+                <link rel="stylesheet" href="~/Content/scene/main.css" />
+                <link rel="stylesheet" type="text/css" href="~/Content/scene/sinaFaceAndEffec.css" />
                 <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
                 <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
                 <div id="content" style="width:700px; height:auto; margin-left:260px; margin-top:20px">
@@ -464,20 +463,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <img src="~/Sources/Scene/image/1.jpg" / >
                             <p>@Model.usern</p>
                         </div>
-                      @*  @using (Ajax.BeginForm("UpdateComment", "Scene", new AjaxOptions()
-                        {
 
-                            HttpMethod = "POST",
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = "info-show",
-
-
-                        }))*@
                         @using (Ajax.BeginForm(new AjaxOptions()
                         {
-                           
+
                             HttpMethod = "POST",
-                            Url=Url.Action("UpdateComment", "Scene"),
+                            Url = Url.Action("UpdateComment", "Scene"),
                             InsertionMode = InsertionMode.Replace,
                             UpdateTargetId = "info-show",
 
