@@ -171,6 +171,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\scenicHomeController.cs" />
@@ -242,9 +243,39 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\bootstrap-theme.min.css" />
+    <Content Include="Content\admin\bootstrap.css" />
+    <Content Include="Content\admin\bootstrap.min.css" />
+    <Content Include="Content\admin\common.css" />
+    <Content Include="Content\admin\commonCopy.css" />
+    <Content Include="Content\admin\flat-ui.min.css" />
+    <Content Include="Content\admin\jquery-ui.css" />
+    <Content Include="Content\admin\jquery.nouislider.css" />
+    <Content Include="Content\admin\jquery.nouislider.min.css" />
+    <Content Include="Content\admin\slide.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\home\bootstrap.css" />
+    <Content Include="Content\image\admin\captchaCode.jpg" />
+    <Content Include="Content\image\admin\circle.png" />
+    <Content Include="Content\image\admin\icon_card.png" />
+    <Content Include="Content\image\admin\icon_card_grey.png" />
+    <Content Include="Content\image\admin\icon_change.png" />
+    <Content Include="Content\image\admin\icon_change_grey.png" />
+    <Content Include="Content\image\admin\icon_char.png" />
+    <Content Include="Content\image\admin\icon_chara.png" />
+    <Content Include="Content\image\admin\icon_chara_grey.png" />
+    <Content Include="Content\image\admin\icon_char_grey.png" />
+    <Content Include="Content\image\admin\icon_house.png" />
+    <Content Include="Content\image\admin\icon_house_grey.png" />
+    <Content Include="Content\image\admin\icon_rule.png" />
+    <Content Include="Content\image\admin\icon_rule_grey.png" />
+    <Content Include="Content\image\admin\icon_source.png" />
+    <Content Include="Content\image\admin\icon_source_grey.png" />
+    <Content Include="Content\image\admin\icon_user.png" />
+    <Content Include="Content\image\admin\icon_user_grey.png" />
+    <Content Include="Content\image\admin\logo.png" />
+    <Content Include="Content\image\admin\progress02.png" />
     <Content Include="Content\image\scene\about-1.jpg" />
     <Content Include="Content\image\scene\about-2.jpg" />
     <Content Include="Content\image\scene\about-3.jpg" />
@@ -411,6 +442,13 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\admin\bootstrap.min.js" />
+    <Content Include="Scripts\admin\html5.js" />
+    <Content Include="Scripts\admin\jquery-ui.js" />
+    <Content Include="Scripts\admin\jquery.min.js" />
+    <Content Include="Scripts\admin\jquery.nouislider.js" />
+    <Content Include="Scripts\admin\jquery.nouislider.min.js" />
+    <Content Include="Scripts\admin\respond.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\home\bootstrap.js" />
@@ -462,7 +500,10 @@
     <Content Include="Views\ScenicHome\Details.cshtml" />
     <Content Include="Views\ScenicHome\Edit.cshtml" />
     <Content Include="Views\ScenicHome\Index.cshtml" />
-    <Content Include="Views\Login\View.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Scene.cshtml" />
+    <Content Include="Views\Admin\_AdminLayout.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

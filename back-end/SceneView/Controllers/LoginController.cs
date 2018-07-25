@@ -157,15 +157,42 @@ namespace SceneView.Controllers
             }
             return Redirect("Error");
         }
-
         [HttpGet]
-        public ActionResult view(String name)
+        public ActionResult Admin()
         {
-            return View(name);
+            return View();
         }
-        public void getData(String username, int age)
+        [HttpPost]
+        public ActionResult Admin(result r)
         {
-            
+            if (ModelState.IsValid)
+            {
+                var md5 = new MD5TransferAndVerify();
+                // 获取数据库查询结果
+                var result = db.admin.Where(a => a.adminID == r.admin).FirstOrDefault();
+                // 管理员不存在
+                if (result == null)
+                {
+                    ViewBag.flag = -1;
+                    return View();
+                }
+                else
+                {
+                    if (result.password == md5.GetMD5Hash(r.adminPas))
+                    // 用户验证正确，则创建Session会话，跳转至主页
+                    {
+                        Session["admin"] = result.adminID;
+                        return Redirect("/Admin");
+                    }
+                    else
+                    {
+                        // 否则验证失败，密码错误
+                        ViewBag.flag = 0;
+                        return View();
+                    }
+                }
+            }
+            return Redirect("Error");
         }
         public class result
         {
@@ -173,7 +200,8 @@ namespace SceneView.Controllers
             public string password { get; set; }
             public long phone { get; set; }
             public string answer { get; set; }
-
+            public string admin { get; set; }
+            public string adminPas { get; set; }
         }
 
     }
