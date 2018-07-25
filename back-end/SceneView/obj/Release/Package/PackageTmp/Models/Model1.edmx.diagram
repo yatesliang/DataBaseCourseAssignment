@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42e38ba0db194050907aa6d7b9b8685b" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.answer" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.comment" Width="1.5" PointX="7.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.commentLikeMes" Width="1.5" PointX="9.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.commentReplyMes" Width="1.5" PointX="9.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.image" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.message" Width="1.5" PointX="7.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.note" Width="1.5" PointX="10.5" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.noteLikeMes" Width="1.5" PointX="9.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.question" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.scenicPos" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.scenicSpot" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.strategy" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.userInfo" Width="1.5" PointX="7.75" PointY="29.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_ANSWER_REFERENCE_QUESTION" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_SCENICSP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENT_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTL_REFERENCE_MESSAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_COMMENTR_REFERENCE_MESSAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MESSAGE_REFERENCE_USER1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MESSAGE_REFERENCE_USER2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NOTELIKE_REFERENCE_MESSAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NOTE_REFERENCE_SCENICSP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NOTE_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_QUESTION_REFERENCE_SCENICSP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SCENICPO_REFERENCE_SCENICSP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_STRATEGY_REFERENCE_SCENICSP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_USERINFO_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.commentReply" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.scenicImage" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.strategyImage" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.viewedScenicSpot" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

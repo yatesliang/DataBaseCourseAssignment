@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title </title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/Content/home/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/home/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/Scripts/home/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Scripts/home/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/home/easing.js"></script>
+    <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+    </script>
+    <!-- start-smoth-scrolling -->
+</head>
+<body>
+    <!-- banner -->
+    <div class="banner1">
+        <div class="container">
+            <div class="banner_top">
+                <div class="banner_top_left">
+
+                </div>
+                <div class="banner_top_right">
+                    <form>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="about.html" class="active">景点</a></li>
+
+
+                        <li><a href="blog.html">故事</a></li>
+                        <li>
+                            <a href="~/Views/Login/Index.cshtml"
+                               class="scroll">注册/登录</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+                <!-- district -->
+                <div class="district">
+                    <div class="container">
+                        <div class="lefttop">
+                            <h4>地区</h4>
+                            <div class="cfb-journals journal-entry  main">
+                                <div class="journal-main cfb-clearfix">
+                                    <div id="JS-journal-select" class="journal-select">
+                                        <div id="JS-tabs" class="tabs cfb-clearfix">
+
+
+                                            <div id="JS-cont">
+                                                <div class="cont cfb-clearfix">
+                                                    <a href="#sceneShow" class="scroll">黄浦区</a>
+                                                    <a>徐汇区</a>
+                                                    <a href="">长宁区</a>
+                                                    <a href="">静安区</a>
+                                                    <a href="">虹口区</a>
+                                                    <a href="">普陀区</a>
+                                                    <a href="">闸北区</a>
+                                                    <a href="">杨浦区</a>
+                                                    <a href="">嘉定区</a>
+                                                    <a href="">金山区</a>
+                                                    <a href="">闵行区</a>
+                                                    <a href="">宝山区</a>
+                                                    <a href="">青浦区</a>
+                                                    <a href="">松江区</a>
+                                                    <a href="">奉贤区</a>
+                                                    <a href="">浦东新区</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lefttop">
+                            <h4>分类</h4>
+                            <div class="cfb-journals journal-entry  main">
+                                <div class="journal-main cfb-clearfix">
+                                    <div id="JS-journal-select" class="journal-select">
+                                        <div id="JS-tabs" class="tabs cfb-clearfix">
+                                            <div id="JS-cont">
+                                                <div class="cont cfb-clearfix">
+                                                    <a href="">游乐园</a>
+                                                    <a href="">植物园</a>
+                                                    <a href="">动物园</a>
+                                                    <a href="">博物馆</a>
+                                                    <a href="">历史遗迹</a>
+                                                    <a href="">自然风光</a>
+                                                    <a href="">公园</a>
+                                                    <a href="">高空观景</a>
+                                                    <a href="">城市风光</a>
+                                                    <a href="">古镇</a>
+                                                    <a href="">其他景点</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+            <div class="logo">
+
+            </div>
+            <div class="dummy_text">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- //banner -->
+    <div class="sceneShow district" id="sceneShow">
+        <div class="container content">
+            <div id="scene-show-cells" class="cont cfb-clearfix">
+                <ul>
+                    <div>
+                        @RenderBody()
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

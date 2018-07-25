@@ -127,45 +127,51 @@
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    @using (Html.BeginForm("EditScene", "Admin", FormMethod.Post, new { @class = "form-horizontal", @name = "editForm", @onsubmit = "return checkValid()" }))
+                                    @using (Html.BeginForm("EditScene", "Admin", FormMethod.Post, new { @class = "form-horizontal", @name = scene.scenicID+"editForm", @onsubmit = "return checkValid2(" + scene.scenicID + ")" }))
                                     {
+                                        var nameID = scene.scenicID + "name";
+                                        var latitudeID = scene.scenicID + "latitude";
+                                        var longitudeID = scene.scenicID + "longitude";
+                                        var cityID = scene.scenicID + "city";
+                                        var districtID = scene.scenicID + "district";
+                                        var addressID = scene.scenicID + "address";
+                                        var introID = scene.scenicID + "intro";
+
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">景区名称：</label>
                                             <div class="col-xs-8 ">
                                                 @Html.TextBoxFor(s => s.scenicSpot.scenicID, new { @style = "display:none", Value = scene.scenicID })
-                                                @Html.TextBoxFor(s => s.scenicSpot.scenicName, new { @class = "form-control input-sm duiqi", Value = scene.scenicName })
+
+                                                @Html.TextBoxFor(s => s.scenicSpot.scenicName, new { @class = "form-control input-sm duiqi", @id = nameID, Value = scene.scenicName })
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">经度：</label>
                                             <div class="col-xs-8 ">
-                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.latitude, new { @class = "form-control input-sm duiqi", Value = scene.scenicPos.latitude })
+                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.latitude, new { @class = "form-control input-sm duiqi", @id = latitudeID, Value = scene.scenicPos.latitude })
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">纬度：</label>
                                             <div class="col-xs-8 ">
-                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.longitude, new { @class = "form-control input-sm duiqi", Value = scene.scenicPos.longitude })
+                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.longitude, new { @class = "form-control input-sm duiqi", @id = longitudeID, Value = scene.scenicPos.longitude })
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">城市：</label>
                                             <div class="col-xs-8 ">
-                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.city, new { @class = "form-control input-sm duiqi", Value = scene.scenicPos.city })
+                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.city, new { @class = "form-control input-sm duiqi", @id = cityID, Value = scene.scenicPos.city })
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">区(县)：</label>
                                             <div class="col-xs-8 ">
-                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.district, new { @class = "form-control input-sm duiqi", Value = scene.scenicPos.district })
+                                                @Html.TextBoxFor(s => s.scenicSpot.scenicPos.district, new { @class = "form-control input-sm duiqi", @id = districtID, Value = scene.scenicPos.district })
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">地址：</label>
                                             <div class="col-xs-8 ">
-                                                @{
-                                                    var addressID = scene.scenicID + "address";
-                                                }
                                                 @Html.TextAreaFor(s => s.scenicSpot.scenicPos.address, new { @class = "form-control input-sml duiqi", @id = addressID, Value = scene.scenicPos.address })
                                                 <script>
                                                     document.getElementById('@addressID').value = '@scene.scenicPos.address';
@@ -175,9 +181,6 @@
                                         <div class="form-group ">
                                             <label for="sName" class="col-xs-3 control-label">简介：</label>
                                             <div class="col-xs-8 ">
-                                                @{
-                                                    var introID = scene.scenicID + "intro";
-                                                }
                                                 @Html.TextAreaFor(s => s.scenicSpot.scenicIntroduction, new { @class = "form-control input-sml duiqi", @id = introID, @rows = "10", Value = scene.scenicIntroduction })
                                                 <script>
                                                     document.getElementById('@introID').value = '@scene.scenicIntroduction';
@@ -189,36 +192,8 @@
                                             <input type="submit" class="btn btn-xs btn-green" placeholder="保存" />
                                         </div>
                                     }
-                                    <script>
-                                        function checkValid() {
-                                            var name = document.forms["editForm"]["sName"].value;
-                                            if (name == null || name == "") {
-                                                alert("昵称不能为空");  //to do
-                                                return false;
-                                            } else if (name.length > 16) {
-                                                alert("昵称不应超过16个字");
-                                                //to do
-                                                return false;
-                                            }
-                                            var intro = document.forms["editForm"]["sIntro"].value;
-                                            if (intro.length > 16) {
-                                                alert("个人简介不应超过16个字");
-                                                return false;
-                                            }
-                                            var tel = document.forms["editForm"]["sPhone"].value;
-                                            var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
-                                            if (!telPatrn.exec(tel)) {
-                                                alert("电话无效");
-                                                return false;
-                                            }
-                                            var pwd = document.forms["editForm"]["sAns"].value;
-                                            if (name == null || name == "") {
-                                                alert("验证问题答案不能为空");  //to do
-                                                return false;
-                                            }
-                                            return true;
-                                        }
-                                    </script>
+
+
                                 </div>
                             </div>
                         </div>
@@ -227,6 +202,47 @@
                     <!-- /.modal-dialog -->
                 </div>
             }
+            <script>
+                function checkValid2(id) {
+                    var name = document.forms[id + "editForm"][id + "name"].value;
+                    if (name == null || name == "") {
+                        alert("名字不能为空");  //to do
+                        return false;
+                    }
+                    var lan = document.forms[id + "editForm"][id + "latitude"].value;
+                    if (lan == null || lan > 90 || lan < 0) {
+                        alert("纬度非法表示");
+                        return false;
+                    }
+                    var long = document.forms[id + "editForm"][id + "longitude"].value;
+                    if (long == null || long < 0 || long > 180) {
+                        alert("经度非法表示");
+                        return false;
+                    }
+                    var city = document.forms[id + "editForm"][id + "city"].value;
+                    if (city == null || city != '上海' || city != '上海市') {
+                        city = '上海';
+                        // alert("表单中不存在该城市");
+                        // return false;
+                    }
+                    var dis = document.forms[id + "editForm"][id + "district"].value;
+                    var disList = new Array("黄浦区", "静安区", "闸北区", "浦东新区", "徐汇区", "长宁区", "杨浦区", "虹口区", "普陀区", "宝山区", "嘉定区", "闵行区", "松江区", "青浦区", "奉贤区", "金山区");
+                    if (dis == null || disList.indexOf(dis) == -1) {
+                        dis = "黄浦区";
+                    }
+                    var address = document.forms[id + "editForm"][id + "address"].value;
+                    if (address == null || address == "") {
+                        alert("请输入地址");
+                        return false;
+                    }
+                    var introduction = document.forms[id + "editForm"][id + "introduction"].value;
+                    if (introduction == null || introduction == "") {
+                        alert("请输入景区介绍");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
             <!-- /.modal -->
             <!--弹出删除警告窗口-->
             @foreach (var scene in Model.scenicSpots)
@@ -349,43 +365,43 @@
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">景区名称：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextBoxFor(s => s.scenicSpot.scenicName, new { @class = "form-control input-sm duiqi", @id="name"})
+                                            @Html.TextBoxFor(s => s.scenicSpot.scenicName, new { @class = "form-control input-sm duiqi", @id = "name" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">经度：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.latitude, new { @class = "form-control input-sm duiqi", @id = "latitude"})
+                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.latitude, new { @class = "form-control input-sm duiqi", @id = "latitude" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">纬度：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.longitude, new { @class = "form-control input-sm duiqi", @id = "longtitude"})
+                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.longitude, new { @class = "form-control input-sm duiqi", @id = "longtitude" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">城市：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.city, new { @class = "form-control input-sm duiqi", @id = "city"})
+                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.city, new { @class = "form-control input-sm duiqi", @id = "city" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">区(县)：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.district, new { @class = "form-control input-sm duiqi", @id="district"})
+                                            @Html.TextBoxFor(s => s.scenicSpot.scenicPos.district, new { @class = "form-control input-sm duiqi", @id = "district" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">地址：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextAreaFor(s => s.scenicSpot.scenicPos.address, new { @class = "form-control input-sml duiqi", @id="address"})
+                                            @Html.TextAreaFor(s => s.scenicSpot.scenicPos.address, new { @class = "form-control input-sml duiqi", @id = "address" })
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="sName" class="col-xs-3 control-label">简介：</label>
                                         <div class="col-xs-8 ">
-                                            @Html.TextAreaFor(s => s.scenicSpot.scenicIntroduction, new { @class = "form-control input-sml duiqi", @id="introduction"})
+                                            @Html.TextAreaFor(s => s.scenicSpot.scenicIntroduction, new { @class = "form-control input-sml duiqi", @id = "introduction" })
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -393,36 +409,47 @@
                                         <input type="submit" class="btn btn-xs btn-green" placeholder="添加" />
                                     </div>
                                 }
-                                <script>
-                                    function checkValid() {
-                                        var name = document.forms["editForm"]["sName"].value;
-                                        if (name == null || name == "") {
-                                            alert("昵称不能为空");  //to do
-                                            return false;
-                                        } else if (name.length > 16) {
-                                            alert("昵称不应超过16个字");
-                                            //to do
-                                            return false;
+                                    <script>
+                                        function checkValid() {
+                                            var name = document.forms["addForm"]["name"].value;
+                                            if (name == null || name == "") {
+                                                alert("名字不能为空");  //to do
+                                                return false;
+                                            }
+                                            var lan = document.forms["addForm"]["latitude"].value;
+                                            if (lan == null || lan > 90 || lan < 0) {
+                                                alert("纬度非法表示");
+                                                return false;
+                                            }
+                                            var long = document.forms["addForm"]["longitude"].value;
+                                            if (long == null || long < 0 || long > 180) {
+                                                alert("经度非法表示");
+                                                return false;
+                                            }
+                                            var city = document.forms["addForm"]["city"].value;
+                                            if (city == null || city != '上海' || city != '上海市') {
+                                                city = '上海';
+                                                // alert("表单中不存在该城市");
+                                                // return false;
+                                            }
+                                            var dis = document.forms["addForm"]["district"].value;
+                                            var disList = new Array("黄浦区", "静安区", "闸北区", "浦东新区", "徐汇区", "长宁区", "杨浦区", "虹口区", "普陀区", "宝山区", "嘉定区", "闵行区", "松江区", "青浦区", "奉贤区", "金山区");
+                                            if (dis == null || disList.indexOf(dis) == -1) {
+                                                dis = "黄浦区";
+                                            }
+                                            var address = document.forms["addForm"]["address"].value;
+                                            if (address == null || address == "") {
+                                                alert("请输入地址");
+                                                return false;
+                                            }
+                                            var introduction = document.forms["addForm"]["introduction"].value;
+                                            if (introduction == null || introduction == "") {
+                                                alert("请输入景区介绍");
+                                                return false;
+                                            }
+                                            return true;
                                         }
-                                        var intro = document.forms["editForm"]["sIntro"].value;
-                                        if (intro.length > 16) {
-                                            alert("个人简介不应超过16个字");
-                                            return false;
-                                        }
-                                        var tel = document.forms["editForm"]["sPhone"].value;
-                                        var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
-                                        if (!telPatrn.exec(tel)) {
-                                            alert("电话无效");
-                                            return false;
-                                        }
-                                        var pwd = document.forms["editForm"]["sAns"].value;
-                                        if (name == null || name == "") {
-                                            alert("验证问题答案不能为空");  //to do
-                                            return false;
-                                        }
-                                        return true;
-                                    }
-                                </script>
+                                    </script>
                             </div>
                         </div>
                     </div>
