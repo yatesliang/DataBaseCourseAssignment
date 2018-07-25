@@ -29,6 +29,7 @@ namespace SceneView.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var currentNumber = Request.QueryString["number"];
             var searchStr = Request.QueryString["search"];
             if(searchStr !="" && searchStr != null)
             {
@@ -53,6 +54,17 @@ namespace SceneView.Controllers
                 else
                 {
                     ViewBag.Data = scenicList;
+                    ViewBag.searchStr = searchStr;
+                    if(currentNumber == null)
+                    {
+                        int i = 1;
+                        ViewBag.count = i;
+                    }
+                    else
+                    {
+                        int number = int.Parse(currentNumber);
+                        ViewBag.count = number;
+                    }
                     return View();
                 }
                 
@@ -80,10 +92,20 @@ namespace SceneView.Controllers
                 
             }
             ViewBag.Data = scenicInfos;
+            ViewBag.districtName = districtName;
 
-        
-         
-            return View(scenicInfos);
+            if (currentNumber == null)
+            {
+                int i = 1;
+                ViewBag.count = i;
+            }
+            else
+            {
+                int number = int.Parse(currentNumber);
+                ViewBag.count = number;
+            }
+
+            return View();
         }
         //Switch the district and show the scenic spots
 

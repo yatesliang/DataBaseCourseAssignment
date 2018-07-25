@@ -83,10 +83,16 @@ namespace SceneView.Controllers
                     }
 
                     // get spot and position
-                    var resultPos = db.scenicPos.Where(u => u.city == city && u.district == district).FirstOrDefault<scenicPos>();
-                    var resultSpot = db.scenicSpot.Where(u => u.scenicID.Equals(resultPos.scenicID)).ToList<scenicSpot>();
+                    var resultPos = db.scenicPos.Where(u => u.city == city && u.district == district).ToList<scenicPos>();
+                    var resultSpot = new List<scenicSpot>();
                     ViewBag.pos = resultPos;
-                    ViewBag.spot = resultSpot;
+
+                    foreach(var pos in resultPos)
+                    {
+                        var spot = db.scenicSpot.Where(s => s.scenicID == pos.scenicID).FirstOrDefault<scenicSpot>();
+                        resultSpot.Add(spot);
+                    }
+                    ViewBag.spot = resultSpot.ToArray();
 
                     // get recommended images
                     IList<string> imgSrcs = new List<string>();
@@ -97,6 +103,7 @@ namespace SceneView.Controllers
                         {
                             string address = img.imageAddress;
                             imgSrcs.Add(address);
+                            break;
                         }
                     }
                     ViewBag.recommendedSrc = imgSrcs;
@@ -111,7 +118,7 @@ namespace SceneView.Controllers
                         {
                             var noteView = new NoteView();
                             noteView.noteTitle = note.title;
-                            noteView.city = resultPos.city;
+                            noteView.city = this.city;
                             noteViews.Add(noteView);
                         }
                     }
@@ -129,9 +136,8 @@ namespace SceneView.Controllers
                         {
                             var cUser = db.user.Where(u => u.userID == c.userID).FirstOrDefault<user>();
                             var cUserInfo = db.userInfo.Where(ui => ui.userID == cUser.userID).FirstOrDefault<userInfo>();
-                            var spot = db.scenicSpot.Where(s => s.scenicID == c.scenicID).FirstOrDefault<scenicSpot>();
                             var commentView = new CommentView();
-                            commentView.city = resultPos.city;
+                            commentView.city = this.city;
                             commentView.userName = cUserInfo.nickname;
                             commentView.commentContent = c.commentContent;
                             commentViews.Add(commentView);

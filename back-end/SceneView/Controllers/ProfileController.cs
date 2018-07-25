@@ -1,25 +1,17 @@
-﻿using SceneView.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SceneView.Models;
 
 namespace SceneView.Controllers
 {
     public class ProfileController : Controller
     {
         private Entities db = new Entities();
-        [HttpGet]
-        public ActionResult Cancel()
-        {
-            Session.Clear();
-            return Redirect("/Login");
-        }
         // GET: Profile
-        // 个人主页
-        [HttpGet]
         public ActionResult Index()
         {
             if (Session["user"] == null)
@@ -37,116 +29,21 @@ namespace SceneView.Controllers
                 }
                 else
                 {
+                    ProfileData profileData = ProfileData.getProfileData(db, userSession);
+                    if (Request.QueryString["note"] != null && Request.QueryString["note"] != "")
+                    {
+                        profileData.userData.note = profileData.userData.note.Where(n=>n.title.Contains(Request.QueryString["note"])).ToList();
+                    }
                     return View(ProfileData.getProfileData(db, userSession));
                 }
             }
         }
-        // 所有游记
-        [HttpGet]
-        public ActionResult Note()
+        [HttpPost]
+        public ActionResult Index(ProfileData profileData)
         {
-            if (Session["user"] == null)
-            {
-                return Redirect("~/login");
-            }
-            else
-            {
-                // 获取用户信息
-                var userID = Session["user"].ToString();
-                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
-                if (userSession == null)
-                {
-                    return Redirect("~/Error");
-                }
-                else
-                {
-                    return View(ProfileData.getProfileData(db, userSession));
-                }
-            }
+            var url = "/profile/index?note=" + profileData.note.title;
+            return Redirect(url);
         }
-        // 单个游记页面
-        [HttpGet]
-        public ActionResult Detail()
-        {
-            if (Session["user"] == null)
-            {
-                return Redirect("~/login");
-            }
-            else
-            {
-                // 获取用户信息
-                var userID = Session["user"].ToString();
-                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
-                if (userSession == null)
-                {
-                    return Redirect("~/Error");
-                }
-                else
-                {
-                    if (Request.QueryString["ni"] == null)
-                    {
-                        return Redirect("/Profile/note");
-                    }
-                    else
-                    {
-                        int noteID = int.Parse(Request.QueryString["ni"]);
-                        ProfileData profileData = ProfileData.getProfileData(db, userSession);
-                        note note = db.note.Where(n => n.noteID == noteID).FirstOrDefault<note>();
-                        if (note == null)
-                        {
-                            return Redirect("/Profile/note");
-                        }
-                        else
-                        {
-                            ViewBag.note = note;
-                            return View(profileData);
-                        }
-                    }
-                }
-            }
-        }
-        // 编辑游记
-        [HttpGet]
-        public ActionResult Edit()
-        {
-            if (Session["user"] == null)
-            {
-                return Redirect("~/login");
-            }
-            else
-            {
-                // 获取用户信息
-                var userID = Session["user"].ToString();
-                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
-                if (userSession == null)
-                {
-                    return Redirect("~/Error");
-                }
-                else
-                {
-                    if (Request.QueryString["ni"] == null)
-                    {
-                        return Redirect("/Profile/note");
-                    }
-                    else
-                    {
-                        int noteID = int.Parse(Request.QueryString["ni"]);
-                        ProfileData profileData = ProfileData.getProfileData(db, userSession);
-                        note note = db.note.Where(n => n.noteID == noteID).FirstOrDefault<note>();
-                        if (note == null)
-                        {
-                            return Redirect("/Profile/note");
-                        }
-                        else
-                        {
-                            ViewBag.note = note;
-                            return View(profileData);
-                        }
-                    }
-                }
-            }
-        }
-        // 查看消息
         [HttpGet]
         public ActionResult Message()
         {
@@ -165,96 +62,56 @@ namespace SceneView.Controllers
                 }
                 else
                 {
-                    if (Request.QueryString["m"] == null)
-                    {
-                        return Redirect("/Profile/message?m=1");
-                    }
-                    else
-                    {
-                        int messageID = int.Parse(Request.QueryString["m"]);
-                        ProfileData profileData = ProfileData.getProfileData(db, userSession);
-                        if (messageID == 1)
-                        {
-                            ViewBag.message = 1;
-                        }
-                        else
-                        {
-                            ViewBag.message = 2;
-                        }
-                        return View(profileData);
-                    }
-                }
-            }
-        }
-        // 个人资料
-        [HttpGet]
-        public ActionResult Setting()
-        {
-            if (Session["user"] == null)
-            {
-                return Redirect("~/login");
-            }
-            else
-            {
-                // 获取用户信息
-                var userID = Session["user"].ToString();
-                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
-                if (userSession == null)
-                {
-                    return Redirect("~/Error");
-                }
-                else
-                {
                     ProfileData profileData = ProfileData.getProfileData(db, userSession);
-                    return View(profileData);
-                }
-            }
-        }
-        [HttpPost]
-        public ActionResult Setting(ProfileData profileData)
-        {
-            if (Session["user"] == null)
-            {
-                return Redirect("~/login");
-            }
-            else
-            {
-                // 获取用户信息
-                var userID = Session["user"].ToString();
-                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
-                if (userSession == null)
-                {
-                    return Redirect("~/Error");
-                }
-                else
-                {
-                    // 更新用户信息
-                    var userInfo = db.userInfo.Where(u => u.userID == userID).FirstOrDefault<userInfo>();
-                    userInfo.nickname = profileData.userData.userInfo.nickname;
-                    userInfo.phoneNumber = profileData.userData.userInfo.phoneNumber;
-                    userInfo.gender = profileData.userData.userInfo.gender;
-                    userInfo.SQAnswer = profileData.userData.userInfo.SQAnswer;
-                    userInfo.introduction = profileData.userData.userInfo.introduction;
-                    // 防止并发冲突
-                    bool saveFailed;
-                    do
-                    {
-                        saveFailed = false;
-                        try
-                        {
-                            db.SaveChanges();
-                        }
-                        catch (DbUpdateConcurrencyException ex)
-                        {
-                            saveFailed = true;
-                            ex.Entries.Single().Reload();
-                        }
-                    } while (saveFailed);
                     return View(ProfileData.getProfileData(db, userSession));
                 }
             }
         }
-        // 时间线
+        [HttpPost]
+        public ActionResult DeleteMessage(ProfileData profileData)
+        {
+            var type = profileData.message.type;
+            var messageID = int.Parse(profileData.message.messageID);
+            if (type == "1")
+            {
+                var result = db.commentReplyMes.Where(c => c.messageID == messageID).FirstOrDefault();
+                if (result != null)
+                {
+                    db.commentReplyMes.Remove(result);
+                }
+            }
+            else if(type == "2") {
+                var result = db.commentLikeMes.Where(c => c.messageID == messageID).FirstOrDefault();
+                if (result != null)
+                {
+                    db.commentLikeMes.Remove(result);
+                }
+            }
+            else if (type == "3")
+            {
+                var result = db.noteLikeMes.Where(c => c.messageID == messageID).FirstOrDefault();
+                if (result != null)
+                {
+                    db.noteLikeMes.Remove(result);
+                }
+            }
+            // 循环检测db是否被占用，防止并发冲突
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed);
+            return Redirect("/profile/message");
+        }
         [HttpGet]
         public ActionResult TimeLine()
         {
@@ -274,15 +131,97 @@ namespace SceneView.Controllers
                 else
                 {
                     ProfileData profileData = ProfileData.getProfileData(db, userSession);
-                    ViewBag.timeline = true;
-                    return View(profileData);
+                    return View(ProfileData.getProfileData(db, userSession));
                 }
             }
         }
-        public enum Gender
+        [HttpPost]
+        public ActionResult Gone(ProfileData profileData)
         {
-            Male, Female
+            var userID = profileData.viewed.userID;
+            var scenicID = profileData.viewed.scenicID;
+            var result = db.user.Where(u => u.userID == userID).FirstOrDefault();
+            if (result != null)
+            {
+                var scene = result.scenicSpot.Where(s => s.scenicID == int.Parse(scenicID)).FirstOrDefault();
+                if (scene != null)
+                {
+                    result.scenicSpot.Remove(scene);
+                    if (!result.scenicSpot1.Contains(scene))
+                    {
+                        result.scenicSpot1.Add(scene);
+                    }
+                    // 循环检测db是否被占用，防止并发冲突
+                    bool saveFailed;
+                    do
+                    {
+                        saveFailed = false;
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch (DbUpdateConcurrencyException ex)
+                        {
+                            saveFailed = true;
+                            ex.Entries.Single().Reload();
+                        }
+                    } while (saveFailed);
+                }
+            }
+            return Redirect("/profile/timeline");
         }
+        [HttpGet]
+        public ActionResult Setting()
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/login");
+            }
+            else
+            {
+                // 获取用户信息
+                var userID = Session["user"].ToString();
+                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+                if (userSession == null)
+                {
+                    return Redirect("~/Error");
+                }
+                else
+                {
+                    ProfileData profileData = ProfileData.getProfileData(db, userSession);
+                    return View(ProfileData.getProfileData(db, userSession));
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult Setting(ProfileData profileData)
+        {
+            var result = db.user.Where(u => u.userID == Session["user"].ToString()).FirstOrDefault();
+            if (result != null)
+            {
+                result.userInfo.nickname = profileData.userData.userInfo.nickname;
+                result.userInfo.gender = profileData.userData.userInfo.gender;
+                result.userInfo.phoneNumber = profileData.userData.userInfo.phoneNumber;
+                result.userInfo.introduction = profileData.userData.userInfo.introduction;
+                // 循环检测db是否被占用，防止并发冲突
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+                        ex.Entries.Single().Reload();
+                    }
+                } while (saveFailed);
+            }
+            return Redirect("/Profile");
+        }
+
         public class ProfileData
         {
             public user userData { get; set; }
@@ -290,6 +229,20 @@ namespace SceneView.Controllers
             public List<noteLikeMes> noteLikeMesData { get; set; }
             public List<commentReplyMes> commentReplyMesData { get; set; }
             public List<comment> commentsData { get; set; }
+            public scenicSpot scenicSpot { get; set; }
+            public note note { get; set; }
+            public Message message { get; set; }
+            public ViewedScene viewed { get; set; }
+            public class Message
+            {
+                public string messageID { get; set; }
+                public string type { get; set; }
+            }
+            public class ViewedScene
+            {
+                public string userID { get; set; }
+                public string scenicID { get; set; }
+            }
             public static ProfileData getProfileData(Entities db, user userSession)
             {
 
@@ -310,16 +263,17 @@ namespace SceneView.Controllers
                         profileData.commentReplyMesData.Add(cr);
                     }
                 }
-                profileData.noteLikeMesData = db.noteLikeMes.Where(n => n.note.userID == userSession.userID).ToList();
+                profileData.commentLikeMesData = profileData.commentLikeMesData.OrderBy(n => n.time).ToList();
+                profileData.commentReplyMesData = profileData.commentReplyMesData.OrderBy(n => n.commentReply.commentTime).ToList();
+                profileData.noteLikeMesData = db.noteLikeMes.Where(n => n.note.userID == userSession.userID).OrderBy(n=>n.time).ToList();
                 profileData.commentsData = db.comment.Where(c => c.userID == userSession.userID).ToList();
                 if (profileData.commentsData == null)
                 {
                     profileData.commentsData = new List<comment>();
                 }
-                
+
                 return profileData;
             }
         }
-
     }
 }

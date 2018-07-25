@@ -1,88 +1,182 @@
 ﻿@model SceneView.Controllers.ProfileController.ProfileData
 
 @{
-
-    Layout = "~/Views/Profile/_Layout.cshtml";
+    Layout = "~/Views/Profile/_ProfileLayout.cshtml";
 }
 
-<ol class="breadcrumb hidden-xs">
-    <li><a href="/profile">Home</a></li>
-    <li><a href="/profile/setting">Setting</a></li>
-</ol>
-<h4 class="page-title">个人资料</h4>
+<!--  PAPER WRAP -->
+<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
+
+        <div class="row">
+            <div id="paper-top">
+                <div class="col-sm-3">
+                    <h2 class="tittle-content-header"> <em class="icon-camera"></em> <span>我的资料 </span> </h2>
+                </div>
+
+                <div class="col-sm-7">
+                    <div class="devider-vertical visible-lg"></div>
+                    <div class="tittle-middle-header">
+
+                        <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <span class="tittle-alert entypo-info-circled"></span>
+                            欢迎回来 &nbsp;
+                            <strong>@Model.userData.userInfo.nickname</strong>&nbsp;&nbsp; 我等你很久了！
+                        </div>
 
 
-<div class="col-md-12 m-b-25">
+                    </div>
 
-    @using (Html.BeginForm("setting", "profile", FormMethod.Post, new { @name = "editForm", @onsubmit = "return checkNewValid()" }))
-    {
-        @Html.ValidationSummary(true)
-        <p>昵称</p>
-        @Html.TextBoxFor(m => m.userData.userInfo.nickname, new { @class = "form-control input-focused", @id = "name", @value = @Model.userData.userInfo.nickname })
-        @Html.ValidationMessageFor(m => m.userData.userInfo.nickname)
-        <br /><p>性别</p>
-        @*@Html.RadioButtonFor(m => m.userData.userInfo.gender, "男", new { @checked = "true"})<p>男</p>
-            @Html.RadioButtonFor(m => m.userData.userInfo.gender, "女")<p>女</p>*@
-        @Html.DropDownListFor(m => m.userData.userInfo.gender, new SelectList(Enum.GetValues(typeof(SceneView.Controllers.ProfileController.Gender))), new { @class = "form-control" })
-        <br /><p>电话号码</p>
-        @Html.TextBoxFor(m => m.userData.userInfo.phoneNumber, new { @class = "form-control input-focused", @id = "telephone", @value = @Model.userData.userInfo.phoneNumber })
-        @Html.ValidationMessageFor(m => m.userData.userInfo.phoneNumber)
-        <br /><p>个人简介</p>
-        @Html.TextAreaFor(m => m.userData.userInfo.introduction, new { @class = "form-control auto-size m-b-10", @value = @Model.userData.userInfo.introduction })
-        @Html.ValidationMessageFor(m => m.userData.userInfo.introduction)
-        <br /><p>安全验证问题</p>
-        <input class="form-control" type="text" value="请输入您最常居住的城市" disabled />
-        <br /><p>答案</p>
-        @Html.TextBoxFor(m => m.userData.userInfo.SQAnswer, new { @class = "form-control input-focused", @id = "pos", @value = @Model.userData.userInfo.SQAnswer })
-        @Html.ValidationMessageFor(m => m.userData.userInfo.SQAnswer)
-        <br /><input type="submit" class="btn btn-alt m-r-5" />
-    }
-</div>
+                </div>
 
-<script>
-    function checkNewValid() {
-        var name = document.forms["editForm"]["name"].value;
-        if (name == null || name == "") {
-            alert("请输入用户名");  //to do
-            return false;
-        } else if (name.length > 16) {
-            alert("用户名不应超过 16 位");
-            //to do
-            return false;
-        }
-        var tel = document.forms["editForm"]["telephone"].value;
-        var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
-        if (!telPatrn.exec(tel)) {
-            alert("电话无效");
-            return false;
-        }
-        var pos = document.forms["editForm"]["pos"].value;
-        if (pos == null || pos == "") {
-            alert("请输入问题验证答案");
-            return false;
-        }
-        return true;
-    }
-</script>
+            </div>
+        </div>
+        <!--/ TITLE -->
+        <!-- BREADCRUMB -->
+        <ul id="breadcrumb">
+            <li>
+                <a href="/profile"><span class="entypo-home"></span></a>
+            </li>
+            <li>
+                <i class="fa fa-lg fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/profile/setting">我的资料</a>
+            </li>
+        </ul>
+        <!-- END OF BREADCRUMB -->
 
-<script>
-    function handleFiles(obj, id) {
-        file = document.getElementById("icon");
-        var files = obj.files;
-        img = new Image();
-        if (window.URL) {
-            //File API
-            img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
-            img.onload = function (e) {
-                window.URL.revokeObjectURL(this.src); //图片加载后，释放object URL
+
+
+        <div class="content-wrap">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="nest" id="validationClose">
+                        <div class="title-alt">
+                            <h6> 个人资料</h6>
+                            <div class="titleClose">
+                                <a class="gone" href="#validationClose">
+                                    <span class="entypo-cancel"></span>
+                                </a>
+                            </div>
+                            <div class="titleToggle">
+                                <a class="nav-toggle-alt" href="#validation">
+                                    <span class="entypo-up-open"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="body-nest" id="validation">
+
+                            <form class="container" enctype="multipart/form-data" method="post" id='formBox' name="form">
+
+                                <img id="cropedBigImg" value='custom' alt="点击修改头像" data-address='' title="自定义头像" height="100px" width="100px" />
+                                <input type="file" id="chooseImage" name="file">
+                                <!-- 保存用户自定义的背景图片 -->
+                            </form>
+
+                            <script type="text/javascript">
+                                $('#chooseImage').on('change', function () {
+                                    var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+                                        fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+                                        src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+                                    alert(src);
+                                    // 检查是否是图片
+                                    if (!fileFormat.match(/.png|.jpg|.jpeg/)) {
+                                        error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+                                        return;
+                                    }
+
+                                    $('#cropedBigImg').attr('src', src);
+                                });
+                            </script>
+
+                            <div class="form_center">
+                                @using (Html.BeginForm("Setting", "Profile", FormMethod.Post, new { @id = "contact-form", @class = "form-horizontal", @name = "editForm", @onsubmit = "return checkValid()" }))
+                                {
+                                    <fieldset>
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="name">用户名</label>
+                                            <div class="controls">
+                                                @Html.TextBoxFor(p => p.userData.userInfo.nickname, new { @type = "text", @class = "form-control", @name = "name", @id = "name", Value = Model.userData.userInfo.nickname })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="subject">联系电话</label>
+                                            <div class="controls">
+                                                @Html.TextBoxFor(p => p.userData.userInfo.phoneNumber, new { @type = "text", @class = "form-control", @name = "tel", @id = "tel", Value = Model.userData.userInfo.phoneNumber })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="subject">性别</label>
+                                            <div class="controls">
+                                                @Html.DropDownListFor(m => m.userData.userInfo.gender, new SelectList(Enum.GetValues(typeof(SceneView.Controllers.AdminController.Gender))), new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="message">个人简介</label>
+                                            <div class="controls">
+                                                @Html.TextAreaFor(p => p.userData.userInfo.introduction, new { @class = "form-control", @name = "intro", @id = "intro", @rows = "10" })
+                                                <script>
+                                                    document.getElementById("intro").innerHTML = @Model.userData.userInfo.introduction;
+                                                </script>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions" style="margin:20px 0 0 0;">
+                                            <button type="submit" class="btn btn-primary">提交</button>
+                                            <button type="reset" class="btn">取消</button>
+                                        </div>
+                                    </fieldset>
+                                }
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function checkValid() {
+                var name = document.forms["contact-form"]["name"].value;
+                if (name == null || name == "") {
+                    alert("请输入用户名");  //to do
+                    return false;
+                } else if (name.length > 16) {
+                    alert("用户名不应超过 16 位");
+                    //to do
+                    return false;
+                }
+                var tel = document.forms["contact-form"]["tel"].value;
+                var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+                if (!telPatrn.exec(tel)) {
+                    alert("电话无效");
+                    return false;
+                }
+                return true;
             }
-        }
-        file.src = img.src;
-            //上传文件
-            // var fd = new FormData(),//实例化一个表单
-            // xhr = new XMLHttpRequest();
-            // fd.append('headimg', files[0]);//追加图片元素
-            // xhr.open('post', 'user.php?act=act_edit_img');//请求方式，请求地址
-            // xhr.send(fd);
-    }
-</script>
+        </script>
+
+        <!-- FOOTER -->
+        <div class="footer-space"></div>
+        <div id="footer">
+            <div class="devider-footer-left"></div>
+            <div class="time">
+                <p id="spanDate">
+                <p id="clock">
+            </div>
+            <div class="copyright">
+                用空多回回家
+                <span class="entypo-heart"></span><a href="/profile">@Model.userData.userInfo.nickname</a> 这世界有很多人爱着你
+            </div>
+            <div class="devider-footer"></div>
+
+        </div>
+        <!-- / END OF FOOTER -->
+    </div>
+</div>
+<!--  END OF PAPER WRAP -->
