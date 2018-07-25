@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = "~/Views/Profile/_Layout.cshtml";
+}
+
+
+    <ol class="breadcrumb hidden-xs">
+        <li><a href="/profile">Home</a></li>
+        <li><a href="/profile/note">Note</a></li>
+        <li><a href="/profile/detail?ni=@ViewBag.note.noteID">@ViewBag.note.title</a></li>
+    </ol>
+
+    <h4 class="page-title b-0">我的游记</h4>
+
+    <article id="paragraph" class="block-area">
+        <h2>@ViewBag.note.title</h2>
+        <h3 class="block-title">创作于: @ViewBag.note.noteTime</h3>
+        <h3 class="block-title">景点: @ViewBag.note.scenicSpot.scenicName</h3>
+        <h3 class="block-title">被点赞次数: @ViewBag.note.noteLike</h3>
+        <button class="btn btn-sm btn-alt m-r-5" onclick="edit()">编辑游记</button>
+        <p style="font-family:Arial;font-size:14px">@Html.Raw(@ViewBag.note.noteContent)</p>
+        <br />
+    </article>
+
+<script>
+    function edit() {
+        window.location.href = "/profile/edit?ni=@ViewBag.note.noteID";
+    }
+</script>

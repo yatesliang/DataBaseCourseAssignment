@@ -1,0 +1,156 @@
+﻿@model System.Collections.Generic.List<SceneView.Controllers.scenicHomeController.ScenicInfo>
+
+
+@{
+    ViewBag.Title = "景点主页";
+    Layout = "~/Views/ScenicHome/_ScenicHomeLayout.cshtml";
+}
+
+@{
+    if (ViewBag.flag == -1)
+    {
+        HttpContext.Current.Response.Write("<script>alert(\"无相关景点！以为您展示浦东新区相关景点~\");</script>");
+    }
+}
+
+<!-- district -->
+<div class="container">
+    <div class="district">
+
+        <div class="lefttop">
+            <h4>地区</h4>
+            <div class="cfb-journals journal-entry  main">
+                <div class="journal-main cfb-clearfix">
+                    <div id="JS-journal-select" class="journal-select">
+                        <div id="JS-tabs" class="tabs cfb-clearfix">
+
+
+                            <div id="JS-cont">
+                                <div class="cont cfb-clearfix">
+
+                                    <a href="index?dn=黄浦区">黄浦区</a>
+                                    <a href="index?dn=徐汇区">徐汇区</a>
+                                    <a href="index?dn=长宁区">长宁区</a>
+                                    <a href="index?dn=静安区">静安区</a>
+                                    <a href="index?dn=虹口区">虹口区</a>
+                                    <a href="index?dn=普陀区">普陀区</a>
+                                    <a href="index?dn=杨浦区">杨浦区</a>
+                                    <a href="index?dn=嘉定区">嘉定区</a>
+                                    <a href="index?dn=金山区">金山区</a>
+                                    <a href="index?dn=闵行区">闵行区</a>
+                                    <a href="index?dn=宝山区">宝山区</a>
+                                    <a href="index?dn=青浦区">青浦区</a>
+                                    <a href="index?dn=松江区">松江区</a>
+                                    <a href="index?dn=奉贤区">奉贤区</a>
+                                    <a href="index?dn=浦东新区">浦东新区</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lefttop">
+            <h4>分类</h4>
+            <div class="cfb-journals journal-entry  main">
+                <div class="journal-main cfb-clearfix">
+                    <div id="JS-journal-select" class="journal-select">
+                        <div id="JS-tabs" class="tabs cfb-clearfix">
+                            <div id="JS-cont">
+                                <div class="cont cfb-clearfix">
+                                    <a href="">游乐园</a>
+                                    <a href="">植物园</a>
+                                    <a href="">动物园</a>
+                                    <a href="">博物馆</a>
+                                    <a href="">历史遗迹</a>
+                                    <a href="">自然风光</a>
+                                    <a href="">公园</a>
+                                    <a href="">高空观景</a>
+                                    <a href="">城市风光</a>
+                                    <a href="">古镇</a>
+                                    <a href="">其他景点</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sceneShow district" id="sceneShow">
+        <div class="container content">
+            <div id="scene-show-cells" class="cont cfb-clearfix">
+                <ul>
+                    <div>
+                        @foreach (var item in ViewBag.Data)
+                        {
+                            <a class="cell" href="~/Scene/Index?sn=@item.scenicName">
+                                <div class="img-show">
+                                    <img src="@item.imageAddress">
+                                </div>
+                                <div class="txt">
+                                    <p class="name">@item.scenicName</p>
+                                    <p class="address">@item.address</p>
+                                    <div class="score">
+                                        @for (var i = 0; i < item.rate; i++)
+                                        {
+                                            <img src="~/Content/image/home/star.png">
+                                        }
+                                        <span class="score-num">@item.rate</span>
+                                    </div>
+
+                                </div>
+                            </a>
+                        }
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 页面跳转 -->
+<div class="pageList">
+    <a class="cur">1</a>
+    <a href="#" page-num="2" class="pageLink" title="2">2</a>
+    <a href="#" page-num="3" class="pageLink" title="3">3</a>
+
+    <span class="loadMorePage">...</span>
+    <a href="#" page-num="50" class="pageLink" title="50">50</a>
+    <a href="#" page-num="2" class="next" title="nextPage">下一页</a>
+</div>
+<!-- the following are made by may -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+        $(document).ready(function () {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+</script>
+<!-- made by may -->
+<script type="text/javascript">
+    $(function () {
+        $("#JS-cont .cont a").click(function () {
+            var f = this;
+            $("#JS-cont .cont a").removeClass("selected");
+            $(this).addClass("selected");
+        })
+    })
+</script>
+<!-- made by may -->
+<!-- //here ends scrolling icon -->
+<!-- for bootstrap working -->
+<script src="js/bootstrap.js"></script>

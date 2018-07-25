@@ -23,6 +23,7 @@ namespace SceneView.Models
             this.strategy = new HashSet<strategy>();
             this.image = new HashSet<image>();
             this.user = new HashSet<user>();
+            this.user1 = new HashSet<user>();
         }
     
         public short scenicID { get; set; }
@@ -42,5 +43,7 @@ namespace SceneView.Models
         public virtual ICollection<image> image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user> user { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> user1 { get; set; }
     }
 }

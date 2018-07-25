@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Short Codes</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+	
+<body>
+<!-- banner -->
+	<div class="banner1">
+		<div class="container">
+			<div class="banner_top">
+				<div class="banner_top_left">
+					
+				</div>
+				
+				<div class="clearfix"> </div>
+			</div>
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav cl-effect-14">
+						<li><a href="index.html">首页</a></li>
+						
+						<li><a href="features.html">足迹</a></li>
+						<li><a href="portfolio.html">消息</a></li>
+						<li><a href="codes.html" class="active">资料</a></li>
+						<li><a href="blog.html">收藏</a></li>
+						
+					</ul>
+				</div><!-- /.navbar-collapse -->	
+				
+			</nav>
+			<div class="logo">
+				
+			</div>
+			
+		</div>
+	</div>
+<!-- //banner -->
+<!--typography-page -->
+<div class="personInfo">
+	<div class="container">
+  <div class="personright"> 
+	
+		<script type="text/javascript">
+			function showpic(){
+				//获取上传文件的信息
+				var pic =document.getElementById('pic').files[0];
+				console.log(pic);
+		
+				//在pic的文件里抓取该文件用于显示二进制信息
+				var sr  = window.URL.createObjectURL(pic);
+				console.log(sr);
+				//设置src属性，显示图片
+				document.getElementsByTagName('img')[0].src=sr;
+			}
+		</script>
+		<style>
+		input{
+			display: none;
+	}
+	label{
+		display: block;
+		width: 100px;
+		height: 100px;
+		margin-right: 50px;
+		overflow: hidden;
+		float:right;
+	}
+	</style>
+	<input type="file" name="img" id="pic" onchange="showpic()"/>
+	
+	
+	<label for="pic"><img src="images/1.png" width="100px" height="100px" alt="" /></label>
+	<style>
+			p{
+			 
+			   float:right;
+			   color:#777;
+			   font-size:20px;
+			   margin-top:30px;
+			   margin-left: 400px;
+			}
+		</style>
+		<p>点击修改头像</p>
+   </div> 
+  <div class="personleft">
+	<form>
+			<br>
+			<br>
+			<br>
+			
+		<span>用户名</span>
+			
+			<div class="form-group">
+				  
+				  <label for="name" class="sr-only">Name</label>
+				 <input type="text" class="form-control" id="name" autocomplete="off">
+				</div>
+				<!-- <div class="form-group">
+					<label for="email" class="sr-only">Email</label>
+					<input type="email" class="form-control" id="email" placeholder="邮箱" autocomplete="off">
+				</div> -->
+				<br>
+				<br>
+				<br>
+				
+				<span>修改密码</span>
+				<div class="form-group">
+						<label for="password" class="sr-only">Password</label>
+						<input type="password" class="form-control" id="password" autocomplete="off">
+					</div>
+					<br>
+				<br>
+				<br>
+				<span>确认密码</span>
+					<div class="form-group">
+						<label for="re-password" class="sr-only">Re-type Password</label>
+						<input type="password" class="form-control" id="re-password" autocomplete="off">
+					</div>
+					<br>
+				<br>
+				<br>
+					<span>请输入您最常居住的城市（用于找回密码）</span>
+					<div class="form-group">
+							<label for="question" class="sr-only">Question</label>
+							<input type="text" class="form-control" id="question"  autocomplete="off">
+					</div>
+					<br>
+					<br>
+					<br>
+				
+				<span>联系电话</span>
+				<div class="form-group">
+					<label for="telephone" class="sr-only">Telephone</label>
+					
+					<input type="text" class="form-control" id="telephone" autocomplete="off">
+				</div>
+		        <br>
+				<br>
+				<br>
+				
+				<div class="checkbox1">
+						<span>您是</span>
+				  <select class="form-group">
+							
+				  <option value="man" color=#fff>男生</option>
+				  <option value="woman">女生</option>
+				  </select>
+				</div>
+				<br>
+				<br>
+				<br>
+				<span>个人介绍</span>
+				<div class="form-group">
+					<label for="textarea" class="sr-only">文本描述</label>
+					<input type="text" class="form-control" id="name" placeholder="介绍一下自己...." autocomplete="off">
+				</div>
+				<br>
+				<br>
+				<br>
+				<div class="checkbox2">
+				<div class="form-group">
+					<input type="submit" value="确认" class="btn btn-primary">
+          </div>
+				</div>
+				<script>
+						function checkNewValid(){
+							var name = document.forms["signForm"]["name"].value;
+							if(name == null || name == ""){
+									alert("请输入用户名");  //to do 
+									return false;
+								}else if(name.length > 16){
+									alert("用户名不应超过 16 位");
+									//to do 
+									return false;
+								}
+								// var emailAdd = document.forms["signForm"]["email"].value;
+								// var emailPatrn =  /^[\w-]+/;
+								// if(emailPatrn.test(emailAdd || emailAdd == null || emailAdd == "")){
+								// 	alert("邮箱地址无效");
+								// 	return false;
+								// }
+								var tel = document.forms["signForm"]["telephone"].value;
+								var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+								if(!telPatrn.exec(tel)){
+									alert("电话无效");
+									return false;
+								}
+								var pwd = document.forms["signForm"]["password"].value;
+								var patrn = /^(\w){6,20}$/;
+								if(!patrn.exec(pwd)){
+									alert("密码非法");
+									return false;
+								} 
+								var rePwd = document.forms["signForm"]["re-password"].value;
+								if(rePwd != pwd){
+									alert("两次密码不一致");
+									return false;
+								}
+								return true;
+						}
+				</script>
+			</form>
+		</div>
+			<!-- END Sign In Form -->
+
+		</div>
+	</div>
+</div>
+	</div>
+</div>	
+</div>
+<!-- //contact -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>
