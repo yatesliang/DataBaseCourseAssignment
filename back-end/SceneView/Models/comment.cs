@@ -17,8 +17,9 @@ namespace SceneView.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public comment()
         {
-            this.comment1 = new HashSet<comment>();
-            this.comment2 = new HashSet<comment>();
+            this.commentLikeMes = new HashSet<commentLikeMes>();
+            this.commentReplyMes = new HashSet<commentReplyMes>();
+            this.commentReply = new HashSet<commentReply>();
         }
     
         public long commentID { get; set; }
@@ -32,8 +33,10 @@ namespace SceneView.Models
         public virtual scenicSpot scenicSpot { get; set; }
         public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<comment> comment1 { get; set; }
+        public virtual ICollection<commentLikeMes> commentLikeMes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<comment> comment2 { get; set; }
+        public virtual ICollection<commentReplyMes> commentReplyMes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentReply> commentReply { get; set; }
     }
 }

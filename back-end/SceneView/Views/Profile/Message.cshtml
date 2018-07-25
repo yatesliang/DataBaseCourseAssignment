@@ -1,0 +1,162 @@
+﻿@model SceneView.Controllers.ProfileController.ProfileData
+
+@{
+    Layout = "~/Views/Profile/_ProfileLayout.cshtml";
+}
+
+<!--  PAPER WRAP -->
+<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
+
+        <div class="row">
+            <div id="paper-top">
+                <div class="col-sm-3">
+                    <h2 class="tittle-content-header"> <em class="icon-camera"></em> <span>我的消息 </span> </h2>
+                </div>
+
+                <div class="col-sm-7">
+                    <div class="devider-vertical visible-lg"></div>
+                    <div class="tittle-middle-header">
+
+                        <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <span class="tittle-alert entypo-info-circled"></span>
+                            欢迎回来 &nbsp;
+                            <strong>@Model.userData.userInfo.nickname</strong>&nbsp;&nbsp; 我等你很久了！
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!--/ TITLE -->
+        <!-- BREADCRUMB -->
+        <ul id="breadcrumb">
+            <li>
+                <a href="/profile"><span class="entypo-home"></span></a>
+            </li>
+            <li>
+                <i class="fa fa-lg fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/profile/message">我的消息</a>
+            </li>
+        </ul>
+
+        <!-- END OF BREADCRUMB -->
+
+        <div class="content-wrap">
+            <div class="row">
+                <!-- SIDEMENU MAIL -->                    <!-- /SIDEMENU MAIL -->
+                <!-- CONTENT MAIL -->
+                <div class="col-sm-12">
+
+                    <div id="content-mail">
+                        <div class="table-responsive">
+                            <!-- THE MESSAGES -->
+                            <table class="table table-mailbox">
+                                @* 表头 *@
+                                <tr class="unread">
+                                    <td width="10" style="text-align:center; vertical-align:middle">用户</td>
+                                    <td width="10" style="text-align:center; vertical-align:middle">消息类型</td>
+                                    <td width="60" style="text-align:center; vertical-align:middle">
+                                        消息内容
+                                    </td>
+                                    <td class="time text-right" width="20" style="text-align:center; vertical-align:middle">消息时间</td>
+                                </tr>
+                                @foreach (var n in Model.commentReplyMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                <tr class="unread" style="height : 50px">
+                                    @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                    @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "1" })
+                                    <td width="10" style="text-align:center; vertical-align:middle">@n.commentReply.user.userInfo.nickname</td>
+                                    <td width="10" style="text-align:center; vertical-align:middle">评论回复</td>
+                                    <td width="60" style="vertical-align:middle; padding-left:20px">
+                                        回复了你的评论：" @n.comment.commentContent "<br />
+                                        <strong>@n.commentReply.commentContent</strong>
+                                    </td>
+                                    <td width="20" style="text-align:center; vertical-align:middle">@n.commentReply.commentTime</td>
+                                    <td width="10" class="time text-right" style="text-align:center; vertical-align:middle">
+                                        <input type="submit" class="btn button" value="已读" />
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                                @foreach (var n in Model.commentLikeMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                    <tr class="unread" style="height : 50px">
+                                        @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                        @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "2" })
+                                        <td width="10" style="text-align:center; vertical-align:middle">@n.user.userInfo.nickname</td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">评论点赞</td>
+                                        <td width="60" style="vertical-align:middle; padding-left:20px">
+                                            点赞了你的评论：" @n.comment.commentContent "
+                                        </td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">@n.time</td>
+                                        <td width="10" class="time text-right" style="text-align:center; vertical-align:middle">
+                                            <input type="submit" class="btn button" value="已读" />
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+
+                                @foreach (var n in Model.noteLikeMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                    <tr class="unread" style="height : 50px">
+                                        @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                        @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "3" })
+                                        <td width="10" style="text-align:center; vertical-align:middle">@n.user.userInfo.nickname</td>
+                                        <td width="10" style="text-align:center; vertical-align:middle">游记点赞</td>
+                                        <td width="60" style="vertical-align:middle; padding-left:20px">
+                                            点赞了你的游记：" @n.note.title "
+                                        </td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">@n.time</td>
+                                        <td width="5" class="time text-right" style="text-align:center; vertical-align:middle">
+                                            <input type="submit" class="btn button" value="已读" />
+                                        </td>
+                                    </tr>
+                                    }
+                                    
+                                }
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+
+
+                    </div>
+
+                </div>
+                <!-- /CONTENT MAIL -->
+            </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="footer-space"></div>
+            <div id="footer">
+                <div class="devider-footer-left"></div>
+                <div class="time">
+                    <p id="spanDate">
+                    <p id="clock">
+                </div>
+                <div class="copyright">
+                    用空多回回家
+                    <span class="entypo-heart"></span><a href="/profile">@Model.userData.userInfo.nickname</a> 这世界有很多人爱着你
+                </div>
+                <div class="devider-footer"></div>
+
+            </div>
+            <!-- / END OF FOOTER -->
+
+
+        </div>
+</div>
+<!--  END OF PAPER WRAP -->

@@ -14,9 +14,12 @@ namespace SceneView.Models
     
     public partial class noteLikeMes
     {
-        public int noteID { get; set; }
         public long messageID { get; set; }
+        public int noteID { get; set; }
+        public string senderID { get; set; }
+        public System.DateTime time { get; set; }
     
-        public virtual message message { get; set; }
+        public virtual note note { get; set; }
+        public virtual user user { get; set; }
     }
 }

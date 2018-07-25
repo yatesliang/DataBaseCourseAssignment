@@ -192,6 +192,9 @@
     <Compile Include="Models\commentLikeMes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\commentReply.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\commentReplyMes.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -199,9 +202,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MD5TransferAndVerify.cs" />
-    <Compile Include="Models\message.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -691,13 +691,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\admin\bootstrap.min.js" />
     <Content Include="Scripts\admin\html5.js" />
     <Content Include="Scripts\admin\jquery-ui.js" />
@@ -742,6 +735,13 @@
     <Content Include="Content\profile\js\footable\css\fonts\footable.eot" />
     <Content Include="Content\profile\js\footable\css\fonts\footable.ttf" />
     <Content Include="Content\profile\js\footable\css\fonts\footable.woff" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -789,6 +789,10 @@
     <Content Include="Views\Admin\_AdminLayout.cshtml" />
     <Content Include="Views\Login\Admin.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_ProfileLayout.cshtml" />
+    <Content Include="Views\Profile\Message.cshtml" />
+    <Content Include="Views\Profile\TimeLine.cshtml" />
+    <Content Include="Views\Profile\Setting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

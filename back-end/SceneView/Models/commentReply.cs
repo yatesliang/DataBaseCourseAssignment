@@ -12,28 +12,23 @@ namespace SceneView.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class message
+    public partial class commentReply
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public message()
+        public commentReply()
         {
-            this.commentLikeMes = new HashSet<commentLikeMes>();
             this.commentReplyMes = new HashSet<commentReplyMes>();
-            this.noteLikeMes = new HashSet<noteLikeMes>();
         }
     
-        public long messageID { get; set; }
-        public string senderID { get; set; }
-        public string receiverID { get; set; }
-        public System.DateTime time { get; set; }
+        public long commentReplyID { get; set; }
+        public long replyToCommentID { get; set; }
+        public string userID { get; set; }
+        public string commentContent { get; set; }
+        public System.DateTime commentTime { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<commentLikeMes> commentLikeMes { get; set; }
+        public virtual comment comment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commentReplyMes> commentReplyMes { get; set; }
         public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<noteLikeMes> noteLikeMes { get; set; }
     }
 }
