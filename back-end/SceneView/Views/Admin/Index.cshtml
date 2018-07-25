@@ -1,0 +1,249 @@
+﻿@model SceneView.Controllers.AdminController.AdminData
+@{ 
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+    <!-- 右侧具体内容栏目 -->
+    <div id="rightContent">
+        <a class="toggle-btn" id="nimei">
+            <i class="glyphicon glyphicon-align-justify"></i>
+        </a>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- 用户管理模块 -->
+            <div role="tabpanel" class="tab-pane active" id="sour">
+                <div class="check-div form-inline">
+                    <div class="col-lg-5 col-xs-5">
+                        @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+                        {
+                            @Html.TextBoxFor(u=>u.userInfo.nickname, new { @type = "text", @class = " form-control input-sm", @placeholder = "输入文字搜索" })
+                            @*<input type="text" class=" form-control input-sm" placeholder="输入文字搜索">*@
+                            <button class="btn btn-white btn-xs ">查询</button>
+                        }
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-xs-5" style=" padding-right: 40px;text-align: right;">
+                        <label for="paixu">
+                            当前第&nbsp;
+                        </label>
+                        <select class="form-control" id="slt" onchange="window.location = this.value;">
+                            @for(var p = 1;  p <= Model.totalPage; p = p + 1)
+                            {
+                                <option value="/admin/index?page=@p">@p</option>
+                            }
+                        </select>
+                        <label for="paixu">
+                            页，共 @Model.totalPage 页
+                        </label>
+                        @{
+                            var index = Model.currentPage - 1;
+                        }
+                        <script>
+                            document.getElementById('slt').selectedIndex = @index;
+                        </script>
+                    </div>
+                </div>
+                <div class="data-div">
+                    <div class="row tableHeader">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
+                            编号
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            昵称
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            性别
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            电话
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            个人介绍
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            答案
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            操作
+                        </div>
+                    </div>
+                    <div class="tablebody">
+
+                        <div id="collapseSystem" class="collapse in" aria-expanded="true">
+
+                            <div id="collapseSchool" class="collapse in" aria-expanded="true">
+                                @if (Model.userInfos == null || Model.userInfos.Count() == 0)
+                                {
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 levl3 ">
+                                            当前数据库中没有用户或未找到该用户！！！
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    foreach (var u in Model.userInfos)
+                                    {
+                                        var introduction = "";
+                                        if (u.introduction != null)
+                                        {
+                                            introduction = u.introduction;
+                                        }
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3 " id="id @u.userID">@u.userID</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 levl3 " id="nn @u.userID">@u.nickname</div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3 " id="ge @u.userID">@u.gender</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 levl3 " id="pn @u.userID">@u.phoneNumber</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 levl3 "><p style="vertical-align:middle" id="in @u.userID">@u.introduction</p></div>
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 levl3 " id="sq @u.userID">@u.SQAnswer</div>
+                                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
+                                                <button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource" id="@u.userID" onclick="editUser()">修改</button>
+                                                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource" id="@u.userID" onclick="deleteUser()">删除</button>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function editUser() {
+                        var editID = event.target.id;
+                        document.getElementById('sID').value = editID;
+                        document.getElementById('sName').value = document.getElementById('nn ' + editID).innerHTML;
+                        document.getElementById('sGender').value = document.getElementById('ge ' + editID).innerHTML;
+                        document.getElementById('sPhone').value = document.getElementById('pn ' + editID).innerHTML;
+                        document.getElementById('sIntro').value = document.getElementById('in ' + editID).innerHTML;
+                        document.getElementById('sAns').value = document.getElementById('sq ' + editID).innerHTML;
+                    }
+                </script>
+                <script>
+                    function deleteUser() {
+                        var deleteID = event.target.id;
+                        document.getElementById('sID2').value = deleteID;
+                    }
+                </script>
+                <!--弹出修改用户信息窗口-->
+                <div class="modal fade" id="changeSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">修改用户信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    @using (Html.BeginForm("EditUser", "Admin", FormMethod.Post, new { @class = "form-horizontal", @name = "editForm", @onsubmit = "return checkValid()" }))
+                                    {
+                                        <div class="form-group ">
+                                            <label for="sName" class="col-xs-3 control-label">昵称：</label>
+                                            <div class="col-xs-8 ">
+                                                @Html.TextBoxFor(u => u.userInfo.userID, new { @id = "sID", @style = "display:none" })
+                                                @Html.TextBoxFor(u => u.userInfo.nickname, new { @class = "form-control input-sm duiqi", @id = "sName" })
+                                                @*<input type="text" class="form-control input-sm duiqi" id="sName" placeholder="">*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="sName" class="col-xs-3 control-label">性别：</label>
+                                            <div class="col-xs-8 ">
+                                                @Html.DropDownListFor(u => u.userInfo.gender, new SelectList(Enum.GetValues(typeof(SceneView.Controllers.AdminController.Gender))), new { @class = "form-control input-sm duiqi", @id = "sGender" })
+                                                @*<input type="text" class="form-control input-sm duiqi" id="sGender" placeholder="">*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="sName" class="col-xs-3 control-label">电话：</label>
+                                            <div class="col-xs-8 ">
+                                                @Html.TextBoxFor(u => u.userInfo.phoneNumber, new { @class = "form-control input-sm duiqi", @id = "sPhone" })
+                                                @*  <input type="text" class="form-control input-sm duiqi" id="sPhone" placeholder="">*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sLink" class="col-xs-3 control-label">介绍：</label>
+                                            <div class="col-xs-8 ">
+                                                @Html.TextAreaFor(u => u.userInfo.introduction, new { @class = "form-control input-sm1 duiqi", @id = "sIntro" })
+                                                @*<input type="text" class="form-control input-sm duiqi" id="sIntro" placeholder="">*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sOrd" class="col-xs-3 control-label">验证问题：</label>
+                                            <div class="col-xs-8">
+                                                @Html.TextBoxFor(u => u.userInfo.SQAnswer, new { @class = "form-control input-sm duiqi", @id = "sAns" })
+                                                @* <input type="text" class="form-control input-sm1 duiqi" id="sAns" placeholder="">*@
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                            <input type="submit" class="btn btn-xs btn-green" placeholder="保存" />
+                                        </div>
+                                    }
+                                    <script>
+                                        function checkValid() {
+                                            var name = document.forms["editForm"]["sName"].value;
+                                            if (name == null || name == "") {
+                                                alert("昵称不能为空");  //to do
+                                                return false;
+                                            } else if (name.length > 16) {
+                                                alert("昵称不应超过16个字");
+                                                //to do
+                                                return false;
+                                            }
+                                            var intro = document.forms["editForm"]["sIntro"].value;
+                                            if (intro.length > 16) {
+                                                alert("个人简介不应超过16个字");
+                                                return false;
+                                            }
+                                            var tel = document.forms["editForm"]["sPhone"].value;
+                                            var telPatrn = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+                                            if (!telPatrn.exec(tel)) {
+                                                alert("电话无效");
+                                                return false;
+                                            }
+                                            var pwd = document.forms["editForm"]["sAns"].value;
+                                            if (name == null || name == "") {
+                                                alert("验证问题答案不能为空");  //to do
+                                                return false;
+                                            }
+                                            return true;
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <!--弹出删除警告窗口-->
+                <div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="gridSystemModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    确定要删除？删除后不可恢复！
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+                                {
+                                    @Html.TextBoxFor(u => u.userInfo.userID, new { @id = "sID2", @style = "display:none" })
+                                    <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+                                    <input type="submit" class="btn btn-xs btn-danger" id="delete">
+                                }
+
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+
+        </div>
+    </div>

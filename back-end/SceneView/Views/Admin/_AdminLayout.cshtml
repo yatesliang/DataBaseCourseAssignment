@@ -1,0 +1,142 @@
+﻿@model SceneView.Controllers.AdminController.AdminData
+@{ 
+    if (Session["admin"] == null)
+    {
+        HttpContext.Current.Response.Redirect("~/Login/Admin");
+    }
+}
+<!doctype html>
+<html lang="ch">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>后台管理</title>
+    <script src="~/Scripts/admin/jquery.min.js"></script>
+    <script src="~/Scripts/admin/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $(".meun-item").click(function () {
+                $(".meun-item").removeClass("meun-item-active");
+                $(this).addClass("meun-item-active");
+                var itmeObj = $(".meun-item").find("img");
+                itmeObj.each(function () {
+                    var items = $(this).attr("src");
+                    items = items.replace("_grey.png", ".png");
+                    items = items.replace(".png", "_grey.png")
+                    $(this).attr("src", items);
+                });
+                var attrObj = $(this).find("img").attr("src");
+                ;
+                attrObj = attrObj.replace("_grey.png", ".png");
+                $(this).find("img").attr("src", attrObj);
+            });
+            $("#topAD").click(function () {
+                $("#topA").toggleClass(" glyphicon-triangle-right");
+                $("#topA").toggleClass(" glyphicon-triangle-bottom");
+            });
+            $("#topBD").click(function () {
+                $("#topB").toggleClass(" glyphicon-triangle-right");
+                $("#topB").toggleClass(" glyphicon-triangle-bottom");
+            });
+            $("#topCD").click(function () {
+                $("#topC").toggleClass(" glyphicon-triangle-right");
+                $("#topC").toggleClass(" glyphicon-triangle-bottom");
+            });
+            $(".toggle-btn").click(function () {
+                $("#leftMeun").toggleClass("show");
+                $("#rightContent").toggleClass("pd0px");
+            })
+        })
+    </script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/Content/admin/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/common.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/slide.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/flat-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/jquery.nouislider.css">
+</head>
+
+<body style="padding-left : inherit">
+
+    <div id="wrap">
+        <!-- 左侧菜单栏目块 -->
+        <div class="leftMeun" id="leftMeun">
+            <div id="logoDiv">
+                <p id="logoP"><span>后台管理</span></p>
+            </div>
+            <div id="personInfor">
+                <p id="userName">管理员：@Session["admin"]</p>
+                <a href="/Admin/Cancel">退出登录</a>
+            </div>
+            <div class="meun-title">用户管理</div>
+            @if (ViewBag.type == 0)
+            {
+                <div class="meun-item meun-item-active"><a href="/Admin/index"><img src="~/Content/image/admin/icon_chara_grey.png">用户信息管理</a></div>
+            }
+            else
+            {
+                <div class="meun-item"><a href="/Admin/index"><img src="~/Content/image/admin/icon_chara_grey.png">用户信息管理</a></div>
+            }
+            <div class="meun-title">景区管理</div>
+            @if (ViewBag.type == 1)
+            {
+                <div class="meun-item meun-item-active" href=""><a href="/Admin/Scene"><img src="~/Content/image/admin/icon_house_grey.png">景区管理</a></div>
+            }
+            else
+            {
+                <div class="meun-item" href=""><a href="/Admin/Scene"><img src="~/Content/image/admin/icon_house_grey.png">景区管理</a></div>
+            }
+
+        </div>
+
+        @RenderBody()
+
+    </div>
+
+
+    <script src="~/Scripts/admin/jquery.nouislider.js"></script>
+
+    <!-- this page specific inline scripts -->
+    <script>
+        //min/max slider
+        function huadong(my, unit, def, max) {
+            $(my).noUiSlider({
+                range: [0, max],
+                start: [def],
+                handles: 1,
+                connect: 'upper',
+                slide: function () {
+                    var val = Math.floor($(this).val());
+                    $(this).find(".noUi-handle").text(
+                        val + unit
+                    );
+                    console.log($(this).find(".noUi-handle").parent().parent().html());
+                },
+                set: function () {
+                    var val = Math.floor($(this).val());
+                    $(this).find(".noUi-handle").text(
+                        val + unit
+                    );
+                }
+            });
+            $(my).val(def, true);
+        }
+        huadong('.slider-minmax1', "分钟", "5", 30);
+        huadong('.slider-minmax2', "分钟", "6", 15);
+        huadong('.slider-minmax3', "分钟", "10", 60);
+        huadong('.slider-minmax4', "次", "2", 10);
+        huadong('.slider-minmax5', "天", "3", 7);
+        huadong('.slider-minmax6', "天", "8", 10);
+    </script>
+
+</body>
+
+</html>

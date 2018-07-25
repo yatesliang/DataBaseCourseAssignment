@@ -14,9 +14,11 @@ namespace SceneView.Models
     
     public partial class commentReplyMes
     {
-        public long commentID { get; set; }
         public long messageID { get; set; }
+        public long commentID { get; set; }
+        public long commentReplyID { get; set; }
     
-        public virtual message message { get; set; }
+        public virtual comment comment { get; set; }
+        public virtual commentReply commentReply { get; set; }
     }
 }
