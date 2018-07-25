@@ -3579,6 +3579,7 @@ tbody.collapse.in {
   text-align: left;
   list-style: none;
   /*background-color: #fff;*/
+  margin-left:auto
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #ccc;
@@ -3606,12 +3607,12 @@ tbody.collapse.in {
   color: #FFF;
   white-space: nowrap;
 }
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  color: #262626;
-  text-decoration: none;
-  background-color: #f5f5f5;
-}
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+        color: rgba(76, 174, 76, 1);
+        text-decoration: none;
+        /*background-color: #f5f5f5;*/
+    }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
