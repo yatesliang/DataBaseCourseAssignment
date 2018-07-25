@@ -1,0 +1,176 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/Content/home/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/home/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script src="~/Scripts/home/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Scripts/home/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/home/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+</head>
+
+<body>
+   
+    <!-- made by may 2018/7/20 -->
+    <div class="banner1">
+        <div class="container">
+            <div class="banner_top">
+                <div class="banner_top_left">
+
+                </div>
+                <div class="banner_top_right">
+                    <form>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav cl-effect-14">
+                        <li><a href="Home/index">首页</a></li>
+                        <!-- <li><a href="about.html" class="active">景点</a></li> -->
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                景点 <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/ScenicHome/index?dn=黄浦区" style="padding-top:10px;">黄浦区</a></li>
+                                <li><a href="~/ScenicHome/index?dn=静安区" style="padding-top:10px;">静安区</a></li>
+                                <li><a href="~/ScenicHome/index?dn=徐汇区" style="padding-top:10px;">徐汇区</a></li>
+
+
+
+
+                                <li><a href="ScenicHome/index" style="padding-top:10px;">查看更多</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li><a href="Scene/blog" class="active">故事</a></li>
+                        <li><a href="#contact" class="scroll">注册/登录</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+
+            </nav>
+            <div class="logo">
+
+            </div>
+            <div class="dummy_text">
+
+            </div>
+
+        </div>
+    </div>
+    <!-- made by may 2018/7/20 -->
+    <!-- blog -->
+    <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <div class="blog" id="blog">
+
+      
+        <script>
+            $('#blog').load('@Url.Action("UpdateBlog", "Scene")')
+        </script>
+    </div><div class="container">
+        <nav class="paging">
+            <ul class="pagination pagination-lg">
+                <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">?</span></a></li>
+                <li><a href="#" id="page1" onclick="changepage(0)">1</a></li>
+                <li><a href="#" id="page2" onclick="changepage(1)">2</a></li>
+                <li><a href="#" id="page3" onclick="changepage(2)">3</a></li>
+                <li><a href="#" id="page3" onclick="changepage(3)">4</a></li>
+                <li><a href="#" id="page3" onclick="changepage(4)">5</a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">?</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript">
+        function changepage(i) {
+            $.ajax({
+                type: "post",
+                url: '/Scene/UpdateBlog',
+                data: { pageIndex: i },
+                async: true,//异步
+                success: function (data) //成功后的回调方法
+                {
+                    $("#blog").html(data);//data--就是对应的分部视图页面内容.
+                    //alert(data)//弹出框
+                },
+                 error: function (message) {
+            alert('error!');
+        }
+            })
+            
+
+   
+    <script>
+        $(".")
+    </script>
+    <script>
+        $(".limit").each(function () {
+            var len = $(this).text().length;
+            if (len > 100) {
+                var str = "";
+                str = $(this).text().substring(0, 100) + "......";
+                $(this).html(str);
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!-- for bootstrap working -->
+    <script src="~/Scripts/home/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+</body>
+</html>

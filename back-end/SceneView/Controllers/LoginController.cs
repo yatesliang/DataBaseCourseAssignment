@@ -38,7 +38,7 @@ namespace SceneView.Controllers
                         // 用户验证正确，则创建Session会话，跳转至主页
                     {
                         Session["user"] = result.user.userID;
-                        return Redirect("~/Home");
+                        return Redirect("~/ScenicHome");
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace SceneView.Controllers
                     userInfo.userID = user.userID;
                     userInfo.nickname = r.username;
                     userInfo.phoneNumber = r.phone;
-                    userInfo.SQANSWER = r.answer;
+                    userInfo.SQAnswer = r.answer;
                     db.user.Add(user);
                     db.userInfo.Add(userInfo);
                     // 循环检测db是否被占用，防止并发冲突
@@ -125,7 +125,7 @@ namespace SceneView.Controllers
                 }
                 else
                 {
-                    if (!result.SQANSWER.Equals(r.answer))
+                    if (!result.SQAnswer.Equals(r.answer))
                         // 验证问题错误
                     {
                         ViewBag.fFlag = 0;
@@ -157,13 +157,51 @@ namespace SceneView.Controllers
             }
             return Redirect("Error");
         }
+        [HttpGet]
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Admin(result r)
+        {
+            if (ModelState.IsValid)
+            {
+                var md5 = new MD5TransferAndVerify();
+                // 获取数据库查询结果
+                var result = db.admin.Where(a => a.adminID == r.admin).FirstOrDefault();
+                // 管理员不存在
+                if (result == null)
+                {
+                    ViewBag.flag = -1;
+                    return View();
+                }
+                else
+                {
+                    if (result.password == md5.GetMD5Hash(r.adminPas))
+                    // 用户验证正确，则创建Session会话，跳转至主页
+                    {
+                        Session["admin"] = result.adminID;
+                        return Redirect("/Admin");
+                    }
+                    else
+                    {
+                        // 否则验证失败，密码错误
+                        ViewBag.flag = 0;
+                        return View();
+                    }
+                }
+            }
+            return Redirect("Error");
+        }
         public class result
         {
             public string username { get; set; }
             public string password { get; set; }
             public long phone { get; set; }
             public string answer { get; set; }
-
+            public string admin { get; set; }
+            public string adminPas { get; set; }
         }
 
     }

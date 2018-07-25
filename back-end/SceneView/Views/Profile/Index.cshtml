@@ -1,0 +1,219 @@
+﻿@model SceneView.Controllers.ProfileController.ProfileData
+@{ 
+    Layout = "~/Views/Profile/_Layout.cshtml";
+
+}
+
+
+<!-- Content -->
+    
+    <ol class="breadcrumb hidden-xs">
+        <li><a href="#">Home</a></li>
+    </ol>
+
+    <!-- Breadcrumb -->
+    @*<ol class="breadcrumb hidden-xs">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>*@
+
+    <h4 class="page-title">个人中心</h4>
+
+    <!-- Shortcuts -->
+    @*<div class="block-area shortcut-area">
+        <a class="shortcut tile" href="">
+            <img src="~/Content/image/profile/shortcuts/money.png" alt="">
+            <small class="t-overflow">Purchases</small>
+        </a>
+    </div>*@
+
+    <hr class="whiter" />
+
+    <!-- Main Widgets -->
+
+    <div class="block-area">
+        <div class="row">
+            <div class="col-md-8">
+
+                <!--  我的评论 -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="tile">
+                            <h2 class="tile-title">我的评论</h2>
+                            <div class="tile-config dropdown">
+                                <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                <ul class="dropdown-menu animated pull-right text-right">
+                                    <li><a href="">Refresh</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="listview narrow">
+                                @foreach (var c in Model.userData.comment)
+                                {
+                                    <div class="media p-l-5">
+                                        <div class="media-body">
+                                            <small class="text-muted">@c.commentTime</small><br />
+                                            <a class="t-overflow" href="">@c.commentContent</a>
+                                        </div>
+                                    </div>
+                                }
+                                @foreach (var c in Model.userData.commentReply)
+                                {
+                                    <div class="media p-l-5">
+                                        <div class="media-body">
+                                            <small class="text-muted">@c.commentTime</small><br />
+                                            <a class="t-overflow" href="">@c.commentContent</a>
+                                            <p>回复@@ @c.comment.user.userInfo.nickname -- @c.comment.commentContent </p>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="media p-5 text-center l-100">
+                                    <a href="~/profile/message"><small>查看全部</small></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile">
+                            <h2 class="tile-title">我的游记</h2>
+                            <div class="tile-config dropdown">
+                                <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                <ul class="dropdown-menu animated pull-right text-right">
+                                    <li><a href="">Refresh</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="listview narrow">
+                                @foreach (var c in Model.userData.note)
+                                {
+                                    <div class="media p-l-5">
+                                        <div class="media-body">
+                                            <small class="text-muted">@c.noteTime</small><br />
+                                            <a class="t-overflow" href="/profile/detail?ni=@c.noteID">@c.noteContent</a>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="media p-5 text-center l-100">
+                                    <a href="~/profile/note"><small>查看全部</small></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 我想去的地方-->
+                    <div class="col-md-6">
+                        <div class="tile">
+                            <h2 class="tile-title">我想去的地方</h2>
+                            <div class="tile-config dropdown">
+                                <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                                <ul class="dropdown-menu pull-right text-right">
+                                    <li id="todo-refresh"><a href="">Refresh</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="listview todo-list sortable">
+                                @foreach (var s in Model.userData.scenicSpot)
+                                {
+                                    <div class="media">
+                                        <div class="checkbox m-0">
+                                            <label class="t-overflow">
+                                                <input type="checkbox">
+                                                @s.scenicName
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="tile">
+                            <h2 class="tile-title">我去过的地方</h2>
+
+                            <div class="listview todo-list sortable">
+                                @foreach (var s in Model.userData.scenicSpot1)
+                                {
+                                    <div class="media">
+                                        <div class="checkbox m-0">
+                                            <label class="t-overflow">
+                                                <input type="checkbox" checked="checked">
+                                                @s.scenicName
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-4">
+
+                <!-- 个人数据统计 -->
+                <div class="tile">
+                    <h2 class="tile-title">个人数据统计</h2>
+                    <div class="tile-config dropdown">
+                        <a data-toggle="dropdown" href="" class="tile-menu"></a>
+                        <ul class="dropdown-menu pull-right text-right">
+                            <li><a href="">Refresh</a></li>
+                            <li><a href="">Settings</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="listview narrow">
+
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.userData.scenicSpot1.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我去过的地方</h6>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.userData.scenicSpot.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我想去的地方</h6>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.commentsData.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我的评论数量</h6>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.userData.note.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我的游记数量</h6>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.userData.commentLikeMes.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我的评论点赞数量</h6>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-right">
+                                <div class="counts">@Model.userData.noteLikeMes.Count()</div>
+                            </div>
+                            <div class="media-body">
+                                <h6>我的游记点赞数量</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
