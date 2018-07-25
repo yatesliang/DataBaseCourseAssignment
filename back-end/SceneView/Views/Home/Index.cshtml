@@ -137,6 +137,7 @@
 
                         <li><a href="#contact" class="scroll">故事</a></li>
                         <li><a href="#comment" class="scroll">印象</a></li>
+                        <li><a href="/Profile" class="scroll">个人主页</a></li>
 
                     </ul>
 
@@ -244,6 +245,7 @@
         <ul>
             @{
                 var i = 0;
+                string link;
                 foreach (var imgSrc in ViewBag.recommendedSrc)
                 {
                     i++;
@@ -251,7 +253,8 @@
                     {
                         break;
                     }
-                    <li><img src="@imgSrc"></li>
+                    link = "Scene/index?sn=" + ViewBag.spot[i - 1].scenicName;
+                    <li><a href="@link"><img src="@imgSrc"></a></li>
                 }
             }
             <div style="clear: none;"></div>

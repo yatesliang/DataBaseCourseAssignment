@@ -14,13 +14,14 @@ namespace SceneView.Controllers
 {
     public class EditorController : Controller
     {
-        public static short scenicID = 0;
         public Entities db = new Entities();
+       
 
-        public void getNote(string content, string timeStamp, string noteTitle)
+        public void getNote(string content, string timeStamp, string noteTitle,string scenicName)
         {
             var note = new note();
-
+            
+           
             content = content.Replace("&lt", "<");
             content = content.Replace("&gt", ">");
 
@@ -65,14 +66,23 @@ namespace SceneView.Controllers
 
             System.IO.File.Delete(filePath);
 
+            // 查找scenic
+            var spot = db.scenicSpot.Where(s => s.scenicName == scenicName).FirstOrDefault<scenicSpot>();
+            var images = spot.image.ToArray<image>();
+            int index = (1 + images.Length) / 2;
+            if (index > 0)
+            {
+                note.image.Add(images[index]);
+            }
+
             // noteID为自增长属性，note为空就编号为1
             var notes = db.note;
             note.noteID = notes.Count() == 0 ? 1 : notes.Select(n => n.noteID).Max() + 1;
             note.userID = Session["user"].ToString();
             note.noteContent = timeStamp + ".html";
-            int t = int.Parse(timeStamp);
-            note.noteTime = new DateTime(int.Parse(timeStamp));
-            note.scenicID = scenicID;
+            //int t = int.Parse(timeStamp);
+            note.noteTime = new DateTime(long.Parse(timeStamp));
+            note.scenicID = spot.scenicID;
             note.title = noteTitle;
             note.noteLike = 0;
 
@@ -94,11 +104,13 @@ namespace SceneView.Controllers
                 }
             } while (saveFailed);
             // 完成更新
+            
         }
 
         // GET: Editor
         public ActionResult Index()
         {
+            ViewBag.scenicName = Request.QueryString["sn"];
             return View();
         }
     }

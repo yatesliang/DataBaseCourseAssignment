@@ -51,33 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="lefttop">
-            <h4>分类</h4>
-            <div class="cfb-journals journal-entry  main">
-                <div class="journal-main cfb-clearfix">
-                    <div id="JS-journal-select" class="journal-select">
-                        <div id="JS-tabs" class="tabs cfb-clearfix">
-                            <div id="JS-cont">
-                                <div class="cont cfb-clearfix">
-                                    <a href="">游乐园</a>
-                                    <a href="">植物园</a>
-                                    <a href="">动物园</a>
-                                    <a href="">博物馆</a>
-                                    <a href="">历史遗迹</a>
-                                    <a href="">自然风光</a>
-                                    <a href="">公园</a>
-                                    <a href="">高空观景</a>
-                                    <a href="">城市风光</a>
-                                    <a href="">古镇</a>
-                                    <a href="">其他景点</a>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -110,7 +84,7 @@
                     }
                     else
                     {
-                        for (var i = 0; i < 8;i++)
+                        for (int i = ViewBag.count * 8 - 8; i <ViewBag.count * 8 && i < ViewBag.Data.Count;i++)
                             {
                             <a class="cell" href="~/Scene/Index?sn=@ViewBag.Data[i].scenicName">
                                 <div class="img-show">
@@ -140,13 +114,24 @@
 
 <!-- 页面跳转 -->
 <div class="pageList">
-    <a class="cur">1</a>
-    <a href="#" page-num="2" class="pageLink" title="2">2</a>
-    <a href="#" page-num="3" class="pageLink" title="3">3</a>
+    @*<a class="cur">1</a>
+        <a href="#" page-num="2" class="pageLink" title="2">2</a>
+        <a href="#" page-num="3" class="pageLink" title="3">3</a>
 
-    <span class="loadMorePage">...</span>
-    <a href="#" page-num="50" class="pageLink" title="50">50</a>
-    <a href="#" page-num="2" class="next" title="nextPage">下一页</a>
+        <span class="loadMorePage">...</span>
+        <a href="#" page-num="50" class="pageLink" title="50">50</a>
+        <a href="#" page-num="2" class="next" title="nextPage">下一页</a>*@
+    @for (var i = 1; i < ViewBag.Data.Count / 8 + 1; ++i)
+    {
+        if (i != ViewBag.count)
+        {
+            <a href="/ScenicHome/index?number=@i&dn=@ViewBag.districtName&search=@ViewBag.searchStr " page-num="@i" class="pageLink" title="@i">@i</a>
+        }
+        else
+        {
+            <a href="#" page-num="@i" class="cur" title="@i">@i</a>
+        }
+    }
 </div>
 <!-- the following are made by may -->
 <!-- here stars scrolling icon -->

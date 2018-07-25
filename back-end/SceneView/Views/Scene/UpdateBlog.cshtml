@@ -1,6 +1,7 @@
 ﻿@model List<SceneView.Models.note>
 @{
     Layout = null;
+    
 }
 <div class="container">
     <h3>Blog</h3>
@@ -9,14 +10,13 @@
         {
         <div class="col-md-6 blog-grid">
             <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="images/19.jpg" alt=" " class="img-responsive" /></a>
+                <a href="/Scene/SingleNote?nn=@Model[0].noteID" target="_blank"><img src="@Model[0].image.First().imageAddress" alt=" " class="img-responsive" /></a>
             </div>
             <div class="col-xs-8 blog-grid-right">
-                <a href="single.html">sint occaecat cupidatat non proident</a>
-                <h4>28 November 2015</h4>
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
+                <a href="/Scene/SingleNote?nn=@Model[0].noteID" target="_blank">@Model[0].title</a>
+                <h4>@Model[0].noteTime</h4>
+                <p class="limit">
+                    @Model[0].noteContent
                 </p>
             </div>
             <div class="clearfix"> </div>
@@ -25,14 +25,13 @@
         @if (Model.Count > 1)
         {<div class="col-md-6 blog-grid">
     <div class="col-xs-4 blog-grid-left">
-        <a href="single.html"><img src="images/19.jpg" alt=" " class="img-responsive" /></a>
+        <a href="/Scene/SingleNote?nn=@Model[1].noteID" target="_blank"><img src="@Model[1].image.First().imageAddress" alt=" " class="img-responsive" /></a>
     </div>
     <div class="col-xs-8 blog-grid-right">
-        <a href="single.html">sint occaecat cupidatat non proident</a>
-        <h4>28 November 2015</h4>
-        <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur.
+        <a href="/Scene/SingleNote?nn=@Model[1].noteID" target="_blank">@Model[1].title</a>
+        <h4>@Model[1].noteTime</h4>
+        <p class="limit">
+            @Model[1].noteContent
         </p>
     </div>
     <div class="clearfix"> </div>
@@ -45,14 +44,13 @@
         {
         <div class="col-md-6 blog-grid">
             <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="images/19.jpg" alt=" " class="img-responsive" /></a>
+                <a href="/Scene/SingleNote?nn=@Model[2].noteID" target="_blank"><img src="@Model[2].image.First().imageAddress" alt=" " class="img-responsive" /></a>
             </div>
             <div class="col-xs-8 blog-grid-right">
-                <a href="single.html">sint occaecat cupidatat non proident</a>
-                <h4>28 November 2015</h4>
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
+                <a href="/Scene/SingleNote?nn=@Model[2].noteID" target="_blank">@Model[2].title</a>
+                <h4>@Model[2].noteTime</h4>
+                <p class="limit">
+                    @Model[2].noteContent
                 </p>
             </div>
             <div class="clearfix"> </div>
@@ -61,56 +59,53 @@
         }
         @if (Model.Count > 3)
         {<div class="col-md-6 blog-grid">
-                <div class="col-xs-4 blog-grid-left">
-                    <a href="single.html"><img src="images/19.jpg" alt=" " class="img-responsive" /></a>
-                </div>
-                <div class="col-xs-8 blog-grid-right">
-                    <a href="single.html">sint occaecat cupidatat non proident</a>
-                    <h4>28 November 2015</h4>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                </div>
-                <div class="clearfix"> </div>
+    <div class="col-xs-4 blog-grid-left">
+        <a href="/Scene/SingleNote?nn=@Model[3].noteID" target="_blank"><img src="@Model[3].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+    </div>
+    <div class="col-xs-8 blog-grid-right">
+        <a href="/Scene/SingleNote?nn=@Model[3].noteID" target="_blank">@Model[3].title</a>
+        <h4>@Model[3].noteTime</h4>
+        <p class="limit">
+            @Model[3].noteContent
+        </p>
+    </div>
+    <div class="clearfix"> </div>
 
-            </div>
+</div>
         }
         <div class="clearfix"> </div>
     </div>
     <div class="blog-grids">
         @if (Model.Count > 4)
         {<div class="col-md-6 blog-grid">
-                <div class="col-xs-4 blog-grid-left">
-                    <a href="single.html"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-                </div>
-                <div class="col-xs-8 blog-grid-right">
-                    <a href="single.html">sint occaecat cupidatat non proident</a>
-                    <h4>27 November 2015</h4>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.
-                    </p>
-                </div>
-                <div class="clearfix"> </div>
+    <div class="col-xs-4 blog-grid-left">
+        <a href="/Scene/SingleNote?nn=@Model[4].noteID" target="_blank"><img src="@Model[4].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+    </div>
+    <div class="col-xs-8 blog-grid-right">
+        <a href="/Scene/SingleNote?nn=@Model[4].noteID" target="_blank">@Model[4].title</a>
+        <h4>@Model[4].noteTime</h4>
+        <p class="limit">
+            @Model[4].noteContent
+        </p>
+    </div>
+    <div class="clearfix"> </div>
 
-            </div>}
+</div>}
         @if(Model.Count>5)
         {<div class="col-md-6 blog-grid">
-            <div class="col-xs-4 blog-grid-left">
-                <a href="single.html"><img src="images/17.jpg" alt=" " class="img-responsive" /></a>
-            </div>
-            <div class="col-xs-8 blog-grid-right">
-                <a href="single.html">sint occaecat cupidatat non proident</a>
-                <h4>28 November 2015</h4>
-                <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur.
-                </p>
-            </div>
-            <div class="clearfix"> </div>
+    <div class="col-xs-4 blog-grid-left">
+        <a href="/Scene/SingleNote?nn=@Model[5].noteID" target="_blank"><img src="@Model[5].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+    </div>
+    <div class="col-xs-8 blog-grid-right">
+        <a href="/Scene/SingleNote?nn=@Model[5].noteID" target="_blank">@Model[5].title</a>
+        <h4>@Model[5].noteTime</h4>
+        <p class="limit">
+            @Model[5].noteContent
+        </p>
+    </div>
+    <div class="clearfix"> </div>
 
-        </div>}
+</div>}
         <div class="clearfix"> </div>
     </div>
 </div>

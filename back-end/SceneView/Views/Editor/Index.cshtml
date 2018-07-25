@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Summernote</title>
+    <title>@ViewBag.scenicName</title>
     <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> -->
     <link href="~/Content/editor/editor-bootstrap.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -52,15 +52,15 @@
                 <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav cl-effect-14">
                         <li>
-                            <a href="index.html">首页</a>
+                            <a href="/Home">首页</a>
                         </li>
                         <li>
-                            <a href="about.html">景点</a>
+                            <a href="/ScenicHome">景点</a>
                         </li>
 
 
                         <li>
-                            <a href="blog.html">故事</a>
+                            <a href="/Scene/blog">故事</a>
                         </li>
                         <li>
                             <a href="#contact" class="scroll">注册/登录</a>
@@ -83,15 +83,15 @@
     <div class="container">
         <div style="clear: both"></div>
         <div id="show-time"></div>
-        <textarea class="note-editor-title" placeholder="标题" id="note-title"></textarea>
+        <textarea class="note-editor-title" placeholder="标题" id="note-title" maxlength="30"></textarea>
         <div class="note-editor-body">
             <HR class="clearfix">
 
             <div id="summernote">
-                <p>Hello Summernote</p>
+                <p>编辑游记</p>
             </div>
             <div class="edit-done" id="edit-done">
-                <a>done</a>
+                <a href="/ScenicHome/search?search=@ViewBag.scenicName">done</a>
             </div>
 
         </div>
@@ -164,6 +164,9 @@
             $("#edit-done").click(function () {
                 var f = this;
                 var a = 1;
+                //get scenic name
+                var scenicName = "@ViewBag.scenicName"
+          
                 // 获得游记标题
                 var noteTitle = $('#note-title').val().toString();
                 if (noteTitle == null || noteTitle == "") {
@@ -186,7 +189,8 @@
                     'data': {
                         content: content,
                         timeStamp: ts.toString(),
-                        noteTitle: noteTitle.toString()
+                        noteTitle: noteTitle.toString(),
+                        scenicName: scenicName.toString()
                     },
                     error: function (message) {
                         alert('error');

@@ -38,7 +38,7 @@ namespace SceneView.Controllers
                         // 用户验证正确，则创建Session会话，跳转至主页
                     {
                         Session["user"] = result.user.userID;
-                        return Redirect("~/ScenicHome");
+                        return Redirect("~/Home");
                     }
                     else
                     {
@@ -70,7 +70,22 @@ namespace SceneView.Controllers
                     // 为其赋值并添加到db中
                     // userID为自增长属性，user为空时，第一个编号为1
                     var users = db.user;
-                    user.userID = users.Count() == 0 ? "1" : (int.Parse(users.Select(u => u.userID).Max()) + 1).ToString();
+                    //user.userID = users.Count() == 0 ? "1" : (int.Parse(users.Select(u => u.userID).Max()) + 1).ToString();
+                    if (users.Count() == 0)
+                    {
+                        user.userID = "1";
+                    }
+                    else
+                    {
+                        var usersID = (from u in users select u.userID).ToList();
+                        long max = 0;
+                        foreach(var id in usersID)
+                        {
+                            if (long.Parse(id) > max)
+                                max = long.Parse(id);
+                        }
+                        user.userID = (max + 1).ToString();
+                    }
                     user.password = md5.GetMD5Hash(r.password);
                     userInfo.userID = user.userID;
                     userInfo.nickname = r.username;

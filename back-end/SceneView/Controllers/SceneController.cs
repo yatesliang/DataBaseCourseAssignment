@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SceneView.Models;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
 namespace SceneView.Controllers
 {
     public class SceneController : Controller
@@ -26,16 +28,38 @@ namespace SceneView.Controllers
             }
             else
             {
+
                 var id = Session["user"].ToString();
                 var usern = db.userInfo.Where(u => u.userID == id).FirstOrDefault<userInfo>().nickname;
+                Spot scene = new Spot();
+                scene.viewed = false;
+                scene.want = false;
                 var user = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
                 var spotname = Request.QueryString["sn"];
-                spotname = spotname == "" || spotname == null ? "上海迪士尼度假区" : spotname;
-                Spot scene = new Spot();
-                scene.usern = usern;
-                scene.user = user;
+                spotname = spotname == "" || spotname == null ? "东方明珠广播电视塔" : spotname;
                 var scenicSpot = db.scenicSpot.Where(u => u.scenicName == spotname).FirstOrDefault<scenicSpot>();
                 scene.spot = scenicSpot;
+                scene.usern = usern;
+                scene.user = user;
+                var viewedList = user.scenicSpot1.ToList();
+                foreach (var v in viewedList)
+                {
+                    if (v.scenicID == scenicSpot.scenicID)
+                    {
+                        scene.viewed = true;
+                        break;
+                    }
+                }
+                var wantList = user.scenicSpot.ToList();
+                foreach (var w in wantList)
+                {
+                    if (w.scenicID == scenicSpot.scenicID)
+                    {
+                        scene.want = true;
+                        break;
+                    }
+                }
+
                 if (scenicSpot == null)
                 {
 
@@ -46,37 +70,24 @@ namespace SceneView.Controllers
                 {
                     return View(scene);
                 }
-                
-               
+
+
             }
         }
         [HttpGet]
         public ActionResult UpdateComment()
         {
             var spotname = Request.QueryString["sn"];
-            spotname = spotname == "" || spotname == null ? "东方明珠广播电视塔" : spotname;
+            spotname = spotname == "" || spotname == null ? "上海迪士尼度假区" : spotname;
             var scenicSpot = db.scenicSpot.Where(u => u.scenicName == spotname).FirstOrDefault<scenicSpot>();
             var c = new Comment();
             List<SceneView.Models.comment> commentList = db.comment.Where(u => u.scenicID == scenicSpot.scenicID).OrderByDescending(u => u.commentTime).ToList();
-            
-            List<Comment> comlist = new List<Comment>();
-            foreach (var cn in commentList)
-            {
-                Comment comm = new Comment();
-                comm.userID = cn.userID;
-                comm.commentID = cn.commentID;
-                comm.username = db.userInfo.Where(u => u.userID == cn.userID).FirstOrDefault().nickname;
-                comm.commentContent = cn.commentContent;
-                comm.commentLike = cn.commentLike;
-                comm.commentTime = cn.commentTime;
-                comlist.Add(comm);
-            }
             if (Request.IsAjaxRequest())
             {
-                return PartialView(comlist);
+                return PartialView(commentList);
 
             }
-            return View(comlist);
+            return View(commentList);
 
         }
         [HttpGet]
@@ -92,6 +103,7 @@ namespace SceneView.Controllers
                 comment.commentContent = r.commentContent;
                 var id = Session["user"].ToString();
                 comment.userID = id;
+                var user1 = db.user.Where(u => u.userID == id).First();
                 var spotname = Request.QueryString["sn"];
                 spotname = spotname == "" || spotname == null ? "东方明珠广播电视塔" : spotname;
                 var scenicSpot = db.scenicSpot.Where(u => u.scenicName == spotname).FirstOrDefault<scenicSpot>();
@@ -100,6 +112,7 @@ namespace SceneView.Controllers
                 System.DateTime currentTime = new System.DateTime();
                 currentTime = System.DateTime.Now;
                 comment.commentTime = currentTime;
+                comment.user = user1 ;
                 var com = db.comment;
                 comment.commentID = com.Count() == 0 ? 1 : (com.Select(u => u.commentID).Max() + 1);
                 db.comment.Add(comment);
@@ -116,31 +129,16 @@ namespace SceneView.Controllers
                         saveFailed = true;
                         ex.Entries.Single().Reload();
                     }
-                } while (saveFailed);
-            var c = new Comment();
-            
+                } while (saveFailed);           
             List<SceneView.Models.comment> commentList = db.comment.Where(u=>u.scenicID==scenicSpot.scenicID).OrderByDescending(u => u.commentTime).ToList();
+           
             
-            List<Comment> comlist=new List<Comment>();  
-            foreach (var cn in commentList)
-            {
-                Comment comm = new Comment();
-                comm.userID = cn.userID;
-                comm.commentID = cn.commentID;
-                comm.username = db.userInfo.Where(u => u.userID == cn.userID).FirstOrDefault().nickname;
-                comm.commentContent = cn.commentContent;
-                comm.commentLike = cn.commentLike;
-                comm.commentTime = cn.commentTime;
-                comlist.Add(comm);
-            }
             if (Request.IsAjaxRequest())
             {
-                return PartialView(comlist);
+                return PartialView(commentList);
 
             }
-            return PartialView(comlist);
-
-
+            return PartialView(commentList);
         }
         public ActionResult SingleNote()
         {
@@ -187,7 +185,27 @@ namespace SceneView.Controllers
                 }
             }while (saveFailed) ;
         }
+        [HttpGet]
+        public ActionResult UpdateVisitor()
+        {
+           
+            var num = 5654;
+            return View(num);
+        }
+        [HttpPost]
+        public ActionResult UpdateVisitor(string Index,string sceneName)
+        {
+            //ScriptRuntime pyRumTime = Python.CreateRuntime();
+            //dynamic obj = pyRumTime.UseFile("getNumOfSpot.py");
+            //var num = obj.outputTheNumOf(sceneName);
+            var num = 6666;
+            if (Request.IsAjaxRequest())
+            {
+                return View(num);
+            }
+            return View(num);
 
+        }
         public ActionResult UpdateBlog()
         {
 
@@ -211,30 +229,98 @@ namespace SceneView.Controllers
             return View(strategy);
         }
 
-        [HttpGet]
-        public ActionResult UpdateVisitor()
+        [HttpPost]
+        public void UpdateViewedList(string userid, short scenicid)
         {
-            var num = 5654;
-            return View(num);
+            var scene = db.scenicSpot.Where(u => u.scenicID == scenicid).FirstOrDefault<scenicSpot>();
+            var user = db.user.Where(u => u.userID == userid).FirstOrDefault<user>();
+            var sceniclist = user.scenicSpot1.ToList();
+            var flag = 0;
+            SceneView.Models.scenicSpot temp = new SceneView.Models.scenicSpot();
+            foreach (var s in sceniclist)
+            {
+                if (s.scenicID == scenicid)
+                {
+                    flag = 1;
+                    temp = s;
+                    break;
+                }
+            }
+            if (flag == 0)
+            {
+                user.scenicSpot1.Add(scene);
+            }
+            else
+            {
+                user.scenicSpot1.Remove(temp);
+            }
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed);
+            var user1 = db.user.Where(u => u.userID == userid).FirstOrDefault<user>();
+            var sceniclist1 = user.scenicSpot1.ToList();
         }
         [HttpPost]
-        public ActionResult UpdateVisitor(int index)
+        public void UpdateWantList(string userid, short scenicid)
         {
-            var num = 6666;
-            if (Request.IsAjaxRequest())
+            var scene = db.scenicSpot.Where(u => u.scenicID == scenicid).FirstOrDefault<scenicSpot>();
+            var user = db.user.Where(u => u.userID == userid).FirstOrDefault<user>();
+            var sceniclist = user.scenicSpot.ToList();
+            var flag = 0;
+            SceneView.Models.scenicSpot temp = new SceneView.Models.scenicSpot();
+            foreach (var s in sceniclist)
             {
-                return View(num);
-
+                if (s.scenicID == scenicid)
+                {
+                    flag = 1;
+                    temp = s;
+                    break;
+                }
             }
-            return View(num);
+            if (flag == 0)
+            {
+                user.scenicSpot.Add(scene);
+            }
+            else
+            {
+                user.scenicSpot.Remove(temp);
+            }
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed);
+            var user1 = db.user.Where(u => u.userID == userid).FirstOrDefault<user>();
+            var sceniclist1 = user.scenicSpot.ToList();
         }
-
         public class Spot
         {
             public string usern { get; set; }
             public SceneView.Models.user user { get; set; }
             public SceneView.Models.scenicSpot spot { get; set; }
             public string commentContent { get; set; }
+            public bool viewed { get; set; }
+            public bool want { get; set; }
         }
         public class Comment
         {

@@ -1,144 +1,162 @@
-﻿
+﻿@model SceneView.Controllers.ProfileController.ProfileData
+
 @{
-    Layout = "~/Views/Profile/_Layout.cshtml";
+    Layout = "~/Views/Profile/_ProfileLayout.cshtml";
 }
 
-<ol class="breadcrumb hidden-xs">
-    <li><a href="/profile">Home</a></li>
-    <li><a href="/profile/note?m=@ViewBag.message">Message</a></li>
-</ol>
+<!--  PAPER WRAP -->
+<div class="wrap-fluid">
+    <div class="container-fluid paper-wrap bevel tlbr">
 
-@if (ViewBag.message == 1)
-{
-    <h4 class="page-title b-0">我发出的消息</h4>
+        <div class="row">
+            <div id="paper-top">
+                <div class="col-sm-3">
+                    <h2 class="tittle-content-header"> <em class="icon-camera"></em> <span>我的消息 </span> </h2>
+                </div>
 
-    <div class="tab-container tile">
-        <ul class="nav tab nav-tabs">
-            <li class="active"><a href="#home">我的评论</a></li>
-            <li><a href="#profile">我点赞的评论</a></li>
-            <li><a href="#messages23">我点赞的游记</a></li>
-        </ul>
+                <div class="col-sm-7">
+                    <div class="devider-vertical visible-lg"></div>
+                    <div class="tittle-middle-header">
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                <div class="listview list-container">
-
-                    @foreach (var n in Model.userData.comment)
-                    {
-                        <div class="media">
-                            <input type="checkbox" class="pull-left list-check" value="">
-                            <div class="media-body">
-                                <a href="" class="t-overflow"><p>@n.commentContent</p></a>
-                                <div class="clearfix"></div>
-                                <div class="attrs">评论时间: @n.commentTime</div>
-                                <div class="block attrs">点赞: @n.commentLike</div>
-                                <div class="block attrs">景点: @n.scenicSpot.scenicName</div>
-                            </div>
+                        <div class="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <span class="tittle-alert entypo-info-circled"></span>
+                            欢迎回来 &nbsp;
+                            <strong>@Model.userData.userInfo.nickname</strong>&nbsp;&nbsp; 我等你很久了！
                         </div>
-                    }
-                    @foreach (var n in Model.userData.commentReply)
-                    {
-                        <div class="media">
-                            <input type="checkbox" class="pull-left list-check" value="">
-                            <div class="media-body">
-                                <a href="" class="t-overflow"><p>@n.commentContent</p></a>
-                                <div class="clearfix"></div>
-                                <p>回复@@@n.comment.user.userInfo.nickname -- @n.comment.commentContent </p>
-                                <div class="attrs">回复时间: @n.commentTime</div>
-                            </div>
-                        </div>
-                    }
+
+
+                    </div>
 
                 </div>
-            </div>
-            <div class="tab-pane" id="profile">
-                @foreach (var n in Model.userData.commentLikeMes)
-                {
-                    <div class="media">
-                        <input type="checkbox" class="pull-left list-check" value="">
-                        <div class="media-body">
-                            <a href="" class="t-overflow"><p>你点赞了 @n.user.userInfo.nickname 的评论：" @n.comment.commentContent "</p></a>
-                            <div class="clearfix"></div>
-                            <div class="attrs">点赞时间: @n.time</div>
-                        </div>
-                    </div>
-                }
-            </div>
-            <div class="tab-pane" id="messages23">
-                @foreach (var n in Model.userData.noteLikeMes)
-                {
-                    <div class="media">
-                        <input type="checkbox" class="pull-left list-check" value="">
-                        <div class="media-body">
-                            <a href="" class="t-overflow"><p>你点赞了 @n.note.user.userInfo.nickname 的游记："@n.note.title"</p></a>
-                            <div class="clearfix"></div>
-                            <div class="attrs">点赞时间: @n.time</div>
-                        </div>
-                    </div>
-                }
+
             </div>
         </div>
-    </div>
-}
-else
-{
-    <h4 class="page-title b-0">我收到的消息</h4>
-
-    <div class="tab-container tile">
-        <ul class="nav tab nav-tabs">
-            <li class="active"><a href="#home">回复我的评论</a></li>
-            <li><a href="#profile">点赞我的评论</a></li>
-            <li><a href="#messages23">点赞我的游记</a></li>
+        <!--/ TITLE -->
+        <!-- BREADCRUMB -->
+        <ul id="breadcrumb">
+            <li>
+                <a href="/profile"><span class="entypo-home"></span></a>
+            </li>
+            <li>
+                <i class="fa fa-lg fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="/profile/message">我的消息</a>
+            </li>
         </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-                <div class="listview list-container">
+        <!-- END OF BREADCRUMB -->
 
-                    @foreach (var n in Model.commentReplyMesData)
-                    {
-                        <div class="media">
-                            <input type="checkbox" class="pull-left list-check" value="">
-                            <div class="media-body">
-                                <a href="" class="t-overflow"><p>@n.commentReply.user.userInfo.nickname 回复了你的评论： @n.comment.commentContent</p></a>
-                                <div class="clearfix"></div>
-                                <p>@n.commentReply.commentContent</p>
-                                <div class="attrs">回复时间: @n.commentReply.commentTime</div>
-                            </div>
+        <div class="content-wrap">
+            <div class="row">
+                <!-- SIDEMENU MAIL -->                    <!-- /SIDEMENU MAIL -->
+                <!-- CONTENT MAIL -->
+                <div class="col-sm-12">
+
+                    <div id="content-mail">
+                        <div class="table-responsive">
+                            <!-- THE MESSAGES -->
+                            <table class="table table-mailbox">
+                                @* 表头 *@
+                                <tr class="unread">
+                                    <td width="10" style="text-align:center; vertical-align:middle">用户</td>
+                                    <td width="10" style="text-align:center; vertical-align:middle">消息类型</td>
+                                    <td width="60" style="text-align:center; vertical-align:middle">
+                                        消息内容
+                                    </td>
+                                    <td class="time text-right" width="20" style="text-align:center; vertical-align:middle">消息时间</td>
+                                </tr>
+                                @foreach (var n in Model.commentReplyMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                <tr class="unread" style="height : 50px">
+                                    @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                    @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "1" })
+                                    <td width="10" style="text-align:center; vertical-align:middle">@n.commentReply.user.userInfo.nickname</td>
+                                    <td width="10" style="text-align:center; vertical-align:middle">评论回复</td>
+                                    <td width="60" style="vertical-align:middle; padding-left:20px">
+                                        回复了你的评论：" @n.comment.commentContent "<br />
+                                        <strong>@n.commentReply.commentContent</strong>
+                                    </td>
+                                    <td width="20" style="text-align:center; vertical-align:middle">@n.commentReply.commentTime</td>
+                                    <td width="10" class="time text-right" style="text-align:center; vertical-align:middle">
+                                        <input type="submit" class="btn button" value="已读" />
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                                @foreach (var n in Model.commentLikeMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                    <tr class="unread" style="height : 50px">
+                                        @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                        @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "2" })
+                                        <td width="10" style="text-align:center; vertical-align:middle">@n.user.userInfo.nickname</td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">评论点赞</td>
+                                        <td width="60" style="vertical-align:middle; padding-left:20px">
+                                            点赞了你的评论：" @n.comment.commentContent "
+                                        </td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">@n.time</td>
+                                        <td width="10" class="time text-right" style="text-align:center; vertical-align:middle">
+                                            <input type="submit" class="btn button" value="已读" />
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+
+                                @foreach (var n in Model.noteLikeMesData)
+                                {
+                                    using (Html.BeginForm("DeleteMessage", "Profile", FormMethod.Post))
+                                    {
+                                    <tr class="unread" style="height : 50px">
+                                        @Html.TextBoxFor(u => u.message.messageID, new { @type = "hidden", Value = n.messageID })
+                                        @Html.TextBoxFor(u => u.message.type, new { @type = "hidden", Value = "3" })
+                                        <td width="10" style="text-align:center; vertical-align:middle">@n.user.userInfo.nickname</td>
+                                        <td width="10" style="text-align:center; vertical-align:middle">游记点赞</td>
+                                        <td width="60" style="vertical-align:middle; padding-left:20px">
+                                            点赞了你的游记：" @n.note.title "
+                                        </td>
+                                        <td width="20" style="text-align:center; vertical-align:middle">@n.time</td>
+                                        <td width="5" class="time text-right" style="text-align:center; vertical-align:middle">
+                                            <input type="submit" class="btn button" value="已读" />
+                                        </td>
+                                    </tr>
+                                    }
+                                    
+                                }
+                            </table>
                         </div>
-                    }
+                        <!-- /.table-responsive -->
+
+
+                    </div>
 
                 </div>
+                <!-- /CONTENT MAIL -->
             </div>
-            <div class="tab-pane" id="profile">
-                @foreach (var n in Model.commentLikeMesData)
-                {
-                    <div class="media">
-                        <input type="checkbox" class="pull-left list-check" value="">
-                        <div class="media-body">
-                            <a href="" class="t-overflow"><p>@n.user.userInfo.nickname 点赞了你的评论：" @n.comment.commentContent "</p></a>
-                            <div class="clearfix"></div>
-                            <div class="attrs">点赞时间: @n.time</div>
-                        </div>
-                    </div>
-                }
             </div>
-            <div class="tab-pane" id="messages23">
-                @foreach (var n in Model.noteLikeMesData)
-                {
-                    <div class="media">
-                        <input type="checkbox" class="pull-left list-check" value="">
-                        <div class="media-body">
-                            <a href="" class="t-overflow"><p>@n.user.userInfo.nickname 点赞了你的游记："@n.note.title"</p></a>
-                            <div class="clearfix"></div>
-                            <div class="attrs">点赞时间: @n.time</div>
-                        </div>
-                    </div>
-                }
+
+            <!-- FOOTER -->
+            <div class="footer-space"></div>
+            <div id="footer">
+                <div class="devider-footer-left"></div>
+                <div class="time">
+                    <p id="spanDate">
+                    <p id="clock">
+                </div>
+                <div class="copyright">
+                    用空多回回家
+                    <span class="entypo-heart"></span><a href="/profile">@Model.userData.userInfo.nickname</a> 这世界有很多人爱着你
+                </div>
+                <div class="devider-footer"></div>
+
             </div>
+            <!-- / END OF FOOTER -->
+
+
         </div>
-    </div>
-}
-
-
-
+</div>
+<!--  END OF PAPER WRAP -->
