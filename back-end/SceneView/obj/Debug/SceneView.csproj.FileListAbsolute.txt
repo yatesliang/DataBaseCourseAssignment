@@ -227,3 +227,4 @@ C:\Users\admin\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\obj\
 C:\Users\admin\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\obj\Debug\SceneView.dll
 C:\Users\admin\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\obj\Debug\SceneView.pdb
 C:\Users\admin\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Qiniu.dll
+C:\Users\admin\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\obj\Debug\SceneView.csprojAssemblyReference.cache
