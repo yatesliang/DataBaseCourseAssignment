@@ -10,10 +10,11 @@
 <html>
 
 <head>
-    <title>游记（最终展示</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>游记</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
     <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript">
@@ -334,7 +335,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <div class="art-trips-text-content">
                             @*@Html.Raw( @Model.singlenote.noteContent)*@
-                            <iframe src="@Model.singlenote.noteContent"></iframe>
+                           
+                               
+                                
+                                    
+                                    <iframe src=@Model.singlenote.noteContent width="700px" height="700px">
+
+                                        <head>
+                                            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+                                        </head>
+
+
+                                    </iframe>
+
+                           
+                            
+                                
+                               
+
+                            
                             @*<p src ="@Model.singlenote.noteContent"></p>*@
                             @*<p id="noteContent"></p>*@
                             <a id="noteContent"></a>

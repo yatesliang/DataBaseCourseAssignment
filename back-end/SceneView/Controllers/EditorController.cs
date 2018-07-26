@@ -47,7 +47,7 @@ namespace SceneView.Controllers
             // 简单文件上传
             Mac mac = new Mac("LIjKmW98gcj0ahR_Fogx3AV8V1JsRtOQo6qT43Cu", "W_lPo12yjHkaVyfibquVSJH8ImLWXw-tIXeggNSo");
             // 上传文件名
-            string key = timeStamp + ".html";
+            string key = timeStamp;
             // 本地文件路径
             filePath = "C:\\Users\\admin\\Desktop\\DBCourse" + timeStamp.ToString() + ".html";
             // 存储空间名
@@ -79,7 +79,7 @@ namespace SceneView.Controllers
             var notes = db.note;
             note.noteID = notes.Count() == 0 ? 1 : notes.Select(n => n.noteID).Max() + 1;
             note.userID = Session["user"].ToString();
-            note.noteContent = timeStamp + ".html";
+            note.noteContent = timeStamp;
             //int t = int.Parse(timeStamp);
             note.noteTime = new DateTime(long.Parse(timeStamp));
             note.scenicID = spot.scenicID;

@@ -93,7 +93,7 @@
         <div class="container">
             <div class="banner_top">
                 <div class="banner_top_left">
-                    <p style="font-size:16px"><a href="/Profile" style="font-size:20px;color:white">@Model.userInfo.nickname</a></p>
+                    <p><a href="/Profile" style="font-size:20px;color:white"><img class="fa-circle" src="@Model.userInfo.headPortrait" width="100px"  height="100px"/>    @Model.userInfo.nickname</a></p>
                 </div>
                 <div class="banner_top_right">
                     @*<form>
@@ -102,9 +102,10 @@
         </form>*@
                     @using (@Html.BeginForm("Search", "Home",FormMethod.Post, new { }))
                     {
-                        @Html.TextBoxFor(info => info.userInfo.nickname, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
-                   <img src="~/Content/image/home/search.png" />
+                        @Html.TextBoxFor(info => info.userInfo.nickname, new { @type = "text", Value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
+                        
                         <input type="submit" class="hidden" />
+                        <img src="~/Content/image/home/search.png" />
                     }
                 </div>
                 <div class="clearfix"> </div>

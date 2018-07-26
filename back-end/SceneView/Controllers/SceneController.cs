@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using SceneView.Models;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+using System.Web;
+using System.Net;
+using System.Text;
 namespace SceneView.Controllers
 {
     public class SceneController : Controller
@@ -204,13 +207,24 @@ namespace SceneView.Controllers
                 }
             }
             singl.Remove(tempnote);
+
+            //var url = singlenote.noteContent;
+            //WebClient wc = new WebClient();
+            //wc.Credentials = CredentialCache.DefaultCredentials;
+
+
+
+
+
+            //byte[] data = wc.DownloadData(url);
+            //singlenote.noteContent = Encoding.UTF8.GetString(data);
             noteList n = new noteList();
             n.singlenote = singlenote;
             n.noteL = singl;
             return View(n);
         }
         [HttpPost]
-        public void UpdateLike(string ln,string ni)
+        public void UpdateLike(string ln, string ni)
         {
             decimal likenum = int.Parse(ln);
             int noteID = int.Parse(ni);
@@ -229,17 +243,17 @@ namespace SceneView.Controllers
                     saveFailed = true;
                     ex.Entries.Single().Reload();
                 }
-            }while (saveFailed) ;
+            } while (saveFailed);
         }
         [HttpGet]
         public ActionResult UpdateVisitor()
         {
-           
+
             var num = 5654;
             return View(num);
         }
         [HttpPost]
-        public ActionResult UpdateVisitor(string Index,string sceneName)
+        public ActionResult UpdateVisitor(string Index, string sceneName)
         {
             //ScriptRuntime pyRumTime = Python.CreateRuntime();
             //dynamic obj = pyRumTime.UseFile("getNumOfSpot.py");
@@ -427,6 +441,31 @@ namespace SceneView.Controllers
             // 完成更新
             return Redirect("/Scene/index?sn=" + spot.comment.scenicSpot.scenicName);
         }
+        [HttpPost]
+        public void AddLike(string commentID)
+        {
+            var id = int.Parse(commentID);
+            var comment = db.comment.Where(c => c.commentID == id).FirstOrDefault();
+            if (comment != null)
+            {
+                comment.commentLike = comment.commentLike + 1;
+                // 循环检测db是否被占用，防止并发冲突
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+                        ex.Entries.Single().Reload();
+                    }
+                } while (saveFailed);
+            }
+        }
         public class Spot
         {
             public string usern { get; set; }
@@ -443,23 +482,23 @@ namespace SceneView.Controllers
             public string userID { get; set; }
             public string username { get; set; }
             public long commentID { get; set; }
-            public string commentContent { get; set;}
+            public string commentContent { get; set; }
             public decimal commentLike { get; set; }
             public System.DateTime commentTime { get; set; }
-            
+
         }
         public class page
         {
             public List<SceneView.Models.note> list { get; set; }
             public int pagetotal { get; set; }
             public int currentpage { get; set; }
-            public SceneView.Models.user  user { get; set; }
+            public SceneView.Models.user user { get; set; }
         }
         public class noteList
         {
             public SceneView.Models.note singlenote { get; set; }
-            public List<SceneView.Models.note> noteL { get; set; }       
+            public List<SceneView.Models.note> noteL { get; set; }
         }
-        
+
     }
 }

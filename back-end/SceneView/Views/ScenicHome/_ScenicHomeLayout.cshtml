@@ -51,8 +51,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @using (@Html.BeginForm("Search", "ScenicHome", new { }))
                     {
                         @Html.TextBoxFor(info => info[0].searchContent, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
-                        <img src="~/Content/image/home/search.png" />
+
                         <input type="submit" class="hidden" />
+                        <img src="~/Content/image/home/search.png" />
                     }
 
                 </div>

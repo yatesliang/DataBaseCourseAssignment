@@ -495,9 +495,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="reviewArea commentclearfix">
                     @using (Html.BeginForm("PostComment", "Scene", FormMethod.Post))
                     {
-                        @Html.TextAreaFor(s=>s.comment.commentContent, new {@class= "commentcontent comment-input", @placeholder = "请输入评论内容：" })
+                        @Html.TextAreaFor(s => s.comment.commentContent, new { @class = "commentcontent comment-input", @placeholder = "请输入评论内容：" })
                         @*<textarea class="commentcontent comment-input" placeholder="请输入评论内容："></textarea>*@
-                        @Html.TextBoxFor(s=>s.comment.scenicID, new { @style="display:none", Value=Model.spot.scenicID})
+                        @Html.TextBoxFor(s => s.comment.scenicID, new { @style = "display:none", Value = Model.spot.scenicID })
                         <input type="submit" class="btn btn-default" value="评论" />
                     }
 
@@ -521,10 +521,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             var id1 = "replyCom " + comment.commentID;
                                             var id2 = "child " + comment.commentID;
                                             var id3 = "fake " + comment.commentID;
+                                            var id4 = "zan " + comment.commentID;
                                         }
                                         <a href="javascript:;" id="@comment.commentID" onclick="addCom()" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
                                         <span class="pull-left date-dz-line">|</span>
-                                        <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>
+                                        <a href="javascript:;" id="@id4" class="date-dz-z pull-left" onclick="addZan()"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num" id="@id4 num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>
                                     </div>
                                 </div>
 
@@ -560,8 +561,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="date-dz-right pull-right comment-pl-block">
                                             @*<a href="javascript:;" class="removeBlock">删除</a>*@
                                             @*<a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
-                                <span class="pull-left date-dz-line">|</span>
-                                <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>*@
+                                    <span class="pull-left date-dz-line">|</span>
+                                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>*@
                                         </div>
                                     </div>
                                     <div class="hf-list-con"></div>
@@ -584,6 +585,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 document.getElementById(id2).innerHTML = "";
                                 document.getElementById(id).innerHTML = "回复";
                             }
+                        }
+                    </script>
+                    <script>
+                        function addZan() {
+                            var zan = event.target.id + " num";
+                            var id = zan.slice(4, 5);
+                            //alert(zan);
+                            $.ajax({
+                                'type': 'post', 'url': '/Scene/AddLike',
+                                'data': {
+                                    commentID: id
+                                },
+                                error: function (message) {
+                                    alert('error');
+                                },
+                                success: function () {
+                                    var num = parseInt(document.getElementById(zan).innerHTML) + 1;
+                                    //alert(num);
+                                    document.getElementById(zan).innerHTML = num;
+                                }
+                            })
                         }
                     </script>
                 </div>

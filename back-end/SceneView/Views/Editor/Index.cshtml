@@ -177,7 +177,7 @@
                     alert("请输入标题");
                     return;
                 }
-                alert(noteTitle + noteTitle.type);
+                //alert(noteTitle + noteTitle.type);
                 // 生成游记的二进制编码（包括图片）
                 var markupStr = $('#summernote').summernote('code');
                 var content = markupStr.toString();
@@ -187,7 +187,7 @@
 
                 // 获得时间戳
                 var now = new Date();
-                alert(now);
+                //alert(now);
                 var ts = now.getTime().toString();
                 $.ajax({
                     'type': 'post', 'url': '/Editor/getNote',

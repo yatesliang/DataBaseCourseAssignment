@@ -91,6 +91,8 @@ namespace SceneView.Controllers
                     userInfo.nickname = r.username;
                     userInfo.phoneNumber = r.phone;
                     userInfo.SQAnswer = r.answer;
+                    userInfo.headPortrait = "http://pcet6rfxw.bkt.clouddn.com/7.png";
+
                     db.user.Add(user);
                     db.userInfo.Add(userInfo);
                     // 循环检测db是否被占用，防止并发冲突
