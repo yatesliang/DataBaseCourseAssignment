@@ -515,7 +515,7 @@ body a:hover {
     min-height: 800px;
     min-width: 980px;
     background-color: #f0f3f5;
-    padding-bottom: 320px;
+    padding-bottom: 20px;
 }
 .sceneShow .content{
     position: relative;
@@ -633,19 +633,19 @@ body a:hover {
     /* margin-right: 120px; */
 }
 .pageList a {
-    height: 24px;
+    height: 25px;
     line-height: 26px;
     padding: 0 8px;
     /* border: 1px solid #ddd; */
-    border: 10 px solid #000;
-    border-color: #03a9f4;
-    color: #000;
+    border: 0.01px solid rgb(204,204,214);
+   color:#619ac3;
     display: inline-block;
     *display: inline;
     *zoom: 1; 
     margin-left: 3px;
     font-size: 16px;
-    background-color: #fff
+    background-color: #fff;
+    border-radius:2px;
 }
 .pageList a .pageLink{
     color: #000;
@@ -653,11 +653,14 @@ body a:hover {
 
 .pageList a:hover {
     /* background: #eaeaea */
-    background: rgba(128,127,128)
+    background-color:#619ac3;
+    color:white;
 }
 
 .pageList .cur {
-    background: #eaeaea;
+   /* background: #eaeaea;*/
+   background-color:#619ac3;
+   color:white;
 }
 /* the following are made by may in 7.19.2018 */
 

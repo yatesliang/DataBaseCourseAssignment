@@ -205,7 +205,7 @@ namespace SceneView.Controllers
             var user1 = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
             if (user1 != null)
             {
-                user1.userInfo.headPortrait = imagesrc;
+                
                 string file = imagesrc;
                 // 使用qiniu传递数据
                 Config config = new Config();

@@ -356,9 +356,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                  x = $("#tour-like-num").text();
                                  x = parseInt(x);
                                  x = x + 1;
-                                 $("#tour-like-num").text(x);
-
-                            } else {
+                                $("#tour-like-num").text(x);
+                            }
+                            else {
                                 $("#tour-like").removeClass("liked");
                                 $(this).addClass("tour-like");
                                 x = $("#tour-like-num").text();
@@ -369,8 +369,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     $.ajax({
                                         type: "post",
                                         url: '/Scene/UpdateLike',
-                                        data: { ln: $("#tour-like-num").text(), ni:@Model.singlenote.noteID
-                                        },
+                                        data: { ln: $("#tour-like-num").text(), ni:"@Model.singlenote.noteID"},
                                         error: function (message) {
                                             alert('error!');
                                         }
@@ -380,19 +379,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         })
                             })
-                            $(function () {
-                                $("#tour-collect").click(function () {
-                                    var f = this;
-                                    if ($("#tour-collect").hasClass("tour-collect")) {
-                                        $("#tour-collect").removeClass("tour-collect");
-                                        $(this).addClass("collected");
-                                    } else {
-                                        $("#tour-collect").removeClass("collected");
-                                        $(this).addClass("tour-collect");
-                                    }
-
-                                })
-                            })
+                          
                         </script>
 
                         <script type="text/javascript">

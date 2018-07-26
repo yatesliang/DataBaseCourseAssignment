@@ -41,21 +41,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-    
+
     <!-- made by may 2018/7/20 -->
     <div class="banner1">
         <div class="container">
             <div class="banner_top">
-                <div class="banner_top_left">
 
+                <div class="banner_top_left">
+                    <p style="font-size:16px"><a href="/Profile" style="font-size:20px;color:white">@Model.user.userInfo.nickname</a></p>
                 </div>
                 <div class="banner_top_right">
                     <form>
-                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
-                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '目的地/景点';}" required="" id="searchtext">
+                        <button class="glyphicon glyphicon-search" aria-hidden="true" id="search" ></button>
                     </form>
+
                 </div>
                 <div class="clearfix"> </div>
+
+
             </div>
             <nav class="navbar navbar-default">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -88,7 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
 
                         <li><a href="#" class="active">故事</a></li>
-                        <li><a href="/Profile" >个人主页</a></li>
+                        <li><a href="/Profile">个人主页</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
 
@@ -104,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- made by may 2018/7/20 -->
     <!-- blog -->
-        <div class="blog" id="blog">
+    <div class="blog" id="blog">
         <div class="container">
             <h3>Blog</h3>
             <div class="blog-grids">
@@ -248,9 +252,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }
                 }
                 @{
-                    if (Model.currentpage <Model.pagetotal)
+                    if (Model.currentpage < Model.pagetotal)
                     {
-                        var page = Model.currentpage +1;
+                        var page = Model.currentpage + 1;
                         <li><a href="/Scene/Blog?page=@page" aria-label="Previous" id="page1"><span aria-hidden="true">下一页</span></a></li>
 
                     }
@@ -259,11 +263,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">下一页</span></a></li>
                     }
                 }
-                
+
             </ul>
         </nav>
+    </div>
     <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript" src="~/Scripts/scene/js/jquery.unobtrusive-ajax.js"></script>
     <script type="text/javascript">
         function changepage(i) {
             $.ajax({
@@ -276,19 +281,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     $("#blog").html(data);//data--就是对应的分部视图页面内容.
                     //alert(data)//弹出框
                 },
-                 error: function (message) {
-            alert('error!');
-        }
+                error: function (message) {
+                    alert('error!');
+                }
             })
-            
 
-    //$.ajax({
-    //    type: "post",
-    //    url: '/Scene/UpdateBlog',
-    //    data: { pageIndex: i },
 
-    //})
-}
+            //$.ajax({
+            //    type: "post",
+            //    url: '/Scene/UpdateBlog',
+            //    data: { pageIndex: i },
+
+            //})
+        }
+    </script>
+    <script type="text/javascript">
+        $("#search").click(function () {
+            $.ajax({
+                type: "post",
+                url: '/Scene/Search',
+                data: { content: $("#searchtext").val()},
+                async: true,//异步
+               
+            });
+
+        })
     </script>
     <!-- //blog -->
     <!-- contact -->

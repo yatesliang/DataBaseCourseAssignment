@@ -106,6 +106,8 @@ namespace SceneView.Controllers
         [HttpGet]
         public ActionResult Blog()
         {
+            string id = Session["user"].ToString();
+            var user = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
             var page = Request.QueryString["page"];
             page = page == "" || page == null ? "0" : page;
             var pageIndex = int.Parse(page);
@@ -115,8 +117,16 @@ namespace SceneView.Controllers
             p.list = list;
             p.currentpage = pageIndex;
             p.pagetotal = noteList.Count() / 6 + 1;
+            p.user = user;
             return View(p);
         }
+        [HttpPost]
+        public ActionResult Search(string content)
+        {
+            var searchContent = content;
+            return Redirect("~/ScenicHome/Index?search=" + searchContent);
+        }
+
         [HttpPost]
         public ActionResult UpdateComment(string content, string spotname, string mark)
         {
@@ -358,6 +368,7 @@ namespace SceneView.Controllers
             public List<SceneView.Models.note> list { get; set; }
             public int pagetotal { get; set; }
             public int currentpage { get; set; }
+            public SceneView.Models.user  user { get; set; }
         }
         public class noteList
         {
