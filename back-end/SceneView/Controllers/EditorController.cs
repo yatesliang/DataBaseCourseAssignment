@@ -27,7 +27,7 @@ namespace SceneView.Controllers
 
             //将noteContent写入本地文件
             //string filePath = "..\\Sources\\note\\" + timeStamp.ToString() + ".txt";
-            string filePath = "C:\\Users\\admin\\Desktop\\DBCourse" + timeStamp.ToString() + ".html";
+            string filePath = "C:\\appdata\\" + timeStamp.ToString() + ".html";
             FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(content);

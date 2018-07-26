@@ -1,6 +1,10 @@
 ﻿@model SceneView.Models.strategy
 @{
     Layout = null;
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 
 <!DOCTYPE html>

@@ -1,17 +1,22 @@
 ﻿@model SceneView.Controllers.SceneController.Spot
 @{
-                /**/
+    /**/
 
-                Layout = null;
+    Layout = null;
 
-                List<SceneView.Models.image> imageslist = Model.spot.image.ToList();
-                List<SceneView.Models.note> notelist = Model.spot.note.ToList();
-                List<SceneView.Models.comment> commentList = Model.spot.comment.ToList();
-                var latitude = Model.spot.scenicPos.latitude;
-                var longitude = Model.spot.scenicPos.longitude;
-                var strategy = Model.spot.strategy.ToList(); ;
-                List<SceneView.Models.scenicSpot> viewedscenicList = Model.user.scenicSpot.ToList();
-                List<SceneView.Models.scenicSpot> wantscenicList = Model.user.scenicSpot1.ToList();
+    List<SceneView.Models.image> imageslist = Model.spot.image.ToList();
+    List<SceneView.Models.note> notelist = Model.spot.note.ToList();
+    List<SceneView.Models.comment> commentList = Model.spot.comment.ToList();
+    var latitude = Model.spot.scenicPos.latitude;
+    var longitude = Model.spot.scenicPos.longitude;
+    var strategy = Model.spot.strategy.ToList(); ;
+    List<SceneView.Models.scenicSpot> viewedscenicList = Model.user.scenicSpot.ToList();
+    List<SceneView.Models.scenicSpot> wantscenicList = Model.user.scenicSpot1.ToList();
+
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 
 }
 <!DOCTYPE html>
@@ -157,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="scenicIntroduction">
                     <p>@Model.spot.scenicIntroduction</p>
                     <br>
-                    <div class="display col-md-12" style="display: inline-block text-align: middle">
+                    <div class="display col-md-12" style="display: inline-block; text-align: center">
                         <div class="col-md-4" style="float:left">
                             @if (Model.want)
                             {
@@ -489,82 +494,127 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </form>
 
-            <!--此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件-->
             <div class="commentAll">
                 <div class="reviewArea commentclearfix">
-
-                    <textarea class="commentcontent comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)" id="comment"></textarea>
-                    <a href="javascript:;" class="plBtn">评论</a>
+                    @using (Html.BeginForm("PostComment", "Scene", FormMethod.Post))
+                    {
+                        @Html.TextAreaFor(s=>s.comment.commentContent, new {@class= "commentcontent comment-input", @placeholder = "请输入评论内容：" })
+                        @*<textarea class="commentcontent comment-input" placeholder="请输入评论内容："></textarea>*@
+                        @Html.TextBoxFor(s=>s.comment.scenicID, new { @style="display:none", Value=Model.spot.scenicID})
+                        <input type="submit" class="btn btn-default" value="评论" />
+                    }
 
                 </div>
-                <!--评论区域 end-->
-                <!--回复区域 begin-->
-                <div id="comment-show">
+                <div class="comment-show">
+                    @foreach (var comment in Model.spot.comment)
+                    {
+                        <div class="comment-show-con commentclearfix">
+                            <div class="comment-show-con-img pull-left"><img src="@comment.user.userInfo.headPortrait" alt=""></div>
+                            <div class="comment-show-con-list pull-left commentclearfix">
+
+                                <div class="pl-text commentclearfix">
+                                    <a href="#" class="comment-size-name">@comment.user.userInfo.nickname: </a>
+                                    <span class="my-pl-con">&nbsp;@comment.commentContent</span>
+                                </div>
+                                <div class="date-dz">
+                                    <span class="date-dz-left pull-left comment-time">@comment.commentTime</span>
+                                    <div class="date-dz-right pull-right comment-pl-block">
+                                        @*<a href="javascript:;" class="removeBlock">删除</a>*@
+                                        @{
+                                            var id1 = "replyCom " + comment.commentID;
+                                            var id2 = "child " + comment.commentID;
+                                            var id3 = "fake " + comment.commentID;
+                                            var id4 = "zan " + comment.commentID;
+                                        }
+                                        <a href="javascript:;" id="@comment.commentID" onclick="addCom()" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                        <span class="pull-left date-dz-line">|</span>
+                                        <a href="javascript:;" id="@id4" class="date-dz-z pull-left" onclick="addZan()"><i class="date-dz-z-click-red" ></i>赞 (<i class="z-num" id="@id4 num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>
+                                    </div>
+                                </div>
+
+                                <div id="@id3" style="display:none">
+                                    <div class="reviewArea commentclearfix">
+                                        @using (Html.BeginForm("PostCommentReply", "Scene", FormMethod.Post))
+                                        {
+                                            @Html.TextAreaFor(s => s.commentReply.commentContent, new { @class = "commentcontent comment-input", @placeholder = "请输入回复内容：" })
+                                            @Html.TextBoxFor(s => s.commentReply.replyToCommentID, new { @style = "display:none", Value = comment.commentID })
+                                            @Html.TextBoxFor(s => s.comment.scenicSpot.scenicName, new { @style = "display:none", Value = Model.spot.scenicName })
+                                            <input type="submit" class="btn btn-default" value="提交回复" />
+                                        }
+                                        @*<textarea class="commentcontent comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)" id="comment"></textarea>*@
+
+                                    </div>
+                                </div>
+                                <div id="@id2">
+                                </div>
+                            </div>
+                        </div>
+                        foreach (var reply in comment.commentReply)
+                        {
+                            <div class="comment-show-con commentclearfix" style="margin-left:50px">
+                                <div class="comment-show-con-img pull-left"><img src="@reply.user.userInfo.headPortrait" alt=""></div>
+                                <div class="comment-show-con-list pull-left commentclearfix">
+
+                                    <div class="pl-text commentclearfix">
+                                        <a href="#" class="comment-size-name">@reply.user.userInfo.nickname</a> <span class="my-pl-con">&nbsp;&nbsp;回复&nbsp;&nbsp;</span> <a href="#" class="comment-size-name">@comment.user.userInfo.nickname:</a>
+                                        <span class="my-pl-con">&nbsp;@reply.commentContent</span>
+                                    </div>
+                                    <div class="date-dz">
+                                        <span class="date-dz-left pull-left comment-time">@reply.commentTime</span>
+                                        <div class="date-dz-right pull-right comment-pl-block">
+                                            @*<a href="javascript:;" class="removeBlock">删除</a>*@
+                                            @*<a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                <span class="pull-left date-dz-line">|</span>
+                                <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i></a>*@
+                                        </div>
+                                    </div>
+                                    <div class="hf-list-con"></div>
+                                </div>
+                            </div>
+                        }
+
+                    }
                     <script>
-                        $('#comment-show').load('@Url.Action("UpdateComment", "Scene")')
+                        function addCom() {
+                            var id = event.target.id;
+                            var id1 = "replyCom " + id;
+                            var id2 = "child " + id;
+                            var id3 = "fake " + id;
+                            if (document.getElementById(id).innerHTML == "回复") {
+                                document.getElementById(id2).innerHTML = document.getElementById(id3).innerHTML;
+                                document.getElementById(id).innerHTML = "取消回复";
+                            }
+                            else {
+                                document.getElementById(id2).innerHTML = "";
+                                document.getElementById(id).innerHTML = "回复";
+                            }
+                        }
+                    </script>
+                    <script>
+                        function addZan() {
+                            var zan = event.target.id + " num";
+                            var id = zan.slice(4, 5);
+                            //alert(zan);
+                            $.ajax({
+                                'type': 'post', 'url': '/Scene/AddLike',
+                                'data': {
+                                    commentID: id
+                                },
+                                error: function (message) {
+                                    alert('error');
+                                },
+                                success: function () {
+                                    var num = parseInt(document.getElementById(zan).innerHTML) + 1;
+                                    //alert(num);
+                                    document.getElementById(zan).innerHTML = num;
+                                }
+                            })
+                        }
                     </script>
                 </div>
-                <!--回复区域 end-->
             </div>
-            <script type="text/javascript">
-                $("document").ready(function(){
-                $.ajax({
-                type: "post",
-                url: '/Scene/UpdateCommentStart',
-                data: {  spotname: "@Model.spot.scenicName" },
-                async: true,//异步
-                success: function (data) //成功后的回调方法
-                {
-                    $("#comment-show").html(data);//data--就是对应的分部视图页面内容.
-
-                },
-                error: function (message) {
-                    alert('error!');
-                }
-            })
-                })
-            </script>
-            <!--textarea高度自适应-->
-            <script type="text/javascript">
-                $(function () {
-                    $('.commentcontent').flexText();
-                });
-            </script>
-            <!--textarea限制字数-->
-            <script type="text/javascript">
-                function keyUP(t) {
-                    var len = $(t).val().length;
-                    if (len > 139) {
-                        $(t).val($(t).val().substring(0, 140));
-                    }
-                }
-            </script>
-            <!--点击评论创建评论条-->
-            <script type="text/javascript">
-               $('.commentAll').on('click', '.plBtn', function () {
-                   var num = 3;
-                   var isAutoSend = document.getElementsByName('score');
-                   for (var i = 0; i < isAutoSend.length; i++) {
-                       if (isAutoSend[i].checked == true) {
-
-                           num = isAutoSend[i].value;
-                       }
-                   }
-                $.ajax({
-                    type: "post",
-                    url: '/Scene/UpdateComment',
-                    data: { content: $("#comment").val(), spotname: "@Model.spot.scenicName", mark: num},
-                    async: true,//异步
-                    success: function (data) //成功后的回调方法
-                    {
-                        $("#comment-show").html(data);//data--就是对应的分部视图页面内容.
-                    },
-                    error: function (message) {
-                        alert('评论不可为空!');
-                    }
-                })
-            });
-            </script>
+            
+            
         </div>
     </div>
             <script>

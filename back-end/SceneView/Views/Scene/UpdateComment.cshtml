@@ -2,6 +2,10 @@
 
 @{
     Layout = null;
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 
 @foreach (var comment in Model)

@@ -283,7 +283,78 @@ namespace SceneView.Controllers
             }
             return Redirect("/Profile");
         }
-
+        [HttpGet]
+        public ActionResult Cancel()
+        {
+            Session.Clear();
+            return Redirect("/Login");
+        }
+        [HttpGet]
+        public ActionResult EditPassword()
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("~/login");
+            }
+            else
+            {
+                // 获取用户信息
+                var userID = Session["user"].ToString();
+                user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+                if (userSession == null)
+                {
+                    return Redirect("~/Error");
+                }
+                else
+                {
+                    ProfileData profileData = ProfileData.getProfileData(db, userSession);
+                    return View(ProfileData.getProfileData(db, userSession));
+                }
+            }
+        }
+        [HttpPost]
+        public ActionResult EditPassword(ProfileData profileData)
+        {
+            var uID = Session["user"].ToString();
+            var prePWD = profileData.userData.userID;
+            var newPWD = profileData.userData.password;
+            var user = db.user.Where(u => u.userID == uID).FirstOrDefault();
+            if (new MD5TransferAndVerify().GetMD5Hash(prePWD) != user.password)
+            {
+                ViewBag.pwd = -1;
+            }
+            else
+            {
+                ViewBag.pwd = 1;
+                user.password = new MD5TransferAndVerify().GetMD5Hash(newPWD);
+                // 循环检测db是否被占用，防止并发冲突
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+                        ex.Entries.Single().Reload();
+                    }
+                } while (saveFailed);
+            }
+            // 获取用户信息
+            var userID = Session["user"].ToString();
+            user userSession = db.user.Where(u => u.userID == userID).FirstOrDefault<user>();
+            if (userSession == null)
+            {
+                return Redirect("~/Error");
+            }
+            else
+            {
+                return View(ProfileData.getProfileData(db, userSession));
+            }
+        }
         public class ProfileData
         {
             public user userData { get; set; }

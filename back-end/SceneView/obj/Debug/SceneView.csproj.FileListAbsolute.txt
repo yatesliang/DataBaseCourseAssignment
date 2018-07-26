@@ -83,7 +83,6 @@ C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Newtonsoft.Json.xml
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\System.Net.Http.Formatting.xml
 C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\System.Web.Helpers.xml
@@ -373,3 +372,19 @@ C:\Users\acer\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\z
 C:\Users\acer\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 C:\Users\acer\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\zh-Hans\System.Web.Optimization.resources.dll
 C:\Users\acer\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\obj\Debug\SceneView.csproj.CopyComplete
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.Modules.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.SQLite.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.Wpf.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Dynamic.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Scripting.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Scripting.Metadata.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Qiniu.dll
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.Modules.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.SQLite.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\IronPython.Wpf.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Dynamic.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Scripting.xml
+C:\Users\Tanrui\Documents\GitHub\DataBaseCourseAssignment\back-end\SceneView\bin\Microsoft.Scripting.Metadata.xml

@@ -293,6 +293,25 @@
     <Content Include="Content\font\opan-sans\OpenSans-Semibold-webfont.svg" />
     <Content Include="Content\home\bootstrap.css" />
     <Content Include="Content\home\editor-bootstrap.css" />
+    <Content Include="Content\image\admin\circle.png" />
+    <Content Include="Content\image\admin\icon_card.png" />
+    <Content Include="Content\image\admin\icon_card_grey.png" />
+    <Content Include="Content\image\admin\icon_change.png" />
+    <Content Include="Content\image\admin\icon_change_grey.png" />
+    <Content Include="Content\image\admin\icon_char.png" />
+    <Content Include="Content\image\admin\icon_chara.png" />
+    <Content Include="Content\image\admin\icon_chara_grey.png" />
+    <Content Include="Content\image\admin\icon_char_grey.png" />
+    <Content Include="Content\image\admin\icon_house.png" />
+    <Content Include="Content\image\admin\icon_house_grey.png" />
+    <Content Include="Content\image\admin\icon_rule.png" />
+    <Content Include="Content\image\admin\icon_rule_grey.png" />
+    <Content Include="Content\image\admin\icon_source.png" />
+    <Content Include="Content\image\admin\icon_source_grey.png" />
+    <Content Include="Content\image\admin\icon_user.png" />
+    <Content Include="Content\image\admin\icon_user_grey.png" />
+    <Content Include="Content\image\admin\logo.png" />
+    <Content Include="Content\image\admin\progress02.png" />
     <Content Include="Content\image\home\detail-icon.png" />
     <Content Include="Content\image\home\edit.png" />
     <Content Include="Content\image\home\star.png" />
@@ -848,9 +867,11 @@
     <Content Include="Content\scene\css\bootstrap.css" />
     <Content Include="Content\scene\css\chocolat.css" />
     <Content Include="Content\scene\css\comment.css" />
+    <Content Include="Content\scene\css\icon-all_01.png" />
     <Content Include="Content\scene\css\scence_style.css" />
     <Content Include="Content\scene\css\style.css" />
     <Content Include="Content\scene\css\stylecomment.css" />
+    <Content Include="Content\scene\css\zan.png" />
     <Content Include="Content\scene\main.css" />
     <Content Include="Content\scene\scence_style.css" />
     <Content Include="Content\scene\sinaFaceAndEffec.css" />
@@ -1100,6 +1121,7 @@
     <Content Include="Views\Scene\UpdateCommentStart.cshtml" />
     <Content Include="Views\Home\commentPart.cshtml" />
     <Content Include="Views\Scene\Strategy.cshtml" />
+    <Content Include="Views\Profile\EditPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
