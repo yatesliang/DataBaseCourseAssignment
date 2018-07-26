@@ -1,17 +1,22 @@
 ﻿@model SceneView.Controllers.SceneController.Spot
 @{
-                /**/
+    /**/
 
-                Layout = null;
+    Layout = null;
 
-                List<SceneView.Models.image> imageslist = Model.spot.image.ToList();
-                List<SceneView.Models.note> notelist = Model.spot.note.ToList();
-                List<SceneView.Models.comment> commentList = Model.spot.comment.ToList();
-                var latitude = Model.spot.scenicPos.latitude;
-                var longitude = Model.spot.scenicPos.longitude;
-                var strategy = Model.spot.strategy.ToList(); ;
-                List<SceneView.Models.scenicSpot> viewedscenicList = Model.user.scenicSpot.ToList();
-                List<SceneView.Models.scenicSpot> wantscenicList = Model.user.scenicSpot1.ToList();
+    List<SceneView.Models.image> imageslist = Model.spot.image.ToList();
+    List<SceneView.Models.note> notelist = Model.spot.note.ToList();
+    List<SceneView.Models.comment> commentList = Model.spot.comment.ToList();
+    var latitude = Model.spot.scenicPos.latitude;
+    var longitude = Model.spot.scenicPos.longitude;
+    var strategy = Model.spot.strategy.ToList(); ;
+    List<SceneView.Models.scenicSpot> viewedscenicList = Model.user.scenicSpot.ToList();
+    List<SceneView.Models.scenicSpot> wantscenicList = Model.user.scenicSpot1.ToList();
+
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 
 }
 <!DOCTYPE html>
@@ -341,11 +346,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="note" id="note">
             <!--	<div class="container">-->
 
-            <div style="float:right">
+            @*<div style="float:right">
                 <a class="more" href="/Scene/Blog">
                     <p>更多</p>
                 </a>
-            </div>
+            </div>*@
             <h1>故事</h1>
             @if (notelist.Count > 0)
             {

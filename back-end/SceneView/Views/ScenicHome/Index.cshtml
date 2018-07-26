@@ -7,6 +7,10 @@
 }
 
 @{
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
     if (ViewBag.flag == -1)
     {
         HttpContext.Current.Response.Write("<script>alert(\"无相关景点！以为您展示浦东新区相关景点~\");</script>");

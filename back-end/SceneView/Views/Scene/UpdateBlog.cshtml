@@ -1,7 +1,10 @@
 ﻿@model List<SceneView.Models.note>
 @{
     Layout = null;
-    
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 <div class="container">
     <h3>Blog</h3>

@@ -1,6 +1,10 @@
 ﻿@model int
 @{
     Layout = null;
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 <h4 class="counter">
     @Model

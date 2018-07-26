@@ -1,7 +1,10 @@
 ﻿@model SceneView.Controllers.SceneController.noteList
 @{
     Layout = null;
-
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 <!DOCTYPE html>
 <html>

@@ -1,6 +1,10 @@
 ﻿
 @{
     Layout = null;
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 <!DOCTYPE html>
 <html>
@@ -111,13 +115,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div><div class="container">
         <nav class="paging">
             <ul class="pagination pagination-lg">
-                <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">?</span></a></li>
+                <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true"><</span></a></li>
                 <li><a href="#" id="page1" onclick="changepage(0)">1</a></li>
                 <li><a href="#" id="page2" onclick="changepage(1)">2</a></li>
                 <li><a href="#" id="page3" onclick="changepage(2)">3</a></li>
                 <li><a href="#" id="page3" onclick="changepage(3)">4</a></li>
                 <li><a href="#" id="page3" onclick="changepage(4)">5</a></li>
-                <li><a href="#" aria-label="Next"><span aria-hidden="true">?</span></a></li>
+                <li><a href="#" aria-label="Next"><span aria-hidden="true">></span></a></li>
             </ul>
         </nav>
     </div>

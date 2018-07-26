@@ -1,6 +1,11 @@
 ﻿
 @model SceneView.Models.user
-
+@{ 
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
+}
 <html>
 
 <head>
@@ -41,17 +46,17 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dvEybATSKmf8SlY2Whgwm6gRN8uyqN8H"></script>
 <script type="text/javascript">
         if (@Session["needLocation"]) {
-                  alert('开始获取地址');
+                 // alert('开始获取地址');
                   var geolocation = new BMap.Geolocation();
                   var geoc = new BMap.Geocoder();
                   geolocation.getCurrentPosition(function (r) {
                       if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-                          alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+                          //alert('您的位置：' + r.point.lng + ',' + r.point.lat);
                           geoc.getLocation(r.point, function (rs) {
                               var addComp = rs.addressComponents;
                               var text = addComp.province + "," + addComp.city + "," + addComp.district + ","
                                   + addComp.street + "," + addComp.streetNumber;
-                              alert(text);
+                              //alert(text);
 
                               $.ajax({
                                   'type': 'post', 'url': '/Home/getPosition',
@@ -129,7 +134,7 @@
 
 
 
-                                <li><a href="ScenicHome/index" style="padding-top:10px;">查看更多</a></li>
+                                <li><a href="/ScenicHome/index" style="padding-top:10px;">查看更多</a></li>
 
                             </ul>
                         </li>
@@ -137,7 +142,7 @@
                         
                         <li><a href="#contact" class="scroll">故事</a></li>
                         <li><a href="#comments" class="scroll">印象</a></li>
-                        <li><a href="/Profile" class="scroll">个人主页</a></li>
+                        <li><a href="/Profile">个人主页</a></li>
 
                     </ul>
 

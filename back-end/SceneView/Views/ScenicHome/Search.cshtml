@@ -1,6 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "Search";
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 
 <h2>Search</h2>
