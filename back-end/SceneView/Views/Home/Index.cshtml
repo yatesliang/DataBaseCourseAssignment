@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>景点主页</title>
+    <title>主页</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -103,6 +103,7 @@
                     @using (@Html.BeginForm("Search", "Home",FormMethod.Post, new { }))
                     {
                         @Html.TextBoxFor(info => info.userInfo.nickname, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
+                   <img src="~/Content/image/home/search.png" />
                         <input type="submit" class="hidden" />
                     }
                 </div>
@@ -145,7 +146,7 @@
 
                         <li><a href="#contact" class="scroll">故事</a></li>
                         <li><a href="#comment" class="scroll">印象</a></li>
-                        <li><a href="/Profile">个人主页</a></li>
+                      
 
                     </ul>
 
@@ -154,6 +155,7 @@
 
             </nav>
             <div class="logo">
+                     <img src="~/Content/image/home/logo.png" width="500px"/>
                 <a href="index.html"></a>
             </div>
             <div class="dummy_text">
@@ -292,7 +294,7 @@
                             }
                             <a href="index.html" target='_blanket'>
                                 <div class="item">
-                                    <img src="images/1.jpg" />
+                                    <img src="@note.imageSrc" />
                                     <div class="wrap">
                                         <div class="inner">
                                             <span class='type'>行程</span>

@@ -4,7 +4,7 @@ var jquery_1 = require("jquery");
 var func_1 = require("../core/func");
 var lists_1 = require("../core/lists");
 var env_1 = require("../core/env");
-var Buttons = (function () {
+var Buttons = /** @class */ (function () {
     function Buttons(context) {
         this.ui = jquery_1["default"].summernote.ui;
         this.context = context;

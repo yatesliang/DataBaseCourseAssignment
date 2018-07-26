@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var jquery_1 = require("jquery");
 var EDITABLE_PADDING = 24;
-var Statusbar = (function () {
+var Statusbar = /** @class */ (function () {
     function Statusbar(context) {
         this.$document = jquery_1["default"](document);
         this.$statusbar = context.layoutInfo.statusbar;

@@ -94,6 +94,7 @@ namespace SceneView.Controllers
                     this.resultSpot = new List<scenicSpot>();
                     ViewBag.pos = resultPos;
 
+                    // 加入景点
                     foreach(var pos in resultPos)
                     {
                         var spot = db.scenicSpot.Where(s => s.scenicID == pos.scenicID).FirstOrDefault<scenicSpot>();
@@ -120,15 +121,39 @@ namespace SceneView.Controllers
                     IList<NoteView> noteViews = new List<NoteView>();
                     foreach (var spot in resultSpot)
                     {
+                        var itera = spot.image.GetEnumerator();
                         notes = (from n in db.note where n.scenicID == spot.scenicID select n).ToList();
                         foreach (var note in notes)
                         {
                             var noteView = new NoteView();
                             noteView.noteTitle = note.title;
                             noteView.city = this.city;
+                            if (itera.MoveNext())
+                            {
+                                noteView.imageSrc = itera.Current.imageAddress;
+                            }
+                            else
+                            {
+                                itera = spot.image.GetEnumerator();
+                                noteView.imageSrc = spot.image.First<image>().imageAddress;
+                            }
                             noteViews.Add(noteView);
                         }
                     }
+                    // 打乱noteViews的位置
+                    Random rd = new Random();
+                    int index = 0;
+                    for(int i = 0; i<noteViews.Count(); i++)
+                    {
+                        index = rd.Next(0, noteViews.Count());
+                        if(index != i)
+                        {
+                            var temp = noteViews[i];
+                            noteViews[i] = noteViews[index];
+                            noteViews[index] = temp;
+                        }
+                    }
+
                     ViewBag.notes = notes;
                     ViewBag.noteViews = noteViews;
 
@@ -148,7 +173,13 @@ namespace SceneView.Controllers
         {
             commentCount += 5;
 
+            if (Session["user"] == null)
+            {
+                return Redirect("/Login");
+            }
+
             // get user
+
             var userID = Session["user"].ToString();
             user us = db.user.Where(cu => cu.userID == userID).FirstOrDefault<user>();
             if (us == null)
@@ -191,6 +222,7 @@ namespace SceneView.Controllers
             IList<CommentView> commentViews = new List<CommentView>();
             foreach (var rspot in this.resultSpot)
             {
+                var itera = rspot.image.GetEnumerator();
                 var resultComments = db.comment.Where(c => c.scenicID == rspot.scenicID);
                 comments = resultComments.ToList();
                 foreach (var c in comments)
@@ -201,7 +233,30 @@ namespace SceneView.Controllers
                     commentView.city = this.city;
                     commentView.userName = cUserInfo.nickname;
                     commentView.commentContent = c.commentContent;
+                    if (itera.MoveNext())
+                    {
+                        commentView.imageSrc = itera.Current.imageAddress;
+                    }
+                    else
+                    {
+                        itera = rspot.image.GetEnumerator();
+                        commentView.imageSrc = rspot.image.First<image>().imageAddress;
+                    }
+                    //commentView.imageSrc = rspot.image.FirstOrDefault<image>().imageAddress;
                     commentViews.Add(commentView);
+                }
+            }
+            // 打乱commentViews的顺序
+            Random rd = new Random();
+            int index = 0;
+            for(int i = 0; i<commentViews.Count(); i++)
+            {
+                index = rd.Next(0, commentViews.Count());
+                if (index != i)
+                {
+                    var temp = commentViews[i];
+                    commentViews[i] = commentViews[index];
+                    commentViews[index] = temp;
                 }
             }
             ViewBag.comments = comments;

@@ -4,7 +4,7 @@ var jquery_1 = require("jquery");
 var func_1 = require("./core/func");
 var lists_1 = require("./core/lists");
 var dom_1 = require("./core/dom");
-var Context = (function () {
+var Context = /** @class */ (function () {
     /**
      * @param {jQuery} $note
      * @param {Object} options

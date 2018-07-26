@@ -3,7 +3,7 @@ exports.__esModule = true;
 var jquery_1 = require("jquery");
 var env_1 = require("../core/env");
 var key_1 = require("../core/key");
-var LinkDialog = (function () {
+var LinkDialog = /** @class */ (function () {
     function LinkDialog(context) {
         this.context = context;
         this.ui = jquery_1["default"].summernote.ui;

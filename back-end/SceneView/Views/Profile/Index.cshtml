@@ -24,12 +24,8 @@
                             欢迎回来 &nbsp;
                             <strong>@Model.userData.userInfo.nickname</strong>&nbsp;&nbsp; 我等你很久了！
                         </div>
-
-
                     </div>
-
                 </div>
-                
             </div>
         </div>
         <!--/ TITLE -->
@@ -78,8 +74,11 @@
 
                                 <div class="vendor">
 
-                                    <a class="fancybox" rel="group" href="#">
-                                        <img class="img-responsive-media" src="@n.scenicSpot.image.FirstOrDefault()" alt="">
+                                    @{
+                                        var noteAddr = "/Scene/singleNote?nn=" + n.noteID;
+                                    }
+                                    <a class="fancybox" rel="group" href="@noteAddr">
+                                        <img class="img-responsive-media" src="@n.scenicSpot.image.FirstOrDefault().imageAddress" alt="">
                                     </a>
                                 </div>
                                 <div class="video-text">
@@ -88,7 +87,7 @@
                                 </div>
                                 <div class="@bg">
                                     <h3>@n.scenicSpot.scenicName</h3>
-                                    <a class="link-media pull-right" href="#">
+                                    <a class="link-media pull-right" href="@noteAddr">
                                         <span class="fontawesome-edit"></span>
                                     </a>
                                     <div class="triangle-white"></div>

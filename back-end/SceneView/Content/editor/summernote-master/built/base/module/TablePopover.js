@@ -4,7 +4,7 @@ var jquery_1 = require("jquery");
 var env_1 = require("../core/env");
 var lists_1 = require("../core/lists");
 var dom_1 = require("../core/dom");
-var TablePopover = (function () {
+var TablePopover = /** @class */ (function () {
     function TablePopover(context) {
         var _this = this;
         this.context = context;

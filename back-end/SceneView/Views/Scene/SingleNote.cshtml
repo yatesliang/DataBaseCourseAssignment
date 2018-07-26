@@ -13,7 +13,7 @@
     <title>游记（最终展示</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <meta name="keywords" content="Your Trip Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript">
@@ -38,6 +38,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
+
+    <script>
+        function load_home() {
+            document.getElementById("noteContent").innerHTML = '<object type = "text/html" data="@Model.singlenote.noteContent" width=100%'
+        }
+    </script>
     <!-- start-smoth-scrolling -->
 </head>
 
@@ -53,7 +59,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <form>
                         <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
                                required="">
-                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                        <img src="~/Content/image/home/search.png" />
+                        <input type="submit" class="hidden" />
                     </form>
                 </div>
                 <div class="clearfix"> </div>
@@ -73,7 +80,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav cl-effect-14">
                         <li>
-                            <a href="index.html">首页</a>
+                            <a href="/Home">首页</a>
                         </li>
                         <!-- <li>
                             <a href="about.html" class="active">景点</a>
@@ -104,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </nav>
             <div class="logo">
-
+                <img src="~/Content/image/home/logo.png" width="500px" />
             </div>
             <div class="dummy_text">
 
@@ -115,8 +122,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- 这里是banner -->
     <!-- 这里是索引项 -->
     <div class="container mainIndex">
-        <a href="index.html" title="首页">首页</a>>
-        <a href="about.html" title="景点">景点</a>>
+        <a href="/Home" title="首页">首页</a>>
+        <a href="/ScenicHome" title="景点">景点</a>>
         <a href="" title="海欣专栏">@Model.singlenote.user.userInfo.nickname 专栏</a>>
       <strong>@Model.singlenote.title</strong>
     </div>
@@ -298,7 +305,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <img src="~/Content/image/home/shanghai12.jpg">
                         <div class="topic-mask"></div>
                         <div class="detail-title clearfix">
-                            <h1>要想感受上海的慢生活，来黄渡理工草场大学！</h1>
+                            <h1>@Model.singlenote.title</h1>
                         </div>
                     </div>
                     <div class="topic-info clearfix">
@@ -326,8 +333,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="art-trips-text ">
 
                         <div class="art-trips-text-content">
-                            @Html.Raw( @Model.singlenote.noteContent)
-
+                            @*@Html.Raw( @Model.singlenote.noteContent)*@
+                            <iframe src="@Model.singlenote.noteContent"></iframe>
+                            @*<p src ="@Model.singlenote.noteContent"></p>*@
+                            @*<p id="noteContent"></p>*@
+                            <a id="noteContent"></a>
                         </div>
                     </div>
 

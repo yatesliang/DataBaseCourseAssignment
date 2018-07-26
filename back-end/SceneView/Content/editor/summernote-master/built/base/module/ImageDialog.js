@@ -3,7 +3,7 @@ exports.__esModule = true;
 var jquery_1 = require("jquery");
 var env_1 = require("../core/env");
 var key_1 = require("../core/key");
-var ImageDialog = (function () {
+var ImageDialog = /** @class */ (function () {
     function ImageDialog(context) {
         this.context = context;
         this.ui = jquery_1["default"].summernote.ui;
@@ -62,10 +62,10 @@ var ImageDialog = (function () {
             // [workaround] hide dialog before restore range for IE range focus
             _this.ui.hideDialog(_this.$dialog);
             _this.context.invoke('editor.restoreRange');
-            if (typeof data === 'string') {
+            if (typeof data === 'string') { // image url
                 _this.context.invoke('editor.insertImage', data);
             }
-            else {
+            else { // array of files
                 _this.context.invoke('editor.insertImagesOrCallback', data);
             }
         }).fail(function () {

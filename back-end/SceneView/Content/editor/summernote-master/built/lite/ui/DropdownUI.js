@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var DropdownUI = (function () {
+var DropdownUI = /** @class */ (function () {
     function DropdownUI($node, options) {
         this.$button = $node;
         this.options = $.extend({}, {

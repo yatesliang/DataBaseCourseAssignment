@@ -4,7 +4,7 @@ var dom_1 = require("../core/dom");
 /**
  * textarea auto sync.
  */
-var AutoSync = (function () {
+var AutoSync = /** @class */ (function () {
     function AutoSync(context) {
         var _this = this;
         this.$note = context.layoutInfo.note;

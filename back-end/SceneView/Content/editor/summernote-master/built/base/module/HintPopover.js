@@ -7,7 +7,7 @@ var dom_1 = require("../core/dom");
 var range_1 = require("../core/range");
 var key_1 = require("../core/key");
 var POPOVER_DIST = 5;
-var HintPopover = (function () {
+var HintPopover = /** @class */ (function () {
     function HintPopover(context) {
         var _this = this;
         this.context = context;

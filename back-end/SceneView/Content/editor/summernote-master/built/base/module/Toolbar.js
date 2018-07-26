@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var jquery_1 = require("jquery");
-var Toolbar = (function () {
+var Toolbar = /** @class */ (function () {
     function Toolbar(context) {
         this.context = context;
         this.$window = jquery_1["default"](window);

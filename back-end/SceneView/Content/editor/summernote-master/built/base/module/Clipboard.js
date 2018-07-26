@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var lists_1 = require("../core/lists");
-var Clipboard = (function () {
+var Clipboard = /** @class */ (function () {
     function Clipboard(context) {
         this.context = context;
         this.$editable = context.layoutInfo.editable;

@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var PopoverUI = (function () {
+var PopoverUI = /** @class */ (function () {
     function PopoverUI($node, options) {
         this.$node = $node;
         this.options = $.extend({}, {

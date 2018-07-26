@@ -758,12 +758,10 @@ body a:hover {
     width: 100%;
 }
 
-.banner_top_right i {
-    font-size: 1em;
-    color: #fff;
-    top: -2em;
-    right: -19em;
-    cursor: pointer;
+.banner_top_right img{
+    float:right;
+    margin-right:360px;
+    margin-top:-2em;
 }
 .banner1
 {
@@ -946,7 +944,9 @@ background: url(../image/home/T.jpg) no-repeat 0px 0px;
 
 .logo {
     text-align: center;
-    margin: 9em 0 6em;
+   margin-left:500px;
+   float:left;
+   margin-top:-13em;
 }
 
 .logo span {

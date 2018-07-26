@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var jquery_1 = require("jquery");
-var Placeholder = (function () {
+var Placeholder = /** @class */ (function () {
     function Placeholder(context) {
         var _this = this;
         this.context = context;

@@ -3,7 +3,7 @@ exports.__esModule = true;
 var jquery_1 = require("jquery");
 var lists_1 = require("../core/lists");
 var dom_1 = require("../core/dom");
-var LinkPopover = (function () {
+var LinkPopover = /** @class */ (function () {
     function LinkPopover(context) {
         var _this = this;
         this.context = context;

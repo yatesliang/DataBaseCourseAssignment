@@ -16,7 +16,7 @@ if (env_1["default"].hasCodeMirror) {
 /**
  * @class Codeview
  */
-var CodeView = (function () {
+var CodeView = /** @class */ (function () {
     function CodeView(context) {
         this.context = context;
         this.$editor = context.layoutInfo.editor;

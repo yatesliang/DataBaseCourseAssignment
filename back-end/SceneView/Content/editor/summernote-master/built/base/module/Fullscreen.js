@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var jquery_1 = require("jquery");
-var Fullscreen = (function () {
+var Fullscreen = /** @class */ (function () {
     function Fullscreen(context) {
         var _this = this;
         this.context = context;

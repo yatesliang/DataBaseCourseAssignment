@@ -5,7 +5,7 @@ var lists_1 = require("../core/lists");
 var func_1 = require("../core/func");
 var dom_1 = require("../core/dom");
 var range_1 = require("../core/range");
-var Bullet = (function () {
+var Bullet = /** @class */ (function () {
     function Bullet() {
     }
     /**

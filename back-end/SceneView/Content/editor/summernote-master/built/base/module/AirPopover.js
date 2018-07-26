@@ -6,7 +6,7 @@ var func_1 = require("../core/func");
 var lists_1 = require("../core/lists");
 var dom_1 = require("../core/dom");
 var AIR_MODE_POPOVER_X_OFFSET = 20;
-var AirPopover = (function () {
+var AirPopover = /** @class */ (function () {
     function AirPopover(context) {
         var _this = this;
         this.context = context;

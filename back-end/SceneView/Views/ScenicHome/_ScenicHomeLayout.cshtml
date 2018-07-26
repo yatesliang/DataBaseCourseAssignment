@@ -45,12 +45,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="banner_top_right">
                     @*<form>
-                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where you want to go';}" required="">
-                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-                    </form>*@
+            <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where you want to go';}" required="">
+            <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+        </form>*@
                     @using (@Html.BeginForm("Search", "ScenicHome", new { }))
                     {
                         @Html.TextBoxFor(info => info[0].searchContent, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
+                        <img src="~/Content/image/home/search.png" />
                         <input type="submit" class="hidden" />
                     }
 
@@ -86,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </nav>
             <div class="logo">
-
+                <img src="~/Content/image/home/logo.png" width="500px" />
             </div>
             <div class="dummy_text">
 

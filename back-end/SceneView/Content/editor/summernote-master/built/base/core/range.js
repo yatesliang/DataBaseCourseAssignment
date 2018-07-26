@@ -103,7 +103,7 @@ function pointToTextRange(point) {
    * @param {Node} ec - end container
    * @param {Number} eo - end offset
    */
-var WrappedRange = (function () {
+var WrappedRange = /** @class */ (function () {
     function WrappedRange(sc, so, ec, eo) {
         this.sc = sc;
         this.so = so;
@@ -549,7 +549,7 @@ exports["default"] = {
         if (arguments.length === 4) {
             return new WrappedRange(sc, so, ec, eo);
         }
-        else if (arguments.length === 2) {
+        else if (arguments.length === 2) { // collapsed
             ec = sc;
             eo = so;
             return new WrappedRange(sc, so, ec, eo);
@@ -581,7 +581,7 @@ exports["default"] = {
             ec = nativeRng.endContainer;
             eo = nativeRng.endOffset;
         }
-        else {
+        else { // IE8: TextRange
             var textRange = document.selection.createRange();
             var textRangeEnd = textRange.duplicate();
             textRangeEnd.collapse(false);

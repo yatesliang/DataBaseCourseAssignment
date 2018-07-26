@@ -48,6 +48,4 @@ $(containerIDhash).fadeIn(settings.inDelay);else
     }
 })
 var notesOffset = 0;
-$(".loadMoreNote span").click(function (e) {
-    getNotes()
-}), getNotes();
+

@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var jquery_1 = require("jquery");
 var dom_1 = require("../core/dom");
-var Handle = (function () {
+var Handle = /** @class */ (function () {
     function Handle(context) {
         var _this = this;
         this.context = context;
@@ -64,7 +64,7 @@ var Handle = (function () {
                     _this.$document.off('mousemove', onMouseMove_1);
                     _this.context.invoke('editor.afterCommand');
                 });
-                if (!$target_1.data('ratio')) {
+                if (!$target_1.data('ratio')) { // original ratio.
                     $target_1.data('ratio', $target_1.height() / $target_1.width());
                 }
             }

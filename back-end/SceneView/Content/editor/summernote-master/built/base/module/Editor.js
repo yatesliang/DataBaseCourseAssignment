@@ -17,7 +17,7 @@ var KEY_BOGUS = 'bogus';
 /**
  * @class Editor
  */
-var Editor = (function () {
+var Editor = /** @class */ (function () {
     function Editor(context) {
         var _this = this;
         this.context = context;

@@ -38,6 +38,7 @@
         <![endif]-->
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="~/Content/profile/ico/minus.png">
+
 </head>
 
 <body>
@@ -131,47 +132,32 @@
 
                 <!-- 展示时间、日期、天气，仍然需要改 -->
                 <div id="nt-title-container" class="navbar-left running-text visible-lg">
-                    <ul class="date-top">
-                        <li class="entypo-calendar" style="margin-right:5px"></li>
-                        <li id="Date"></li>
-                    </ul>
 
-                    <ul id="digital-clock" class="digital">
-                        <li class="entypo-clock" style="margin-right:5px"></li>
-                        <li class="hour"></li>
-                        <li>:</li>
-                        <li class="min"></li>
-                        <li>:</li>
-                        <li class="sec"></li>
-                        <li class="meridiem"></li>
-                    </ul>
-                    <ul id="nt-title">
-                        <li>
-                            <i class="wi-day-lightning"></i>&#160;&#160;Berlin&#160;
-                            <b>85</b><i class="wi-fahrenheit"></i>&#160;; 15km/h
-                        </li>
-                        <li>
-                            <i class="wi-day-lightning"></i>&#160;&#160;Yogyakarta&#160;
-                            <b>85</b><i class="wi-fahrenheit"></i>&#160;; Tonight- 72 °F (22.2 °C)
-                        </li>
-
-                        <li>
-                            <i class="wi-day-lightning"></i>&#160;&#160;Sttugart&#160;
-                            <b>85</b><i class="wi-fahrenheit"></i>&#160;; 15km/h
-                        </li>
-
-                        <li>
-                            <i class="wi-day-lightning"></i>&#160;&#160;Muchen&#160;
-                            <b>85</b><i class="wi-fahrenheit"></i>&#160;; 15km/h
-                        </li>
-
-                        <li>
-                            <i class="wi-day-lightning"></i>&#160;&#160;Frankurt&#160;
-                            <b>85</b><i class="wi-fahrenheit"></i>&#160;; 15km/h
-                        </li>
+                    <ul id="digital-clock" class="digital col-lg-8">
+                        <li class="entypo-clock col-lg-2"></li>
+                        <li><div id="mytime"></div></li>
 
                     </ul>
+                    <script type="text/javascript">
+                        function time() {
+                            var vWeek, vWeek_s, vDay;
+                            vWeek = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+                            var date = new Date();
+                            year = date.getFullYear();
+                            month = date.getMonth() + 1;
+                            day = date.getDate();
+                            hours = date.getHours();
+                            minutes = date.getMinutes();
+                            seconds = date.getSeconds();
+                            vWeek_s = date.getDay();
+                            document.getElementById("mytime").innerHTML = year + "年" + month + "月" + day + "日" + "\t" + hours + ":" + minutes + ":" + seconds + "\t" + vWeek[vWeek_s];
+                        };
+                        setInterval("time()", 1000);
+
+                    </script>
+
                 </div>
+                
 
                 <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
                     <li>
@@ -182,7 +168,12 @@
                         </a>
                         <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">
                             <li>
-                                <a href="#">
+                                <a href="/Profile/EditPassword">
+                                    <span class="entypo-user"></span>&#160;&#160;修改密码
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Profile/Cancel">
                                     <span class="entypo-user"></span>&#160;&#160;注销账户
                                 </a>
                             </li>
@@ -194,7 +185,7 @@
                         </ul>
 
                     </li>
-                    
+
                 </ul>
 
             </div>
@@ -243,7 +234,12 @@
                             <a class="tooltip-tip ajax-load" href="/profile/setting" title="个人资料">
                                 <i class="icon-document-edit"></i>
                                 <span>个人资料</span>
-
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip ajax-load" href="/profile/EditPassword" title="修改密码">
+                                <i class="icon-retweet"></i>
+                                <span>修改密码</span>
                             </a>
                         </li>
                     </ul>

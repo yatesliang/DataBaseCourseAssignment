@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var ModalUI = (function () {
+var ModalUI = /** @class */ (function () {
     function ModalUI($node, options) {
         this.options = $.extend({}, {
             target: options.container || 'body'

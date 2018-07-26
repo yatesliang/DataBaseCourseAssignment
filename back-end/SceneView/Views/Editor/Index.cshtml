@@ -75,7 +75,7 @@
 
             </nav>
             <div class="logo">
-
+                <img src="~/Content/image/home/logo.png" width="500px" />
             </div>
             <div class="dummy_text">
 
@@ -95,7 +95,7 @@
                 <p>编辑游记</p>
             </div>
             <div class="edit-done" id="edit-done">
-                <a href="/ScenicHome/search?search=@ViewBag.scenicName">done</a>
+                <a href="/ScenicHome/index?search=@ViewBag.scenicName">done</a>
             </div>
 
         </div>
@@ -187,6 +187,7 @@
 
                 // 获得时间戳
                 var now = new Date();
+                alert(now);
                 var ts = now.getTime().toString();
                 $.ajax({
                     'type': 'post', 'url': '/Editor/getNote',

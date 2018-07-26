@@ -264,7 +264,7 @@ TableResultAction.resultAction = { 'Ignore': 0, 'SubtractSpanCount': 1, 'RemoveC
  * Table
  *
  */
-var Table = (function () {
+var Table = /** @class */ (function () {
     function Table() {
     }
     /**

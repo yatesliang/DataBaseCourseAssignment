@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var TooltipUI = (function () {
+var TooltipUI = /** @class */ (function () {
     function TooltipUI($node, options) {
         this.$node = $node;
         this.options = $.extend({}, {

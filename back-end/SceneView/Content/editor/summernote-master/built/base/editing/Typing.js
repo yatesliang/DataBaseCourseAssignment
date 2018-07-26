@@ -10,7 +10,7 @@ var Bullet_1 = require("../editing/Bullet");
  * Typing
  *
  */
-var Typing = (function () {
+var Typing = /** @class */ (function () {
     function Typing() {
         // a Bullet instance to toggle lists off
         this.bullet = new Bullet_1["default"]();

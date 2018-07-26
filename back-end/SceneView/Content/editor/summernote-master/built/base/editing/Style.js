@@ -5,7 +5,7 @@ var env_1 = require("../core/env");
 var func_1 = require("../core/func");
 var lists_1 = require("../core/lists");
 var dom_1 = require("../core/dom");
-var Style = (function () {
+var Style = /** @class */ (function () {
     function Style() {
     }
     /**

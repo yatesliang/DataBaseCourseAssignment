@@ -53,7 +53,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="banner_top_right">
                     <form>
                         <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '目的地/景点';}" required="" id="searchtext">
-                        <button class="glyphicon glyphicon-search" aria-hidden="true" id="search" ></button>
+                        <img src="~/Content/image/home/search.png" />
+                        <input type="submit" class="hidden" />
                     </form>
 
                 </div>
@@ -98,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </nav>
             <div class="logo">
-
+                <img src="~/Content/image/home/logo.png" width="500px" />
             </div>
             <div class="dummy_text">
 
@@ -110,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- blog -->
     <div class="blog" id="blog">
         <div class="container">
-            <h3>Blog</h3>
+           <div class="clearfix"></div>
             <div class="blog-grids">
                 @if (Model.list.Count > 0)
                 {

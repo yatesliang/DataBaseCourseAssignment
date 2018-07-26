@@ -5,7 +5,7 @@ var lists_1 = require("../core/lists");
 var key_1 = require("../core/key");
 var defaultScheme = 'http://';
 var linkPattern = /^([A-Za-z][A-Za-z0-9+-.]*\:[\/\/]?|mailto:[A-Z0-9._%+-]+@)?(www\.)?(.+)$/i;
-var AutoLink = (function () {
+var AutoLink = /** @class */ (function () {
     function AutoLink(context) {
         var _this = this;
         this.context = context;

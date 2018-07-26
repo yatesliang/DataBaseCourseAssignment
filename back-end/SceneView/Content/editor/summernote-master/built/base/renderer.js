@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var jquery_1 = require("jquery");
-var Renderer = (function () {
+var Renderer = /** @class */ (function () {
     function Renderer(markup, children, options, callback) {
         this.markup = markup;
         this.children = children;

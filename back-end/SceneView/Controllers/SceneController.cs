@@ -41,6 +41,7 @@ namespace SceneView.Controllers
                 scene.spot = scenicSpot;
                 scene.usern = usern;
                 scene.user = user;
+
                 var viewedList = user.scenicSpot1.ToList();
                 foreach (var v in viewedList)
                 {
@@ -344,6 +345,88 @@ namespace SceneView.Controllers
             var user1 = db.user.Where(u => u.userID == userid).FirstOrDefault<user>();
             var sceniclist1 = user.scenicSpot.ToList();
         }
+
+        [HttpPost]
+        public ActionResult PostComment(Spot spot)
+        {
+            var comment = new comment();
+            comment.commentID = db.comment.Count() == 0 ? 1 : db.comment.Max(c => c.commentID) + 1;
+            comment.commentTime = System.DateTime.Now;
+            comment.userID = Session["user"].ToString();
+            comment.scenicID = spot.comment.scenicID;
+            comment.mark = 5;
+            comment.commentContent = spot.comment.commentContent;
+            var scenicName = db.scenicSpot.Where(s => s.scenicID == comment.scenicID).FirstOrDefault().scenicName;
+            db.comment.Add(comment);
+            // 循环检测db是否被占用，防止并发冲突
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed);
+            // 完成更新
+            return Redirect("/Scene/index?sn=" + scenicName);
+        }
+        public ActionResult PostCommentReply(Spot spot)
+        {
+            var cR = new commentReply();
+            cR.commentReplyID = db.commentReply.Count() == 0 ? 1 : db.commentReply.Max(c => c.commentReplyID) + 1;
+            cR.commentTime = System.DateTime.Now;
+            cR.replyToCommentID = spot.commentReply.replyToCommentID;
+            cR.commentContent = spot.commentReply.commentContent;
+            cR.userID = Session["user"].ToString();
+            db.commentReply.Add(cR);
+
+            // 循环检测db是否被占用，防止并发冲突
+            bool saveFailed;
+            do
+            {
+                saveFailed = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed);
+
+            var cRM = new commentReplyMes();
+            cRM.messageID = db.commentReplyMes.Count() == 0 ? 1 : db.commentReplyMes.Max(c => c.messageID) + 1;
+            cRM.commentID = cR.replyToCommentID;
+            cRM.commentReplyID = cR.commentReplyID;
+            db.commentReplyMes.Add(cRM);
+
+            // 循环检测db是否被占用，防止并发冲突
+            bool saveFailed1;
+            do
+            {
+                saveFailed1 = false;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    saveFailed1 = true;
+                    ex.Entries.Single().Reload();
+                }
+            } while (saveFailed1);
+
+            // 完成更新
+            return Redirect("/Scene/index?sn=" + spot.comment.scenicSpot.scenicName);
+        }
         public class Spot
         {
             public string usern { get; set; }
@@ -352,6 +435,8 @@ namespace SceneView.Controllers
             public string commentContent { get; set; }
             public bool viewed { get; set; }
             public bool want { get; set; }
+            public comment comment { get; set; }
+            public commentReply commentReply { get; set; }
         }
         public class Comment
         {

@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var jquery_1 = require("jquery");
-var Dropzone = (function () {
+var Dropzone = /** @class */ (function () {
     function Dropzone(context) {
         this.context = context;
         this.$eventListener = jquery_1["default"](document);

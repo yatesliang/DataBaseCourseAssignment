@@ -8,7 +8,7 @@ var dom_1 = require("../core/dom");
  *  mouse events that show/hide popover will be handled by Handle.js.
  *  Handle.js will receive the events and invoke 'imagePopover.update'.
  */
-var ImagePopover = (function () {
+var ImagePopover = /** @class */ (function () {
     function ImagePopover(context) {
         var _this = this;
         this.context = context;

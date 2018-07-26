@@ -1,6 +1,10 @@
 ﻿@model SceneView.Models.strategy
 @{
     Layout = null;
+    if (Session["user"] == null)
+    {
+        HttpContext.Current.Response.Redirect("/login");
+    }
 }
 
 <!DOCTYPE html>
@@ -109,9 +113,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="banner_top_right">
                     <form>
-                        <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
+                        <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}"
                                required="">
-                        <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                        <img src="~/Content/image/home/search.png" />
+                        <input type="submit" class="hidden" />
                     </form>
                 </div>
                 <div class="clearfix"> </div>
