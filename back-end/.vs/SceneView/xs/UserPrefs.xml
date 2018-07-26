@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{290390B5-091F-422A-A456-CAD20C6E0869}|">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SceneView" expanded="True">
+            <Node name="SceneView" expanded="True">
+              <Node name="References" expanded="True">
+                <Node name="System.Web.Entity" selected="True" />
+              </Node>
+              <Node name="Packages" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.SceneView PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
