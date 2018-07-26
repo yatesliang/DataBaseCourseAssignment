@@ -93,7 +93,6 @@ namespace SceneView.Controllers
         [HttpGet]
         public ActionResult Blog()
         {
-            
             return View();
         }
         [HttpPost]
@@ -335,8 +334,10 @@ namespace SceneView.Controllers
         public class noteList
         {
             public SceneView.Models.note singlenote { get; set; }
-            public List<SceneView.Models.note> noteL { get; set; }       
+            public List<SceneView.Models.note> noteL { get; set; }     
+           
         }
         
+        // currentPage totalPage
     }
 }

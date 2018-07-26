@@ -16,12 +16,10 @@ namespace SceneView.Controllers
     {
         public Entities db = new Entities();
        
-
         public void getNote(string content, string timeStamp, string noteTitle,string scenicName)
         {
             var note = new note();
-            
-           
+                       
             content = content.Replace("&lt", "<");
             content = content.Replace("&gt", ">");
 

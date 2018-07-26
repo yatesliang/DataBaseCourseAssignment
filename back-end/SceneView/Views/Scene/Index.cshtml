@@ -473,7 +473,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
                 <h1>评论</h1>
             </div>
-
             <div class="景点评分" id="scenic score" style=" position: relative;margin-left: 60%;width: 150px; font: size 15; height: 30px;font-family: '微软雅黑';color:#000000;font-weight:900;">景点评分：</div>
             <form id="score_form">
                 <div class="star_evaluate">
@@ -489,14 +488,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <label for="scoreId_5" class="star star_5"></label>
                 </div>
             </form>
-
             <!--此评论textarea文本框部分使用的https://github.com/alexdunphy/flexText此插件-->
             <div class="commentAll">
                 <!--评论区域 begin-->
                 @*<div class="reviewArea commentclearfix">
-            <textarea class="commentcontent comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
-            <a href="javascript:;" class="plBtn" onclick=Up>评论</a>
-        </div>*@
+                <textarea class="commentcontent comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+                <a href="javascript:;" class="plBtn" onclick=Up>评论</a>
+            </div>*@
                 <div class="reviewArea commentclearfix">
                     @using (Ajax.BeginForm(new AjaxOptions()
                     {
@@ -517,56 +515,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     }
-                    </div>
-                    <!--评论区域 end-->
-                    <!--回复区域 begin-->
-                    <div class="comment-show" id="comment-show">
-                        <script>
-                        $('#comment-show').load('@Url.Action("UpdateComment", "Scene")')
-                        </script>
-                    </div>
-                    <!--回复区域 end-->
                 </div>
-
-                <!--textarea高度自适应-->
-                <script type="text/javascript">
-                    $(function () {
-                        $('.commentcontent').flexText();
-                    });
-                </script>
-                <!--textarea限制字数-->
-                <script type="text/javascript">
-                    function keyUP(t) {
-                        var len = $(t).val().length;
-                        if (len > 139) {
-                            $(t).val($(t).val().substring(0, 140));
-                        }
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show" id="comment-show">
+                    <script>
+                        $('#comment-show').load('@Url.Action("UpdateComment", "Scene")')
+                    </script>
+                </div>
+                <!--回复区域 end-->
+            </div>
+            <!--textarea高度自适应-->
+            <script type="text/javascript">
+                $(function () {
+                    $('.commentcontent').flexText();
+                });
+            </script>
+            <!--textarea限制字数-->
+            <script type="text/javascript">
+                function keyUP(t) {
+                    var len = $(t).val().length;
+                    if (len > 139) {
+                        $(t).val($(t).val().substring(0, 140));
                     }
-                </script>
-                <!--点击评论创建评论条-->
-                <script type="text/javascript">
-                    $('.commentAll').on('click', '.plBtn', function () {
-                        $.ajax({
-                            type: "post",
-                            url: '/Scene/UpdateComment',
-                            data: { content: alert($("textarea[name=zero]").val()); },
-                            async: true,//异步
-                            success: function (data) //成功后的回调方法
-                            {
-                                $("#comment-show").html(data);//data--就是对应的分部视图页面内容.
-                                //alert(data)//弹出框
-                            },
-                            error: function (message) {
-                                alert('error!');
-                            }
-                        })
+                }
+            </script>
+            <!--点击评论创建评论条-->
+            <script type="text/javascript">
+                $('.commentAll').on('click', '.plBtn', function () {
+                    $.ajax({
+                        type: "post",
+                        url: '/Scene/UpdateComment',
+                        data: { content: alert($("textarea[name=zero]").val()); },
+                        async: true,//异步
+                        success: function (data) //成功后的回调方法
+                        {
+                            $("#comment-show").html(data);//data--就是对应的分部视图页面内容.
+                            //alert(data)//弹出框
+                        },
+                        error: function (message) {
+                            alert('error!');
+                        }
+                    })
 
-                    });
-                </script>
-                @*<!--点击回复动态创建回复块-->
-                        <script type="text/javascript">
+                });
+            </script>
+            <script type="text/javascript">
                         $('.comment-show').on('click','.pl-hf',function(){
-                            @*//获取回复人的名字
+                            //获取回复人的名字
                             //var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                             //回复@
                             var fhN = '回复@'+fhName;
@@ -605,7 +601,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             //if(s<10) s = '0' + s;
                             //var now=year+'-'+month+"-"+date+" "+h+':'+m+":"+s;
                             ////获取输入内容
-                            @*var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
+                            var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
                             console.log(oHfVal)
                             var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                             var oAllVal = '回复@'+oHfName;
@@ -644,6 +640,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             }
                         });
                         </script>
+                @*<!--点击回复动态创建回复块-->
+
                         <!--删除评论块-->
                         <script type="text/javascript">
                                             $('.commentAll').on('click', '.removeBlock', function () {
@@ -750,11 +748,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             $(this).html(str);
                         }
                     });
-                </script>
-                <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
-                <script type="text/javascript" src="~/Scripts/scene/js/jquery.unobtrusive-ajax.js"></script>
-                <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-                <script>
+            </script>
+            <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript" src="~/Scripts/scene/js/jquery.unobtrusive-ajax.js"></script>
+            <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+            <script>
                 $(function () {
                     $(".like").click(function () {
                         var id_name = $(this).attr('id');
@@ -811,9 +809,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         }
                     })
                 })
-                </script>
-
-                <!--
+            </script>
+            <!--
     <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script>
         $(function () {
@@ -823,8 +820,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         })
     </script>
     -->
-                <!-- for bootstrap working -->
-                <script src="~/Scripts/scene/js/bootstrap.js"></script>
-                <!-- //for bootstrap working -->
+            <!-- for bootstrap working -->
+            <script src="~/Scripts/scene/js/bootstrap.js"></script>
+            <!-- //for bootstrap working -->
 </body>
 </html>
