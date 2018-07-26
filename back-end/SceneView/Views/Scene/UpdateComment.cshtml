@@ -1,20 +1,17 @@
-﻿@model IList<SceneView.Models.comment>
+﻿@model IList<SceneView.Controllers.SceneController.Comment>
 
 @{
     Layout = null;
-    if (Session["user"] == null)
-    {
-        HttpContext.Current.Response.Redirect("/login");
-    }
 }
 
-    @foreach (var comment in Model)
-    {       
+@foreach (var comment in Model)
+{
     <div class="comment-show-con commentclearfix">
         <div class="comment-show-con-img pull-left"><img src="images2/header-img-comment_03.png" alt=""></div>
         <div class="comment-show-con-list pull-left commentclearfix">
+
             <div class="pl-text commentclearfix">
-                <a href="#" class="comment-size-name">@comment.user.userInfo.nickname: </a>
+                <a href="#" class="comment-size-name">@comment.username: </a>
                 <span class="my-pl-con">&nbsp;@comment.commentContent</span>
             </div>
             <div class="date-dz">
@@ -23,18 +20,10 @@
                     <a href="javascript:;" class="removeBlock">删除</a>
                     <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
                     <span class="pull-left date-dz-line">|</span>
-                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)</a>
+                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i>></a>
                 </div>
-                @foreach (var c in @comment.commentReply)
-                {
-                    <div class="hf-con pull-left"> 
-                <textarea class="commentcontent comment-input hf-input" placeholder="" onkeyup="keyUP(this)">回复@@:@c.user.userInfo.nickname@c.commentContent</textarea> 
-                <a href="javascript:;" class="hf-pl">评论</a></div>
-                }
             </div>
             <div class="hf-list-con"></div>
         </div>
     </div>
-    }
-
-
+}

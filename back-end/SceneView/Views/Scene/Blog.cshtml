@@ -1,4 +1,4 @@
-﻿
+﻿@model SceneView.Controllers.SceneController.page
 @{
     Layout = null;
     if (Session["user"] == null)
@@ -104,27 +104,166 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- made by may 2018/7/20 -->
     <!-- blog -->
-    <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <div class="blog" id="blog">
+        <div class="blog" id="blog">
+        <div class="container">
+            <h3>Blog</h3>
+            <div class="blog-grids">
+                @if (Model.list.Count > 0)
+                {
+                    <div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[0].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[0].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[0].noteID" target="_blank">@Model.list[0].title</a>
+                            <h4>@Model.list[0].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[0].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
 
-       
+                    </div>
+                }
+                @if (Model.list.Count > 1)
+                {<div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[1].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[1].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[1].noteID" target="_blank">@Model.list[1].title</a>
+                            <h4>@Model.list[1].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[1].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+
+                    </div>}
+                <div class="clearfix"> </div>
+            </div>
+            <div class="blog-grids">
+                @if (Model.list.Count > 2)
+                {
+                    <div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[2].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[1].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[2].noteID" target="_blank">@Model.list[2].title</a>
+                            <h4>@Model.list[2].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[2].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+
+                    </div>
+                }
+                @if (Model.list.Count > 3)
+                {<div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[3].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[2].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[3].noteID" target="_blank">@Model.list[3].title</a>
+                            <h4>@Model.list[3].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[3].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+            <div class="blog-grids">
+                @if (Model.list.Count > 4)
+                {<div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[4].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[3].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[4].noteID" target="_blank">@Model.list[4].title</a>
+                            <h4>@Model.list[4].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[4].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+
+                    </div>}
+                @if (Model.list.Count > 5)
+                {
+                    <div class="col-md-6 blog-grid">
+                        <div class="col-xs-4 blog-grid-left">
+                            <a href="/Scene/SingleNote?nn=@Model.list[5].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[4].imageAddress" alt=" " class="img-responsive" /></a>
+                        </div>
+                        <div class="col-xs-8 blog-grid-right">
+                            <a href="/Scene/SingleNote?nn=@Model.list[5].noteID" target="_blank">@Model.list[5].title</a>
+                            <h4>@Model.list[5].noteTime</h4>
+                            <p class="limit">
+                                @Model.list[5].noteContent
+                            </p>
+                        </div>
+                        <div class="clearfix"> </div>
+
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
         <script>
-            $('#blog').load('@Url.Action("UpdateBlog", "Scene")')
+            $(".limit").each(function () {
+                var len = $(this).text().length;
+                if (len > 100) {
+                    var str = "";
+                    str = $(this).text().substring(0, 100) + "......";
+                    $(this).html(str);
+                }
+            });
         </script>
-    </div><div class="container">
+    </div>
+    <div class="container">
         <nav class="paging">
             <ul class="pagination pagination-lg">
-                <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true"><</span></a></li>
-                <li><a href="#" id="page1" onclick="changepage(0)">1</a></li>
-                <li><a href="#" id="page2" onclick="changepage(1)">2</a></li>
-                <li><a href="#" id="page3" onclick="changepage(2)">3</a></li>
-                <li><a href="#" id="page3" onclick="changepage(3)">4</a></li>
-                <li><a href="#" id="page3" onclick="changepage(4)">5</a></li>
-                <li><a href="#" aria-label="Next"><span aria-hidden="true">></span></a></li>
+                @{
+                    var prePage = 0;
+                    if (Model.currentpage == 0)
+                    {
+                        prePage = 0;
+                    }
+                    else
+                    {
+                        prePage = Model.currentpage - 1;
+                    }
+
+                    <li><a href="/Scene/Blog?page=@prePage" aria-label="Previous" id="page1"><span aria-hidden="true"><</span></a></li>
+                }
+
+                @{
+                    for (int i = 0; i < Model.pagetotal; i++)
+                    {
+                        <li><a href="/Scene/Blog?page=@i" id="page@i">@(i + 1)</a></li>
+                    }
+                }
+                @{
+                    var nextPage = 0;
+                    if (Model.currentpage == Model.pagetotal - 1)
+                    {
+                        nextPage = Model.pagetotal - 1;
+                    }
+                    else
+                    {
+                        nextPage = Model.currentpage + 1;
+                    }
+
+                    <li><a href="/Scene/Blog?page=@nextPage" aria-label="Next"><span aria-hidden="true">></span></a></li>
+                }
             </ul>
         </nav>
-    </div>
+        </div>
     <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script type="text/javascript">

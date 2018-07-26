@@ -1,0 +1,55 @@
+﻿@model IList<SceneView.Controllers.SceneController.Comment>
+
+@{
+    /**/
+
+    Layout = null;
+}
+
+@foreach (var comment in Model)
+{
+    <div class="comment-show-con commentclearfix">
+        <div class="comment-show-con-img pull-left"><img src="images2/header-img-comment_03.png" alt=""></div>
+        <div class="comment-show-con-list pull-left commentclearfix">
+
+            <div class="pl-text commentclearfix">
+                <a href="#" class="comment-size-name">@comment.username: </a>
+                <span class="my-pl-con">&nbsp;@comment.commentContent</span>
+            </div>
+            <div class="date-dz">
+                <span class="date-dz-left pull-left comment-time">@comment.commentTime</span>
+                <div class="date-dz-right pull-right comment-pl-block">
+                    <a href="javascript:;" class="removeBlock">删除</a>
+                    <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                    <span class="pull-left date-dz-line">|</span>
+                    <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">@comment.commentLike </i>)<i class="commentID" element hidden="hidden">@comment.commentID</i>></a>
+                </div>
+            </div>
+            <div class="hf-list-con"></div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+                    $('.comment-show').on('click','.pl-hf',function(){
+                        //获取回复人的名字
+                      
+                        var fhN = '回复@@'
+                        //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
+                        var fhHtml = '<div class="hf-con pull-left"> <textarea class="commentcontent comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
+                        //显示回复
+                        if($(this).is('.hf-con-block')){
+                            $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
+                            $(this).removeClass('hf-con-block');
+                            $('.commentcontent').flexText();
+                            $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding','6px 15px');
+                            //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
+                            //input框自动聚焦
+                            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
+                        }else {
+                            $(this).addClass('hf-con-block');
+                            $(this).parents('.date-dz-right').siblings('.hf-con').remove();
+                        }
+                    });
+</script>
+
+
