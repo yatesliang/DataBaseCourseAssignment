@@ -1,4 +1,4 @@
-﻿@model IList<SceneView.Controllers.SceneController.Comment>
+﻿@model  List<SceneView.Models.comment>
 
 @{
     /**/
@@ -9,11 +9,11 @@
 @foreach (var comment in Model)
 {
     <div class="comment-show-con commentclearfix">
-        <div class="comment-show-con-img pull-left"><img src="images2/header-img-comment_03.png" alt=""></div>
+        <div class="comment-show-con-img pull-left"><img src="@comment.user.userInfo.headPortrait" alt=""></div>
         <div class="comment-show-con-list pull-left commentclearfix">
 
             <div class="pl-text commentclearfix">
-                <a href="#" class="comment-size-name">@comment.username: </a>
+                <a href="#" class="comment-size-name">@comment.user.userInfo.nickname: </a>
                 <span class="my-pl-con">&nbsp;@comment.commentContent</span>
             </div>
             <div class="date-dz">
@@ -29,27 +29,5 @@
         </div>
     </div>
 }
-<script type="text/javascript">
-                    $('.comment-show').on('click','.pl-hf',function(){
-                        //获取回复人的名字
-                      
-                        var fhN = '回复@@'
-                        //var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
-                        var fhHtml = '<div class="hf-con pull-left"> <textarea class="commentcontent comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
-                        //显示回复
-                        if($(this).is('.hf-con-block')){
-                            $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
-                            $(this).removeClass('hf-con-block');
-                            $('.commentcontent').flexText();
-                            $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding','6px 15px');
-                            //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
-                            //input框自动聚焦
-                            $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
-                        }else {
-                            $(this).addClass('hf-con-block');
-                            $(this).parents('.date-dz-right').siblings('.hf-con').remove();
-                        }
-                    });
-</script>
 
 

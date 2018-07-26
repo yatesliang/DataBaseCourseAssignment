@@ -4,7 +4,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Qiniu.Http;
+using Qiniu.Storage;
+using Qiniu.Util;
 using SceneView.Models;
+
 
 namespace SceneView.Controllers
 {
@@ -197,11 +201,42 @@ namespace SceneView.Controllers
         public void UpdateHead(string imagesrc)
         {
             var id = Session["user"].ToString();
-            var result = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
-            if (result != null)
+           
+            var user1 = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
+            if (user1 != null)
             {
-                result.userInfo.headPortrait = imagesrc;
+                user1.userInfo.headPortrait = imagesrc;
+                string file = imagesrc;
+                // 使用qiniu传递数据
+                Config config = new Config();
+                // 空间对应的机房
+                config.Zone = Zone.ZONE_CN_East;
+                // 是否使用https域名
+                config.UseHttps = true;
+                // 上传是否使用cdn加速
+                config.UseCdnDomains = true;
+                config.ChunkSize = ChunkUnit.U512K;
 
+                // 简单文件上传
+                Mac mac = new Mac("LIjKmW98gcj0ahR_Fogx3AV8V1JsRtOQo6qT43Cu", "W_lPo12yjHkaVyfibquVSJH8ImLWXw-tIXeggNSo");
+                // 上传文件名
+                string key = user1.userID+ ".png";
+                // 本地文件路径
+              
+                // 存储空间名
+                string Bucket = "editor";
+                // 设置上传策略
+                PutPolicy putPolicy = new PutPolicy();
+                putPolicy.Scope = Bucket;
+                putPolicy.SetExpires(3600);
+                putPolicy.DeleteAfterDays = 1;
+                string token = Auth.CreateUploadToken(mac, putPolicy.ToJsonString());
+
+                // 表单上传
+                FormUploader target = new FormUploader(config);
+                HttpResult result = target.UploadFile(file, key, token, null);
+                Console.WriteLine("form upload result: " + result.ToString());
+                user1.userInfo.headPortrait = "http://pcet6rfxw.bkt.clouddn.com/" + key;
                 bool saveFailed;
                 do
                 {

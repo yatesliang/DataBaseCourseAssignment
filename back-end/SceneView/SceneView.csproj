@@ -1099,6 +1099,7 @@
     <Content Include="Views\Scene\UpdateVisitor.cshtml" />
     <Content Include="Views\Scene\UpdateCommentStart.cshtml" />
     <Content Include="Views\Home\commentPart.cshtml" />
+    <Content Include="Views\Scene\Strategy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

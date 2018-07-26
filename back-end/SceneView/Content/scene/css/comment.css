@@ -16,7 +16,7 @@ body{font-family: "Microsoft Yahei";}
 /*----------------------------------------------------------------------------------------------------------*/
 .commentcontent{float: left!important;}
 .flex-text-wrap,pre{margin: 0 !important;}
-.commentAll{width: 800px!important;padding: 20px!important;border: 1px solid #ededed!important;margin: 20px auto!important;}
+.commentAll{width: 800px!important;padding: 20px!important;border: 1px solid #ededed!important;margin: 20px auto!important;background-color:#f1f0ed !important;}
 .plBtn{width: 75px!important;height: 36px!important;line-height: 36px!important;background-color: #339b53!important;text-align: center!important;display: block;float: right;color: #FFFFFF;font-size: 12px;border-radius: 6px;margin-right: 2px;margin-top: 20px;}
 .plBtn:hover{background-color: #2f904d!important;}
 

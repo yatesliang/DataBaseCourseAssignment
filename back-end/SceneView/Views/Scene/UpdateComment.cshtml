@@ -1,4 +1,4 @@
-﻿@model IList<SceneView.Controllers.SceneController.Comment>
+﻿@model  List<SceneView.Models.comment>
 
 @{
     Layout = null;
@@ -7,11 +7,11 @@
 @foreach (var comment in Model)
 {
     <div class="comment-show-con commentclearfix">
-        <div class="comment-show-con-img pull-left"><img src="images2/header-img-comment_03.png" alt=""></div>
+        <div class="comment-show-con-img pull-left"><img src="@comment.user.userInfo.headPortrait" alt=""></div>
         <div class="comment-show-con-list pull-left commentclearfix">
 
             <div class="pl-text commentclearfix">
-                <a href="#" class="comment-size-name">@comment.username: </a>
+                <a href="#" class="comment-size-name">@comment.user.userInfo.nickname: </a>
                 <span class="my-pl-con">&nbsp;@comment.commentContent</span>
             </div>
             <div class="date-dz">

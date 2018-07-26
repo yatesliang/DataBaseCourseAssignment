@@ -96,10 +96,10 @@ namespace SceneView.Controllers
             }
             if (Request.IsAjaxRequest())
             {
-                return PartialView(comlist);
+                return PartialView(commentList);
 
             }
-            return View(comlist);
+            return View(commentList);
 
 
         }
@@ -123,7 +123,8 @@ namespace SceneView.Controllers
             var comment = new comment();
             comment.commentContent = content;
             var id = Session["user"].ToString();
-            comment.userID = id;
+            var user = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
+            comment.user = user;
             spotname = spotname == "" || spotname == null ? "上海杜莎夫人蜡像馆" : spotname;
             var scenicSpot = db.scenicSpot.Where(u => u.scenicName == spotname).FirstOrDefault<scenicSpot>();
             comment.scenicID = scenicSpot.scenicID;
@@ -167,10 +168,10 @@ namespace SceneView.Controllers
             }
             if (Request.IsAjaxRequest())
             {
-                return PartialView(comlist);
+                return PartialView(commentList);
 
             }
-            return View(comlist);
+            return View(commentList);
 
 
         }

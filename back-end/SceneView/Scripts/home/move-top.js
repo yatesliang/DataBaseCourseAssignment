@@ -51,9 +51,3 @@ var notesOffset = 0;
 $(".loadMoreNote span").click(function (e) {
     getNotes()
 }), getNotes();
-function loadMoreComment() {
-    alert("找不到对象!🧐🙈 :(");
-    alert("comment button clicked");
-    getNotes();
-    alert("comment show successfully");
-}

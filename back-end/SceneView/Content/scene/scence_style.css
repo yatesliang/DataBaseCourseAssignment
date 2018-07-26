@@ -98,6 +98,7 @@
 
 .strategy-brief {
 	margin-top:110px;
+    padding-top:20px;
 	background:rgba(241,240,237,0.5);
 	height:360px;
 }
@@ -156,7 +157,7 @@ h3 {
 }
 
 .note h1 {
-	margin: 0px 0px 20px 0px;
+	margin: 10px 0px 20px 0px;
 }
 
 .map h1 {
@@ -169,9 +170,10 @@ body{
 }
 
 .note-content {
-	padding-bottom: 145px;
-	height:30%;
-	background:rgba(256,256,256,0.5);
+    padding-bottom: 145px;
+    padding-top: 10px;
+    height: 30%;
+    background: rgba(256,256,256,0.5);
 }
 
 
@@ -183,8 +185,9 @@ h4 {
 }
 
 .traffic {
-	background:rgba(241,240,237,0.5);
-	height:354.38px;
+    background: rgba(241,240,237,0.5);
+    height: 354.38px;
+    padding-top: 10px;
 }
 
 .content{

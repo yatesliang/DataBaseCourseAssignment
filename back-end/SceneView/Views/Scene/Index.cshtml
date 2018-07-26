@@ -299,7 +299,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="slider strategy">
                             <ul class="rslides strategy" id="slider3">
                                 <li class="strategies">
-                                    <img src="@strategy[0].image.First().imageAddress" alt="strategy" width="700" height="350" href="#">
+                                    <img src="@imageslist[5]" alt="strategy" width="700" height="350" href="#">
                                 </li>
                                 <li class="strategies">
                                     <img src="images2/team-2.jpg" alt="strategy" width="700" height="350" href="#">
@@ -324,7 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
                 <div class="col-md-6 strategy-brief strategy-content">
-                    <a href="/Scene/SingleNote?si=@strategy[0].strategyID" target="_blank"><h3>@strategy[0].title</h3></a>
+                    <a href="/Scene/Strategy?si=@strategy[0].strategyID" target="_blank"><h3>@strategy[0].title</h3></a>
                     <p class="limit">@strategy[0].content</p>
 
                 </div>
@@ -546,7 +546,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                    var isAutoSend = document.getElementsByName('score');
                    for (var i = 0; i < isAutoSend.length; i++) {
                        if (isAutoSend[i].checked == true) {
-                           alert(isAutoSend[i].value);
+
                            num = isAutoSend[i].value;
                        }
                    }

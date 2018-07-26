@@ -82,6 +82,7 @@
                                         fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
                                         src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
                                     alert(src);
+                                    alert(filePath);
                                     // 检查是否是图片
                                     if (!fileFormat.match(/.png|.jpg|.jpeg/)) {
                                         error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
@@ -92,7 +93,7 @@
                                     $.ajax({
                                         type: "post",
                                         url: '/Profile/UpdateHead',
-                                        data: { imagesrc: src },
+                                        data: { imagesrc: filePath },
                                         async: true,
                                     })
                                     
