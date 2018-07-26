@@ -114,7 +114,6 @@ namespace SceneView.Controllers
             var p = new page();
             p.list = list;
             p.pagetotal = noteList.Count() / 6 + 1;
-            p.currentpage = int.Parse(page);
             return View(p);
         }
         [HttpPost]
@@ -333,7 +332,6 @@ namespace SceneView.Controllers
         {
             public List<SceneView.Models.note> list { get; set; }
             public int pagetotal { get; set; }
-            public int currentpage { get; set; }
         }
         public class noteList
         {
