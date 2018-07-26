@@ -14,7 +14,14 @@ namespace SceneView.Controllers
         private string province;
         private string city;
         private string district;
+        private List<scenicSpot> resultSpot;
+        private List<scenicPos> resultPos;
+        private static int commentCount;
 
+        public HomeController()
+        {
+            commentCount = 0;
+        }
 
         public class Position
         {
@@ -83,8 +90,8 @@ namespace SceneView.Controllers
                     }
 
                     // get spot and position
-                    var resultPos = db.scenicPos.Where(u => u.city == city && u.district == district).ToList<scenicPos>();
-                    var resultSpot = new List<scenicSpot>();
+                    this.resultPos = db.scenicPos.Where(u => u.city == city && u.district == district).ToList<scenicPos>();
+                    this.resultSpot = new List<scenicSpot>();
                     ViewBag.pos = resultPos;
 
                     foreach(var pos in resultPos)
@@ -125,27 +132,6 @@ namespace SceneView.Controllers
                     ViewBag.notes = notes;
                     ViewBag.noteViews = noteViews;
 
-                    // get comments
-                    IList<comment> comments = new List<comment>();
-                    IList<CommentView> commentViews = new List<CommentView>();
-                    foreach (var rspot in resultSpot)
-                    {
-                        var resultComments = db.comment.Where(c => c.scenicID == rspot.scenicID);
-                        comments = resultComments.ToList();
-                        foreach (var c in comments)
-                        {
-                            var cUser = db.user.Where(u => u.userID == c.userID).FirstOrDefault<user>();
-                            var cUserInfo = db.userInfo.Where(ui => ui.userID == cUser.userID).FirstOrDefault<userInfo>();
-                            var commentView = new CommentView();
-                            commentView.city = this.city;
-                            commentView.userName = cUserInfo.nickname;
-                            commentView.commentContent = c.commentContent;
-                            commentViews.Add(commentView);
-                        }
-                    }
-                    ViewBag.comments = comments;
-                    ViewBag.commentViews = commentViews;
-
                     return View(us);
                 }
 
@@ -154,14 +140,76 @@ namespace SceneView.Controllers
         [HttpPost]
         public ActionResult Search(user info)
         {
-            var searchContent = info.comment;
+            var searchContent = info.userInfo.nickname;
             return Redirect("~/ScenicHome/Index?search=" + searchContent);
         }
 
+        public ActionResult commentPart()
+        {
+            commentCount += 5;
+
+            // get user
+            var userID = Session["user"].ToString();
+            user us = db.user.Where(cu => cu.userID == userID).FirstOrDefault<user>();
+            if (us == null)
+            {
+                return Redirect("/Error");
+            }
+            // get province, city and district
+            if (Session["province"] == null || Session["province"].ToString() == ""
+               || Session["city"] == null || Session["city"].ToString() == ""
+               || Session["district"] == null || Session["district"].ToString() == "")
+            {
+                Session["needLocation"] = 1;
+                this.province = "上海市";
+                this.city = "上海市";
+                this.district = "浦东新区";
+            }
+            else
+            {
+                Session["needLocation"] = 0;
+                this.province = Session["province"].ToString();
+                this.city = Session["city"].ToString();
+                this.district = Session["district"].ToString();
+            }
+
+            // get spot and position
+            this.resultPos = db.scenicPos.Where(u => u.city == city && u.district == district).ToList<scenicPos>();
+            this.resultSpot = new List<scenicSpot>();
+            ViewBag.pos = resultPos;
+
+            foreach (var pos in resultPos)
+            {
+                var spot = db.scenicSpot.Where(s => s.scenicID == pos.scenicID).FirstOrDefault<scenicSpot>();
+                resultSpot.Add(spot);
+            }
+            ViewBag.spot = resultSpot.ToArray();
 
 
+            // get comments
+            IList<comment> comments = new List<comment>();
+            IList<CommentView> commentViews = new List<CommentView>();
+            foreach (var rspot in this.resultSpot)
+            {
+                var resultComments = db.comment.Where(c => c.scenicID == rspot.scenicID);
+                comments = resultComments.ToList();
+                foreach (var c in comments)
+                {
+                    var cUser = db.user.Where(u => u.userID == c.userID).FirstOrDefault<user>();
+                    var cUserInfo = db.userInfo.Where(ui => ui.userID == cUser.userID).FirstOrDefault<userInfo>();
+                    var commentView = new CommentView();
+                    commentView.city = this.city;
+                    commentView.userName = cUserInfo.nickname;
+                    commentView.commentContent = c.commentContent;
+                    commentViews.Add(commentView);
+                }
+            }
+            ViewBag.comments = comments;
+            ViewBag.commentViews = commentViews;
+            ViewBag.commentCount = commentCount;
 
-
+            return PartialView();
+        }
 
     }
 }

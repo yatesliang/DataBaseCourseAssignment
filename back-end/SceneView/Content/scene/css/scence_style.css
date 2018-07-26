@@ -66,6 +66,7 @@
 
 .introduction {
 	padding-top:50px;
+    margin-bottom:200px;
 }
 
 .scenicIntroduction {
@@ -114,7 +115,7 @@
 
 .strategy-brief {
 	margin-top:2.2%;
-	background:rgba(256,256,256,0.5);
+	background:rgba(241,240,237,0.5);
 	background-size:100% 100%;
 	overflow: hidden;
 	display:inline;
@@ -182,7 +183,7 @@ h3 {
 body{
 /*	background:rgba(73,92,105,0.2);*/
 /*	background:rgba(247,244,237,0);*/
-	background-color:#f7f4ed;
+	background-color:#FFFFFF;
 }
 
 .note-content {
@@ -199,7 +200,7 @@ h4 {
 }
 
 .traffic {
-	background:rgba(256,256,256,0.5);
+	background:rgba(241,240,237,0.5);
 	height:354.38px;
 }
 

@@ -112,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 {
                     <div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[0].noteID" target="_blank"><img src="@Model.list[0].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[0].noteID" target="_blank"><img src="@Model.list[0].scenicSpot.image.ToList()[0].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[0].noteID" target="_blank">@Model.list[0].title</a>
@@ -128,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 @if (Model.list.Count > 1)
                 {<div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[1].noteID" target="_blank"><img src="@Model.list[1].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[1].noteID" target="_blank"><img src="@Model.list[1].scenicSpot.image.ToList()[1].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[1].noteID" target="_blank">@Model.list[1].title</a>
@@ -147,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 {
                     <div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[2].noteID" target="_blank"><img src="@Model.list[2].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[2].noteID" target="_blank"><img src="@Model.list[2].scenicSpot.image.ToList()[2].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[2].noteID" target="_blank">@Model.list[2].title</a>
@@ -163,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 @if (Model.list.Count > 3)
                 {<div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[3].noteID" target="_blank"><img src="@Model.list[3].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[3].noteID" target="_blank"><img src="@Model.list[3].scenicSpot.image.ToList()[3].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[3].noteID" target="_blank">@Model.list[3].title</a>
@@ -182,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 @if (Model.list.Count > 4)
                 {<div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[4].noteID" target="_blank"><img src="@Model.list[4].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[4].noteID" target="_blank"><img src="@Model.list[4].scenicSpot.image.ToList()[4].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[4].noteID" target="_blank">@Model.list[4].title</a>
@@ -198,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 {
                     <div class="col-md-6 blog-grid">
                         <div class="col-xs-4 blog-grid-left">
-                            <a href="/Scene/SingleNote?nn=@Model.list[5].noteID" target="_blank"><img src="@Model.list[5].image.First().imageAddress" alt=" " class="img-responsive" /></a>
+                            <a href="/Scene/SingleNote?nn=@Model.list[5].noteID" target="_blank"><img src="@Model.list[5].scenicSpot.image.ToList()[5].imageAddress" alt=" " class="img-responsive" /></a>
                         </div>
                         <div class="col-xs-8 blog-grid-right">
                             <a href="/Scene/SingleNote?nn=@Model.list[5].noteID" target="_blank">@Model.list[5].title</a>
@@ -228,17 +228,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <nav class="paging">
             <ul class="pagination pagination-lg">
-                <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">?</span></a></li>
                 @{
-                    var page = 0;
+                    if (Model.currentpage >= 1)
+                    {
+                        var page = Model.currentpage - 1;
+                        <li><a href="/Scene/Blog?page=@page" aria-label="Previous" id="page1"><span aria-hidden="true">上一页</span></a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">上一页</span></a></li>
+                    }
+                }
+                @{
+
                     for (int i = 0; i < Model.pagetotal; i++)
                     {
                         <li><a href="/Scene/Blog?page=@i" id="page@i">@(i + 1)</a></li>
                     }
                 }
-                <li><a href="#" aria-label="Next"><span aria-hidden="true">?</span></a></li>
+                @{
+                    if (Model.currentpage <Model.pagetotal)
+                    {
+                        var page = Model.currentpage +1;
+                        <li><a href="/Scene/Blog?page=@page" aria-label="Previous" id="page1"><span aria-hidden="true">下一页</span></a></li>
+
+                    }
+                    else
+                    {
+                        <li><a href="#" aria-label="Previous" id="page1"><span aria-hidden="true">下一页</span></a></li>
+                    }
+                }
+                
             </ul>
-        </nav
+        </nav>
     <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script type="text/javascript">

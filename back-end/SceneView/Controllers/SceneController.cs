@@ -113,6 +113,7 @@ namespace SceneView.Controllers
             var list = noteList.Skip(pageIndex * 6).Take(6).ToList();
             var p = new page();
             p.list = list;
+            p.currentpage = pageIndex;
             p.pagetotal = noteList.Count() / 6 + 1;
             return View(p);
         }
@@ -172,6 +173,29 @@ namespace SceneView.Controllers
             return View(comlist);
 
 
+        }
+        public ActionResult SingleNote()
+        {
+            SceneView.Models.note tempnote = new SceneView.Models.note();
+            var noteI = Request.QueryString["nn"];
+            noteI = noteI == "" || noteI == null ? "1" : noteI;
+            var noteID = int.Parse(noteI);
+
+            var singlenote = db.note.Where(u => u.noteID == noteID).FirstOrDefault();
+            var singl = db.note.Where(u => u.scenicSpot.scenicID == singlenote.scenicID).ToList();
+            foreach (var s in singl)
+            {
+                if (s.noteID == noteID)
+                {
+                    tempnote = s;
+                    break;
+                }
+            }
+            singl.Remove(tempnote);
+            noteList n = new noteList();
+            n.singlenote = singlenote;
+            n.noteL = singl;
+            return View(n);
         }
         [HttpPost]
         public void UpdateLike(string ln,string ni)
@@ -332,6 +356,7 @@ namespace SceneView.Controllers
         {
             public List<SceneView.Models.note> list { get; set; }
             public int pagetotal { get; set; }
+            public int currentpage { get; set; }
         }
         public class noteList
         {

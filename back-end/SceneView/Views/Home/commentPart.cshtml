@@ -1,0 +1,45 @@
+﻿<head>
+    <script type="text/javascript" src="~/Scripts/home/move-top.js"></script>
+</head>
+
+<div class="content">
+    <div class='title'>印象</div>
+    <div id="JS-yinxiang-cont" class="cont cfb-clearfix">
+        <!-- <ul> -->
+        @{
+            var z = 0;
+            foreach (var comment in ViewBag.commentViews)
+            {
+                if (z > ViewBag.commemtCount)
+                {
+                    break;
+                }
+                <div>
+                    <a class="yinxiang" title="">
+                        <div class="img-cnt">
+                            <img src="images/31.jpg">
+                            <p class="photo-num">233image1</p>
+                        </div>
+                        <div class="txt-cnt">
+                            <p class="txt">@comment.commentContent</p>
+                        </div>
+                        <div class="note-bottom">
+                            <span class="fl">
+                                <i class="icon-location"></i>
+                                @comment.city
+                            </span>
+                            <span class="fr">@comment.userName</span>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+        <!-- </ul> -->
+    </div>
+    <div class='loading'>
+        <i></i>
+    </div>
+    <div class="clear"></div>
+    <br>
+    <div class='loadMoreNote'><span onclick="loadMoreComment()">查看更多印象</span></div>
+</div>

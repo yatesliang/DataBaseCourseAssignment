@@ -89,6 +89,13 @@
                                     }
 
                                     $('#cropedBigImg').attr('src', src);
+                                    $.ajax({
+                                        type: "post",
+                                        url: '/Profile/UpdateHead',
+                                        data: { imagesrc: src },
+                                        async: true,
+                                    })
+                                    
                                 });
                             </script>
 

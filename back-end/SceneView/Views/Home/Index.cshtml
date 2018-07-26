@@ -1,11 +1,6 @@
 ﻿
 @model SceneView.Models.user
-@{ 
-    if (Session["user"] == null)
-    {
-        HttpContext.Current.Response.Redirect("/login");
-    }
-}
+
 <html>
 
 <head>
@@ -41,22 +36,31 @@
     </script>
     <!-- start-smoth-scrolling -->
 
+    <script>
+        function loadMoreComment() {
+            getNotes();
+            $("#comment").load("/Home/commentPart", function () {
+                alert("提交成功");
+            })
+        }
+    </script>
+
 </head>
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=dvEybATSKmf8SlY2Whgwm6gRN8uyqN8H"></script>
 <script type="text/javascript">
         if (@Session["needLocation"]) {
-                 // alert('开始获取地址');
+                  alert('开始获取地址');
                   var geolocation = new BMap.Geolocation();
                   var geoc = new BMap.Geocoder();
                   geolocation.getCurrentPosition(function (r) {
                       if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-                          //alert('您的位置：' + r.point.lng + ',' + r.point.lat);
+                          alert('您的位置：' + r.point.lng + ',' + r.point.lat);
                           geoc.getLocation(r.point, function (rs) {
                               var addComp = rs.addressComponents;
                               var text = addComp.province + "," + addComp.city + "," + addComp.district + ","
                                   + addComp.street + "," + addComp.streetNumber;
-                              //alert(text);
+                              alert(text);
 
                               $.ajax({
                                   'type': 'post', 'url': '/Home/getPosition',
@@ -90,17 +94,17 @@
         <div class="container">
             <div class="banner_top">
                 <div class="banner_top_left">
-                    <p style="font-size:16px"><a href="#" style="font-size:20px;color:white">@Model.userInfo.nickname</a></p>
+                    <p style="font-size:16px"><a href="/Profile" style="font-size:20px;color:white">@Model.userInfo.nickname</a></p>
                 </div>
                 <div class="banner_top_right">
                     @*<form>
             <input type="text" value="目的地/景点" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '目的地/景点';}" required="">
             <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
         </form>*@
-                    @using (@Html.BeginForm("Search", "ScenicHome", new { }))
+                    @using (@Html.BeginForm("Search", "Home",FormMethod.Post, new { }))
                     {
-                        @Html.TextBoxFor(info => info.comment, new { @type = "text", Value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
-                        <input type="submit" style="display: none"  />
+                        @Html.TextBoxFor(info => info.userInfo.nickname, new { @type = "text", @value = "目的地/景点", @onfocus = "this.value ='';", @onblur = "if (this.value == '') {this.value = '黄浦区'; }", @required = "" })
+                        <input type="submit" class="hidden" />
                     }
                 </div>
                 <div class="clearfix"> </div>
@@ -134,14 +138,14 @@
 
 
 
-                                <li><a href="/ScenicHome/index" style="padding-top:10px;">查看更多</a></li>
+                                <li><a href="ScenicHome/index" style="padding-top:10px;">查看更多</a></li>
 
                             </ul>
                         </li>
 
-                        
+
                         <li><a href="#contact" class="scroll">故事</a></li>
-                        <li><a href="#comments" class="scroll">印象</a></li>
+                        <li><a href="#comment" class="scroll">印象</a></li>
                         <li><a href="/Profile">个人主页</a></li>
 
                     </ul>
@@ -309,48 +313,8 @@
         </div>
     </div>
     <!-- //印象（评论 -->
-    <div class="comment" id="comments">
-        <div class="content">
-            <div class='title'>印象</div>
-            <div id="JS-yinxiang-cont" class="cont cfb-clearfix">
-                <!-- <ul> -->
-                @{
-                    var z = 0;
-                    foreach (var comment in ViewBag.commentViews)
-                    {
-                        if (z > 8)
-                        {
-                            break;
-                        }
-                        <div>
-                            <a class="yinxiang" title="">
-                                <div class="img-cnt">
-                                    <img src="images/31.jpg">
-                                    <p class="photo-num">233image1</p>
-                                </div>
-                                <div class="txt-cnt">
-                                    <p class="txt">@comment.commentContent</p>
-                                </div>
-                                <div class="note-bottom">
-                                    <span class="fl">
-                                        <i class="icon-location"></i>
-                                        @comment.city
-                                    </span>
-                                    <span class="fr">@comment.userName</span>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                }
-                <!-- </ul> -->
-            </div>
-            <div class='loading'>
-                <i></i>
-            </div>
-            <div class="clear"></div>
-            <br>
-            <div class='loadMoreNote'><span onclick="loadMoreComment()">查看更多印象</span></div>
-        </div>
+    <div class="comment" id="comment">
+        @{Html.RenderAction("commentPart");}
     </div>
     <p id="Position" class="hidden"></p>
 

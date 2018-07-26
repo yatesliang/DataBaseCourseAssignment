@@ -176,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <a data0="" href="~/ScenicHome/index?dn=@Model.singlenote.scenicSpot.scenicPos.district" m="点击_游记详情页_右侧_相关目的地_目的地_上海_2802"
                                class="poi-card">
                                 <div data0="" class="poi-image">
-                                    <img data0="" src="@Model.singlenote.image.FirstOrDefault().imageAddress">
+                                    <img data0="" src="@Model.singlenote.scenicSpot.image.ToList()[1].imageAddress">
                                 </div>
                                 <div data0="" class="poi-title">@Model.singlenote.scenicSpot.scenicPos.district</div>
                             </a>
@@ -185,7 +185,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div data1="" class="side-floor">
                         <div data1="" class="side-topic">
                             <h3 data1="">相关游记</h3>
-                            <a data1="" href="" m="点击_游记详情页_右侧_相关游记_更多游记_查看全部相关游记"
+                            <a data1="" href="/Scene/Blog" m="点击_游记详情页_右侧_相关游记_更多游记_查看全部相关游记"
                                class="side-link">更多</a>
                         </div>
                         <div data1="" class="side-main" id="side-rotation" onload="sideImage(0)">
@@ -316,19 +316,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <i class="tour-like"onclick="likeNote(this)" id="tour-like"></i>
                                     <span id="tour-like-num">@Model.singlenote.noteLike</span>
                                 </a>
-                            </li>
-                            <li class="detail-collect">
-                                <a href="" data-status="false" id="collectButton" m="点击_游记详情页_顶部_收藏按钮__收藏">
-                                    <i class="tour-collect" id="tour-collect"></i>
-                                    <span>收藏</span>
-                                </a>
-                            </li>
-                            <li class="detail-comment">
-                                <a href="">
-                                    <!-- <a href="" m="点击_游记详情页_顶部_评论按钮__评论"> -->
-                                    <i class="tour-comment"></i>评论
-                                </a>
-
                             </li>
                         </ul>
                     </div>

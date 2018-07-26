@@ -205,7 +205,6 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SceneController.cs" />
     <Compile Include="Controllers\scenicHomeController.cs" />
-    <Compile Include="Controllers\scenicSpotsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1086,7 +1085,6 @@
     <Content Include="Views\Scene\Index.cshtml" />
     <Content Include="Views\Scene\Blog.cshtml" />
     <Content Include="Views\Scene\SingleNote.cshtml" />
-    <Content Include="Views\Scene\UpdateBlog.cshtml" />
     <Content Include="Views\Scene\UpdateComment.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
     <Content Include="Views\Admin\Scene.cshtml" />
@@ -1099,6 +1097,8 @@
     <Content Include="Views\Profile\TimeLine.cshtml" />
     <Content Include="Views\Profile\_ProfileLayout.cshtml" />
     <Content Include="Views\Scene\UpdateVisitor.cshtml" />
+    <Content Include="Views\Scene\UpdateCommentStart.cshtml" />
+    <Content Include="Views\Home\commentPart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

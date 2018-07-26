@@ -194,11 +194,38 @@ namespace SceneView.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Setting(ProfileData profileData)
+        public void UpdateHead(string imagesrc)
         {
-            var result = db.user.Where(u => u.userID == Session["user"].ToString()).FirstOrDefault();
+            var id = Session["user"].ToString();
+            var result = db.user.Where(u => u.userID == id).FirstOrDefault<user>();
             if (result != null)
             {
+                result.userInfo.headPortrait = imagesrc;
+
+                bool saveFailed;
+                do
+                {
+                    saveFailed = false;
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        saveFailed = true;
+                        ex.Entries.Single().Reload();
+                    }
+                } while (saveFailed);
+            }
+        }
+        [HttpPost]
+        public ActionResult Setting(ProfileData profileData)
+        {
+            var id = Session["user"].ToString();
+            var result = db.user.Where(u => u.userID ==id).FirstOrDefault<user>();
+            if (result != null)
+            {
+              
                 result.userInfo.nickname = profileData.userData.userInfo.nickname;
                 result.userInfo.gender = profileData.userData.userInfo.gender;
                 result.userInfo.phoneNumber = profileData.userData.userInfo.phoneNumber;
