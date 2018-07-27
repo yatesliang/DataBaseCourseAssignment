@@ -119,6 +119,7 @@
           <ScalarProperty Name="scenicID" ColumnName="scenicID" />
           <ScalarProperty Name="scenicName" ColumnName="scenicName" />
           <ScalarProperty Name="scenicIntroduction" ColumnName="scenicIntroduction" />
+          <ScalarProperty Name="peopleNum" ColumnName="peopleNum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,14 +155,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="noteImage" TypeName="Model.noteImage" StoreEntitySet="noteImage">
-      <EndProperty Name="image">
-        <ScalarProperty Name="imageID" ColumnName="imageID" />
-      </EndProperty>
-      <EndProperty Name="note">
-        <ScalarProperty Name="noteID" ColumnName="noteID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="scenicImage" TypeName="Model.scenicImage" StoreEntitySet="scenicImage">
       <EndProperty Name="image">
         <ScalarProperty Name="imageID" ColumnName="imageID" />

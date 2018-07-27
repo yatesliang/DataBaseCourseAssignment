@@ -223,7 +223,7 @@ namespace SceneView.Controllers
         public ActionResult UpdateVisitor()
         {
            
-            var num = 5654;
+            int num = 1111;
             return View(num);
         }
         [HttpPost]
@@ -232,7 +232,9 @@ namespace SceneView.Controllers
             //ScriptRuntime pyRumTime = Python.CreateRuntime();
             //dynamic obj = pyRumTime.UseFile("getNumOfSpot.py");
             //var num = obj.outputTheNumOf(sceneName);
-            var num = 6666;
+            var numl= db.scenicSpot.Where(s => s.scenicName==sceneName).FirstOrDefault().peopleNum;
+            int num = Convert.ToInt32(numl);
+            
             if (Request.IsAjaxRequest())
             {
                 return View(num);

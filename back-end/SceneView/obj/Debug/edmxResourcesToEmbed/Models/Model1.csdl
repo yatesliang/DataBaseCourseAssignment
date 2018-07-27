@@ -73,7 +73,6 @@
     </Key>
     <Property Name="imageID" Type="Int32" Nullable="false" />
     <Property Name="imageAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="note" Relationship="Self.noteImage" FromRole="image" ToRole="note" />
     <NavigationProperty Name="scenicSpot" Relationship="Self.scenicImage" FromRole="image" ToRole="scenicSpot" />
     <NavigationProperty Name="strategy" Relationship="Self.strategyImage" FromRole="image" ToRole="strategy" />
   </EntityType>
@@ -91,7 +90,6 @@
     <NavigationProperty Name="scenicSpot" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="note" ToRole="scenicSpot" />
     <NavigationProperty Name="user" Relationship="Self.FK_NOTE_REFERENCE_USER" FromRole="note" ToRole="user" />
     <NavigationProperty Name="noteLikeMes" Relationship="Self.FK_NOTELIKE_REFERENCE_NOTE" FromRole="note" ToRole="noteLikeMes" />
-    <NavigationProperty Name="image" Relationship="Self.noteImage" FromRole="note" ToRole="image" />
   </EntityType>
   <EntityType Name="noteLikeMes">
     <Key>
@@ -133,6 +131,7 @@
     <Property Name="scenicID" Type="Int16" Nullable="false" />
     <Property Name="scenicName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="scenicIntroduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="peopleNum" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <NavigationProperty Name="comment" Relationship="Self.FK_COMMENT_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="comment" />
     <NavigationProperty Name="note" Relationship="Self.FK_NOTE_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="note" />
     <NavigationProperty Name="question" Relationship="Self.FK_QUESTION_REFERENCE_SCENICSP" FromRole="scenicSpot" ToRole="question" />
@@ -225,7 +224,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTL_REFERENCE_COMMENT">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentLikeMes" Type="Self.commentLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -237,7 +238,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_CO">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReplyMes" Type="Self.commentReplyMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -249,7 +252,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_COMMENT">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReply" Type="Self.commentReply" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -261,7 +266,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTL_REFERENCE_USER">
-    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentLikeMes" Type="Self.commentLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -273,7 +280,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_COMME">
-    <End Role="commentReply" Type="Self.commentReply" Multiplicity="1" />
+    <End Role="commentReply" Type="Self.commentReply" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReplyMes" Type="Self.commentReplyMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="commentReply">
@@ -285,7 +294,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_USER3">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReply" Type="Self.commentReply" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -325,7 +336,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NOTELIKE_REFERENCE_NOTE">
-    <End Role="note" Type="Self.note" Multiplicity="1" />
+    <End Role="note" Type="Self.note" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="noteLikeMes" Type="Self.noteLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="note">
@@ -337,7 +350,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NOTELIKE_REFERENCE_USER">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="noteLikeMes" Type="Self.noteLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -403,10 +418,6 @@
         <PropertyRef Name="userID" />
       </Dependent>
     </ReferentialConstraint>
-  </Association>
-  <Association Name="noteImage">
-    <End Role="image" Type="Self.image" Multiplicity="*" />
-    <End Role="note" Type="Self.note" Multiplicity="*" />
   </Association>
   <Association Name="scenicImage">
     <End Role="image" Type="Self.image" Multiplicity="*" />
@@ -507,10 +518,6 @@
     <AssociationSet Name="FK_USERINFO_REFERENCE_USER" Association="Self.FK_USERINFO_REFERENCE_USER">
       <End Role="user" EntitySet="user" />
       <End Role="userInfo" EntitySet="userInfo" />
-    </AssociationSet>
-    <AssociationSet Name="noteImage" Association="Self.noteImage">
-      <End Role="image" EntitySet="image" />
-      <End Role="note" EntitySet="note" />
     </AssociationSet>
     <AssociationSet Name="scenicImage" Association="Self.scenicImage">
       <End Role="image" EntitySet="image" />

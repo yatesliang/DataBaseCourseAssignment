@@ -926,13 +926,6 @@
     <Content Include="Content\font\opan-sans\OpenSans-Semibold-webfont.eot" />
     <Content Include="Content\font\opan-sans\OpenSans-Semibold-webfont.ttf" />
     <Content Include="Content\font\opan-sans\OpenSans-Semibold-webfont.woff" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\profile\font\BebasNeue-webfont.eot" />
     <Content Include="Content\profile\font\BebasNeue-webfont.ttf" />
     <Content Include="Content\profile\font\BebasNeue-webfont.woff" />
@@ -960,6 +953,13 @@
     <Content Include="Content\profile\js\footable\css\fonts\footable.eot" />
     <Content Include="Content\profile\js\footable\css\fonts\footable.ttf" />
     <Content Include="Content\profile\js\footable\css\fonts\footable.woff" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

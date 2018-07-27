@@ -18,7 +18,6 @@ namespace SceneView.Models
         public note()
         {
             this.noteLikeMes = new HashSet<noteLikeMes>();
-            this.image = new HashSet<image>();
         }
     
         public int noteID { get; set; }
@@ -33,7 +32,5 @@ namespace SceneView.Models
         public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<noteLikeMes> noteLikeMes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<image> image { get; set; }
     }
 }

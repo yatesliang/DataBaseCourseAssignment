@@ -268,17 +268,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="~/Scripts/scene/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="~/Scripts/scene/js/jquery.unobtrusive-ajax.js"></script>
     <script type="text/javascript">
-        //window.setInterval(changevisitor, 3000);
+        window.setInterval(changevisitor, 3000);
         function changevisitor() {
             $.ajax({
                 type: "post",
                 url: '/Scene/UpdateVisitor',
-                data: { Index:"1",sceneName:@Model.spot.scenicName },
+                data: { Index:"1",sceneName:"@Model.spot.scenicName" },
                 async: true,//异步
                 success: function (data) //成功后的回调方法
                 {
                     $("#visit").html(data);//data--就是对应的分部视图页面内容.
-                    //alert(data)//弹出框
                 },
                 error: function (message) {
                     alert('error!');

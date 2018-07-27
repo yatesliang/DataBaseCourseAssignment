@@ -29,6 +29,7 @@ namespace SceneView.Models
         public short scenicID { get; set; }
         public string scenicName { get; set; }
         public string scenicIntroduction { get; set; }
+        public decimal peopleNum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<comment> comment { get; set; }

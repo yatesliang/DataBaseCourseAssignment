@@ -73,14 +73,6 @@
     <Property Name="noteLike" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="noteTime" Type="timestamp" Precision="6" Nullable="false" />
   </EntityType>
-  <EntityType Name="noteImage">
-    <Key>
-      <PropertyRef Name="noteID" />
-      <PropertyRef Name="imageID" />
-    </Key>
-    <Property Name="noteID" Type="number" Precision="10" Scale="0" Nullable="false" />
-    <Property Name="imageID" Type="number" Precision="6" Scale="0" Nullable="false" />
-  </EntityType>
   <EntityType Name="noteLikeMes">
     <Key>
       <PropertyRef Name="messageID" />
@@ -124,6 +116,7 @@
     <Property Name="scenicID" Type="number" Precision="5" Scale="0" Nullable="false" />
     <Property Name="scenicName" Type="varchar2" MaxLength="64" Nullable="false" />
     <Property Name="scenicIntroduction" Type="clob" />
+    <Property Name="peopleNum" Type="number" Precision="38" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="scenicSpotToGo">
     <Key>
@@ -221,7 +214,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTL_REFERENCE_COMMENT">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentLikeMes" Type="Self.commentLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -233,7 +228,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTL_REFERENCE_USER">
-    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="user" Type="Self.user" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentLikeMes" Type="Self.commentLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -245,7 +242,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_CO">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReplyMes" Type="Self.commentReplyMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -257,7 +256,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_COMME">
-    <End Role="commentReply" Type="Self.commentReply" Multiplicity="1" />
+    <End Role="commentReply" Type="Self.commentReply" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReplyMes" Type="Self.commentReplyMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="commentReply">
@@ -269,7 +270,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_COMMENT">
-    <End Role="comment" Type="Self.comment" Multiplicity="1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReply" Type="Self.commentReply" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="comment">
@@ -281,7 +284,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_COMMENTR_REFERENCE_USER3">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="commentReply" Type="Self.commentReply" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -320,32 +325,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_NOTEIMAG_REFERENCE_IMAGE">
-    <End Role="image" Type="Self.image" Multiplicity="1" />
-    <End Role="noteImage" Type="Self.noteImage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="image">
-        <PropertyRef Name="imageID" />
-      </Principal>
-      <Dependent Role="noteImage">
-        <PropertyRef Name="imageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_NOTEIMAG_REFERENCE_NOTE">
-    <End Role="note" Type="Self.note" Multiplicity="1" />
-    <End Role="noteImage" Type="Self.noteImage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="note">
-        <PropertyRef Name="noteID" />
-      </Principal>
-      <Dependent Role="noteImage">
-        <PropertyRef Name="noteID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_NOTELIKE_REFERENCE_NOTE">
-    <End Role="note" Type="Self.note" Multiplicity="1" />
+    <End Role="note" Type="Self.note" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="noteLikeMes" Type="Self.noteLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="note">
@@ -357,7 +340,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NOTELIKE_REFERENCE_USER">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="noteLikeMes" Type="Self.noteLikeMes" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -383,7 +368,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SCENICIM_REFERENCE_IMAGE">
-    <End Role="image" Type="Self.image" Multiplicity="1" />
+    <End Role="image" Type="Self.image" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="scenicImage" Type="Self.scenicImage" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="image">
@@ -423,7 +410,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SCENICSP_REFEREN_SCENICSP">
-    <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1" />
+    <End Role="scenicSpot" Type="Self.scenicSpot" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="scenicSpotToGo" Type="Self.scenicSpotToGo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="scenicSpot">
@@ -435,7 +424,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SCENICSP_REFEREN_USER">
-    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="scenicSpotToGo" Type="Self.scenicSpotToGo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="user">
@@ -447,7 +438,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_STRATEGY_REFERENCE_IMAGE">
-    <End Role="image" Type="Self.image" Multiplicity="1" />
+    <End Role="image" Type="Self.image" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="strategyImage" Type="Self.strategyImage" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="image">
@@ -537,7 +530,6 @@
     <EntitySet Name="commentReplyMes" EntityType="Self.commentReplyMes" Schema="C##YATES" store:Type="Tables" />
     <EntitySet Name="image" EntityType="Self.image" Schema="C##YATES" store:Type="Tables" />
     <EntitySet Name="note" EntityType="Self.note" Schema="C##YATES" store:Type="Tables" />
-    <EntitySet Name="noteImage" EntityType="Self.noteImage" Schema="C##YATES" store:Type="Tables" />
     <EntitySet Name="noteLikeMes" EntityType="Self.noteLikeMes" Schema="C##YATES" store:Type="Tables" />
     <EntitySet Name="question" EntityType="Self.question" Schema="C##YATES" store:Type="Tables" />
     <EntitySet Name="scenicImage" EntityType="Self.scenicImage" Schema="C##YATES" store:Type="Tables" />
@@ -592,14 +584,6 @@
     <AssociationSet Name="FK_NOTE_REFERENCE_USER" Association="Self.FK_NOTE_REFERENCE_USER">
       <End Role="user" EntitySet="user" />
       <End Role="note" EntitySet="note" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NOTEIMAG_REFERENCE_IMAGE" Association="Self.FK_NOTEIMAG_REFERENCE_IMAGE">
-      <End Role="image" EntitySet="image" />
-      <End Role="noteImage" EntitySet="noteImage" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NOTEIMAG_REFERENCE_NOTE" Association="Self.FK_NOTEIMAG_REFERENCE_NOTE">
-      <End Role="note" EntitySet="note" />
-      <End Role="noteImage" EntitySet="noteImage" />
     </AssociationSet>
     <AssociationSet Name="FK_NOTELIKE_REFERENCE_NOTE" Association="Self.FK_NOTELIKE_REFERENCE_NOTE">
       <End Role="note" EntitySet="note" />

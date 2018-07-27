@@ -17,7 +17,6 @@ namespace SceneView.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public image()
         {
-            this.note = new HashSet<note>();
             this.scenicSpot = new HashSet<scenicSpot>();
             this.strategy = new HashSet<strategy>();
         }
@@ -25,8 +24,6 @@ namespace SceneView.Models
         public int imageID { get; set; }
         public string imageAddress { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<note> note { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scenicSpot> scenicSpot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
